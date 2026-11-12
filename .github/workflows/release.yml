@@ -34,9 +34,15 @@ jobs:
         env:
           GH_TOKEN: ${{ github.token }}
         run: |
+          # tags with a suffix (v1.1.0-beta.1, v1.1.0-rc.1) are pre-releases, so they never become "latest"
+          PRERELEASE=""
+          case "$GITHUB_REF_NAME" in
+            *-*) PRERELEASE="--prerelease" ;;
+          esac
           gh release create "$GITHUB_REF_NAME" \
             build/libs/DotProxy.jar \
             scripts/start.sh \
             scripts/start.bat \
             --title "DotProxy $GITHUB_REF_NAME" \
-            --generate-notes
+            --generate-notes \
+            $PRERELEASE
