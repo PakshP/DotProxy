@@ -24,6 +24,7 @@ public class ModuleManager {
             new AutoRespawn(),
             new ChatHistory(),
             new ExtraChat(),
+            new TranslationProbeResponder(),
             new VisualRange()
         ).forEach(m -> {
             addModule(m);

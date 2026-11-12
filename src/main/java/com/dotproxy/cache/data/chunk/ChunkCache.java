@@ -287,6 +287,23 @@ public class ChunkCache implements CachedData {
         return updateBlock(packet.getEntry());
     }
 
+    public @Nullable BlockEntityInfo getBlockEntity(final int x, final int y, final int z) {
+        final var chunk = get(x >> 4, z >> 4);
+        if (chunk == null) return null;
+        final int relativeX = x & 15;
+        final int relativeZ = z & 15;
+        synchronized (chunk.blockEntities) {
+            for (BlockEntityInfo tileEntity : chunk.blockEntities) {
+                if (tileEntity.getX() == relativeX
+                    && tileEntity.getY() == y
+                    && tileEntity.getZ() == relativeZ) {
+                    return tileEntity;
+                }
+            }
+        }
+        return null;
+    }
+
     public boolean updateBlockEntity(final ClientboundBlockEntityDataPacket packet) {
         final int chunkX = packet.getX() >> 4;
         final int chunkZ = packet.getZ() >> 4;

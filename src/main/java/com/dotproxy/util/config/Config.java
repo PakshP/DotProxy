@@ -130,6 +130,22 @@ public final class Config {
             public String whisperCommand = "msg";
             public int tpsBufferSize = 20;
             public final Reach reach = new Reach();
+            public final TranslationProbes translationProbes = new TranslationProbes();
+
+            /**
+             * Answers translation-key probes (sign editor / anvil rename) like a vanilla client while no player is
+             * controlling. When a player is controlling, probes are forwarded and their client answers.
+             */
+            public static final class TranslationProbes {
+                public boolean enabled = true;
+                public boolean signs = true;
+                public boolean anvil = true;
+                public boolean logProbes = true;
+                /** translation key -> text, checked before vanilla en_us. Use to mirror the mods on your own client. */
+                public final HashMap<String, String> translationOverrides = new HashMap<>();
+                /** key mapping name -> bound key display name (e.g. "key.jump" -> "Space"), checked before vanilla defaults */
+                public final HashMap<String, String> keybindOverrides = new HashMap<>();
+            }
 
             public static final class Reach {
                 public float additionalBlockReach = 0;

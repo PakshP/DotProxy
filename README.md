@@ -70,6 +70,7 @@ The cached state is also used for the built-in player simulation (physics and An
     * **ChatHistory**: replays recent chat to players when they join
     * **ExtraChat**: extra chat utilities
     * **ActionLimiter**: limits what controlling players are allowed to do
+    * **TranslationProbeResponder**: answers sign and anvil translation-key probes like a vanilla client of the version the server sees, while nobody is controlling the account. When you are connected, your own client answers them
 * A Java plugin system for adding your own modules and commands
 
 ## Quick Start
