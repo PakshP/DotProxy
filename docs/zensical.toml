@@ -52,6 +52,7 @@ edit_uri = "edit/main/docs/wiki"
      { "Home" = "index.md" },
      { "Getting Started" = [
          { "Setup" = "Setup.md" },
+         { "Running & Maintaining" = "Maintenance.md" },
          { "Hosting Providers" = "Hosting-Providers.md" },
          { "Discord Bot Guide" = "Discord-Bot-Guide.md" },
          { "Linux Guide" = "Linux-Guide.md" },

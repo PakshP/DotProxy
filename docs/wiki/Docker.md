@@ -4,30 +4,36 @@ You don't need a custom image to run DotProxy in Docker. The official `eclipse-t
 
 ## Setup
 
-1. Make a folder for DotProxy (for example `~/dotproxy`) and put `DotProxy.jar` in it.
-2. Create a `compose.yaml` file next to it:
+1. Make a folder for the compose file (for example `~/dotproxy-docker`), with a `dotproxy` folder inside it for DotProxy's files, and download `DotProxy.jar` from the latest release into that:
 
-```yaml title="compose.yaml"
-services:
-  dotproxy:
-    image: eclipse-temurin:21-jre
-    container_name: dotproxy
-    working_dir: /dotproxy
-    command: ["java", "-Xmx300m", "-XX:+UseG1GC", "--enable-native-access=ALL-UNNAMED", "-jar", "DotProxy.jar"]
-    volumes:
-      - ./dotproxy:/dotproxy
-    ports:
-      - "25565:25565"
-    stdin_open: true
-    tty: true
-    restart: unless-stopped
-```
+    ```bash
+    mkdir -p ~/dotproxy-docker/dotproxy && cd ~/dotproxy-docker
+    wget -O dotproxy/DotProxy.jar https://github.com/PakshP/DotProxy/releases/latest/download/DotProxy.jar
+    ```
+
+2. Create a `compose.yaml` file in `~/dotproxy-docker` (next to the `dotproxy` folder):
+
+    ```yaml title="compose.yaml"
+    services:
+      dotproxy:
+        image: eclipse-temurin:21-jre
+        container_name: dotproxy
+        working_dir: /dotproxy
+        command: ["java", "-Xmx300m", "-XX:+UseG1GC", "--enable-native-access=ALL-UNNAMED", "-jar", "DotProxy.jar"]
+        volumes:
+          - ./dotproxy:/dotproxy
+        ports:
+          - "25565:25565"
+        stdin_open: true
+        tty: true
+        restart: unless-stopped
+    ```
 
 3. Start it:
 
-```bash
-docker compose up -d
-```
+    ```bash
+    docker compose up -d
+    ```
 
 ## Using the Terminal
 
@@ -47,9 +53,29 @@ The Microsoft login link and code also show up in the container logs:
 docker logs -f dotproxy
 ```
 
+## Updating
+
+Download the new jar next to the old one, swap it in, and restart the container. From `~/dotproxy-docker`:
+
+```bash
+wget -O dotproxy/DotProxy.jar.new https://github.com/PakshP/DotProxy/releases/latest/download/DotProxy.jar && mv dotproxy/DotProxy.jar.new dotproxy/DotProxy.jar
+docker compose restart
+```
+
+Instead of `docker compose restart`, you can also run the `restart` command in-game or on Discord. Docker starts DotProxy again with the new jar. Check the version with `status`.
+
+To update Java as well, pull the latest image and recreate the container:
+
+```bash
+docker compose pull
+docker compose up -d
+```
+
+For backups and other upkeep, see [Running & Maintaining](Maintenance.md). The files it mentions are in the `dotproxy` folder.
+
 ## Notes
 
-* `restart: unless-stopped` lets Docker restart DotProxy when it exits, which does the same job as the start scripts. To stop DotProxy for good, use `docker compose stop` instead of the `shutdown` command.
+* `restart: unless-stopped` lets Docker restart DotProxy when it exits, which does the same job as the start scripts. This applies to the `shutdown` command too, so to stop DotProxy for good, use `docker compose stop` instead.
 * If you change the proxy port with `serverConnection port`, update the `ports` mapping to match.
 * Once the Discord bot is set up, you can manage DotProxy from Discord instead of attaching to the container.
 

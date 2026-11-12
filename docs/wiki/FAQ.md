@@ -18,6 +18,18 @@ Example: `server play.example.com`
 
 Then reconnect: `disconnect` followed by `connect`, or just `reconnect`.
 
+## How do I update DotProxy?
+
+Replace `DotProxy.jar` with the one from the [latest release](https://github.com/PakshP/DotProxy/releases/latest), then run `restart`. Your settings and login are kept.
+
+On Linux you can swap the file while DotProxy is running. On Windows, run `shutdown` first. See [Updating](./Maintenance.md#updating) for the exact steps.
+
+## How do I check DotProxy is running?
+
+Run `status` in-game, in the terminal, or on Discord. It shows the version, whether the account is connected, and how long it has been online.
+
+For other ways (tmux, systemd, log files), see [Checking It's Running](./Maintenance.md#checking-its-running).
+
 ## I keep getting disconnected!
 
 See [Disconnects](./Disconnects.md).

@@ -62,6 +62,7 @@ public class CommandManager {
         new RateLimiterCommand(),
         new ReconnectCommand(),
         new RespawnCommand(),
+        new RestartCommand(),
         new RotateCommand(),
         new SendMessageCommand(),
         new ServerCommand(),

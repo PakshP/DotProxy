@@ -74,26 +74,48 @@ The cached state is also used for the built-in player simulation (physics and An
 
 ## Quick Start
 
-You need **Java 21 or newer**.
+You need **Java 21 or newer**. On Windows, you can install it with `winget install EclipseAdoptium.Temurin.21.JRE`.
 
-1. Download `DotProxy.jar` from the [releases page](https://github.com/PakshP/DotProxy/releases), or [build it yourself](#building-from-source).
-2. Put it in its own folder, together with `scripts/start.sh` (Linux/macOS) or `scripts/start.bat` (Windows).
-3. Run the start script. You can also run `java -jar DotProxy.jar` directly.
-    * The start script restarts DotProxy automatically when it asks to be restarted, and stops when DotProxy shuts down on purpose.
-4. On first run, `config.json` is created in the folder.
-5. In the DotProxy terminal:
+1. Make a new folder and download these files from the [latest release](https://github.com/PakshP/DotProxy/releases/latest) into it:
+    * [`DotProxy.jar`](https://github.com/PakshP/DotProxy/releases/latest/download/DotProxy.jar)
+    * [`start.sh`](https://github.com/PakshP/DotProxy/releases/latest/download/start.sh) (Linux/macOS) or [`start.bat`](https://github.com/PakshP/DotProxy/releases/latest/download/start.bat) (Windows)
+
+    On Linux:
+
+    ```bash
+    mkdir ~/dotproxy && cd ~/dotproxy
+    wget https://github.com/PakshP/DotProxy/releases/latest/download/DotProxy.jar
+    wget https://github.com/PakshP/DotProxy/releases/latest/download/start.sh
+    chmod +x start.sh
+    ```
+
+    You can also [build it yourself](#building-from-source).
+2. Run the start script (`./start.sh`, or double-click `start.bat` on Windows). You can also run `java -jar DotProxy.jar` directly.
+    * The start script brings DotProxy back up after a crash or the `restart` command, and stops when you run `shutdown`.
+3. On first run, `config.json` is created in the folder.
+4. In the DotProxy terminal:
     * `server <address> [port]` sets the server to connect to. The default is `localhost:25565`.
     * `whitelist add <your MC username>` lets you join the proxy.
     * `connect` logs in and connects. The first time, follow the Microsoft device code login link that's printed.
-6. In Minecraft, add a server with the proxy's address (`localhost:25565` if it's on the same PC) and join.
+5. In Minecraft, add a server with the proxy's address (`localhost:25565` if it's on the same PC) and join.
 
 The full guide is on the [Setup](docs/wiki/Setup.md) page.
+
+### Hosting on a Server
+
+To keep the account online 24/7, run DotProxy on a server or VPS:
+
+* [Linux Guide](docs/wiki/Linux-Guide.md): a full walkthrough, from SSH and the firewall to starting on boot with systemd
+* [Running & Maintaining](docs/wiki/Maintenance.md): checking it's running, updating, backups, and troubleshooting
+* [Hosting Providers](docs/wiki/Hosting-Providers.md): where to rent a server
 
 ## Documentation
 
 The documentation lives in [`docs/wiki`](docs/wiki/index.md):
 
 * [Setup](docs/wiki/Setup.md)
+* [Running & Maintaining](docs/wiki/Maintenance.md)
+* [Linux Guide](docs/wiki/Linux-Guide.md)
 * [Commands](docs/wiki/Commands.md)
 * [Discord Bot Guide](docs/wiki/Discord-Bot-Guide.md)
 * [Plugins](docs/wiki/Plugins.md)

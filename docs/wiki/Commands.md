@@ -519,6 +519,25 @@ Disconnect and reconnects from the destination MC server.
   ```reconnect```
 
 
+### restart
+
+Restarts DotProxy.
+
+
+
+When started with the start script (start.sh / start.bat) or as a systemd service, DotProxy comes
+
+back up automatically and loads any new DotProxy.jar. Use this after replacing the jar to update.
+
+
+
+Without a start script or service, this behaves like `shutdown`.
+
+**Usage**
+
+  ```restart```
+
+
 ### server
 
 Change the MC server DotProxy connects to.

@@ -15,20 +15,41 @@
 
 ## Download
 
-Download `DotProxy.jar` from the [releases page](https://github.com/PakshP/DotProxy/releases), or [build it from source](#building-from-source).
+Make a new folder for DotProxy and put two files from the latest release in it:
 
-Make a new folder for DotProxy and put these files in it:
+* [`DotProxy.jar`](https://github.com/PakshP/DotProxy/releases/latest/download/DotProxy.jar)
+* A start script:
+    * [`start.sh`](https://github.com/PakshP/DotProxy/releases/latest/download/start.sh) for Linux/macOS
+    * [`start.bat`](https://github.com/PakshP/DotProxy/releases/latest/download/start.bat) for Windows
 
-* `DotProxy.jar`
-* A start script from the repository's [`scripts`](https://github.com/PakshP/DotProxy/tree/main/scripts) folder:
-    * `start.sh` for Linux/macOS
-    * `start.bat` for Windows
+Always take the jar and the start script from the same release. All versions are on the [releases page](https://github.com/PakshP/DotProxy/releases). You can also [build it from source](#building-from-source).
 
-??? info "How do I download a file from a Linux terminal?"
+??? info "How do I download the files from a Linux terminal?"
 
     Use [wget](https://linuxize.com/post/wget-command-examples/#how-to-download-a-file-with-wget):
 
-    `wget <url>`
+    ```bash
+    mkdir ~/dotproxy && cd ~/dotproxy
+    wget https://github.com/PakshP/DotProxy/releases/latest/download/DotProxy.jar
+    wget https://github.com/PakshP/DotProxy/releases/latest/download/start.sh
+    chmod +x start.sh
+    ```
+
+    On macOS, use `curl -LO <url>` instead of `wget <url>`.
+
+??? tip "Windows quick start"
+
+    1. Install Java 21. In PowerShell or Windows Terminal, run:
+
+        ```
+        winget install EclipseAdoptium.Temurin.21.JRE
+        ```
+
+        Or download the JRE 21 installer from [Adoptium](https://adoptium.net/) and run it.
+
+    2. Make a new folder and download [`DotProxy.jar`](https://github.com/PakshP/DotProxy/releases/latest/download/DotProxy.jar) and [`start.bat`](https://github.com/PakshP/DotProxy/releases/latest/download/start.bat) into it.
+    3. Double-click `start.bat`. If Windows shows a security warning for the downloaded file, choose to run it anyway.
+    4. Continue with [First-Time Configuration](#first-time-configuration) in the window that opens.
 
 ## Running DotProxy
 
@@ -37,7 +58,7 @@ Open a terminal in the DotProxy folder and run the start script:
 * Linux/macOS: `./start.sh` (run `chmod +x start.sh` first if needed)
 * Windows: `start.bat`, or double-click it
 
-The start script runs DotProxy in a loop, so DotProxy restarts automatically when it asks to be restarted (for example after a crash, or when you run a command that needs a restart). When DotProxy shuts down on purpose, for example with the [`shutdown`](Commands.md#shutdown) command, the script exits as well.
+The start script runs DotProxy in a loop, so DotProxy starts again automatically after a crash, or when you run the [`restart`](Commands.md#restart) command (for example after [updating](Maintenance.md#updating)). When DotProxy shuts down on purpose, for example with the [`shutdown`](Commands.md#shutdown) command, the script exits as well.
 
 You can also run DotProxy directly, but then it won't restart itself:
 
@@ -54,7 +75,7 @@ java -jar DotProxy.jar
 
 ??? tip "How to stop a running instance"
 
-    Press `Ctrl + C` in the terminal, or run the `shutdown` command.
+    Press `Ctrl + C` in the terminal, or run the `shutdown` command. To restart instead, run `restart`.
 
     If your terminal doesn't respond, close the window.
 
@@ -158,16 +179,20 @@ DotProxy has ViaVersion built in. By default it can connect to (almost) any serv
 
 You can change this with the [`via`](Commands.md#via) command.
 
+## Keeping DotProxy Running
+
+To check on DotProxy, update it, back it up, or fix problems later on, see [Running & Maintaining](Maintenance.md).
+
 ## Running on Linux Servers
 
-See the [Linux Guide](Linux-Guide.md).
+See the [Linux Guide](Linux-Guide.md) for a full walkthrough, from SSH to starting on boot.
 
 If you start DotProxy over SSH, use a terminal multiplexer. Otherwise **DotProxy stops when you close your SSH session.**
 
 * (Recommended) [tmux](https://tmuxcheatsheet.com/how-to-install-tmux/)
 * [screen](https://linuxize.com/post/how-to-use-linux-screen/)
 
-You can also run DotProxy as a systemd service, or with [Docker](Docker.md).
+You can also run DotProxy as a [systemd service](Linux-Guide.md#6-optional-start-on-boot-with-systemd), or with [Docker](Docker.md).
 
 ## Running Multiple Instances
 
