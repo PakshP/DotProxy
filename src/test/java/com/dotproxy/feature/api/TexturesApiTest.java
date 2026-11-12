@@ -18,7 +18,7 @@ public class TexturesApiTest {
     }
 
     private byte[] readSkinPng() throws Exception {
-        try (var inStream = getClass().getClassLoader().getResourceAsStream("rfresh2.png")) {
+        try (var inStream = getClass().getClassLoader().getResourceAsStream("test-skin.png")) {
             return inStream.readAllBytes();
         }
     }

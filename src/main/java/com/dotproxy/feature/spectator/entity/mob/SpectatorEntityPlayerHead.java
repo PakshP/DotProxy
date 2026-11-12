@@ -19,7 +19,7 @@ import java.util.Map;
 
 public class SpectatorEntityPlayerHead extends SpectatorMob {
     // example command to summon a player head:
-    // /summon minecraft:item_display ~ ~ ~ {item:{id:"minecraft:player_head",Count:1b,tag:{SkullOwner:"rfresh2"}}}
+    // /summon minecraft:item_display ~ ~ ~ {item:{id:"minecraft:player_head",Count:1b,tag:{SkullOwner:"Notch"}}}
     // the uuid and textures get populated by the server usually. but in this case, we're the server
 
     @Override

@@ -285,7 +285,7 @@ Schemas have the following special tokens:
 
 * $m -> Message, text content of the chat/whisper
 
-* $w -> Wildcard, any varying text, e.g. a role prefix `[ADMIN] rfresh2: test message`
+* $w -> Wildcard, any varying text, e.g. a role prefix `[ADMIN] Steve: test message`
 
 
 
@@ -401,8 +401,6 @@ Debug settings for features in testing or for use in development.
   ```debug uploadLog```
 
   ```debug uploadDebugLog```
-
-  ```debug uploadLauncherLog```
 
   ```debug passthroughResourcePacks on/off```
 
@@ -603,7 +601,7 @@ The `timeout` arguments configures how long until players are kicked due no pack
 
 ### shutdown
 
-Shuts down DotProxy, without letting the launcher restart it.
+Shuts down DotProxy, without letting the start script restart it.
 
 **Aliases:** `exit`
 
@@ -1239,7 +1237,7 @@ The contained commands do not have a prefix.
 
 
 
-Example: `multi friend add rfresh2,,say hello,,pearlLoader load rfresh2`
+Example: `multi friend add Steve,,say hello,,whitelist add Alex`
 
 **Aliases:** `x`
 

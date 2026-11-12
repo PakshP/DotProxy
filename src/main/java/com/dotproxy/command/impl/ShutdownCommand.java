@@ -15,7 +15,7 @@ public class ShutdownCommand extends Command {
             .name("shutdown")
             .category(CommandCategory.MANAGE)
             .description("""
-                Shuts down DotProxy, without letting the launcher restart it.
+                Shuts down DotProxy, without letting the start script restart it.
                 """)
             .aliases("exit")
             .build();

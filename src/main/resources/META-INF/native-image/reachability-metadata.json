@@ -1347,187 +1347,6 @@
       "type": "com.viaversion.viaversion.util.Key[]"
     },
     {
-      "type": "com.zaxxer.hikari.HikariConfig",
-      "allDeclaredFields": true,
-      "methods": [
-        {
-          "name": "getCatalog",
-          "parameterTypes": []
-        },
-        {
-          "name": "getConnectionInitSql",
-          "parameterTypes": []
-        },
-        {
-          "name": "getConnectionTestQuery",
-          "parameterTypes": []
-        },
-        {
-          "name": "getConnectionTimeout",
-          "parameterTypes": []
-        },
-        {
-          "name": "getCredentials",
-          "parameterTypes": []
-        },
-        {
-          "name": "getCredentialsProvider",
-          "parameterTypes": []
-        },
-        {
-          "name": "getCredentialsProviderClassName",
-          "parameterTypes": []
-        },
-        {
-          "name": "getDataSource",
-          "parameterTypes": []
-        },
-        {
-          "name": "getDataSourceClassName",
-          "parameterTypes": []
-        },
-        {
-          "name": "getDataSourceJNDI",
-          "parameterTypes": []
-        },
-        {
-          "name": "getDataSourceProperties",
-          "parameterTypes": []
-        },
-        {
-          "name": "getDriverClassName",
-          "parameterTypes": []
-        },
-        {
-          "name": "getExceptionOverride",
-          "parameterTypes": []
-        },
-        {
-          "name": "getExceptionOverrideClassName",
-          "parameterTypes": []
-        },
-        {
-          "name": "getHealthCheckProperties",
-          "parameterTypes": []
-        },
-        {
-          "name": "getHealthCheckRegistry",
-          "parameterTypes": []
-        },
-        {
-          "name": "getIdleTimeout",
-          "parameterTypes": []
-        },
-        {
-          "name": "getInitializationFailTimeout",
-          "parameterTypes": []
-        },
-        {
-          "name": "getJdbcUrl",
-          "parameterTypes": []
-        },
-        {
-          "name": "getKeepaliveTime",
-          "parameterTypes": []
-        },
-        {
-          "name": "getLeakDetectionThreshold",
-          "parameterTypes": []
-        },
-        {
-          "name": "getMaxLifetime",
-          "parameterTypes": []
-        },
-        {
-          "name": "getMaximumPoolSize",
-          "parameterTypes": []
-        },
-        {
-          "name": "getMetricRegistry",
-          "parameterTypes": []
-        },
-        {
-          "name": "getMetricsTrackerFactory",
-          "parameterTypes": []
-        },
-        {
-          "name": "getMinimumIdle",
-          "parameterTypes": []
-        },
-        {
-          "name": "getPassword",
-          "parameterTypes": []
-        },
-        {
-          "name": "getPoolName",
-          "parameterTypes": []
-        },
-        {
-          "name": "getScheduledExecutor",
-          "parameterTypes": []
-        },
-        {
-          "name": "getSchema",
-          "parameterTypes": []
-        },
-        {
-          "name": "getThreadFactory",
-          "parameterTypes": []
-        },
-        {
-          "name": "getTransactionIsolation",
-          "parameterTypes": []
-        },
-        {
-          "name": "getUsername",
-          "parameterTypes": []
-        },
-        {
-          "name": "getValidationTimeout",
-          "parameterTypes": []
-        },
-        {
-          "name": "isAllowPoolSuspension",
-          "parameterTypes": []
-        },
-        {
-          "name": "isAutoCommit",
-          "parameterTypes": []
-        },
-        {
-          "name": "isIsolateInternalQueries",
-          "parameterTypes": []
-        },
-        {
-          "name": "isReadOnly",
-          "parameterTypes": []
-        },
-        {
-          "name": "isRegisterMbeans",
-          "parameterTypes": []
-        }
-      ]
-    },
-    {
-      "type": "com.zaxxer.hikari.pool.PoolBase",
-      "fields": [
-        {
-          "name": "catalog"
-        }
-      ]
-    },
-    {
-      "type": "com.zaxxer.hikari.pool.PoolEntry",
-      "fields": [
-        {
-          "name": "state"
-        }
-      ]
-    },
-    {
-      "type": "com.zaxxer.hikari.util.ConcurrentBag$IConcurrentBagEntry[]"
-    },
-    {
       "type": "com.dotproxy.Proxy",
       "jniAccessible": true,
       "methods": [
@@ -1536,92 +1355,6 @@
           "parameterTypes": [
             "java.lang.String[]"
           ]
-        }
-      ]
-    },
-    {
-      "type": "com.dotproxy.database.dto.enums.Connectiontype",
-      "allDeclaredFields": true
-    },
-    {
-      "type": "com.dotproxy.database.dto.records.ChatsRecord",
-      "allDeclaredFields": true,
-      "methods": [
-        {
-          "name": "chat",
-          "parameterTypes": []
-        },
-        {
-          "name": "playerName",
-          "parameterTypes": []
-        },
-        {
-          "name": "playerUuid",
-          "parameterTypes": []
-        },
-        {
-          "name": "time",
-          "parameterTypes": []
-        }
-      ]
-    },
-    {
-      "type": "com.dotproxy.database.dto.records.ConnectionsRecord",
-      "allDeclaredFields": true,
-      "methods": [
-        {
-          "name": "connection",
-          "parameterTypes": []
-        },
-        {
-          "name": "playerName",
-          "parameterTypes": []
-        },
-        {
-          "name": "playerUuid",
-          "parameterTypes": []
-        },
-        {
-          "name": "time",
-          "parameterTypes": []
-        }
-      ]
-    },
-    {
-      "type": "com.dotproxy.database.dto.records.DeathsRecord",
-      "allDeclaredFields": true,
-      "methods": [
-        {
-          "name": "getDeathMessage",
-          "parameterTypes": []
-        },
-        {
-          "name": "getKillerMob",
-          "parameterTypes": []
-        },
-        {
-          "name": "getKillerPlayerName",
-          "parameterTypes": []
-        },
-        {
-          "name": "getKillerPlayerUuid",
-          "parameterTypes": []
-        },
-        {
-          "name": "getTime",
-          "parameterTypes": []
-        },
-        {
-          "name": "getVictimPlayerName",
-          "parameterTypes": []
-        },
-        {
-          "name": "getVictimPlayerUuid",
-          "parameterTypes": []
-        },
-        {
-          "name": "getWeaponName",
-          "parameterTypes": []
         }
       ]
     },
@@ -1669,19 +1402,6 @@
             "java.lang.String",
             "java.lang.String",
             "java.util.List"
-          ]
-        }
-      ]
-    },
-    {
-      "type": "com.dotproxy.feature.api.fileio.model.FileIOResponse",
-      "allDeclaredFields": true,
-      "methods": [
-        {
-          "name": "<init>",
-          "parameterTypes": [
-            "boolean",
-            "java.lang.String"
           ]
         }
       ]
@@ -1761,20 +1481,6 @@
       ]
     },
     {
-      "type": "com.dotproxy.feature.api.mcsrvstatus.model.MCSrvStatusResponse",
-      "allDeclaredFields": true,
-      "methods": [
-        {
-          "name": "<init>",
-          "parameterTypes": [
-            "boolean",
-            "java.lang.String",
-            "int"
-          ]
-        }
-      ]
-    },
-    {
       "type": "com.dotproxy.feature.api.mcstatus.model.MCStatusMotdData",
       "methods": [
         {
@@ -1807,45 +1513,6 @@
             "boolean",
             "java.lang.String",
             "int",
-            "java.lang.String"
-          ]
-        }
-      ]
-    },
-    {
-      "type": "com.dotproxy.feature.api.minetools.model.MinetoolsProfileResponse",
-      "allDeclaredFields": true,
-      "methods": [
-        {
-          "name": "<init>",
-          "parameterTypes": [
-            "com.dotproxy.feature.api.minetools.model.MinetoolsProfileResponseDecoded"
-          ]
-        }
-      ]
-    },
-    {
-      "type": "com.dotproxy.feature.api.minetools.model.MinetoolsProfileResponseDecoded",
-      "allDeclaredFields": true,
-      "methods": [
-        {
-          "name": "<init>",
-          "parameterTypes": [
-            "java.lang.String",
-            "java.lang.String"
-          ]
-        }
-      ]
-    },
-    {
-      "type": "com.dotproxy.feature.api.minetools.model.MinetoolsUuidResponse",
-      "allDeclaredFields": true,
-      "methods": [
-        {
-          "name": "<init>",
-          "parameterTypes": [
-            "java.lang.String",
-            "java.lang.String",
             "java.lang.String"
           ]
         }
@@ -1982,92 +1649,6 @@
       ]
     },
     {
-      "type": "com.dotproxy.feature.api.vcapi.model.PlaytimeResponse",
-      "allDeclaredFields": true,
-      "methods": [
-        {
-          "name": "<init>",
-          "parameterTypes": [
-            "java.util.UUID",
-            "int"
-          ]
-        }
-      ]
-    },
-    {
-      "type": "com.dotproxy.feature.api.vcapi.model.QueueEtaEquationResponse",
-      "allDeclaredFields": true,
-      "methods": [
-        {
-          "name": "<init>",
-          "parameterTypes": [
-            "double",
-            "double"
-          ]
-        }
-      ]
-    },
-    {
-      "type": "com.dotproxy.feature.api.vcapi.model.QueueResponse",
-      "allDeclaredFields": true,
-      "methods": [
-        {
-          "name": "<init>",
-          "parameterTypes": [
-            "int",
-            "int",
-            "java.time.OffsetDateTime"
-          ]
-        }
-      ]
-    },
-    {
-      "type": "com.dotproxy.feature.api.vcapi.model.SeenResponse",
-      "allDeclaredFields": true,
-      "methods": [
-        {
-          "name": "<init>",
-          "parameterTypes": [
-            "java.time.OffsetDateTime",
-            "java.time.OffsetDateTime"
-          ]
-        }
-      ]
-    },
-    {
-      "type": "com.dotproxy.feature.api.vcapi.model.SessionTimeLimitResponse",
-      "allDeclaredFields": true,
-      "methods": [
-        {
-          "name": "<init>",
-          "parameterTypes": [
-            "int"
-          ]
-        }
-      ]
-    },
-    {
-      "type": "com.dotproxy.feature.api.vcapi.model.StatsResponse",
-      "allDeclaredFields": true,
-      "methods": [
-        {
-          "name": "<init>",
-          "parameterTypes": [
-            "int",
-            "int",
-            "int",
-            "int",
-            "java.time.OffsetDateTime",
-            "java.time.OffsetDateTime",
-            "int",
-            "int",
-            "int",
-            "boolean"
-          ]
-        }
-      ]
-    },
-    {
       "type": "com.dotproxy.feature.chatschema.ChatSchema",
       "allDeclaredFields": true,
       "methods": [
@@ -2094,58 +1675,8 @@
       ]
     },
     {
-      "type": "com.dotproxy.feature.queue.QueueStatus",
-      "allDeclaredFields": true,
-      "methods": [
-        {
-          "name": "<init>",
-          "parameterTypes": []
-        }
-      ]
-    },
-    {
-      "type": "com.dotproxy.feature.ping.data.ExtraResponse",
-      "allDeclaredFields": true,
-      "methods": [
-        {
-          "name": "<init>",
-          "parameterTypes": []
-        }
-      ]
-    },
-    {
       "type": "com.dotproxy.feature.ping.data.MCResponse",
       "allDeclaredFields": true
-    },
-    {
-      "type": "com.dotproxy.feature.ping.data.NewResponse",
-      "allDeclaredFields": true,
-      "methods": [
-        {
-          "name": "<init>",
-          "parameterTypes": []
-        }
-      ]
-    },
-    {
-      "type": "com.dotproxy.feature.ping.data.OldResponse",
-      "allDeclaredFields": true,
-      "methods": [
-        {
-          "name": "<init>",
-          "parameterTypes": []
-        }
-      ]
-    },
-    {
-      "type": "com.dotproxy.feature.ping.rawData.Description",
-      "allDeclaredFields": true,
-      "methods": [
-        {
-          "name": "<init>",
-          "parameterTypes": []
-        }
-      ]
     },
     {
       "type": "com.dotproxy.feature.ping.rawData.Extra",
@@ -2169,39 +1700,6 @@
     },
     {
       "type": "com.dotproxy.feature.ping.rawData.Extra[]"
-    },
-    {
-      "type": "com.dotproxy.feature.ping.rawData.ForgeData",
-      "allDeclaredFields": true,
-      "methods": [
-        {
-          "name": "<init>",
-          "parameterTypes": []
-        }
-      ]
-    },
-    {
-      "type": "com.dotproxy.feature.ping.rawData.ForgeDataListItem",
-      "allDeclaredFields": true,
-      "methods": [
-        {
-          "name": "<init>",
-          "parameterTypes": []
-        }
-      ]
-    },
-    {
-      "type": "com.dotproxy.feature.ping.rawData.ForgeDataListItem[]"
-    },
-    {
-      "type": "com.dotproxy.feature.ping.rawData.ModpackData",
-      "allDeclaredFields": true,
-      "methods": [
-        {
-          "name": "<init>",
-          "parameterTypes": []
-        }
-      ]
     },
     {
       "type": "com.dotproxy.feature.ping.rawData.Player",
@@ -2229,69 +1727,6 @@
       "methods": [
         {
           "name": "<init>",
-          "parameterTypes": []
-        }
-      ]
-    },
-    {
-      "type": "com.dotproxy.feature.replay.ReplayMetadata",
-      "allDeclaredFields": true,
-      "methods": [
-        {
-          "name": "<init>",
-          "parameterTypes": []
-        }
-      ]
-    },
-    {
-      "type": "com.dotproxy.feature.tasks.Task",
-      "fields": [
-        {
-          "name": "action"
-        },
-        {
-          "name": "condition"
-        },
-        {
-          "name": "continuation"
-        },
-        {
-          "name": "id"
-        }
-      ]
-    },
-    {
-      "type": "com.dotproxy.feature.waypoints.Waypoint",
-      "allDeclaredFields": true,
-      "methods": [
-        {
-          "name": "<init>",
-          "parameterTypes": [
-            "java.lang.String",
-            "java.lang.String",
-            "int",
-            "int",
-            "int"
-          ]
-        },
-        {
-          "name": "dimension",
-          "parameterTypes": []
-        },
-        {
-          "name": "id",
-          "parameterTypes": []
-        },
-        {
-          "name": "x",
-          "parameterTypes": []
-        },
-        {
-          "name": "y",
-          "parameterTypes": []
-        },
-        {
-          "name": "z",
           "parameterTypes": []
         }
       ]
@@ -2686,16 +2121,6 @@
       "allDeclaredFields": true
     },
     {
-      "type": "com.dotproxy.util.config.Config$AutoUpdater",
-      "allDeclaredFields": true,
-      "methods": [
-        {
-          "name": "<init>",
-          "parameterTypes": []
-        }
-      ]
-    },
-    {
       "type": "com.dotproxy.util.config.Config$Client",
       "allDeclaredFields": true,
       "methods": [
@@ -2704,20 +2129,6 @@
           "parameterTypes": []
         }
       ]
-    },
-    {
-      "type": "com.dotproxy.util.config.Config$Client$AutoDrop",
-      "allDeclaredFields": true,
-      "methods": [
-        {
-          "name": "<init>",
-          "parameterTypes": []
-        }
-      ]
-    },
-    {
-      "type": "com.dotproxy.util.config.Config$Client$AutoDrop$Mode",
-      "allDeclaredFields": true
     },
     {
       "type": "com.dotproxy.util.config.Config$Client$ChatSchemas",
@@ -2820,115 +2231,7 @@
       ]
     },
     {
-      "type": "com.dotproxy.util.config.Config$Client$Extra$AntiLeak",
-      "allDeclaredFields": true,
-      "methods": [
-        {
-          "name": "<init>",
-          "parameterTypes": []
-        }
-      ]
-    },
-    {
-      "type": "com.dotproxy.util.config.Config$Client$Extra$AutoArmor",
-      "allDeclaredFields": true,
-      "methods": [
-        {
-          "name": "<init>",
-          "parameterTypes": []
-        }
-      ]
-    },
-    {
-      "type": "com.dotproxy.util.config.Config$Client$Extra$AutoDig",
-      "allDeclaredFields": true,
-      "methods": [
-        {
-          "name": "<init>",
-          "parameterTypes": []
-        }
-      ]
-    },
-    {
-      "type": "com.dotproxy.util.config.Config$Client$Extra$AutoEat",
-      "allDeclaredFields": true,
-      "methods": [
-        {
-          "name": "<init>",
-          "parameterTypes": []
-        }
-      ]
-    },
-    {
-      "type": "com.dotproxy.util.config.Config$Client$Extra$AutoEat$Mode",
-      "fields": [
-        {
-          "name": "ALL"
-        },
-        {
-          "name": "BLACKLIST"
-        },
-        {
-          "name": "WHITELIST"
-        }
-      ]
-    },
-    {
-      "type": "com.dotproxy.util.config.Config$Client$Extra$AutoFish",
-      "allDeclaredFields": true,
-      "methods": [
-        {
-          "name": "<init>",
-          "parameterTypes": []
-        }
-      ]
-    },
-    {
-      "type": "com.dotproxy.util.config.Config$Client$Extra$AutoMend",
-      "allDeclaredFields": true,
-      "methods": [
-        {
-          "name": "<init>",
-          "parameterTypes": []
-        }
-      ]
-    },
-    {
-      "type": "com.dotproxy.util.config.Config$Client$Extra$AutoOmen",
-      "allDeclaredFields": true,
-      "methods": [
-        {
-          "name": "<init>",
-          "parameterTypes": []
-        }
-      ]
-    },
-    {
-      "type": "com.dotproxy.util.config.Config$Client$Extra$AutoOmen$Mode",
-      "fields": [
-        {
-          "name": "CONSTANT"
-        },
-        {
-          "name": "EFFECT_AND_RAID_INACTIVE"
-        },
-        {
-          "name": "EFFECT_INACTIVE"
-        }
-      ]
-    },
-    {
       "type": "com.dotproxy.util.config.Config$Client$Extra$AutoReconnect",
-      "allDeclaredFields": true,
-      "methods": [
-        {
-          "name": "<init>",
-          "parameterTypes": []
-        }
-      ]
-    },
-    {
-      "type": "com.dotproxy.util.config.Config$Client$Extra$AutoReply",
       "allDeclaredFields": true,
       "methods": [
         {
@@ -2948,258 +2251,8 @@
       ]
     },
     {
-      "type": "com.dotproxy.util.config.Config$Client$Extra$AutoTotem",
-      "allDeclaredFields": true,
-      "methods": [
-        {
-          "name": "<init>",
-          "parameterTypes": []
-        }
-      ]
-    },
-    {
       "type": "com.dotproxy.util.config.Config$Client$Extra$Chat",
       "allDeclaredFields": true,
-      "methods": [
-        {
-          "name": "<init>",
-          "parameterTypes": []
-        }
-      ]
-    },
-    {
-      "type": "com.dotproxy.util.config.Config$Client$Extra$ChatControl",
-      "allDeclaredFields": true,
-      "methods": [
-        {
-          "name": "<init>",
-          "parameterTypes": []
-        }
-      ]
-    },
-    {
-      "type": "com.dotproxy.util.config.Config$Client$Extra$Click",
-      "allDeclaredFields": true,
-      "methods": [
-        {
-          "name": "<init>",
-          "parameterTypes": []
-        }
-      ]
-    },
-    {
-      "type": "com.dotproxy.util.config.Config$Client$Extra$Click$HoldClickTarget",
-      "allDeclaredFields": true
-    },
-    {
-      "type": "com.dotproxy.util.config.Config$Client$Extra$Click$HoldRightClickMode",
-      "allDeclaredFields": true
-    },
-    {
-      "type": "com.dotproxy.util.config.Config$Client$Extra$Click$HoldRightClickTarget",
-      "allDeclaredFields": true
-    },
-    {
-      "type": "com.dotproxy.util.config.Config$Client$Extra$CoordObfuscation",
-      "allDeclaredFields": true,
-      "methods": [
-        {
-          "name": "<init>",
-          "parameterTypes": []
-        }
-      ]
-    },
-    {
-      "type": "com.dotproxy.util.config.Config$Client$Extra$CoordObfuscation$ObfuscationMode",
-      "allDeclaredFields": true
-    },
-    {
-      "type": "com.dotproxy.util.config.Config$Client$Extra$KillAura",
-      "allDeclaredFields": true,
-      "methods": [
-        {
-          "name": "<init>",
-          "parameterTypes": []
-        }
-      ]
-    },
-    {
-      "type": "com.dotproxy.util.config.Config$Client$Extra$KillAura$Priority",
-      "allDeclaredFields": true
-    },
-    {
-      "type": "com.dotproxy.util.config.Config$Client$Extra$KillAura$WeaponMaterial",
-      "fields": [
-        {
-          "name": "ANY"
-        },
-        {
-          "name": "DIAMOND"
-        },
-        {
-          "name": "NETHERITE"
-        }
-      ]
-    },
-    {
-      "type": "com.dotproxy.util.config.Config$Client$Extra$KillAura$WeaponType",
-      "fields": [
-        {
-          "name": "ANY"
-        },
-        {
-          "name": "AXE"
-        },
-        {
-          "name": "SWORD"
-        }
-      ]
-    },
-    {
-      "type": "com.dotproxy.util.config.Config$Client$Extra$Pathfinder",
-      "allDeclaredFields": true,
-      "methods": [
-        {
-          "name": "<init>",
-          "parameterTypes": []
-        }
-      ]
-    },
-    {
-      "type": "com.dotproxy.util.config.Config$Client$Extra$PearlLoader",
-      "allDeclaredFields": true,
-      "methods": [
-        {
-          "name": "<init>",
-          "parameterTypes": []
-        }
-      ]
-    },
-    {
-      "type": "com.dotproxy.util.config.Config$Client$Extra$PearlLoader$Pearl",
-      "allDeclaredFields": true,
-      "methods": [
-        {
-          "name": "<init>",
-          "parameterTypes": [
-            "java.lang.String",
-            "int",
-            "int",
-            "int"
-          ]
-        },
-        {
-          "name": "id",
-          "parameterTypes": []
-        },
-        {
-          "name": "x",
-          "parameterTypes": []
-        },
-        {
-          "name": "y",
-          "parameterTypes": []
-        },
-        {
-          "name": "z",
-          "parameterTypes": []
-        }
-      ]
-    },
-    {
-      "type": "com.dotproxy.util.config.Config$Client$Extra$QueueWarning",
-      "allDeclaredFields": true,
-      "methods": [
-        {
-          "name": "<init>",
-          "parameterTypes": []
-        }
-      ]
-    },
-    {
-      "type": "com.dotproxy.util.config.Config$Client$Extra$ReplayMod",
-      "allDeclaredFields": true,
-      "methods": [
-        {
-          "name": "<init>",
-          "parameterTypes": []
-        }
-      ]
-    },
-    {
-      "type": "com.dotproxy.util.config.Config$Client$Extra$ReplayMod$AutoRecordMode",
-      "allDeclaredFields": true
-    },
-    {
-      "type": "com.dotproxy.util.config.Config$Client$Extra$SessionTimeLimit",
-      "allDeclaredFields": true,
-      "methods": [
-        {
-          "name": "<init>",
-          "parameterTypes": []
-        }
-      ]
-    },
-    {
-      "type": "com.dotproxy.util.config.Config$Client$Extra$Spammer",
-      "allDeclaredFields": true,
-      "methods": [
-        {
-          "name": "<init>",
-          "parameterTypes": []
-        }
-      ]
-    },
-    {
-      "type": "com.dotproxy.util.config.Config$Client$Extra$SpawnPatrol",
-      "allDeclaredFields": true,
-      "methods": [
-        {
-          "name": "<init>",
-          "parameterTypes": []
-        }
-      ]
-    },
-    {
-      "type": "com.dotproxy.util.config.Config$Client$Extra$Spook",
-      "allDeclaredFields": true,
-      "methods": [
-        {
-          "name": "<init>",
-          "parameterTypes": []
-        }
-      ]
-    },
-    {
-      "type": "com.dotproxy.util.config.Config$Client$Extra$Spook$TargetingMode",
-      "allDeclaredFields": true
-    },
-    {
-      "type": "com.dotproxy.util.config.Config$Client$Extra$Stalk",
-      "allDeclaredFields": true,
-      "methods": [
-        {
-          "name": "<init>",
-          "parameterTypes": []
-        }
-      ]
-    },
-    {
-      "type": "com.dotproxy.util.config.Config$Client$Extra$Tasks",
-      "fields": [
-        {
-          "name": "enabled"
-        },
-        {
-          "name": "logCommandActionOutput"
-        },
-        {
-          "name": "taskCommandExecutedNotification"
-        },
-        {
-          "name": "tasks"
-        }
-      ],
       "methods": [
         {
           "name": "<init>",
@@ -3238,16 +2291,6 @@
       ]
     },
     {
-      "type": "com.dotproxy.util.config.Config$Client$Extra$Utility$ActiveHours$ActiveTime",
-      "allDeclaredFields": true,
-      "methods": [
-        {
-          "name": "<init>",
-          "parameterTypes": []
-        }
-      ]
-    },
-    {
       "type": "com.dotproxy.util.config.Config$Client$Extra$Utility$AutoDisconnect",
       "allDeclaredFields": true,
       "methods": [
@@ -3259,30 +2302,6 @@
     },
     {
       "type": "com.dotproxy.util.config.Config$Client$Extra$VisualRange",
-      "allDeclaredFields": true,
-      "methods": [
-        {
-          "name": "<init>",
-          "parameterTypes": []
-        }
-      ]
-    },
-    {
-      "type": "com.dotproxy.util.config.Config$Client$Extra$VisualRange$ReplayRecordingMode",
-      "allDeclaredFields": true
-    },
-    {
-      "type": "com.dotproxy.util.config.Config$Client$Extra$Wander",
-      "allDeclaredFields": true,
-      "methods": [
-        {
-          "name": "<init>",
-          "parameterTypes": []
-        }
-      ]
-    },
-    {
-      "type": "com.dotproxy.util.config.Config$Client$Extra$Waypoints",
       "allDeclaredFields": true,
       "methods": [
         {
@@ -3340,10 +2359,6 @@
       ]
     },
     {
-      "type": "com.dotproxy.util.config.Config$Client$Ping$Mode",
-      "allDeclaredFields": true
-    },
-    {
       "type": "com.dotproxy.util.config.Config$Client$Server",
       "allDeclaredFields": true,
       "methods": [
@@ -3354,57 +2369,7 @@
       ]
     },
     {
-      "type": "com.dotproxy.util.config.Config$Client$ViaVersion",
-      "allDeclaredFields": true,
-      "methods": [
-        {
-          "name": "<init>",
-          "parameterTypes": []
-        }
-      ]
-    },
-    {
-      "type": "com.dotproxy.util.config.Config$Colors",
-      "allDeclaredFields": true,
-      "methods": [
-        {
-          "name": "<init>",
-          "parameterTypes": []
-        }
-      ]
-    },
-    {
-      "type": "com.dotproxy.util.config.Config$Database",
-      "allDeclaredFields": true,
-      "methods": [
-        {
-          "name": "<init>",
-          "parameterTypes": []
-        }
-      ]
-    },
-    {
-      "type": "com.dotproxy.util.config.Config$Database$Lock",
-      "allDeclaredFields": true,
-      "methods": [
-        {
-          "name": "<init>",
-          "parameterTypes": []
-        }
-      ]
-    },
-    {
       "type": "com.dotproxy.util.config.Config$Debug",
-      "allDeclaredFields": true,
-      "methods": [
-        {
-          "name": "<init>",
-          "parameterTypes": []
-        }
-      ]
-    },
-    {
-      "type": "com.dotproxy.util.config.Config$Debug$Packet",
       "allDeclaredFields": true,
       "methods": [
         {
@@ -3482,10 +2447,6 @@
           "parameterTypes": []
         }
       ]
-    },
-    {
-      "type": "com.dotproxy.util.config.Config$Discord$ConnectionProxy$ConnectionProxyType",
-      "allDeclaredFields": true
     },
     {
       "type": "com.dotproxy.util.config.Config$InGameCommands",
@@ -3586,16 +2547,6 @@
       ]
     },
     {
-      "type": "com.dotproxy.util.config.Config$Server$Extra$ESP",
-      "allDeclaredFields": true,
-      "methods": [
-        {
-          "name": "<init>",
-          "parameterTypes": []
-        }
-      ]
-    },
-    {
       "type": "com.dotproxy.util.config.Config$Server$Extra$ServerSwitcher",
       "allDeclaredFields": true,
       "methods": [
@@ -3633,16 +2584,6 @@
     },
     {
       "type": "com.dotproxy.util.config.Config$Server$Extra$ServerTimeout",
-      "allDeclaredFields": true,
-      "methods": [
-        {
-          "name": "<init>",
-          "parameterTypes": []
-        }
-      ]
-    },
-    {
-      "type": "com.dotproxy.util.config.Config$Server$Extra$Timeout",
       "allDeclaredFields": true,
       "methods": [
         {
@@ -3715,26 +2656,6 @@
       ]
     },
     {
-      "type": "com.dotproxy.util.config.Config$Server$PlaytimeLimiter",
-      "allDeclaredFields": true,
-      "methods": [
-        {
-          "name": "<init>",
-          "parameterTypes": []
-        }
-      ]
-    },
-    {
-      "type": "com.dotproxy.util.config.Config$Server$RateLimiter",
-      "allDeclaredFields": true,
-      "methods": [
-        {
-          "name": "<init>",
-          "parameterTypes": []
-        }
-      ]
-    },
-    {
       "type": "com.dotproxy.util.config.Config$Server$ServerViaVersion",
       "allDeclaredFields": true,
       "methods": [
@@ -3769,29 +2690,10 @@
       "allDeclaredFields": true
     },
     {
-      "type": "com.dotproxy.util.config.LaunchConfig",
-      "allDeclaredFields": true,
-      "methods": [
-        {
-          "name": "<init>",
-          "parameterTypes": []
-        }
-      ]
-    },
-    {
       "type": "com.dotproxy.via.DotProxyClientChannelInitializer"
     },
     {
       "type": "com.dotproxy.via.DotProxyServerChannelInitializer"
-    },
-    {
-      "type": "com.dotproxy.via.handler.ZViaClientCodecHandler"
-    },
-    {
-      "type": "com.dotproxy.via.handler.ZViaProtocolStateHandler"
-    },
-    {
-      "type": "com.dotproxy.via.handler.DotProxyViaChannelInitializer"
     },
     {
       "type": "double[]"
@@ -6208,157 +5110,6 @@
       "type": "org.geysermc.mcprotocollib.protocol.data.game.level.block.BlockEntityType"
     },
     {
-      "type": "org.jdbi.v3.core.Handles",
-      "methods": [
-        {
-          "name": "<init>",
-          "parameterTypes": []
-        }
-      ]
-    },
-    {
-      "type": "org.jdbi.v3.core.argument.Arguments",
-      "methods": [
-        {
-          "name": "<init>",
-          "parameterTypes": [
-            "org.jdbi.v3.core.config.ConfigRegistry"
-          ]
-        }
-      ]
-    },
-    {
-      "type": "org.jdbi.v3.core.argument.NullArgument",
-      "methods": [
-        {
-          "name": "toString",
-          "parameterTypes": []
-        }
-      ]
-    },
-    {
-      "type": "org.jdbi.v3.core.argument.ObjectArgument",
-      "methods": [
-        {
-          "name": "toString",
-          "parameterTypes": []
-        }
-      ]
-    },
-    {
-      "type": "org.jdbi.v3.core.argument.internal.strategies.LoggableBinderArgument",
-      "methods": [
-        {
-          "name": "toString",
-          "parameterTypes": []
-        }
-      ]
-    },
-    {
-      "type": "org.jdbi.v3.core.array.SqlArrayTypes",
-      "methods": [
-        {
-          "name": "<init>",
-          "parameterTypes": []
-        }
-      ]
-    },
-    {
-      "type": "org.jdbi.v3.core.collector.JdbiCollectors",
-      "methods": [
-        {
-          "name": "<init>",
-          "parameterTypes": []
-        }
-      ]
-    },
-    {
-      "type": "org.jdbi.v3.core.config.internal.ConfigCaches",
-      "methods": [
-        {
-          "name": "<init>",
-          "parameterTypes": []
-        }
-      ]
-    },
-    {
-      "type": "org.jdbi.v3.core.internal.CopyOnWriteHashMap",
-      "fields": [
-        {
-          "name": "m"
-        }
-      ]
-    },
-    {
-      "type": "org.jdbi.v3.core.mapper.ColumnMappers",
-      "methods": [
-        {
-          "name": "<init>",
-          "parameterTypes": []
-        }
-      ]
-    },
-    {
-      "type": "org.jdbi.v3.core.mapper.Mappers",
-      "methods": [
-        {
-          "name": "<init>",
-          "parameterTypes": []
-        }
-      ]
-    },
-    {
-      "type": "org.jdbi.v3.core.mapper.RowMappers",
-      "methods": [
-        {
-          "name": "<init>",
-          "parameterTypes": []
-        }
-      ]
-    },
-    {
-      "type": "org.jdbi.v3.core.mapper.reflect.internal.PojoTypes",
-      "methods": [
-        {
-          "name": "<init>",
-          "parameterTypes": []
-        }
-      ]
-    },
-    {
-      "type": "org.jdbi.v3.core.qualifier.Qualifiers",
-      "methods": [
-        {
-          "name": "<init>",
-          "parameterTypes": []
-        }
-      ]
-    },
-    {
-      "type": "org.jdbi.v3.core.statement.SqlStatements",
-      "methods": [
-        {
-          "name": "<init>",
-          "parameterTypes": []
-        }
-      ]
-    },
-    {
-      "type": "org.jdbi.v3.json.JsonConfig"
-    },
-    {
-      "type": "org.jdbi.v3.meta.Legacy"
-    },
-    {
-      "type": "org.jdbi.v3.postgres.PostgresTypes",
-      "methods": [
-        {
-          "name": "<init>",
-          "parameterTypes": []
-        }
-      ]
-    },
-    {
       "type": "org.jline.nativ.CLibrary",
       "jniAccessible": true,
       "fields": [
@@ -6827,250 +5578,6 @@
         {
           "name": "<init>",
           "parameterTypes": []
-        }
-      ]
-    },
-    {
-      "type": "org.postgresql.Driver",
-      "methods": [
-        {
-          "name": "<init>",
-          "parameterTypes": []
-        }
-      ]
-    },
-    {
-      "type": "org.postgresql.core.QueryExecutorCloseAction",
-      "fields": [
-        {
-          "name": "pgStream"
-        }
-      ]
-    },
-    {
-      "type": "org.postgresql.ds.PGSimpleDataSource",
-      "methods": [
-        {
-          "name": "<init>",
-          "parameterTypes": []
-        }
-      ]
-    },
-    {
-      "type": "org.postgresql.ds.common.BaseDataSource",
-      "methods": [
-        {
-          "name": "setDatabaseName",
-          "parameterTypes": [
-            "java.lang.String"
-          ]
-        },
-        {
-          "name": "setLoginTimeout",
-          "parameterTypes": [
-            "int"
-          ]
-        },
-        {
-          "name": "setPortNumber",
-          "parameterTypes": [
-            "int"
-          ]
-        },
-        {
-          "name": "setServerName",
-          "parameterTypes": [
-            "java.lang.String"
-          ]
-        },
-        {
-          "name": "setSocketTimeout",
-          "parameterTypes": [
-            "int"
-          ]
-        },
-        {
-          "name": "setTcpKeepAlive",
-          "parameterTypes": [
-            "boolean"
-          ]
-        }
-      ]
-    },
-    {
-      "type": "org.postgresql.jdbc.PgStatement",
-      "fields": [
-        {
-          "name": "cancelTimerTask"
-        },
-        {
-          "name": "isClosed"
-        },
-        {
-          "name": "statementState"
-        }
-      ]
-    },
-    {
-      "type": "org.redisson.api.RedissonClient"
-    },
-    {
-      "type": "org.redisson.api.RedissonReactiveClient"
-    },
-    {
-      "type": "org.redisson.api.RedissonRxClient"
-    },
-    {
-      "type": "org.redisson.client.handler.BaseConnectionHandler",
-      "methods": [
-        {
-          "name": "channelActive",
-          "parameterTypes": [
-            "io.netty.channel.ChannelHandlerContext"
-          ]
-        },
-        {
-          "name": "channelRegistered",
-          "parameterTypes": [
-            "io.netty.channel.ChannelHandlerContext"
-          ]
-        }
-      ]
-    },
-    {
-      "type": "org.redisson.client.handler.CommandBatchEncoder",
-      "methods": [
-        {
-          "name": "write",
-          "parameterTypes": [
-            "io.netty.channel.ChannelHandlerContext",
-            "java.lang.Object",
-            "io.netty.channel.ChannelPromise"
-          ]
-        }
-      ]
-    },
-    {
-      "type": "org.redisson.client.handler.CommandDecoder"
-    },
-    {
-      "type": "org.redisson.client.handler.CommandEncoder",
-      "methods": [
-        {
-          "name": "write",
-          "parameterTypes": [
-            "io.netty.channel.ChannelHandlerContext",
-            "java.lang.Object",
-            "io.netty.channel.ChannelPromise"
-          ]
-        }
-      ]
-    },
-    {
-      "type": "org.redisson.client.handler.CommandPubSubDecoder"
-    },
-    {
-      "type": "org.redisson.client.handler.CommandsQueue",
-      "methods": [
-        {
-          "name": "channelInactive",
-          "parameterTypes": [
-            "io.netty.channel.ChannelHandlerContext"
-          ]
-        },
-        {
-          "name": "channelRegistered",
-          "parameterTypes": [
-            "io.netty.channel.ChannelHandlerContext"
-          ]
-        },
-        {
-          "name": "write",
-          "parameterTypes": [
-            "io.netty.channel.ChannelHandlerContext",
-            "java.lang.Object",
-            "io.netty.channel.ChannelPromise"
-          ]
-        }
-      ]
-    },
-    {
-      "type": "org.redisson.client.handler.CommandsQueuePubSub",
-      "methods": [
-        {
-          "name": "channelInactive",
-          "parameterTypes": [
-            "io.netty.channel.ChannelHandlerContext"
-          ]
-        },
-        {
-          "name": "write",
-          "parameterTypes": [
-            "io.netty.channel.ChannelHandlerContext",
-            "java.lang.Object",
-            "io.netty.channel.ChannelPromise"
-          ]
-        }
-      ]
-    },
-    {
-      "type": "org.redisson.client.handler.ConnectionWatchdog",
-      "methods": [
-        {
-          "name": "channelActive",
-          "parameterTypes": [
-            "io.netty.channel.ChannelHandlerContext"
-          ]
-        },
-        {
-          "name": "channelInactive",
-          "parameterTypes": [
-            "io.netty.channel.ChannelHandlerContext"
-          ]
-        }
-      ]
-    },
-    {
-      "type": "org.redisson.client.handler.ErrorsLoggingHandler",
-      "methods": [
-        {
-          "name": "exceptionCaught",
-          "parameterTypes": [
-            "io.netty.channel.ChannelHandlerContext",
-            "java.lang.Throwable"
-          ]
-        }
-      ]
-    },
-    {
-      "type": "org.redisson.client.handler.PingConnectionHandler",
-      "methods": [
-        {
-          "name": "channelActive",
-          "parameterTypes": [
-            "io.netty.channel.ChannelHandlerContext"
-          ]
-        }
-      ]
-    },
-    {
-      "type": "org.redisson.client.handler.RedisChannelInitializer"
-    },
-    {
-      "type": "org.redisson.client.handler.RedisConnectionHandler"
-    },
-    {
-      "type": "org.redisson.client.handler.RedisPubSubConnectionHandler"
-    },
-    {
-      "type": "org.redisson.codec.Kryo5Codec",
-      "methods": [
-        {
-          "name": "<init>",
-          "parameterTypes": [
-            "java.lang.ClassLoader",
-            "org.redisson.codec.Kryo5Codec"
-          ]
         }
       ]
     },

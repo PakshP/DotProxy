@@ -320,7 +320,7 @@ public class Proxy {
     }
 
     /**
-     * Launcher will restart it after this
+     * The start script will restart it after this
      */
     public void stop() {
         stop(true);

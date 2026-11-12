@@ -13,25 +13,25 @@ public class CraftheadTest {
 
 //    @Test
     public void getProfileFromUsername() {
-        var responseOptional = api.getProfile("rfresh2");
+        var responseOptional = api.getProfile("Notch");
         assertTrue(responseOptional.isPresent());
         var response = responseOptional.get();
-        assertEquals("rfresh2", response.name());
-        assertEquals(UUID.fromString("572e683c-888a-4a0d-bc10-5d9cfa76d892"), response.uuid());
+        assertEquals("Notch", response.name());
+        assertEquals(UUID.fromString("069a79f4-44e9-4726-a5be-fca90e38aaf5"), response.uuid());
     }
 
 //    @Test
     public void getProfileFromUUID() {
-        var responseOptional = api.getProfile(UUID.fromString("572e683c-888a-4a0d-bc10-5d9cfa76d892"));
+        var responseOptional = api.getProfile(UUID.fromString("069a79f4-44e9-4726-a5be-fca90e38aaf5"));
         assertTrue(responseOptional.isPresent());
         var response = responseOptional.get();
-        assertEquals("rfresh2", response.name());
-        assertEquals(UUID.fromString("572e683c-888a-4a0d-bc10-5d9cfa76d892"), response.uuid());
+        assertEquals("Notch", response.name());
+        assertEquals(UUID.fromString("069a79f4-44e9-4726-a5be-fca90e38aaf5"), response.uuid());
     }
 
 //    @Test
     public void getAvatarFromUsername() {
-        var responseOptional = api.getAvatar("rfresh2");
+        var responseOptional = api.getAvatar("Notch");
         assertTrue(responseOptional.isPresent());
         var response = responseOptional.get();
         assertTrue(response.length > 0);
@@ -39,7 +39,7 @@ public class CraftheadTest {
 
 //    @Test
     public void getAvatarFromUUID() {
-        var responseOptional = api.getAvatar(UUID.fromString("572e683c-888a-4a0d-bc10-5d9cfa76d892"));
+        var responseOptional = api.getAvatar(UUID.fromString("069a79f4-44e9-4726-a5be-fca90e38aaf5"));
         assertTrue(responseOptional.isPresent());
         var response = responseOptional.get();
         assertTrue(response.length > 0);

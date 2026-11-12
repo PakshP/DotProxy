@@ -33,19 +33,19 @@ public class MCCompanionApiTest {
 
 //    @Test
     public void getJavaProfileFromUsername() {
-        var responseOptional = MCCompanionApi.INSTANCE.getJavaProfile("rfresh2");
+        var responseOptional = MCCompanionApi.INSTANCE.getJavaProfile("Notch");
         assertTrue(responseOptional.isPresent());
         var response = responseOptional.get();
-        assertEquals("rfresh2", response.name());
-        assertEquals(UUID.fromString("572e683c-888a-4a0d-bc10-5d9cfa76d892"), response.uuid());
+        assertEquals("Notch", response.name());
+        assertEquals(UUID.fromString("069a79f4-44e9-4726-a5be-fca90e38aaf5"), response.uuid());
     }
 
 //    @Test
     public void getJavaProfileFromUUID() {
-        var responseOptional = MCCompanionApi.INSTANCE.getJavaProfile(UUID.fromString("572e683c-888a-4a0d-bc10-5d9cfa76d892"));
+        var responseOptional = MCCompanionApi.INSTANCE.getJavaProfile(UUID.fromString("069a79f4-44e9-4726-a5be-fca90e38aaf5"));
         assertTrue(responseOptional.isPresent());
         var response = responseOptional.get();
-        assertEquals("rfresh2", response.name());
-        assertEquals(UUID.fromString("572e683c-888a-4a0d-bc10-5d9cfa76d892"), response.uuid());
+        assertEquals("Notch", response.name());
+        assertEquals(UUID.fromString("069a79f4-44e9-4726-a5be-fca90e38aaf5"), response.uuid());
     }
 }

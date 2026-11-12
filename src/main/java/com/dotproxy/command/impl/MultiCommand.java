@@ -24,7 +24,7 @@ public class MultiCommand extends Command {
 
               The contained commands do not have a prefix.
 
-              Example: `multi friend add rfresh2,,say hello,,pearlLoader load rfresh2`
+              Example: `multi friend add Steve,,say hello,,whitelist add Alex`
               """)
             .usageLines(
                 "<command1>,,<command2>..."

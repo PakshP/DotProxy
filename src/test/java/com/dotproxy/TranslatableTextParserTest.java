@@ -23,8 +23,8 @@ public class TranslatableTextParserTest {
 
     @Test
     public void translatableTextRenderingTest() {
-        var json = "{\"translate\":\"%s\",\"with\":[{\"extra\":[\"<\",{\"color\":\"dark_red\",\"text\":\"rfresh2\"},\"> hello\"],\"text\":\"\"}]}";
-        String expectedText = "<rfresh2> hello";
+        var json = "{\"translate\":\"%s\",\"with\":[{\"extra\":[\"<\",{\"color\":\"dark_red\",\"text\":\"Steve\"},\"> hello\"],\"text\":\"\"}]}";
+        String expectedText = "<Steve> hello";
         var component = ComponentSerializer.deserialize(json);
 
         String rendered = ComponentSerializer.serializePlain(component);

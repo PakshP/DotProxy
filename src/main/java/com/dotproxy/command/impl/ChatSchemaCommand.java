@@ -28,7 +28,7 @@ public class ChatSchemaCommand extends Command {
                 * $s -> Chat/whisper sender, player name
                 * $r -> Whisper receiver, player name
                 * $m -> Message, text content of the chat/whisper
-                * $w -> Wildcard, any varying text, e.g. a role prefix `[ADMIN] rfresh2: test message`
+                * $w -> Wildcard, any varying text, e.g. a role prefix `[ADMIN] Steve: test message`
 
                 Example chat schema (the default):
                 * public chat: `<$s> $m`

@@ -16,25 +16,25 @@ public class MojangApiTests {
 
 //    @Test
     public void getMojangProfileTest() {
-        var response = api.getProfile("rfresh2");
+        var response = api.getProfile("Notch");
         assertTrue(response.isPresent());
-        assertTrue(response.get().name().equals("rfresh2"));
+        assertTrue(response.get().name().equals("Notch"));
         var uuid = response.get().uuid();
     }
 
 //    @Test
     public void getSessionServerProfileTest() {
-        var response = sessionServerApi.getProfile(UUID.fromString("572e683c-888a-4a0d-bc10-5d9cfa76d892"));
+        var response = sessionServerApi.getProfile(UUID.fromString("069a79f4-44e9-4726-a5be-fca90e38aaf5"));
         assertTrue(response.isPresent());
-        assertTrue(response.get().name().equals("rfresh2"));
+        assertTrue(response.get().name().equals("Notch"));
         var uuid = response.get().uuid();
     }
 
 //    @Test
     public void getMCProfileTest() {
-        var response = mcProfileApi.getJavaProfile("rfresh2");
+        var response = mcProfileApi.getJavaProfile("Notch");
         assertTrue(response.isPresent());
-        assertTrue(response.get().name().equals("rfresh2"));
+        assertTrue(response.get().name().equals("Notch"));
         var uuid = response.get().uuid();
     }
 }
