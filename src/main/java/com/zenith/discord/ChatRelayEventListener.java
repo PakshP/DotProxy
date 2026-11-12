@@ -3,7 +3,6 @@ package com.zenith.discord;
 import com.google.common.cache.Cache;
 import com.google.common.cache.CacheBuilder;
 import com.zenith.Proxy;
-import com.zenith.event.chat.DeathMessageChatEvent;
 import com.zenith.event.chat.PublicChatEvent;
 import com.zenith.event.chat.SystemChatEvent;
 import com.zenith.event.chat.WhisperChatEvent;
@@ -11,14 +10,11 @@ import com.zenith.event.discord.DiscordRelayChannelMessageReceivedEvent;
 import com.zenith.event.message.PrivateMessageSendEvent;
 import com.zenith.event.server.ServerPlayerConnectedEvent;
 import com.zenith.event.server.ServerPlayerDisconnectedEvent;
-import com.zenith.feature.deathmessages.DeathMessageParseResult;
-import com.zenith.feature.deathmessages.KillerType;
 import com.zenith.util.ChatUtil;
 import com.zenith.util.ComponentSerializer;
 import net.dv8tion.jda.api.entities.MessageEmbed;
 import net.dv8tion.jda.api.events.message.MessageReceivedEvent;
 import net.dv8tion.jda.api.utils.Color;
-import org.geysermc.mcprotocollib.protocol.data.game.PlayerListEntry;
 import org.geysermc.mcprotocollib.protocol.packet.ingame.serverbound.ServerboundChatPacket;
 import org.jspecify.annotations.Nullable;
 
@@ -47,7 +43,6 @@ public class ChatRelayEventListener {
             of(SystemChatEvent.class, this::handleSystemChatEvent),
             of(PublicChatEvent.class, this::handlePublicChatEvent),
             of(PrivateMessageSendEvent.class, this::handlePrivateMessageSendEvent),
-            of(DeathMessageChatEvent.class, this::handleDeathMessageChatEvent),
             of(ServerPlayerConnectedEvent.class, this::handleServerPlayerConnectedEvent),
             of(ServerPlayerDisconnectedEvent.class, this::handleServerPlayerDisconnectedEvent)
         );
@@ -107,7 +102,6 @@ public class ChatRelayEventListener {
         } else if (color != null && color.equals(Color.BLACK)) {
             // extract public chat sender
             sender = msgContent.split("\\*\\*")[1].replace(":", "").replace("\\", "");
-            // todo: we could support death messages here if we remove any bolded discord formatting and feed the message content into the parser
         } else {
             throw new RuntimeException("Unhandled message being replied to, aborting relay");
         }
@@ -117,7 +111,6 @@ public class ChatRelayEventListener {
     void handleWhisperChatEvent(WhisperChatEvent event) {
         if (!CONFIG.discord.chatRelay.whispers) return;
         if (!CONFIG.discord.chatRelay.enable || CONFIG.discord.chatRelay.channelId.isEmpty()) return;
-        if (CONFIG.discord.chatRelay.ignoreQueue && Proxy.getInstance().isInQueue()) return;
         try {
             String message = ComponentSerializer.serializePlain(event.component());
             if (ignoreRegexFilter(message)) return;
@@ -155,14 +148,12 @@ public class ChatRelayEventListener {
     void handleSystemChatEvent(SystemChatEvent event) {
         if (!CONFIG.discord.chatRelay.serverMessages) return;
         if (!CONFIG.discord.chatRelay.enable || CONFIG.discord.chatRelay.channelId.isEmpty()) return;
-        if (CONFIG.discord.chatRelay.ignoreQueue && Proxy.getInstance().isInQueue()) return;
         try {
             String message = event.message();
             if (ignoreRegexFilter(message)) return;
-            final String avatarURL = Proxy.getInstance().isOn2b2t() ? Proxy.getInstance().getPlayerHeadURL("Hausemaster").toString() : null;
             var embed = Embed.builder()
                 .description(escape(message))
-                .footer("\u200b", avatarURL)
+                .footer("\u200b", null)
                 .color(Color.MOON_YELLOW);
             sendRelayEmbedMessage(embed);
         } catch (final Throwable e) {
@@ -173,7 +164,6 @@ public class ChatRelayEventListener {
     void handlePublicChatEvent(PublicChatEvent event) {
         if (!CONFIG.discord.chatRelay.publicChats) return;
         if (!CONFIG.discord.chatRelay.enable || CONFIG.discord.chatRelay.channelId.isEmpty()) return;
-        if (CONFIG.discord.chatRelay.ignoreQueue && Proxy.getInstance().isInQueue()) return;
         try {
             String message = event.message();
             if (ignoreRegexFilter(message)) return;
@@ -218,39 +208,9 @@ public class ChatRelayEventListener {
         sendRelayEmbedMessage(embed);
     }
 
-    void handleDeathMessageChatEvent(DeathMessageChatEvent event) {
-        if (!CONFIG.discord.chatRelay.deathMessages) return;
-        if (!CONFIG.discord.chatRelay.enable || CONFIG.discord.chatRelay.channelId.isEmpty()) return;
-        if (CONFIG.discord.chatRelay.ignoreQueue && Proxy.getInstance().isInQueue()) return;
-        try {
-            String message = event.message();
-            if (ignoreRegexFilter(message)) return;
-            DeathMessageParseResult death = event.deathMessage();
-            message = escape(message);
-            message = message.replace(escape(death.victim()), "**" + escape(death.victim()) + "**");
-            var k = death.killer().filter(killer -> killer.type() == KillerType.PLAYER);
-            if (k.isPresent()) message = message.replace(escape(k.get().name()), "**" + escape(k.get().name()) + "**");
-            String senderName = death.victim();
-            UUID senderUUID = CACHE.getTabListCache().getFromName(death.victim())
-                .or(() -> CACHE.getTabListCache().getRecentlyRemovedPlayer(death.victim()))
-                .map(PlayerListEntry::getProfileId).orElse(null);
-            final String avatarURL = senderUUID != null
-                ? Proxy.getInstance().getPlayerHeadURL(senderUUID).toString()
-                : Proxy.getInstance().getPlayerHeadURL(senderName).toString();
-            var embed = Embed.builder()
-                .description(message)
-                .footer("\u200b", avatarURL)
-                .color(Color.RUBY);
-            sendRelayEmbedMessage(embed);
-        } catch (final Throwable e) {
-            DISCORD_LOG.error("Error processing DeathMessageChatEvent", e);
-        }
-    }
-
     void handleServerPlayerConnectedEvent(ServerPlayerConnectedEvent event) {
         if (!CONFIG.discord.chatRelay.enable || !CONFIG.discord.chatRelay.connectionMessages || CONFIG.discord.chatRelay.channelId.isEmpty()) return;
         if (!Proxy.getInstance().isOnlineForAtLeastDuration(Duration.ofSeconds(3))) return;
-        if (CONFIG.discord.chatRelay.ignoreQueue && Proxy.getInstance().isInQueue()) return;
         sendRelayEmbedMessage(Embed.builder()
             .description("**" + escape(event.playerEntry().getName()) + "** connected")
             .successColor()
@@ -260,7 +220,6 @@ public class ChatRelayEventListener {
     void handleServerPlayerDisconnectedEvent(ServerPlayerDisconnectedEvent event) {
         if (!CONFIG.discord.chatRelay.enable || !CONFIG.discord.chatRelay.connectionMessages || CONFIG.discord.chatRelay.channelId.isEmpty()) return;
         if (!Proxy.getInstance().isOnlineForAtLeastDuration(Duration.ofSeconds(3))) return;
-        if (CONFIG.discord.chatRelay.ignoreQueue && Proxy.getInstance().isInQueue()) return;
         sendRelayEmbedMessage(Embed.builder()
             .description("**" + escape(event.playerEntry().getName()) + "** disconnected")
             .errorColor()

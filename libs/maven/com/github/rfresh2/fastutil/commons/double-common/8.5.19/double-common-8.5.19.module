@@ -1,0 +1,118 @@
+{
+  "formatVersion": "1.1",
+  "component": {
+    "group": "com.github.rfresh2.fastutil.commons",
+    "module": "double-common",
+    "version": "8.5.19",
+    "attributes": {
+      "org.gradle.status": "release"
+    }
+  },
+  "createdBy": {
+    "gradle": {
+      "version": "9.6.1"
+    }
+  },
+  "variants": [
+    {
+      "name": "apiElements",
+      "attributes": {
+        "org.gradle.category": "library",
+        "org.gradle.dependency.bundling": "external",
+        "org.gradle.jvm.version": 8,
+        "org.gradle.libraryelements": "jar",
+        "org.gradle.usage": "java-api"
+      },
+      "dependencies": [
+        {
+          "group": "com.github.rfresh2.fastutil",
+          "module": "core",
+          "version": {
+            "requires": "8.5.19"
+          }
+        }
+      ],
+      "files": [
+        {
+          "name": "double-common-8.5.19.jar",
+          "url": "double-common-8.5.19.jar",
+          "size": 193202,
+          "sha512": "734ae8c55b1f3f22b581f5d844f84de454d1954755c883829e1563cdef9753897de58b842ba295c8253bc9b8d6a7320d0f7641643fd5fb05db800883bae83be9",
+          "sha256": "54f05e4706a669cd4827cf3bb4c0fce31bafc7f975659cfe07ce2394f59a7adc",
+          "sha1": "0bf82973be76cc978baf74275ef62eb92f55ddc8",
+          "md5": "bb28b08650e25c34d9346bdbde9893dc"
+        }
+      ]
+    },
+    {
+      "name": "runtimeElements",
+      "attributes": {
+        "org.gradle.category": "library",
+        "org.gradle.dependency.bundling": "external",
+        "org.gradle.jvm.version": 8,
+        "org.gradle.libraryelements": "jar",
+        "org.gradle.usage": "java-runtime"
+      },
+      "dependencies": [
+        {
+          "group": "com.github.rfresh2.fastutil",
+          "module": "core",
+          "version": {
+            "requires": "8.5.19"
+          }
+        }
+      ],
+      "files": [
+        {
+          "name": "double-common-8.5.19.jar",
+          "url": "double-common-8.5.19.jar",
+          "size": 193202,
+          "sha512": "734ae8c55b1f3f22b581f5d844f84de454d1954755c883829e1563cdef9753897de58b842ba295c8253bc9b8d6a7320d0f7641643fd5fb05db800883bae83be9",
+          "sha256": "54f05e4706a669cd4827cf3bb4c0fce31bafc7f975659cfe07ce2394f59a7adc",
+          "sha1": "0bf82973be76cc978baf74275ef62eb92f55ddc8",
+          "md5": "bb28b08650e25c34d9346bdbde9893dc"
+        }
+      ]
+    },
+    {
+      "name": "javadocElements",
+      "attributes": {
+        "org.gradle.category": "documentation",
+        "org.gradle.dependency.bundling": "external",
+        "org.gradle.docstype": "javadoc",
+        "org.gradle.usage": "java-runtime"
+      },
+      "files": [
+        {
+          "name": "double-common-8.5.19-javadoc.jar",
+          "url": "double-common-8.5.19-javadoc.jar",
+          "size": 507382,
+          "sha512": "522509654f87f0b0637276bff782c20f3fc173f9fcc4d66a25b233aec6989176187c89b6df12d7fa838fb4346611f5a2b93308fcf59ea86cebaf35c6f8930765",
+          "sha256": "83054d46a43ae1c2c107d3489b7ad00877a07832c4eff41a21a4395abe8fb480",
+          "sha1": "e29fa1393b40462360ebb71ac68e8b5e2a0e4d14",
+          "md5": "1d9077370cf4748a87697f41590aa188"
+        }
+      ]
+    },
+    {
+      "name": "sourcesElements",
+      "attributes": {
+        "org.gradle.category": "documentation",
+        "org.gradle.dependency.bundling": "external",
+        "org.gradle.docstype": "sources",
+        "org.gradle.usage": "java-runtime"
+      },
+      "files": [
+        {
+          "name": "double-common-8.5.19-sources.jar",
+          "url": "double-common-8.5.19-sources.jar",
+          "size": 117392,
+          "sha512": "c76c0f8dc78494e8166abb5b8c7bce1d702d0a2ef080644c6a42c0e576275f71b7f88f37235d073e510222a487df05d90c313ed528394d7758f17d5dae0d08a8",
+          "sha256": "5af8eb769172d7d5e5b268a97a53c7a2d2c6035d5d5c84c3897805e61ee6d7a7",
+          "sha1": "4f5dfa07aa6013a7f512b9f453528ce2164deaff",
+          "md5": "ce02fc1f10c6cd29968b1c56c3edd4de"
+        }
+      ]
+    }
+  ]
+}

@@ -3,7 +3,6 @@ plugins {
     id("org.graalvm.buildtools.native") version "1.1.18"
     id("com.gradleup.shadow") version "9.6.1"
     id("io.freefair.lombok") version "9.8.3"
-    `maven-publish`
 }
 
 group = "com.zenith"
@@ -25,10 +24,21 @@ java {
 }
 
 repositories {
-    maven("https://maven.2b2t.vc/releases") {
-        content { includeGroupByRegex("com.github.rfresh2.*") }
+    // Forked libraries (MCProtocolLib, JDA, SimpleEventBus, fastutil, OpenNBT) are vendored in libs/maven
+    maven(layout.projectDirectory.dir("libs/maven")) {
+        content { includeGroupByRegex("""com\.github\.rfresh2.*""") }
     }
-    maven("https://maven.2b2t.vc/remote")
+    mavenCentral()
+    maven("https://repo.viaversion.com/") {
+        content { includeGroupByRegex("""com\.viaversion.*""") }
+    }
+    maven("https://maven.lenni0451.net/everything/") {
+        content { includeGroupByRegex("""net\.lenni0451.*|net\.raphimc.*""") }
+    }
+    maven("https://libraries.minecraft.net/") {
+        content { includeGroup("com.mojang") }
+    }
+    maven("https://repo.opencollab.dev/main/")
     mavenLocal()
 }
 
@@ -64,9 +74,6 @@ dependencies {
     api("io.netty:netty-resolver-dns-native-macos") { artifact { classifier = "osx-aarch_64" } }
     api("org.cloudburstmc.math:api:2.0")
     api("org.cloudburstmc.math:immutable:2.0")
-    api("org.redisson:redisson:4.8.0") {
-        exclude(group = "io.netty")
-    }
     api("com.github.rfresh2:SimpleEventBus:1.6")
     api(platform("com.github.rfresh2.fastutil:fastutil-bom:8.5.19"))
     api("com.github.rfresh2.fastutil.maps:object-object-maps")
@@ -83,9 +90,6 @@ dependencies {
     api("com.viaversion:viarewind-common:4.2.0")
     api("org.jline:jline:4.4.6")
     api("ar.com.hjg:pngj:2.1.0")
-    api("com.zaxxer:HikariCP:7.1.0")
-    api("org.postgresql:postgresql:42.7.13")
-    api("org.jdbi:jdbi3-postgres:3.54.0")
     api("com.google.guava:guava:33.7.1-jre")
     api("ch.qos.logback:logback-classic:1.6.4")
     api("org.slf4j:slf4j-api:2.0.18")
@@ -206,10 +210,7 @@ tasks {
         options.encoding = "UTF-8"
         (options as StandardJavadocDocletOptions).apply {
             addStringOption("Xdoclint:none", "-quiet")
-            links(
-                "https://docs.oracle.com/en/java/javase/${javaReleaseVersion}/docs/api",
-                "https://maven.2b2t.vc/javadoc/releases/com/github/rfresh2/MCProtocolLib/$mcplVersion/raw"
-            )
+            links("https://docs.oracle.com/en/java/javase/${javaReleaseVersion}/docs/api")
             splitIndex()
         }
     }
@@ -324,43 +325,3 @@ shadow {
     addShadowVariantIntoJavaComponent = false
 }
 
-publishing {
-    repositories {
-        maven {
-            name = "releases"
-            url = uri("https://maven.2b2t.vc/releases")
-            credentials {
-                username = providers.environmentVariable("MAVEN_USERNAME").orNull
-                password = providers.environmentVariable("MAVEN_PASSWORD").orNull
-            }
-            authentication {
-                create<BasicAuthentication>("basic")
-            }
-        }
-        maven {
-            name = "snapshots"
-            url = uri("https://maven.2b2t.vc/snapshots")
-            credentials {
-                username = providers.environmentVariable("MAVEN_USERNAME").orNull
-                password = providers.environmentVariable("MAVEN_PASSWORD").orNull
-            }
-            authentication {
-                create<BasicAuthentication>("basic")
-            }
-        }
-    }
-    publications {
-        create<MavenPublication>("snapshot") {
-            groupId = "com.zenith"
-            artifactId = "ZenithProxy"
-            version = "${project.version}-SNAPSHOT"
-            from(components["java"])
-        }
-        create<MavenPublication>("release") {
-            groupId = "com.zenith"
-            artifactId = "ZenithProxy"
-            version = providers.environmentVariable("ZENITH_RELEASE_TAG").orElse("0.0.0+${project.version}").get()
-            from(components["java"])
-        }
-    }
-}

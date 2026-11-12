@@ -10,6 +10,7 @@ import java.util.stream.Collectors;
 
 import static com.mojang.brigadier.arguments.StringArgumentType.string;
 import static com.zenith.Globals.COMMAND;
+import static com.zenith.Globals.SOURCE_URL;
 
 public class HelpCommand extends Command {
     @Override
@@ -36,7 +37,7 @@ public class HelpCommand extends Command {
                 final String commandUsages = getCommandUsages(c.getSource().getSource(), CommandCategory.CORE);
                 final String prefix = c.getSource().getSource().commandPrefix();
                 c.getSource().getEmbed()
-                    .description("[Commands Wiki](https://wiki.2b2t.vc/Commands)\n\n"
+                    .description("[Source Code](" + SOURCE_URL + ")\n\n"
                                      + "**More Info:** "
                                      + "\n  `" + prefix + "help <command>` or `" + prefix + "help <category>`"
                                      + "\n\n**Categories**\n"
@@ -74,7 +75,7 @@ public class HelpCommand extends Command {
         final String commandUsages = getCommandUsages(c.getSource(), category);
         final String prefix = c.getSource().commandPrefix();
         c.getEmbed()
-            .description("[Commands Wiki](https://wiki.2b2t.vc/Commands)\n\n"
+            .description("[Source Code](" + SOURCE_URL + ")\n\n"
                              + "**More Info:** "
                              + "\n  `" + prefix + "help <command>` or `" + prefix + "help <category>`"
                              + "\n"

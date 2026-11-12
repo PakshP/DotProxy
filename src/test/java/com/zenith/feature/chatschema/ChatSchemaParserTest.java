@@ -24,7 +24,7 @@ public class ChatSchemaParserTest {
         "aRRfresh", UUID.fromString("7cb31e32-65dc-494e-b812-3391670374c3")
     );
 
-    ChatSchema schema2b2t = new ChatSchema(
+    ChatSchema schemaSimple = new ChatSchema(
         "<$s> $m",
         "$s whispers: $m",
         "to $r: $m"
@@ -51,9 +51,9 @@ public class ChatSchemaParserTest {
     }
 
     @Test
-    public void test2b2tPublicChat() {
+    public void testSimplePublicChat() {
         String input = "<rfresh2> what's up?";
-        var result = ChatSchemaParser.parse(input, schema2b2t);
+        var result = ChatSchemaParser.parse(input, schemaSimple);
         assertNotNull(result);
         assertEquals(ChatType.PUBLIC_CHAT, result.type());
         assertEquals(rfresh2Entry, result.sender());
@@ -62,9 +62,9 @@ public class ChatSchemaParserTest {
     }
 
     @Test
-    public void test2b2tBedrockPublicChat() {
+    public void testSimpleBedrockPublicChat() {
         String input = "<.rfresh2> what's up?";
-        var result = ChatSchemaParser.parse(input, schema2b2t);
+        var result = ChatSchemaParser.parse(input, schemaSimple);
         assertNotNull(result);
         assertEquals(ChatType.PUBLIC_CHAT, result.type());
         assertEquals(rfresh2BedrockEntry, result.sender());
@@ -74,9 +74,9 @@ public class ChatSchemaParserTest {
 
 
     @Test
-    public void test2b2tWhisperOutgoing() {
+    public void testSimpleWhisperOutgoing() {
         String input = "to aRRfresh: what's up?";
-        var result = ChatSchemaParser.parse(input, schema2b2t);
+        var result = ChatSchemaParser.parse(input, schemaSimple);
         assertNotNull(result);
         assertEquals(ChatType.WHISPER_OUTBOUND, result.type());
         assertEquals(rfresh2Entry, result.sender());
@@ -85,9 +85,9 @@ public class ChatSchemaParserTest {
     }
 
     @Test
-    public void test2b2tWhisperInbound() {
+    public void testSimpleWhisperInbound() {
         String input = "aRRfresh whispers: what's up?";
-        var result = ChatSchemaParser.parse(input, schema2b2t);
+        var result = ChatSchemaParser.parse(input, schemaSimple);
         assertNotNull(result);
         assertEquals(ChatType.WHISPER_INBOUND, result.type());
         assertEquals(arrfreshEntry, result.sender());

@@ -22,7 +22,6 @@ import java.nio.file.StandardOpenOption;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
-import java.util.Objects;
 import java.util.stream.Collectors;
 
 import static com.zenith.Globals.*;
@@ -177,7 +176,7 @@ public class PluginsCommand extends Command {
                    %s
 
                    You must switch to the `java` release channel for plugins to work: `channel set java %s`"""
-                .formatted(description, Objects.requireNonNullElse(LAUNCH_CONFIG.getMcVersion(), MinecraftCodec.CODEC.getMinecraftVersion()));
+                .formatted(description, MinecraftCodec.CODEC.getMinecraftVersion());
         }
         return description;
     }

@@ -9,7 +9,7 @@ import com.zenith.command.api.CommandCategory;
 import com.zenith.command.api.CommandContext;
 import com.zenith.command.api.CommandUsage;
 import com.zenith.discord.Embed;
-import com.zenith.feature.queue.mcping.MCPing;
+import com.zenith.feature.ping.MCPing;
 import com.zenith.util.ChatUtil;
 
 import java.util.regex.Pattern;

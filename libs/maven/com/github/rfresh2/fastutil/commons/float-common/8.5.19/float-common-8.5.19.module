@@ -1,0 +1,132 @@
+{
+  "formatVersion": "1.1",
+  "component": {
+    "group": "com.github.rfresh2.fastutil.commons",
+    "module": "float-common",
+    "version": "8.5.19",
+    "attributes": {
+      "org.gradle.status": "release"
+    }
+  },
+  "createdBy": {
+    "gradle": {
+      "version": "9.6.1"
+    }
+  },
+  "variants": [
+    {
+      "name": "apiElements",
+      "attributes": {
+        "org.gradle.category": "library",
+        "org.gradle.dependency.bundling": "external",
+        "org.gradle.jvm.version": 8,
+        "org.gradle.libraryelements": "jar",
+        "org.gradle.usage": "java-api"
+      },
+      "dependencies": [
+        {
+          "group": "com.github.rfresh2.fastutil",
+          "module": "core",
+          "version": {
+            "requires": "8.5.19"
+          }
+        },
+        {
+          "group": "com.github.rfresh2.fastutil.commons",
+          "module": "double-common",
+          "version": {
+            "requires": "8.5.19"
+          }
+        }
+      ],
+      "files": [
+        {
+          "name": "float-common-8.5.19.jar",
+          "url": "float-common-8.5.19.jar",
+          "size": 185518,
+          "sha512": "2e28f437fcf459cd8ee523218643ae1c4f9902a15d7b13aa667192bae74e1a2f57f653b783ac313b38c5d2a03a64d6cedb1d8d2de2564de1ebc1f14365f5d396",
+          "sha256": "3121294f2054faed8973e48f6982b05e9f1109a9218e0b29e30fbb1076555343",
+          "sha1": "b1c5c2a0e125bc46c846ab74fe4720131e317925",
+          "md5": "612ffd52c1e023d0c2c114f8308450d6"
+        }
+      ]
+    },
+    {
+      "name": "runtimeElements",
+      "attributes": {
+        "org.gradle.category": "library",
+        "org.gradle.dependency.bundling": "external",
+        "org.gradle.jvm.version": 8,
+        "org.gradle.libraryelements": "jar",
+        "org.gradle.usage": "java-runtime"
+      },
+      "dependencies": [
+        {
+          "group": "com.github.rfresh2.fastutil",
+          "module": "core",
+          "version": {
+            "requires": "8.5.19"
+          }
+        },
+        {
+          "group": "com.github.rfresh2.fastutil.commons",
+          "module": "double-common",
+          "version": {
+            "requires": "8.5.19"
+          }
+        }
+      ],
+      "files": [
+        {
+          "name": "float-common-8.5.19.jar",
+          "url": "float-common-8.5.19.jar",
+          "size": 185518,
+          "sha512": "2e28f437fcf459cd8ee523218643ae1c4f9902a15d7b13aa667192bae74e1a2f57f653b783ac313b38c5d2a03a64d6cedb1d8d2de2564de1ebc1f14365f5d396",
+          "sha256": "3121294f2054faed8973e48f6982b05e9f1109a9218e0b29e30fbb1076555343",
+          "sha1": "b1c5c2a0e125bc46c846ab74fe4720131e317925",
+          "md5": "612ffd52c1e023d0c2c114f8308450d6"
+        }
+      ]
+    },
+    {
+      "name": "javadocElements",
+      "attributes": {
+        "org.gradle.category": "documentation",
+        "org.gradle.dependency.bundling": "external",
+        "org.gradle.docstype": "javadoc",
+        "org.gradle.usage": "java-runtime"
+      },
+      "files": [
+        {
+          "name": "float-common-8.5.19-javadoc.jar",
+          "url": "float-common-8.5.19-javadoc.jar",
+          "size": 503707,
+          "sha512": "2754a42af327c2af12638b47ace71bff6f008f7cd78f55cd7130c2dc6ad548948029e22605399e2d360eeb2682932df0a9ffcaa5eff97dcb03d0be67332e84e5",
+          "sha256": "b765302d5fa2711d73900a2e0eea833a3e77996ce9ef069f4d98985ecac5f617",
+          "sha1": "f978daa46fac60608ee7387d555196c7f2f91a7b",
+          "md5": "9f7da58de8e6f2c6d01f531856b1131a"
+        }
+      ]
+    },
+    {
+      "name": "sourcesElements",
+      "attributes": {
+        "org.gradle.category": "documentation",
+        "org.gradle.dependency.bundling": "external",
+        "org.gradle.docstype": "sources",
+        "org.gradle.usage": "java-runtime"
+      },
+      "files": [
+        {
+          "name": "float-common-8.5.19-sources.jar",
+          "url": "float-common-8.5.19-sources.jar",
+          "size": 114638,
+          "sha512": "682578056daa12966bdaf830ee4b4d9437583d054f24a4713466579aac9c76c0c1bb757e894dbfff53d41fa0504ba1a3ab3a12f7cb87ac9e3cac59e58d9e7771",
+          "sha256": "bdae60f10949c7d6cc1ed88e0d75d78d7aab6480be5cab52db3fe7fca424a094",
+          "sha1": "760d9c965726af8371cfa53240b28e5fe083aa0b",
+          "md5": "d57b3eed8ae14da1c9fb0778d2b9e39d"
+        }
+      ]
+    }
+  ]
+}

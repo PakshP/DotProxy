@@ -25,7 +25,7 @@ public class AntiAFKCommand extends Command {
             .description("""
             Configures the AntiAFK module.
 
-            To avoid being kicked on 2b2t the only required action is swing OR walk.
+            On most servers, swinging OR walking is enough to avoid being kicked for inactivity.
 
             The walk action will move the player roughly in a square shape. To avoid falling down any ledges, enable safeWalk
 

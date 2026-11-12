@@ -112,8 +112,8 @@ public class Embed {
         return this;
     }
 
-    public Embed inQueueColor() {
-        color = CONFIG.theme.inQueue.color();
+    public Embed pendingColor() {
+        color = Color.fromInt(net.dv8tion.jda.api.utils.Color.MOON_YELLOW.getRGB());
         return this;
     }
 

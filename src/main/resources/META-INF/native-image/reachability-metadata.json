@@ -2104,7 +2104,7 @@
       ]
     },
     {
-      "type": "com.zenith.feature.queue.mcping.data.ExtraResponse",
+      "type": "com.zenith.feature.ping.data.ExtraResponse",
       "allDeclaredFields": true,
       "methods": [
         {
@@ -2114,11 +2114,11 @@
       ]
     },
     {
-      "type": "com.zenith.feature.queue.mcping.data.MCResponse",
+      "type": "com.zenith.feature.ping.data.MCResponse",
       "allDeclaredFields": true
     },
     {
-      "type": "com.zenith.feature.queue.mcping.data.NewResponse",
+      "type": "com.zenith.feature.ping.data.NewResponse",
       "allDeclaredFields": true,
       "methods": [
         {
@@ -2128,7 +2128,7 @@
       ]
     },
     {
-      "type": "com.zenith.feature.queue.mcping.data.OldResponse",
+      "type": "com.zenith.feature.ping.data.OldResponse",
       "allDeclaredFields": true,
       "methods": [
         {
@@ -2138,7 +2138,7 @@
       ]
     },
     {
-      "type": "com.zenith.feature.queue.mcping.rawData.Description",
+      "type": "com.zenith.feature.ping.rawData.Description",
       "allDeclaredFields": true,
       "methods": [
         {
@@ -2148,7 +2148,7 @@
       ]
     },
     {
-      "type": "com.zenith.feature.queue.mcping.rawData.Extra",
+      "type": "com.zenith.feature.ping.rawData.Extra",
       "allDeclaredFields": true,
       "methods": [
         {
@@ -2158,7 +2158,7 @@
       ]
     },
     {
-      "type": "com.zenith.feature.queue.mcping.rawData.ExtraDescription",
+      "type": "com.zenith.feature.ping.rawData.ExtraDescription",
       "allDeclaredFields": true,
       "methods": [
         {
@@ -2168,10 +2168,10 @@
       ]
     },
     {
-      "type": "com.zenith.feature.queue.mcping.rawData.Extra[]"
+      "type": "com.zenith.feature.ping.rawData.Extra[]"
     },
     {
-      "type": "com.zenith.feature.queue.mcping.rawData.ForgeData",
+      "type": "com.zenith.feature.ping.rawData.ForgeData",
       "allDeclaredFields": true,
       "methods": [
         {
@@ -2181,7 +2181,7 @@
       ]
     },
     {
-      "type": "com.zenith.feature.queue.mcping.rawData.ForgeDataListItem",
+      "type": "com.zenith.feature.ping.rawData.ForgeDataListItem",
       "allDeclaredFields": true,
       "methods": [
         {
@@ -2191,10 +2191,10 @@
       ]
     },
     {
-      "type": "com.zenith.feature.queue.mcping.rawData.ForgeDataListItem[]"
+      "type": "com.zenith.feature.ping.rawData.ForgeDataListItem[]"
     },
     {
-      "type": "com.zenith.feature.queue.mcping.rawData.ModpackData",
+      "type": "com.zenith.feature.ping.rawData.ModpackData",
       "allDeclaredFields": true,
       "methods": [
         {
@@ -2204,7 +2204,7 @@
       ]
     },
     {
-      "type": "com.zenith.feature.queue.mcping.rawData.Player",
+      "type": "com.zenith.feature.ping.rawData.Player",
       "allDeclaredFields": true,
       "methods": [
         {
@@ -2214,7 +2214,7 @@
       ]
     },
     {
-      "type": "com.zenith.feature.queue.mcping.rawData.Players",
+      "type": "com.zenith.feature.ping.rawData.Players",
       "allDeclaredFields": true,
       "methods": [
         {
@@ -2224,7 +2224,7 @@
       ]
     },
     {
-      "type": "com.zenith.feature.queue.mcping.rawData.Version",
+      "type": "com.zenith.feature.ping.rawData.Version",
       "allDeclaredFields": true,
       "methods": [
         {

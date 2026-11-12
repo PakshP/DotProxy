@@ -31,7 +31,6 @@ public class ViaVersionCommand extends Command {
              """)
             .usageLines(
                 "zenithToServer on/off",
-                "zenithToServer disableOn2b2t on/off",
                 "zenithToServer version auto",
                 "zenithToServer version <MC version>",
                 "playerToZenith on/off"
@@ -49,13 +48,6 @@ public class ViaVersionCommand extends Command {
                         .title("Zenith To Server ViaVersion " + toggleStrCaps(CONFIG.client.viaversion.enabled));
                     return OK;
                 }))
-                .then(literal("disableOn2b2t")
-                    .then(argument("toggle", toggle()).executes(c -> {
-                        CONFIG.client.viaversion.disableOn2b2t = getToggle(c, "toggle");
-                        c.getSource().getEmbed()
-                            .title("Zenith To Server Disable On 2b2t " + toggleStrCaps(CONFIG.client.viaversion.disableOn2b2t));
-                        return OK;
-                    })))
                 .then(literal("autoConfig")
                     .then(argument("toggle", toggle()).executes(c -> {
                         CONFIG.client.viaversion.autoProtocolVersion = getToggle(c, "toggle");
@@ -104,7 +96,6 @@ public class ViaVersionCommand extends Command {
     public void defaultEmbed(final Embed embedBuilder) {
         embedBuilder
             .addField("Zenith To Server ViaVersion", toggleStr(CONFIG.client.viaversion.enabled), false)
-            .addField("Zenith To Server Disable On 2b2t", toggleStr(CONFIG.client.viaversion.disableOn2b2t), false)
             .addField("Zenith To Server Version", CONFIG.client.viaversion.autoProtocolVersion
                 ? "Auto (" + ProtocolVersion.getProtocol(CONFIG.client.viaversion.protocolVersion).getName() + ")"
                 : ProtocolVersion.getProtocol(CONFIG.client.viaversion.protocolVersion).getName(), false)

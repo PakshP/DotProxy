@@ -28,8 +28,6 @@ public class PlayerListsManager {
     private PlayerList spectatorWhitelist;
     private PlayerList friendsList;
     private PlayerList ignoreList;
-    private PlayerList stalkList;
-    private PlayerList spawnPatrolIgnoreList;
     private ScheduledFuture<?> refreshScheduledFuture;
 
     public void init() { // must be called after config is loaded
@@ -38,8 +36,6 @@ public class PlayerListsManager {
         spectatorWhitelist = register(new PlayerList("spectatorWhitelist", CONFIG.server.spectator.whitelist));
         friendsList = register(new PlayerList("friendsList", CONFIG.client.extra.friendsList));
         ignoreList = register(new PlayerList("ignoreList", CONFIG.client.extra.chat.ignoreList));
-        stalkList = register(new PlayerList("stalkList", CONFIG.client.extra.stalk.stalking));
-        spawnPatrolIgnoreList = register(new PlayerList("spawnPatrolIgnoreList", CONFIG.client.extra.spawnPatrol.ignoreList));
         startRefreshTask();
     }
 

@@ -1,0 +1,118 @@
+{
+  "formatVersion": "1.1",
+  "component": {
+    "group": "com.github.rfresh2.fastutil.queues",
+    "module": "int-queues",
+    "version": "8.5.19",
+    "attributes": {
+      "org.gradle.status": "release"
+    }
+  },
+  "createdBy": {
+    "gradle": {
+      "version": "9.6.1"
+    }
+  },
+  "variants": [
+    {
+      "name": "apiElements",
+      "attributes": {
+        "org.gradle.category": "library",
+        "org.gradle.dependency.bundling": "external",
+        "org.gradle.jvm.version": 8,
+        "org.gradle.libraryelements": "jar",
+        "org.gradle.usage": "java-api"
+      },
+      "dependencies": [
+        {
+          "group": "com.github.rfresh2.fastutil.commons",
+          "module": "int-common",
+          "version": {
+            "requires": "8.5.19"
+          }
+        }
+      ],
+      "files": [
+        {
+          "name": "int-queues-8.5.19.jar",
+          "url": "int-queues-8.5.19.jar",
+          "size": 23776,
+          "sha512": "376586f15c3775adcb4072d3d764f548e6f9a2ec832e439652be63668d6ef32e86938edae864e3b518300e508f92f05022ea2b201fc4f4d4155861888132adf2",
+          "sha256": "756b6fbc5c42429e7d2929ceacff35b259a446ab0a71a8b2c8786593d7471b52",
+          "sha1": "6a6071af81731557302f4e1abf20633e8f45e1c2",
+          "md5": "c23b076df578120fd9132bee26342fb5"
+        }
+      ]
+    },
+    {
+      "name": "runtimeElements",
+      "attributes": {
+        "org.gradle.category": "library",
+        "org.gradle.dependency.bundling": "external",
+        "org.gradle.jvm.version": 8,
+        "org.gradle.libraryelements": "jar",
+        "org.gradle.usage": "java-runtime"
+      },
+      "dependencies": [
+        {
+          "group": "com.github.rfresh2.fastutil.commons",
+          "module": "int-common",
+          "version": {
+            "requires": "8.5.19"
+          }
+        }
+      ],
+      "files": [
+        {
+          "name": "int-queues-8.5.19.jar",
+          "url": "int-queues-8.5.19.jar",
+          "size": 23776,
+          "sha512": "376586f15c3775adcb4072d3d764f548e6f9a2ec832e439652be63668d6ef32e86938edae864e3b518300e508f92f05022ea2b201fc4f4d4155861888132adf2",
+          "sha256": "756b6fbc5c42429e7d2929ceacff35b259a446ab0a71a8b2c8786593d7471b52",
+          "sha1": "6a6071af81731557302f4e1abf20633e8f45e1c2",
+          "md5": "c23b076df578120fd9132bee26342fb5"
+        }
+      ]
+    },
+    {
+      "name": "javadocElements",
+      "attributes": {
+        "org.gradle.category": "documentation",
+        "org.gradle.dependency.bundling": "external",
+        "org.gradle.docstype": "javadoc",
+        "org.gradle.usage": "java-runtime"
+      },
+      "files": [
+        {
+          "name": "int-queues-8.5.19-javadoc.jar",
+          "url": "int-queues-8.5.19-javadoc.jar",
+          "size": 153839,
+          "sha512": "cf511c08451331ffe76a3b2841aa0932e3556b12a198239e94b8392a1bca93234c06f68e19b4cbdf7b3e3693273387d994f90338d8284d82f161b90b8597e107",
+          "sha256": "b765a1581089fd91c5b009169199c234d93baf42fb32322d9bfd54db7f6bf86c",
+          "sha1": "61a9c1f3ad79c6d75bc997930e0ef7b7552ea0a0",
+          "md5": "88998ef8e0ed26f0e7fbd241caf3fa33"
+        }
+      ]
+    },
+    {
+      "name": "sourcesElements",
+      "attributes": {
+        "org.gradle.category": "documentation",
+        "org.gradle.dependency.bundling": "external",
+        "org.gradle.docstype": "sources",
+        "org.gradle.usage": "java-runtime"
+      },
+      "files": [
+        {
+          "name": "int-queues-8.5.19-sources.jar",
+          "url": "int-queues-8.5.19-sources.jar",
+          "size": 23624,
+          "sha512": "00049fb84c4f9bdafa5ebf2586cdefbc58936fc1ae573694ffeb9898a058f2ca92c97fcd349e1b81a7004320c9ceb0c607cd149a4759ff2c8ac20770481d1876",
+          "sha256": "5008a9dfc159bd3ce28019abe3d588e4949308e87de0401175177b3d9fb29887",
+          "sha1": "abfb26cb720d8cf9b04e42728559f1afa8305feb",
+          "md5": "d958252463feb15032e86e1b2eb451a6"
+        }
+      ]
+    }
+  ]
+}

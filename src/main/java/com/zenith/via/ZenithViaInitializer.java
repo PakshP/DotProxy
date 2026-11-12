@@ -8,7 +8,6 @@ import com.viaversion.viaversion.commands.ViaCommandHandler;
 import com.viaversion.viaversion.connection.UserConnectionImpl;
 import com.viaversion.viaversion.platform.ViaCodecHandler;
 import com.viaversion.viaversion.protocol.ProtocolPipelineImpl;
-import com.zenith.Proxy;
 import io.netty.channel.Channel;
 import io.netty.util.AttributeKey;
 import org.geysermc.mcprotocollib.network.tcp.TcpPacketCodec;
@@ -39,8 +38,6 @@ public class ZenithViaInitializer {
         if (CONFIG.client.viaversion.autoProtocolVersion) updateClientViaProtocolVersion();
         if (CONFIG.client.viaversion.protocolVersion == MinecraftCodec.CODEC.getProtocolVersion()) {
             CLIENT_LOG.warn("ViaVersion enabled but the protocol is the same as ours, connecting without ViaVersion");
-        } else if (CONFIG.client.viaversion.disableOn2b2t && Proxy.getInstance().isOn2b2t()) {
-            CLIENT_LOG.warn("ViaVersion enabled but server set to 2b2t.org, connecting without ViaVersion");
         } else {
             init();
             UserConnectionImpl userConnection = new UserConnectionImpl(channel, true);

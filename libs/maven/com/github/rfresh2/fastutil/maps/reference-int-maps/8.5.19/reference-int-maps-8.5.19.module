@@ -1,0 +1,146 @@
+{
+  "formatVersion": "1.1",
+  "component": {
+    "group": "com.github.rfresh2.fastutil.maps",
+    "module": "reference-int-maps",
+    "version": "8.5.19",
+    "attributes": {
+      "org.gradle.status": "release"
+    }
+  },
+  "createdBy": {
+    "gradle": {
+      "version": "9.6.1"
+    }
+  },
+  "variants": [
+    {
+      "name": "apiElements",
+      "attributes": {
+        "org.gradle.category": "library",
+        "org.gradle.dependency.bundling": "external",
+        "org.gradle.jvm.version": 8,
+        "org.gradle.libraryelements": "jar",
+        "org.gradle.usage": "java-api"
+      },
+      "dependencies": [
+        {
+          "group": "com.github.rfresh2.fastutil.sets",
+          "module": "object-sets",
+          "version": {
+            "requires": "8.5.19"
+          }
+        },
+        {
+          "group": "com.github.rfresh2.fastutil.sets",
+          "module": "reference-sets",
+          "version": {
+            "requires": "8.5.19"
+          }
+        },
+        {
+          "group": "com.github.rfresh2.fastutil.sets",
+          "module": "int-sets",
+          "version": {
+            "requires": "8.5.19"
+          }
+        }
+      ],
+      "files": [
+        {
+          "name": "reference-int-maps-8.5.19.jar",
+          "url": "reference-int-maps-8.5.19.jar",
+          "size": 163920,
+          "sha512": "3a246d875a9612a349126e6a915caa9c72f805f826b175142eb496721bb3022f0c370d34825fd4859671111ed1351b4cde7468ecdb49423bb66bba3cce29688b",
+          "sha256": "c3b638c6a3e643b37da0511eebc923c1e565440dc6047fbccbea318899e97066",
+          "sha1": "a08455ace524a64d3ab426bbfd8f74663860c3df",
+          "md5": "1842016e5dc5ab1a985196dbf12eaa75"
+        }
+      ]
+    },
+    {
+      "name": "runtimeElements",
+      "attributes": {
+        "org.gradle.category": "library",
+        "org.gradle.dependency.bundling": "external",
+        "org.gradle.jvm.version": 8,
+        "org.gradle.libraryelements": "jar",
+        "org.gradle.usage": "java-runtime"
+      },
+      "dependencies": [
+        {
+          "group": "com.github.rfresh2.fastutil.sets",
+          "module": "object-sets",
+          "version": {
+            "requires": "8.5.19"
+          }
+        },
+        {
+          "group": "com.github.rfresh2.fastutil.sets",
+          "module": "reference-sets",
+          "version": {
+            "requires": "8.5.19"
+          }
+        },
+        {
+          "group": "com.github.rfresh2.fastutil.sets",
+          "module": "int-sets",
+          "version": {
+            "requires": "8.5.19"
+          }
+        }
+      ],
+      "files": [
+        {
+          "name": "reference-int-maps-8.5.19.jar",
+          "url": "reference-int-maps-8.5.19.jar",
+          "size": 163920,
+          "sha512": "3a246d875a9612a349126e6a915caa9c72f805f826b175142eb496721bb3022f0c370d34825fd4859671111ed1351b4cde7468ecdb49423bb66bba3cce29688b",
+          "sha256": "c3b638c6a3e643b37da0511eebc923c1e565440dc6047fbccbea318899e97066",
+          "sha1": "a08455ace524a64d3ab426bbfd8f74663860c3df",
+          "md5": "1842016e5dc5ab1a985196dbf12eaa75"
+        }
+      ]
+    },
+    {
+      "name": "javadocElements",
+      "attributes": {
+        "org.gradle.category": "documentation",
+        "org.gradle.dependency.bundling": "external",
+        "org.gradle.docstype": "javadoc",
+        "org.gradle.usage": "java-runtime"
+      },
+      "files": [
+        {
+          "name": "reference-int-maps-8.5.19-javadoc.jar",
+          "url": "reference-int-maps-8.5.19-javadoc.jar",
+          "size": 313656,
+          "sha512": "7f34800c40e6933d48f86928b5fdf9b66f31ad50725df5fa7c8bae27249a0d2992a36d0cc93863de54afa31fa6d5d45f6eb3c4d34cef8f4e3fe8b29904e91f6b",
+          "sha256": "6293cd9a8d6bf3040ce26647c78aca6a4916acbfaf1ccae3f056ec12bf212e97",
+          "sha1": "a9e247f40d8afa693d86045529e18996ff7222eb",
+          "md5": "d235a717067c49e6b43ec572dd8dc133"
+        }
+      ]
+    },
+    {
+      "name": "sourcesElements",
+      "attributes": {
+        "org.gradle.category": "documentation",
+        "org.gradle.dependency.bundling": "external",
+        "org.gradle.docstype": "sources",
+        "org.gradle.usage": "java-runtime"
+      },
+      "files": [
+        {
+          "name": "reference-int-maps-8.5.19-sources.jar",
+          "url": "reference-int-maps-8.5.19-sources.jar",
+          "size": 60529,
+          "sha512": "d05bba5f213022818cfd044f911d9e2ca193893bda815846702e1404795b4693d19ce1e04ba4f4bb26ccf3c0e41c48ed5d9e4e0d23660ada5061057d7faa7def",
+          "sha256": "a46c4ea08647fe12f4314c8faa788b288a82c6e1ed76cc17e182bd5cc1efc8ba",
+          "sha1": "954fcb1c2aa76c1257d82978a33299fcf0d7e852",
+          "md5": "b37d5d0461eefe33ebe78e174aa5937a"
+        }
+      ]
+    }
+  ]
+}

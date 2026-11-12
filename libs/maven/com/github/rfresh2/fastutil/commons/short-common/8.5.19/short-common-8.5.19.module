@@ -1,0 +1,146 @@
+{
+  "formatVersion": "1.1",
+  "component": {
+    "group": "com.github.rfresh2.fastutil.commons",
+    "module": "short-common",
+    "version": "8.5.19",
+    "attributes": {
+      "org.gradle.status": "release"
+    }
+  },
+  "createdBy": {
+    "gradle": {
+      "version": "9.6.1"
+    }
+  },
+  "variants": [
+    {
+      "name": "apiElements",
+      "attributes": {
+        "org.gradle.category": "library",
+        "org.gradle.dependency.bundling": "external",
+        "org.gradle.jvm.version": 8,
+        "org.gradle.libraryelements": "jar",
+        "org.gradle.usage": "java-api"
+      },
+      "dependencies": [
+        {
+          "group": "com.github.rfresh2.fastutil",
+          "module": "core",
+          "version": {
+            "requires": "8.5.19"
+          }
+        },
+        {
+          "group": "com.github.rfresh2.fastutil.commons",
+          "module": "int-common",
+          "version": {
+            "requires": "8.5.19"
+          }
+        },
+        {
+          "group": "com.github.rfresh2.fastutil.commons",
+          "module": "object-common",
+          "version": {
+            "requires": "8.5.19"
+          }
+        }
+      ],
+      "files": [
+        {
+          "name": "short-common-8.5.19.jar",
+          "url": "short-common-8.5.19.jar",
+          "size": 187770,
+          "sha512": "dce1a20858297112a635f27be9b8183f5be9cd2d6861662fac5b62b1e4ce3b799df636dced7b35a4b64a0ed6a41326acf42846d37400d994ea076b62f82295fd",
+          "sha256": "0cccf615ffbafb37a705af82b94ab4f76e819489a889d5f9bd78fb05e6c49885",
+          "sha1": "c821ba0bb2db1e0e36d047c5a8722e269e24cc73",
+          "md5": "3f2d60c3b9c43d24df1eec34f2f4631a"
+        }
+      ]
+    },
+    {
+      "name": "runtimeElements",
+      "attributes": {
+        "org.gradle.category": "library",
+        "org.gradle.dependency.bundling": "external",
+        "org.gradle.jvm.version": 8,
+        "org.gradle.libraryelements": "jar",
+        "org.gradle.usage": "java-runtime"
+      },
+      "dependencies": [
+        {
+          "group": "com.github.rfresh2.fastutil",
+          "module": "core",
+          "version": {
+            "requires": "8.5.19"
+          }
+        },
+        {
+          "group": "com.github.rfresh2.fastutil.commons",
+          "module": "int-common",
+          "version": {
+            "requires": "8.5.19"
+          }
+        },
+        {
+          "group": "com.github.rfresh2.fastutil.commons",
+          "module": "object-common",
+          "version": {
+            "requires": "8.5.19"
+          }
+        }
+      ],
+      "files": [
+        {
+          "name": "short-common-8.5.19.jar",
+          "url": "short-common-8.5.19.jar",
+          "size": 187770,
+          "sha512": "dce1a20858297112a635f27be9b8183f5be9cd2d6861662fac5b62b1e4ce3b799df636dced7b35a4b64a0ed6a41326acf42846d37400d994ea076b62f82295fd",
+          "sha256": "0cccf615ffbafb37a705af82b94ab4f76e819489a889d5f9bd78fb05e6c49885",
+          "sha1": "c821ba0bb2db1e0e36d047c5a8722e269e24cc73",
+          "md5": "3f2d60c3b9c43d24df1eec34f2f4631a"
+        }
+      ]
+    },
+    {
+      "name": "javadocElements",
+      "attributes": {
+        "org.gradle.category": "documentation",
+        "org.gradle.dependency.bundling": "external",
+        "org.gradle.docstype": "javadoc",
+        "org.gradle.usage": "java-runtime"
+      },
+      "files": [
+        {
+          "name": "short-common-8.5.19-javadoc.jar",
+          "url": "short-common-8.5.19-javadoc.jar",
+          "size": 510386,
+          "sha512": "5c3adafb4d4c2b95b56303b42d377671a6b94b9c383f63a75ae2fd02ab007d7017cf63c02829e6af19e0e6c8045d3f9ecfb9f6a6e97aed38f07770c0c5242a2a",
+          "sha256": "c9cd192c08d21380416ff31f14169d6785e5fab8ca1042084fd493d843d1c2aa",
+          "sha1": "b87cfaebe62b7ae842b0a35010710ba8fc72529e",
+          "md5": "1f39cbaaa2525054ba60aa8140af12cf"
+        }
+      ]
+    },
+    {
+      "name": "sourcesElements",
+      "attributes": {
+        "org.gradle.category": "documentation",
+        "org.gradle.dependency.bundling": "external",
+        "org.gradle.docstype": "sources",
+        "org.gradle.usage": "java-runtime"
+      },
+      "files": [
+        {
+          "name": "short-common-8.5.19-sources.jar",
+          "url": "short-common-8.5.19-sources.jar",
+          "size": 119450,
+          "sha512": "fc4fbf637c73926f803eb25775a8d7521ebdd709c410dde4a333977e76828565e7198d5e8af39e1440505c5efafb51963ae03fedb5d38a2cb869ff9ec6808e5a",
+          "sha256": "34878594e7df191e30bc7b7ffe2c10f55c1e6612a2e6ad2207be9541f406d52b",
+          "sha1": "bb535c26c96c212846cf663b2cc2e02b1f41fe6e",
+          "md5": "fa23d5afaea3cf86ba98b909ad04f225"
+        }
+      ]
+    }
+  ]
+}

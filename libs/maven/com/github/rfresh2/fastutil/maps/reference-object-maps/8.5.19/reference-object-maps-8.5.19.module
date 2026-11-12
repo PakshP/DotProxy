@@ -1,0 +1,132 @@
+{
+  "formatVersion": "1.1",
+  "component": {
+    "group": "com.github.rfresh2.fastutil.maps",
+    "module": "reference-object-maps",
+    "version": "8.5.19",
+    "attributes": {
+      "org.gradle.status": "release"
+    }
+  },
+  "createdBy": {
+    "gradle": {
+      "version": "9.6.1"
+    }
+  },
+  "variants": [
+    {
+      "name": "apiElements",
+      "attributes": {
+        "org.gradle.category": "library",
+        "org.gradle.dependency.bundling": "external",
+        "org.gradle.jvm.version": 8,
+        "org.gradle.libraryelements": "jar",
+        "org.gradle.usage": "java-api"
+      },
+      "dependencies": [
+        {
+          "group": "com.github.rfresh2.fastutil.sets",
+          "module": "object-sets",
+          "version": {
+            "requires": "8.5.19"
+          }
+        },
+        {
+          "group": "com.github.rfresh2.fastutil.sets",
+          "module": "reference-sets",
+          "version": {
+            "requires": "8.5.19"
+          }
+        }
+      ],
+      "files": [
+        {
+          "name": "reference-object-maps-8.5.19.jar",
+          "url": "reference-object-maps-8.5.19.jar",
+          "size": 156448,
+          "sha512": "662da5f5663e0347641ff1c6c24bb2076e1a3e851e135ee6e5400da2e8ef1a22d36f29ee6b02f8f162827206824fec044fa169bfbeac26b7308c7a3561648b0a",
+          "sha256": "e4ca920125ca7f42db4c043054bab73ddc87a2594263a8601a7793eb3816b14a",
+          "sha1": "8e83f1c3898752895f2e53205bab87bce098320c",
+          "md5": "d5f94bd22ca972882683c6b0aa0fe9e8"
+        }
+      ]
+    },
+    {
+      "name": "runtimeElements",
+      "attributes": {
+        "org.gradle.category": "library",
+        "org.gradle.dependency.bundling": "external",
+        "org.gradle.jvm.version": 8,
+        "org.gradle.libraryelements": "jar",
+        "org.gradle.usage": "java-runtime"
+      },
+      "dependencies": [
+        {
+          "group": "com.github.rfresh2.fastutil.sets",
+          "module": "object-sets",
+          "version": {
+            "requires": "8.5.19"
+          }
+        },
+        {
+          "group": "com.github.rfresh2.fastutil.sets",
+          "module": "reference-sets",
+          "version": {
+            "requires": "8.5.19"
+          }
+        }
+      ],
+      "files": [
+        {
+          "name": "reference-object-maps-8.5.19.jar",
+          "url": "reference-object-maps-8.5.19.jar",
+          "size": 156448,
+          "sha512": "662da5f5663e0347641ff1c6c24bb2076e1a3e851e135ee6e5400da2e8ef1a22d36f29ee6b02f8f162827206824fec044fa169bfbeac26b7308c7a3561648b0a",
+          "sha256": "e4ca920125ca7f42db4c043054bab73ddc87a2594263a8601a7793eb3816b14a",
+          "sha1": "8e83f1c3898752895f2e53205bab87bce098320c",
+          "md5": "d5f94bd22ca972882683c6b0aa0fe9e8"
+        }
+      ]
+    },
+    {
+      "name": "javadocElements",
+      "attributes": {
+        "org.gradle.category": "documentation",
+        "org.gradle.dependency.bundling": "external",
+        "org.gradle.docstype": "javadoc",
+        "org.gradle.usage": "java-runtime"
+      },
+      "files": [
+        {
+          "name": "reference-object-maps-8.5.19-javadoc.jar",
+          "url": "reference-object-maps-8.5.19-javadoc.jar",
+          "size": 295752,
+          "sha512": "e047cb3bbedef91da337666ae5a37c94a95680c49d8249168a1d9f8026d7cc41ed7a228742783f2b5e4dbde543c88106e198724cfb116417a9300c8f7a674275",
+          "sha256": "ff4ea72bccad54ffcdfdd7a3f12115518737d0cf4dffe175ccdb37215484e0c1",
+          "sha1": "c5f3169e15e225e2dcd08302fe657bfd34ecfc92",
+          "md5": "2ed8bf76b99e2e1f26d43ae5e6ba1c60"
+        }
+      ]
+    },
+    {
+      "name": "sourcesElements",
+      "attributes": {
+        "org.gradle.category": "documentation",
+        "org.gradle.dependency.bundling": "external",
+        "org.gradle.docstype": "sources",
+        "org.gradle.usage": "java-runtime"
+      },
+      "files": [
+        {
+          "name": "reference-object-maps-8.5.19-sources.jar",
+          "url": "reference-object-maps-8.5.19-sources.jar",
+          "size": 56576,
+          "sha512": "f212740b6457df9b79a7227b42686b6e9ca2380dbb29a45e199407838493f185c845c498e8c64a4e9a6604ab82b8d956381f02b5584e645cce0f03a501590600",
+          "sha256": "c1a8b752fa25ca0b6bfc26b3bb774d5a28e657bf7ec71754efe59b6a5e56865c",
+          "sha1": "9d4a72e0e4b76ddd0b473e5109e5fc16fad26fc9",
+          "md5": "555860271aa3b633cbfcedd4dc7b8ecb"
+        }
+      ]
+    }
+  ]
+}

@@ -45,8 +45,6 @@ import org.geysermc.mcprotocollib.protocol.packet.ingame.clientbound.inventory.*
 import org.geysermc.mcprotocollib.protocol.packet.ingame.clientbound.level.*;
 import org.geysermc.mcprotocollib.protocol.packet.ingame.clientbound.level.border.ClientboundInitializeBorderPacket;
 import org.geysermc.mcprotocollib.protocol.packet.ingame.clientbound.scoreboard.*;
-import org.geysermc.mcprotocollib.protocol.packet.ingame.clientbound.title.ClientboundSetActionBarTextPacket;
-import org.geysermc.mcprotocollib.protocol.packet.ingame.clientbound.title.ClientboundSetSubtitleTextPacket;
 import org.geysermc.mcprotocollib.protocol.packet.ingame.serverbound.*;
 import org.geysermc.mcprotocollib.protocol.packet.ingame.serverbound.inventory.ServerboundContainerClickPacket;
 import org.geysermc.mcprotocollib.protocol.packet.ingame.serverbound.inventory.ServerboundContainerClosePacket;
@@ -139,7 +137,6 @@ public final class PacketCodecRegistries {
             .state(ProtocolState.GAME, PacketHandlerStateCodec.clientBuilder()
                 .inbound(ClientboundDisconnectPacket.class, CDisconnectHandler.INSTANCE)
                 .inbound(ClientboundStartConfigurationPacket.class, new CStartConfigurationHandler())
-                .inbound(ClientboundDamageEventPacket.class, new DamageEventHandler())
                 .inbound(ClientboundUpdateAdvancementsPacket.class, new UpdateAdvancementsHandler())
                 .inbound(ClientboundBlockUpdatePacket.class, new BlockUpdateHandler())
                 .inbound(ClientboundChunkBatchFinishedPacket.class, new ChunkBatchFinishedHandler())
@@ -159,7 +156,6 @@ public final class PacketCodecRegistries {
                 .inbound(ClientboundSetChunkCacheRadiusPacket.class, new SetChunkCacheRadiusHandler())
                 .inbound(ClientboundSetSimulationDistancePacket.class, new SetSimulationDistanceHandler())
                 .inbound(ClientboundSetHealthPacket.class, new SetHealthHandler())
-                .inbound(ClientboundSetSubtitleTextPacket.class, new SetSubtitleTextHandler())
                 .inbound(ClientboundPlayerPositionPacket.class, new PlayerPositionHandler())
                 .inbound(ClientboundPlayerRotationPacket.class, new PlayerRotationHandler())
                 .inbound(ClientboundPongResponsePacket.class, PongResponseHandler.INSTANCE)
@@ -178,7 +174,6 @@ public final class PacketCodecRegistries {
                 .inbound(ClientboundPlayerInfoUpdatePacket.class, new PlayerInfoUpdateHandler())
                 .inbound(ClientboundExplodePacket.class, new ExplodeHandler())
                 .inbound(ClientboundPlayerInfoRemovePacket.class, new PlayerInfoRemoveHandler())
-                .inbound(ClientboundSetActionBarTextPacket.class, new SetActionBarTextHandler())
                 .inbound(ClientboundSetEntityMotionPacket.class, new SetEntityMotionHandler())
                 .inbound(ClientboundForgetLevelChunkPacket.class, new ForgetLevelChunkHandler())
                 .inbound(ClientboundRecipeBookAddPacket.class, new RecipeBookAddHandler())

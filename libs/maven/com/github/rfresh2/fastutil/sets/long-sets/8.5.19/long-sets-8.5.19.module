@@ -1,0 +1,118 @@
+{
+  "formatVersion": "1.1",
+  "component": {
+    "group": "com.github.rfresh2.fastutil.sets",
+    "module": "long-sets",
+    "version": "8.5.19",
+    "attributes": {
+      "org.gradle.status": "release"
+    }
+  },
+  "createdBy": {
+    "gradle": {
+      "version": "9.6.1"
+    }
+  },
+  "variants": [
+    {
+      "name": "apiElements",
+      "attributes": {
+        "org.gradle.category": "library",
+        "org.gradle.dependency.bundling": "external",
+        "org.gradle.jvm.version": 8,
+        "org.gradle.libraryelements": "jar",
+        "org.gradle.usage": "java-api"
+      },
+      "dependencies": [
+        {
+          "group": "com.github.rfresh2.fastutil.commons",
+          "module": "long-common",
+          "version": {
+            "requires": "8.5.19"
+          }
+        }
+      ],
+      "files": [
+        {
+          "name": "long-sets-8.5.19.jar",
+          "url": "long-sets-8.5.19.jar",
+          "size": 108832,
+          "sha512": "5e8c2f553c41365712f35437907bc69d4d1a82b52993b19af0386a8aace713cd7124c6a5cf5f93228d923c4430950a439f4563649d06b1128654a5d6beb6348d",
+          "sha256": "8cfd738a8d4b2efe053833f6562c213c2f73c2fd9d751bd6a0fbb61a200958b1",
+          "sha1": "d2722928e578e333fd843410437a0f575d5f3373",
+          "md5": "5d93f765f56c74b0416159bf5206907d"
+        }
+      ]
+    },
+    {
+      "name": "runtimeElements",
+      "attributes": {
+        "org.gradle.category": "library",
+        "org.gradle.dependency.bundling": "external",
+        "org.gradle.jvm.version": 8,
+        "org.gradle.libraryelements": "jar",
+        "org.gradle.usage": "java-runtime"
+      },
+      "dependencies": [
+        {
+          "group": "com.github.rfresh2.fastutil.commons",
+          "module": "long-common",
+          "version": {
+            "requires": "8.5.19"
+          }
+        }
+      ],
+      "files": [
+        {
+          "name": "long-sets-8.5.19.jar",
+          "url": "long-sets-8.5.19.jar",
+          "size": 108832,
+          "sha512": "5e8c2f553c41365712f35437907bc69d4d1a82b52993b19af0386a8aace713cd7124c6a5cf5f93228d923c4430950a439f4563649d06b1128654a5d6beb6348d",
+          "sha256": "8cfd738a8d4b2efe053833f6562c213c2f73c2fd9d751bd6a0fbb61a200958b1",
+          "sha1": "d2722928e578e333fd843410437a0f575d5f3373",
+          "md5": "5d93f765f56c74b0416159bf5206907d"
+        }
+      ]
+    },
+    {
+      "name": "javadocElements",
+      "attributes": {
+        "org.gradle.category": "documentation",
+        "org.gradle.dependency.bundling": "external",
+        "org.gradle.docstype": "javadoc",
+        "org.gradle.usage": "java-runtime"
+      },
+      "files": [
+        {
+          "name": "long-sets-8.5.19-javadoc.jar",
+          "url": "long-sets-8.5.19-javadoc.jar",
+          "size": 256561,
+          "sha512": "7ee0279153592538056ca9a4dea23583890a5c84f1b5f17f98deb3ab5844b431c45bc289a247f6d0a8caac934013b320c18e974735727b02538f364a1573c0fc",
+          "sha256": "c565f65051a215516861ce4e30e8f5c2c2de948d2ced769f5bdea5f89c3c96f0",
+          "sha1": "43c1988e521e6dc801c73c15e74e3a9b09a6d88a",
+          "md5": "0e6578749028c2608334ccf10134eb61"
+        }
+      ]
+    },
+    {
+      "name": "sourcesElements",
+      "attributes": {
+        "org.gradle.category": "documentation",
+        "org.gradle.dependency.bundling": "external",
+        "org.gradle.docstype": "sources",
+        "org.gradle.usage": "java-runtime"
+      },
+      "files": [
+        {
+          "name": "long-sets-8.5.19-sources.jar",
+          "url": "long-sets-8.5.19-sources.jar",
+          "size": 72642,
+          "sha512": "87fac842f2db6f43345856e5bc8608c3713f358f036b7b5274613f896f790be8da6f7ab2ce4311b334ece4d1769149427ceb664fe18f37da2965d6f0958eba97",
+          "sha256": "3c220e1c0a5b2354c762bfbeaef5ad484ec4c19fa6e88a4320531f9c4da40800",
+          "sha1": "db9e8c0459f78c0fec5dafd61dbf2d0063ba361a",
+          "md5": "2a95759a9b2a3d25dcc12d4c174e3f1e"
+        }
+      ]
+    }
+  ]
+}

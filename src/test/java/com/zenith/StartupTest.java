@@ -1,9 +1,8 @@
 package com.zenith;
 
-import com.zenith.feature.queue.mcping.MCPing;
+import com.zenith.feature.ping.MCPing;
 import com.zenith.util.Wait;
 import com.zenith.util.config.Config;
-import com.zenith.util.config.LaunchConfig;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.condition.DisabledInNativeImage;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -23,11 +22,6 @@ public class StartupTest {
             config.interactiveTerminal.enable = false;
             config.server.bind.port = 0;
             TestUtils.setConfigFile(config);
-
-            var launchConfig = new LaunchConfig();
-            launchConfig.auto_update = false;
-            launchConfig.auto_update_launcher = false;
-            TestUtils.setLaunchConfigFile(launchConfig);
 
             launchThread.set(Thread.ofPlatform().daemon().start(Proxy::main));
 

@@ -1,116 +1,135 @@
-# ZenithProxy
+# DotProxy
 
-<p align="center">
-  <a href="https://discord.gg/nJZrSaRKtb">
-  <img alt="Discord" src="https://dcbadge.limes.pink/api/server/nJZrSaRKtb">
-  </a>
-</p>
+DotProxy is a lightweight AFK proxy for Minecraft. It keeps one Minecraft account online on any server, around the clock.
 
-<p align="center">
-  <img src="https://img.shields.io/badge/MC-1.21.4-brightgreen.svg" alt="Minecraft"/>
-  <img src="https://img.shields.io/endpoint?url=https%3A%2F%2Ftokei.kojix2.net%2Fbadge%2Fgithub%2Frfresh2%2FZenithProxy%2Flines" alt="Lines of Code"/>
-</p>
+* AFK farms, mob grinders, and chunk loading keep running while you're offline.
+* Join the proxy from your normal Minecraft client to take over the account in-game. When you leave, it carries on AFKing.
+* Share an account with friends without sharing the password.
+* Control it from a terminal, in-game commands, or a Discord bot.
 
-ZenithProxy is a Minecraft bot that players can also log into and control ingame
-
-You can have accounts always online and securely shared with friends
-
-The bot can be controlled remotely through a Discord bot, a terminal, or ingame
-
-It's designed for use on [2b2t.org](https://www.2b2t.org/) but works on any MC server
-
-This project is also used by the [2b2t.vc API](https://api.2b2t.vc) and [Discord Bot](https://bot.2b2t.vc).
+It works on (almost) any Minecraft server and with (almost) any client version.
 
 <details>
-    <summary>What is a proxy?</summary>
+<summary>What is a proxy?</summary>
 
-    There are four main components:
-    1. A Player's Minecraft Client ("Player Client")
-    2. The Proxy's Minecraft Server ("Proxy Server")
-    3. The Proxy's Minecraft Client ("Proxy Client")
-    4. The destination Minecraft Server ("MC Server")
+There are four main components:
 
-    Player MC Client <-> Proxy Server <-> Proxy Client <-> MC Server
+1. A player's Minecraft client ("Player Client")
+2. DotProxy's Minecraft server ("Proxy Server")
+3. DotProxy's Minecraft client ("Proxy Client")
+4. The destination Minecraft server ("MC Server")
 
-    Players use a Minecraft client to connect to the Proxy Server just like a normal MC server.
-    The Proxy Client connects to a destination MC server (i.e. 2b2t.org).
-    The Player's packets to the Proxy Server get forwarded to the Proxy Client which
-    forwards them to the destination MC server.
+```
+Player MC Client <-> Proxy Server <-> Proxy Client <-> MC Server
+```
 
-    When no Player Client is connected the Proxy Client will act
-    as a bot: moving around, chatting, etc.
+Players connect to the Proxy Server with a normal Minecraft client, the same way they join any server.
+The Proxy Client stays connected to the destination MC server with your account.
+The player's packets go to the Proxy Server, which passes them to the Proxy Client, which forwards them to the destination server.
+
+When no player is connected, the Proxy Client keeps the account in the world on its own.
+
 </details>
 
 <details>
-    <summary>How does it work?</summary>
+<summary>How does it work?</summary>
 
-    ZenithProxy does not use, depend on, or interact with Mojang's Minecraft client or server code.
+DotProxy does not use, depend on, or interact with Mojang's Minecraft client or server code.
+It implements only the parts of the Minecraft network protocol and player logic it needs.
+There is no rendering, lighting engine, or anything similar, which keeps resource usage low.
 
-    Meaning it implements only the needed parts of the Minecraft network protocol and player logic
+This also means existing Minecraft mods or server plugins cannot be used with DotProxy. Features have to be written for DotProxy itself, for example as a [DotProxy plugin](docs/wiki/Plugins.md).
 
-    So no rendering, lighting engine, or any similar components
+DotProxy works mainly at the network packet layer. It can read, modify, cancel, or send packets in either direction at any time.
 
-    But this means existing MC mods or plugins cannot be used and must be
-    reimplemented specifically for ZenithProxy.
+The client's session and world state is cached and sent to players when they connect, so joining the proxy feels like joining the server directly.
+The cached state is also used for the built-in player simulation (physics and AntiAFK), Discord chat relay, alerts, and other features.
 
-    ZenithProxy acts primarily at the network packet layer. It can read/modify/cancel/send
-    packets in either direction at any time.
-
-    the client's session and world state is cached and
-    sent to players when they connect.
-
-    The cached world state is also used to simulate player movements,
-    inventory actions, discord chat relay, and many more features.
 </details>
 
-# Setup and Download
+## Features
 
-https://wiki.2b2t.vc/Setup/
-
-# Features
-
-* High performance and efficiency on minimal hardware, <300MB RAM per java instance or <200MB on linux.
+* Low resource usage: under 300MB of RAM per instance
 * Integrated ViaVersion
-  * Can connect to (almost) any MC server and players can connect with (almost) any MC client
-* Secure Whitelist system - share MC accounts without sharing passwords
-* Discord Bot for management and notifications
-    * Chat relay/bridge
-    * Customizable pings and alerts. e.g. Player in visual range alerts
-* Spectator mode
-  * Multiple players can connect and spectate the player
-* Coordinate obfuscation - let players you don't trust visit your base safely
-* Baritone pathfinding and movement
-* ReplayMod recordings
-* 25+ modules including AutoEat, AutoDisconnect, AutoReconnect, AutoRespawn, AutoTotem, KillAura, Spammer, AutoReply
-* Java plugins that add more modules created by the community
-* Many, many, more features
+    * Connect to (almost) any Minecraft server version, and let players join with (almost) any client version
+* Microsoft account login using a device code. Your password never touches DotProxy.
+* A whitelist, so you can share an account without sharing its password
+* Spectator mode: extra whitelisted players can join and watch
+* A Discord bot for remote control and notifications
+    * Two-way chat relay between the server and a Discord channel
+    * Configurable alerts and pings, for example when a player enters visual range or the proxy disconnects
+* Commands from the terminal, in-game, or Discord
+* Built-in modules:
+    * **AntiAFK**: keeps the account from being kicked for idling
+    * **AutoReconnect**: reconnects automatically after a disconnect
+    * **AutoRespawn**: respawns automatically after death
+    * **AutoDisconnect**: disconnects on low health, when a player enters visual range, and on other triggers
+    * **ActiveHours**: connects at scheduled times
+    * **AntiKick**: kicks controlling players who sit idle
+    * **VisualRange**: alerts when players come into view
+    * **ChatHistory**: replays recent chat to players when they join
+    * **ExtraChat**: extra chat utilities
+    * **ActionLimiter**: limits what controlling players are allowed to do
+* A Java plugin system for adding your own modules and commands
 
-# Wiki and Documentation
+## Quick Start
 
-https://wiki.2b2t.vc/
+You need **Java 21 or newer**.
 
-# Development
+1. Download `DotProxy.jar` from the [releases page](https://github.com/PakshP/DotProxy/releases), or [build it yourself](#building-from-source).
+2. Put it in its own folder, together with `scripts/start.sh` (Linux/macOS) or `scripts/start.bat` (Windows).
+3. Run the start script. You can also run `java -jar DotProxy.jar` directly.
+    * The start script restarts DotProxy automatically when it asks to be restarted, and stops when DotProxy shuts down on purpose.
+4. On first run, `config.json` is created in the folder.
+5. In the DotProxy terminal:
+    * `server <address> [port]` sets the server to connect to. The default is `localhost:25565`.
+    * `whitelist add <your MC username>` lets you join the proxy.
+    * `connect` logs in and connects. The first time, follow the Microsoft device code login link that's printed.
+6. In Minecraft, add a server with the proxy's address (`localhost:25565` if it's on the same PC) and join.
 
-I highly recommend using [Intellij](https://www.jetbrains.com/idea/) for building and running local development instances.
+The full guide is on the [Setup](docs/wiki/Setup.md) page.
 
-Gradle will automatically install the required Java version for compiling (currently Java 25)
+## Documentation
 
-Most useful gradle tasks:
-* `run` - Builds and runs a local dev instance
-* `build` - Builds an executable jar to `build/libs/ZenithProxy.jar`
-* `nativeCompile` - Builds a GraalVM native image to `build/native/nativeCompile/ZenithProxy` (requires GraalVM JDK)
+The documentation lives in [`docs/wiki`](docs/wiki/index.md):
 
-# Special Thanks
+* [Setup](docs/wiki/Setup.md)
+* [Commands](docs/wiki/Commands.md)
+* [Discord Bot Guide](docs/wiki/Discord-Bot-Guide.md)
+* [Plugins](docs/wiki/Plugins.md)
+* [Disconnects](docs/wiki/Disconnects.md)
+* [FAQ](docs/wiki/FAQ.md)
 
-* [odpay](https://github.com/odpay/)
-* [DaPorkchop_'s Pork2b2tBot](https://github.com/PorkStudios/Pork2b2tBot)
+## Building from Source
+
+[IntelliJ IDEA](https://www.jetbrains.com/idea/) works well for building and running local development instances.
+
+Gradle downloads the Java version needed for compiling automatically.
+
+Useful Gradle tasks:
+
+* `./gradlew build` builds an executable jar at `build/libs/DotProxy.jar`
+* `./gradlew run` builds and runs a local development instance in `./run`
+
+On Windows, use `gradlew.bat` instead of `./gradlew`.
+
+## Thanks
+
+DotProxy is built on these open-source projects:
+
 * [MCProtocolLib](https://github.com/GeyserMC/MCProtocolLib)
-* [Baritone](https://github.com/cabaletta/Baritone)
-* [Netty](https://github.com/netty/netty/graphs/contributors)
+* [Netty](https://github.com/netty/netty)
 * [GraalVM](https://graalvm.org/)
 * [ViaVersion](https://github.com/ViaVersion/ViaVersion)
 * [RaphiMC's MinecraftAuth](https://github.com/RaphiMC/MinecraftAuth)
-* [JDA](https://github.com/DV8FromTheWorld/JDA)
+* [JDA](https://github.com/discord-jda/JDA)
 * [JLine](https://github.com/jline/jline3)
 * [Adventure](https://github.com/PaperMC/adventure)
-* And many more awesome open source libraries
+* [Brigadier](https://github.com/Mojang/brigadier)
+* And many other open-source libraries
+
+See [licenses/NOTICE.md](licenses/NOTICE.md) for attributions.
+
+## License
+
+DotProxy is licensed under [AGPL-3.0](LICENSE). See [README-LICENSE.md](README-LICENSE.md) for more details.

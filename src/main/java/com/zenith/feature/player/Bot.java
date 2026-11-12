@@ -1953,11 +1953,11 @@ public final class Bot extends ModuleUtils {
     }
 
     public double getBlockReachDistance() {
-        return MathHelper.clamp(getAttributeValue(AttributeType.Builtin.BLOCK_INTERACTION_RANGE, 4.5f) + CONFIG.client.extra.click.additionalBlockReach, 0, Float.MAX_VALUE);
+        return MathHelper.clamp(getAttributeValue(AttributeType.Builtin.BLOCK_INTERACTION_RANGE, 4.5f) + CONFIG.client.extra.reach.additionalBlockReach, 0, Float.MAX_VALUE);
     }
 
     public double getEntityInteractDistance() {
-        return MathHelper.clamp(getAttributeValue(AttributeType.Builtin.ENTITY_INTERACTION_RANGE, 3.0f) + CONFIG.client.extra.click.additionalEntityReach, 0, Float.MAX_VALUE);
+        return MathHelper.clamp(getAttributeValue(AttributeType.Builtin.ENTITY_INTERACTION_RANGE, 3.0f) + CONFIG.client.extra.reach.additionalEntityReach, 0, Float.MAX_VALUE);
     }
 
     public BlockPos blockPosition() {

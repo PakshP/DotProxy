@@ -8,6 +8,7 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 import static com.zenith.Globals.DEFAULT_LOG;
+import static com.zenith.Globals.SOURCE_URL;
 
 @Getter
 @Setter
@@ -113,7 +114,7 @@ public class CommandUsage {
             + usageLines.stream()
             .map(line -> "\n" + commandSource.commandPrefix() + name + " " + line)
             .collect(Collectors.joining());
-        result += "\n\n[Commands Wiki](https://link.2b2t.vc/0)";
+        result += "\n\n[Source Code](" + SOURCE_URL + ")";
         if (isTooLongForDiscordDescription(result)) {
             DEFAULT_LOG.debug("Full command usage too long for discord description: {}", name);
             return this.mediumSerialize(commandSource);
@@ -127,7 +128,7 @@ public class CommandUsage {
             + usageLines.stream()
             .map(line -> "\n" + commandSource.commandPrefix() + name + " " + line)
             .collect(Collectors.joining());
-        result += "\n\n[Commands Wiki](https://link.2b2t.vc/0)";
+        result += "\n\n[Source Code](" + SOURCE_URL + ")";
         if (isTooLongForDiscordDescription(result)) {
             DEFAULT_LOG.debug("Medium command usage too long for discord description: {}", name);
             return this.shortSerialize(commandSource);
@@ -144,7 +145,7 @@ public class CommandUsage {
                             " / " + commandSource.commandPrefix(),
                             ""));
         }
-        result += "\n\n[Commands Wiki](https://link.2b2t.vc/0)";
+        result += "\n\n[Source Code](" + SOURCE_URL + ")";
         return result;
     }
 

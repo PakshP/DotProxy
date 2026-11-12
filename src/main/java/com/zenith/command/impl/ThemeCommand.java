@@ -29,14 +29,12 @@ public class ThemeCommand extends Command {
               * Primary: Most embeds and command responses if not an error.
               * Success: General "this worked" responses, server join, and friends
               * Error: Error responses, server leave, and enemies
-              * In Queue: The proxy is in queue, reconnecting, or is in a transitional state
             """)
             .usageLines(
                 "list",
                 "primary <color>",
                 "success <color>",
-                "error <color>",
-                "inQueue <color>"
+                "error <color>"
             )
             .aliases("color")
             .build();
@@ -94,20 +92,6 @@ public class ThemeCommand extends Command {
                         .addField("Help", "Use `theme list` to see available colors");
                     return ERROR;
                 }
-            })))
-            .then(literal("inQueue").then(argument("color", enumStrings(ConfigColor.values())).executes(c -> {
-                var colorStr = getString(c, "color").toUpperCase();
-                try {
-                    CONFIG.theme.inQueue = ConfigColor.valueOf(colorStr);
-                    c.getSource().getEmbed()
-                        .title("In Queue Color Set!");
-                    return OK;
-                } catch (final Throwable e) {
-                    c.getSource().getEmbed()
-                        .title("Invalid Color!")
-                        .addField("Help", "Use `theme list` to see available colors");
-                    return ERROR;
-                }
             })));
     }
 
@@ -117,7 +101,6 @@ public class ThemeCommand extends Command {
             .primaryColor()
             .addField("Primary", escape(CONFIG.theme.primary.name().toLowerCase()))
             .addField("Success", escape(CONFIG.theme.success.name().toLowerCase()))
-            .addField("Error", escape(CONFIG.theme.error.name().toLowerCase()))
-            .addField("In Queue", escape(CONFIG.theme.inQueue.name().toLowerCase()));
+            .addField("Error", escape(CONFIG.theme.error.name().toLowerCase()));
     }
 }

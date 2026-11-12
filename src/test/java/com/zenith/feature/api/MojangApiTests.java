@@ -1,7 +1,6 @@
 package com.zenith.feature.api;
 
 import com.zenith.feature.api.mcprofile.MCProfileApi;
-import com.zenith.feature.api.minetools.MinetoolsApi;
 import com.zenith.feature.api.mojang.MojangApi;
 import com.zenith.feature.api.sessionserver.SessionServerApi;
 
@@ -12,21 +11,12 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 public class MojangApiTests {
 
     final MojangApi api = new MojangApi();
-    final MinetoolsApi minetoolsApi = new MinetoolsApi();
     final SessionServerApi sessionServerApi = new SessionServerApi();
     final MCProfileApi mcProfileApi = new MCProfileApi();
 
 //    @Test
     public void getMojangProfileTest() {
         var response = api.getProfile("rfresh2");
-        assertTrue(response.isPresent());
-        assertTrue(response.get().name().equals("rfresh2"));
-        var uuid = response.get().uuid();
-    }
-
-//    @Test
-    public void getMinetoolsProfileTest() {
-        var response = minetoolsApi.getProfileFromUsername("rfresh2");
         assertTrue(response.isPresent());
         assertTrue(response.get().name().equals("rfresh2"));
         var uuid = response.get().uuid();

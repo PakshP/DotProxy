@@ -30,18 +30,18 @@ public class ChatSchemaCommand extends Command {
                 * $m -> Message, text content of the chat/whisper
                 * $w -> Wildcard, any varying text, e.g. a role prefix `[ADMIN] rfresh2: test message`
 
-                Example 2b2t chat schema:
+                Example chat schema (the default):
                 * public chat: `<$s> $m`
                 * whisper inbound: `$s whispers: $m`
                 * whisper outbound: `to $r: $m`
 
                 You can configure different schemas for different servers based on the server address.
 
-                Server address is without port, e.g. `2b2t.org` or `192.168.0.5`
+                Server address is without port, e.g. `mc.example.com` or `192.168.0.5`
                 """)
             .usageLines(
                 "set <publicChat/whisperInbound/whisperOutbound> <serverAddress> <schema>",
-                "preset <serverAddress> <2b2t/essentials>",
+                "preset <serverAddress> <essentials>",
                 "del <serverAddress>",
                 "list"
             )
@@ -93,17 +93,6 @@ public class ChatSchemaCommand extends Command {
                         .title("Outbound Whisper Schema Set");
                 })))))
             .then(literal("preset").then(argument("serverAddress", wordWithChars())
-                .then(literal("2b2t").executes(c -> {
-                    var serverAddress = getString(c, "serverAddress").toLowerCase().trim();
-                    var schema2b2t = new ChatSchema(
-                        "<$s> $m",
-                        "$s whispers: $m",
-                        "to $r: $m"
-                    );
-                    CONFIG.client.chatSchemas.serverSchemas.put(serverAddress, schema2b2t);
-                    c.getSource().getEmbed()
-                        .title("2b2t Schema Set");
-                }))
                 .then(literal("essentials").executes(c -> {
                     var serverAddress = getString(c, "serverAddress").toLowerCase().trim();
                     var schemaEssentials = new ChatSchema(

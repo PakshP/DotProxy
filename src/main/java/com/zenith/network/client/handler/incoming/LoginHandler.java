@@ -1,6 +1,5 @@
 package com.zenith.network.client.handler.incoming;
 
-import com.zenith.Proxy;
 import com.zenith.cache.CacheResetType;
 import com.zenith.event.client.ClientOnlineEvent;
 import com.zenith.network.client.ClientSession;
@@ -72,11 +71,9 @@ public class LoginHandler implements PacketHandler<ClientboundLoginPacket, Clien
             CACHE.getChatCache().setEnforcesSecureChat(packet.isEnforcesSecureChat());
         }
 
-        if (!Proxy.getInstance().isOn2b2t()) {
-            if (!session.isOnline()) {
-                session.setOnline(true);
-                EVENT_BUS.post(new ClientOnlineEvent());
-            }
+        if (!session.isOnline()) {
+            session.setOnline(true);
+            EVENT_BUS.post(new ClientOnlineEvent());
         }
         return packet;
     }

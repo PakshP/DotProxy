@@ -9,7 +9,6 @@ import com.zenith.command.api.CommandUsage;
 import com.zenith.discord.Embed;
 import com.zenith.module.impl.VisualRange;
 import com.zenith.util.ChatUtil;
-import com.zenith.util.config.Config;
 import org.geysermc.mcprotocollib.auth.GameProfile;
 
 import java.util.ArrayList;
@@ -35,12 +34,6 @@ public class VisualRangeCommand extends Command {
 
             Alerts are sent both in the terminal and in discord, with optional discord mentions.
 
-            `replayRecording` settings will start recording when players enter your visual range and stop
-            when players leave, after the set cooldown.
-
-            `enemy` mode will only record players who are not on your friends list.
-            `all` mode will record all players, regardless of being on the friends list.
-
             To add players to the friends list see the `friends` command.
             """)
             .usageLines(
@@ -55,10 +48,7 @@ public class VisualRangeCommand extends Command {
                 "enter whisper whilePlayerConnected on/off",
                 "leave on/off",
                 "logout on/off",
-                "ignoreFriends on/off",
-                "replayRecording on/off",
-                "replayRecording mode <enemy/all>",
-                "replayRecording cooldown <minutes>"
+                "ignoreFriends on/off"
             )
             .aliases("vr")
             .build();
@@ -166,38 +156,7 @@ public class VisualRangeCommand extends Command {
                     c.getSource().getEmbed()
                         .title("Logout Alerts " + toggleStrCaps(CONFIG.client.extra.visualRange.logoutAlert));
                     return OK;
-                })))
-            .then(literal("replayRecording")
-                .then(argument("toggle", toggle()).executes(c -> {
-                    CONFIG.client.extra.visualRange.replayRecording = getToggle(c, "toggle");
-                    c.getSource().getEmbed()
-                        .title("Replay Recording " + toggleStrCaps(CONFIG.client.extra.visualRange.replayRecording));
-                    return OK;
-                }))
-                .then(literal("mode").then(argument("modeArg", enumStrings("enemy", "all")).executes(c -> {
-                    var arg = getString(c, "modeArg");
-                    var mode = switch (arg) {
-                        case "enemy" -> Config.Client.Extra.VisualRange.ReplayRecordingMode.ENEMY;
-                        case "all" -> Config.Client.Extra.VisualRange.ReplayRecordingMode.ALL;
-                        default -> null;
-                    };
-                    if (mode == null) {
-                        c.getSource().getEmbed()
-                            .title("Invalid Replay Recording Mode");
-                        return ERROR;
-                    } else {
-                        CONFIG.client.extra.visualRange.replayRecordingMode = mode;
-                        c.getSource().getEmbed()
-                            .title("Replay Recording Mode Set");
-                        return OK;
-                    }
-                })))
-                .then(literal("cooldown").then(argument("minutes", integer(0)).executes(c -> {
-                    CONFIG.client.extra.visualRange.replayRecordingCooldownMins = getInteger(c, "minutes");
-                    c.getSource().getEmbed()
-                        .title("Enemy Replay Recording Cooldown Set");
-                    return OK;
-                }))));
+                })));
     }
 
     @Override
@@ -213,9 +172,6 @@ public class VisualRangeCommand extends Command {
             .addField("Ignore Friends", toggleStr(CONFIG.client.extra.visualRange.ignoreFriends))
             .addField("Leave Alerts", toggleStr(CONFIG.client.extra.visualRange.leaveAlert))
             .addField("Logout Alerts", toggleStr(CONFIG.client.extra.visualRange.logoutAlert))
-            .addField("Replay Recording", toggleStr(CONFIG.client.extra.visualRange.replayRecording))
-            .addField("Replay Recording Mode", CONFIG.client.extra.visualRange.replayRecordingMode.toString().toLowerCase())
-            .addField("Replay Recording Cooldown", CONFIG.client.extra.visualRange.replayRecordingCooldownMins)
             .primaryColor();
     }
 }

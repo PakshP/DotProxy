@@ -8,8 +8,6 @@ import com.zenith.command.api.DiscordCommandContext;
 import com.zenith.event.discord.DiscordMainChannelCommandReceivedEvent;
 import com.zenith.event.discord.DiscordRelayChannelMessageReceivedEvent;
 import com.zenith.event.discord.MainChannelMessageSentEvent;
-import com.zenith.feature.autoupdater.AutoUpdater;
-import com.zenith.feature.queue.Queue;
 import com.zenith.module.impl.AutoReconnect;
 import com.zenith.util.MentionUtil;
 import lombok.Getter;
@@ -48,7 +46,6 @@ import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
 import java.util.concurrent.ScheduledFuture;
-import java.util.concurrent.ThreadLocalRandom;
 import java.util.concurrent.TimeUnit;
 import java.util.function.Consumer;
 import java.util.stream.Collectors;
@@ -97,9 +94,6 @@ public class DiscordBot {
             throw e;
         }
 
-        if (CONFIG.discord.isUpdating) {
-            handleProxyUpdateComplete();
-        }
         this.presenceUpdateFuture = EXECUTOR.scheduleWithFixedDelay(
             this::tickPresence, 0L,
             15L, // discord rate limit
@@ -157,7 +151,7 @@ public class DiscordBot {
             jda.awaitReady();
         } catch (ShutdownException e) {
             if (e.getShutdownReason() == ShutdownReason.DISALLOWED_INTENTS) {
-                throw new RuntimeException("You must enable MESSAGE CONTENT INTENT on the Discord developer website: https://wiki.2b2t.vc/_assets/img/discord-setup/DiscordSetup2.png");
+                throw new RuntimeException("You must enable MESSAGE CONTENT INTENT on the Discord developer website (Bot > Privileged Gateway Intents). See: " + SOURCE_URL);
             }
             throw e;
         } catch (InterruptedException e) {
@@ -271,20 +265,6 @@ public class DiscordBot {
         }
     }
 
-    private void handleProxyUpdateComplete() {
-        CONFIG.discord.isUpdating = false;
-        saveConfigAsync();
-        var embed = Embed.builder()
-            .title("Update complete!")
-            .description("Current Version: `" + escape(LAUNCH_CONFIG.version) + "`")
-            .successColor();
-        if (!LAUNCH_CONFIG.auto_update) {
-            embed
-                .title("Restart complete!");
-        }
-        sendEmbedMessage(embed);
-    }
-
     public static String escape(String message) {
         return message.replace("_", "\\_").replace("*", "\\*").replace("`", "\\`");
     }
@@ -297,29 +277,14 @@ public class DiscordBot {
         if (!isRunning()) return;
         if (!CONFIG.discord.managePresence) return;
         try {
-            if (LAUNCH_CONFIG.auto_update) {
-                final AutoUpdater autoUpdater = Proxy.getInstance().getAutoUpdater();
-                if (autoUpdater.getUpdateAvailable() && ThreadLocalRandom.current().nextDouble() < 0.25) {
-                    jda.getPresence().setPresence(
-                        Proxy.getInstance().isConnected()
-                            ? Proxy.getInstance().isInQueue() || MODULE.get(AutoReconnect.class).autoReconnectIsInProgress()
-                                ? OnlineStatus.IDLE
-                                : OnlineStatus.ONLINE
-                            : OnlineStatus.DO_NOT_DISTURB,
-                        Activity.customStatus("Update Available" + autoUpdater.getNewVersion().map(v -> ": " + v).orElse(""))
-                    );
-                }
-            }
             if (MODULE.get(AutoReconnect.class).autoReconnectIsInProgress()) {
                 jda.getPresence().setPresence(OnlineStatus.IDLE, Activity.customStatus("AutoReconnecting..."));
                 return;
             }
-            if (Proxy.getInstance().isInQueue()) {
-                jda.getPresence().setPresence(OnlineStatus.IDLE, Activity.customStatus(Queue.queuePositionStr()));
-            } else if (Proxy.getInstance().isConnected()) {
+            if (Proxy.getInstance().isConnected()) {
                 jda.getPresence().setPresence(
                     OnlineStatus.ONLINE,
-                    Activity.customStatus((Proxy.getInstance().isOn2b2t() ? "2b2t" : CONFIG.client.server.address)
+                    Activity.customStatus(CONFIG.client.server.address
                                               + " [" + Proxy.getInstance().getOnlineTimeString() + "]"));
             } else {
                 jda.getPresence().setPresence(OnlineStatus.DO_NOT_DISTURB, Activity.customStatus("Disconnected"));
@@ -354,11 +319,9 @@ public class DiscordBot {
             DISCORD.setBotDescription(
                 """
                 ZenithProxy %s
-                **Official Discord**:
-                  https://discord.gg/nJZrSaRKtb
-                **Github**:
-                  https://github.com/rfresh2/ZenithProxy
-                """.formatted(VERSION));
+                **Source Code**:
+                  %s
+                """.formatted(VERSION, SOURCE_URL));
     }
 
     public void updateBotAvatar() {

@@ -1,0 +1,326 @@
+{
+  "formatVersion": "1.1",
+  "component": {
+    "group": "com.github.rfresh2",
+    "module": "MCProtocolLib",
+    "version": "1.21.4.75",
+    "attributes": {
+      "org.gradle.status": "release"
+    }
+  },
+  "createdBy": {
+    "gradle": {
+      "version": "9.8.2"
+    }
+  },
+  "variants": [
+    {
+      "name": "apiElements",
+      "attributes": {
+        "org.gradle.category": "library",
+        "org.gradle.dependency.bundling": "external",
+        "org.gradle.jvm.version": 21,
+        "org.gradle.libraryelements": "jar",
+        "org.gradle.usage": "java-api"
+      },
+      "dependencies": [
+        {
+          "group": "org.slf4j",
+          "module": "slf4j-api",
+          "version": {
+            "requires": "2.0.20"
+          }
+        },
+        {
+          "group": "com.github.rfresh2",
+          "module": "OpenNBT",
+          "version": {
+            "requires": "3.0.13"
+          }
+        },
+        {
+          "group": "net.raphimc",
+          "module": "MinecraftAuth",
+          "version": {
+            "requires": "5.0.2"
+          }
+        },
+        {
+          "group": "net.kyori",
+          "module": "adventure-bom",
+          "version": {
+            "requires": "5.2.0"
+          },
+          "attributes": {
+            "org.gradle.category": "platform"
+          },
+          "endorseStrictVersions": true
+        },
+        {
+          "group": "net.kyori",
+          "module": "adventure-text-serializer-gson"
+        },
+        {
+          "group": "net.kyori",
+          "module": "adventure-text-serializer-json-legacy-impl"
+        },
+        {
+          "group": "net.kyori",
+          "module": "adventure-text-serializer-legacy"
+        },
+        {
+          "group": "net.kyori",
+          "module": "adventure-text-serializer-ansi"
+        },
+        {
+          "group": "net.kyori",
+          "module": "adventure-text-minimessage"
+        },
+        {
+          "group": "net.kyori",
+          "module": "adventure-text-serializer-commons"
+        },
+        {
+          "group": "org.cloudburstmc.math",
+          "module": "api",
+          "version": {
+            "requires": "2.0"
+          }
+        },
+        {
+          "group": "org.cloudburstmc.math",
+          "module": "immutable",
+          "version": {
+            "requires": "2.0"
+          }
+        },
+        {
+          "group": "com.github.rfresh2.fastutil",
+          "module": "fastutil-bom",
+          "version": {
+            "requires": "8.5.19"
+          },
+          "attributes": {
+            "org.gradle.category": "platform"
+          },
+          "endorseStrictVersions": true
+        },
+        {
+          "group": "com.github.rfresh2.fastutil.maps",
+          "module": "object-int-maps"
+        },
+        {
+          "group": "com.github.rfresh2.fastutil.maps",
+          "module": "int-object-maps"
+        },
+        {
+          "group": "com.github.rfresh2.fastutil.maps",
+          "module": "int-int-maps"
+        },
+        {
+          "group": "com.github.rfresh2.fastutil.maps",
+          "module": "reference-int-maps"
+        },
+        {
+          "group": "io.netty",
+          "module": "netty-all",
+          "version": {
+            "requires": "4.2.19.Final"
+          }
+        },
+        {
+          "group": "com.velocitypowered",
+          "module": "velocity-native",
+          "version": {
+            "requires": "3.5.0-SNAPSHOT"
+          }
+        }
+      ],
+      "files": [
+        {
+          "name": "MCProtocolLib-1.21.4.75.jar",
+          "url": "MCProtocolLib-1.21.4.75.jar",
+          "size": 1286504,
+          "sha512": "42229c1792cbb2968b378fc339cbfc47df04f0e433f09b9bd16cf14552a5064f17408b813e4a7d1572b19197d76b185f35c5acfeb79935800df62c10cff31ca3",
+          "sha256": "8c2685be9993ded0ccbfc76ff06bc4c69c04a2b87fb418349e99ac569e24d45f",
+          "sha1": "08d983af91f4dc9302215b2967a71087c418d94a",
+          "md5": "8efe1d6d95a2992fb0364a5c740b8b9d"
+        }
+      ]
+    },
+    {
+      "name": "runtimeElements",
+      "attributes": {
+        "org.gradle.category": "library",
+        "org.gradle.dependency.bundling": "external",
+        "org.gradle.jvm.version": 21,
+        "org.gradle.libraryelements": "jar",
+        "org.gradle.usage": "java-runtime"
+      },
+      "dependencies": [
+        {
+          "group": "org.slf4j",
+          "module": "slf4j-api",
+          "version": {
+            "requires": "2.0.20"
+          }
+        },
+        {
+          "group": "com.github.rfresh2",
+          "module": "OpenNBT",
+          "version": {
+            "requires": "3.0.13"
+          }
+        },
+        {
+          "group": "net.raphimc",
+          "module": "MinecraftAuth",
+          "version": {
+            "requires": "5.0.2"
+          }
+        },
+        {
+          "group": "net.kyori",
+          "module": "adventure-bom",
+          "version": {
+            "requires": "5.2.0"
+          },
+          "attributes": {
+            "org.gradle.category": "platform"
+          },
+          "endorseStrictVersions": true
+        },
+        {
+          "group": "net.kyori",
+          "module": "adventure-text-serializer-gson"
+        },
+        {
+          "group": "net.kyori",
+          "module": "adventure-text-serializer-json-legacy-impl"
+        },
+        {
+          "group": "net.kyori",
+          "module": "adventure-text-serializer-legacy"
+        },
+        {
+          "group": "net.kyori",
+          "module": "adventure-text-serializer-ansi"
+        },
+        {
+          "group": "net.kyori",
+          "module": "adventure-text-minimessage"
+        },
+        {
+          "group": "net.kyori",
+          "module": "adventure-text-serializer-commons"
+        },
+        {
+          "group": "org.cloudburstmc.math",
+          "module": "api",
+          "version": {
+            "requires": "2.0"
+          }
+        },
+        {
+          "group": "org.cloudburstmc.math",
+          "module": "immutable",
+          "version": {
+            "requires": "2.0"
+          }
+        },
+        {
+          "group": "com.github.rfresh2.fastutil",
+          "module": "fastutil-bom",
+          "version": {
+            "requires": "8.5.19"
+          },
+          "attributes": {
+            "org.gradle.category": "platform"
+          },
+          "endorseStrictVersions": true
+        },
+        {
+          "group": "com.github.rfresh2.fastutil.maps",
+          "module": "object-int-maps"
+        },
+        {
+          "group": "com.github.rfresh2.fastutil.maps",
+          "module": "int-object-maps"
+        },
+        {
+          "group": "com.github.rfresh2.fastutil.maps",
+          "module": "int-int-maps"
+        },
+        {
+          "group": "com.github.rfresh2.fastutil.maps",
+          "module": "reference-int-maps"
+        },
+        {
+          "group": "io.netty",
+          "module": "netty-all",
+          "version": {
+            "requires": "4.2.19.Final"
+          }
+        },
+        {
+          "group": "com.velocitypowered",
+          "module": "velocity-native",
+          "version": {
+            "requires": "3.5.0-SNAPSHOT"
+          }
+        }
+      ],
+      "files": [
+        {
+          "name": "MCProtocolLib-1.21.4.75.jar",
+          "url": "MCProtocolLib-1.21.4.75.jar",
+          "size": 1286504,
+          "sha512": "42229c1792cbb2968b378fc339cbfc47df04f0e433f09b9bd16cf14552a5064f17408b813e4a7d1572b19197d76b185f35c5acfeb79935800df62c10cff31ca3",
+          "sha256": "8c2685be9993ded0ccbfc76ff06bc4c69c04a2b87fb418349e99ac569e24d45f",
+          "sha1": "08d983af91f4dc9302215b2967a71087c418d94a",
+          "md5": "8efe1d6d95a2992fb0364a5c740b8b9d"
+        }
+      ]
+    },
+    {
+      "name": "javadocElements",
+      "attributes": {
+        "org.gradle.category": "documentation",
+        "org.gradle.dependency.bundling": "external",
+        "org.gradle.docstype": "javadoc",
+        "org.gradle.usage": "java-runtime"
+      },
+      "files": [
+        {
+          "name": "MCProtocolLib-1.21.4.75-javadoc.jar",
+          "url": "MCProtocolLib-1.21.4.75-javadoc.jar",
+          "size": 3060411,
+          "sha512": "a5f1db70f4c2deb6f4a5d1ae357487d2320b81ad1279c172d7852c60a9b5f4ca3245159d7f68919036ba8123e9e1aa59e238173ee15f35e0ad60b67598809b84",
+          "sha256": "21aa4a636e147ae7f4bdde469289945fc810040d74ecd74ef6a5fa609173aeba",
+          "sha1": "ad559be6950cb5800ad2abdc4fe835a8ffcd2e7f",
+          "md5": "eb23f0a5862487bfa8f078abe6a14c92"
+        }
+      ]
+    },
+    {
+      "name": "sourcesElements",
+      "attributes": {
+        "org.gradle.category": "documentation",
+        "org.gradle.dependency.bundling": "external",
+        "org.gradle.docstype": "sources",
+        "org.gradle.usage": "java-runtime"
+      },
+      "files": [
+        {
+          "name": "MCProtocolLib-1.21.4.75-sources.jar",
+          "url": "MCProtocolLib-1.21.4.75-sources.jar",
+          "size": 455164,
+          "sha512": "3e0cc629a38fca4c990561f09ad811ffcd01756962f53709972bbba8301eadc52343bf90c26e60f4019d85a936c2c86a29ae2cc367fcb735219cda5b7ce1af7c",
+          "sha256": "39412ab8b641b06800de27bc2eb58f0a85b3f6c6c181c92f3598dc43342b47c2",
+          "sha1": "bebcfaff7ce65b59fe7de6d9196fe224c7b5461f",
+          "md5": "37bebf933b22ff84a242bf2c3fa1f593"
+        }
+      ]
+    }
+  ]
+}

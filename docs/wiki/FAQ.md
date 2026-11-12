@@ -8,19 +8,21 @@
 
 `connect`
 
-If the Microsoft website is automatically logging you in with the wrong account, open the login link in an incognito/private browsing window.
+If the Microsoft website signs you in to the wrong account automatically, open the login link in a private/incognito window.
 
-## Switch the MC server ZenithProxy connects to
+## Switch the server DotProxy connects to
 
-`server <address>`
+`server <address>` or `server <address> <port>`
 
-Example: `server 2b2t.org`
+Example: `server play.example.com`
 
-## I keep getting disconnected from 2b2t!
+Then reconnect: `disconnect` followed by `connect`, or just `reconnect`.
 
-Refer to the [Disconnects](./Disconnects.md).
+## I keep getting disconnected!
 
-In particular, for disconnects like:
+See [Disconnects](./Disconnects.md).
+
+Disconnects like these:
 
 > Read timed out.
 
@@ -30,25 +32,38 @@ In particular, for disconnects like:
 
 > io.netty.channel.unix.Errors$NativeIoException: Broken Pipe
 
-These are caused by your internet connection to 2b2t. There is nothing you or I can do to prevent this.
+are caused by problems with the internet connection between DotProxy and the server. DotProxy can't prevent them.
 
-If you have an unstable internet connection, consider hosting on a VPS.
+Turn on [`autoReconnect`](./Commands.md#autoreconnect) so DotProxy reconnects on its own. If your internet connection is unstable, consider hosting on a VPS.
+
+## How do I keep my AFK farm running?
+
+1. Stand where the farm needs you, then disconnect from the proxy. The account stays online.
+2. Turn on the modules that keep the account in-game:
+    * [`antiAFK`](./Commands.md#antiafk) avoids idle kicks.
+    * [`autoReconnect`](./Commands.md#autoreconnect) reconnects after server restarts and connection drops.
+    * [`autoRespawn`](./Commands.md#autorespawn) respawns if the account dies.
+3. Optionally, turn on [`autoDisconnect`](./Commands.md#autodisconnect) to log out on low health or when another player comes near.
+
+Check the server's rules first. Some servers don't allow AFKing or AntiAFK.
 
 ## I don't know how to connect to my proxy!
 
-Run the ZenithProxy command: `status`
+Run the DotProxy command `status`.
 
-Look for `Proxy IP`
+Look for `Proxy IP`.
 
-Connect to that IP in your MC client
+Add a server with that address in your Minecraft client:
 
 ![](./_assets/img/faq/add-proxy-server.png)
 
+Make sure your username is whitelisted: `whitelist add <username>`
+
 ## I can't connect to my proxy!
 
-First step, run the ZenithProxy command: `connectionTest`
+First, run the DotProxy command `connectionTest`.
 
-If it shows an error related to firewall:
+If it shows a firewall error, open the proxy's port (default `25565`, TCP) in your host's firewall:
 
 ### Oracle Cloud
 
@@ -63,128 +78,99 @@ source: https://www.reddit.com/r/oraclecloud/comments/r8lkf7/a_quick_tips_to_peo
 
 ### AWS
 
-AWS calls their firewall a "Security Group".
+AWS calls its firewall a "Security Group".
 
-Edit it to allow all traffic:
+Edit the Security Group attached to your instance and add an inbound rule that allows TCP traffic on the proxy's port:
 
 ![](./_assets/img/hosting-providers/aws-security-group.png)
 
 ### Google Cloud
 
-Edit the network attached to your VM and add a firewall rule that allows all inbound traffic:
-![](./_assets/img/hosting-providers/google-cloud-firewall-rule.png)
+Open **VPC network > Firewall** (or **Network Security > Firewall policies**) and create a firewall rule for the network attached to your VM:
+
+* Direction of traffic: **Ingress**
+* Action on match: **Allow**
+* Targets: **All instances in the network**
+* Source IPv4 ranges: `0.0.0.0/0`
+* Protocols and ports: TCP, with the proxy's port (or **Allow all**)
 
 ### Other
 
-Consult your provider's website and documentation
+Check your provider's website and documentation.
 
-## I'm self-hosting ZenithProxy on my home PC. How can my friends connect?
+## I'm hosting DotProxy on my home PC. How can my friends connect?
 
 ### Option 1: Tunneling
 
-Use a service like [playit.gg](https://playit.gg/) to create a network tunnel for your friends to connect to.
+Use a service like [playit.gg](https://playit.gg/) to create a network tunnel your friends can connect through.
 
-You can set it up same as a normal Minecraft server, using the port ZenithProxy is listening on (`serverConnection` command to check port)
+Set it up the same way as a normal Minecraft server, using the port DotProxy listens on. Use the `serverConnection` command to check the port.
 
 ### Option 2: Port Forwarding
 
 Automatic port forwarding: `serverConnection upnp on`
 
-The automatic method may not work depending on your router.
+Depending on your router, the automatic method may not work.
 
-Otherwise you will need to manually set up port forwarding on your router, google your router model + "port forwarding" for instructions.
+If it doesn't, set up port forwarding on your router manually. Search for your router model plus "port forwarding" to find instructions.
 
 ### Option 3: VPS
 
-Host ZenithProxy on a VPS instead of your home PC.
+Host DotProxy on a VPS instead of your home PC.
 
-A VPS will have a public IP address anyone can connect to.
+A VPS has a public IP address anyone can connect to. See [Hosting Providers](./Hosting-Providers.md).
 
-## Spammer isn't working on 2b2t
+## Can I run DotProxy while my PC is off?
 
-It means you are muted, or your chats are being filtered
+No. DotProxy has to run on a computer that's turned on.
 
-Everyone is muted on login until you've walked around a bit
+Some people use a spare computer. Others rent a computer in a datacenter (a VPS). See [Hosting Providers](./Hosting-Providers.md).
 
-There's also chat filters for banned words and characters
+## Can friends watch without controlling the account?
 
-And lastly there are moderators and automated tools who can mute you without warning
+Yes. Add them to the spectator whitelist:
 
-## How to set up the pearl loader bot
+`spectator whitelist add <username>`
 
-First, set up pearls with the [pearlLoader](./Commands.md#pearlloader) commands
+Spectators can join while someone else controls the account, and can watch from that player's view. See [`spectator`](./Commands.md#spectator).
 
-You can then use ZenithProxy commands to load pearls.
+## How can I make my minimap/world map mod work while using DotProxy?
 
-To be able to use the commands ingame while not connected to ZenithProxy:
+Map mods like Xaero's usually pick which map and waypoint files to use based on the server address.
 
-### Option 1: Whisper Commands
+DotProxy has a different address than the server you'd normally connect to directly, so the mod opens a separate, empty map.
 
-Use the [ZenithProxyChatControl](https://github.com/rfresh2/ZenithProxyChatControl) plugin
+### Option 1: Change the map folder mode
 
-### Option 2: ZenithProxyMod + ZenithProxyWebAPI
+Some map mods can choose the map folder by the server's **name** in your server list instead of its address. If yours can, give the direct server and the proxy the same name in your server list, and they'll share map files.
 
-Use the [ZenithProxyWebAPI](https://github.com/rfresh2/ZenithProxyWebAPI/) plugin
-
-and [ZenithProxyMod](https://github.com/rfresh2/ZenithProxyMod/)
-
-Load pearls over the API [with this command](https://github.com/rfresh2/ZenithProxyMod#web-api-commands)
-
-## Can I run ZenithProxy while my PC is off?
-
-No.
-
-Some people use a spare computer.
-
-Some choose to rent a computer in a datacenter (VPS), I recommend [DigitalOcean](./DigitalOcean-Setup-Guide.md).
-
-## How can I make my Xaero map work while using ZenithProxy?
-
-By default, Xaero chooses which map files to use based on the server IP.
-
-You can find the map files currently in use with the XaeroPlus commands:
-
-`/xaeroDataDir` and `/xaeroWaypointDir`
-
-The issue is ZenithProxy has a different IP than connecting directly to 2b2t (or other servers).
-
-### Option 1: Change Data Dir Mode
-
-XaeroPlus has a setting: `Xaero Data Dir Mode` you can set to `Server Name`. (in the `XaeroPlus WorldMap Settings` page)
-
-"Server Name" meaning the name you set up in your ingame server list.
-
-So, if you set up your servers all with the same name, they will all use the same map/waypoints folder.
-
-You will need to manually copy/move your existing map/waypoint files to the new folder.
+You may need to copy or move your existing map/waypoint files to the new folder by hand.
 
 ### Option 2: Symlinks
 
-A symlink is like a shortcut to a folder. Meaning you can forward one folder to another.
+A symlink works like a shortcut to a folder: it forwards one folder to another.
 
-So, you can symlink the map/waypoint folders used by each ZenithProxy IP to your main map/waypoint folders.
-
-More info in my discord: https://discord.com/channels/1127460556710883391/1127461243054202921/1272355246206619711
+You can symlink the map/waypoint folder used for the proxy's address to your main map/waypoint folder.
 
 ## Who are these unknown people pinging or trying to connect to my proxy?
 
-if you host something on your home PC, in most cases, it is _not_ exposed to the public internet by default
+If you host something on your home PC, in most cases it is _not_ exposed to the public internet by default.
 
-Windows has a firewall, and your router needs to have port forwarding configured
+Windows has a firewall, and your router needs port forwarding set up before outside connections can reach you.
 
-but if you host something on the public internet, anyone on the public internet can find it
+If you host something on the public internet, anyone on the internet can find it.
 
-there are only ~4 billion possible ip's. And it's possible to scan 4b ip's in under an hour
+There are only about 4 billion possible IPv4 addresses, and all of them can be scanned in under an hour.
 
-people have been doing this for many years across every minecraft server. some groups involved are: 5c, serverseeker, matscan, and many more
+People have been scanning the internet for Minecraft servers like this for many years.
 
-to be clear, finding a proxy's public ip does not let them get past the whitelist
+Finding your proxy's public IP does not let them past the whitelist.
 
-if you are hosting on the public internet, and it makes you uncomfortable, there are some things you can do:
+If you're hosting on the public internet and this makes you uncomfortable, you can:
 
-* disable server list pings: `serverConnection ping off`
-* set up a DNS hostname, configure it as `serverConnection proxyIP <domain>`, and then set `serverConnection enforceMatchingConnectingAddress on`
-  * if you don't own a domain, there are free options like [DuckDNS](https://www.duckdns.org/), [No-IP](https://www.noip.com/), [Dynu](https://www.dynu.com/)
-* make yourself more difficult to find: `serverConnection port <port>` with something non-standard, maybe something random between 30000-65535
-* set up a firewall that only allows you/your friends ip's to connect
-* host your proxy on a private network using tools like tailscale, hamachi, etc
+* Turn off server list pings: `serverConnection ping off`
+* Set up a DNS hostname, set it with `serverConnection proxyIP <domain>`, then run `serverConnection enforceMatchingConnectingAddress on`
+    * If you don't own a domain, there are free options like [DuckDNS](https://www.duckdns.org/), [No-IP](https://www.noip.com/), and [Dynu](https://www.dynu.com/)
+* Make the proxy harder to find: `serverConnection port <port>` with a non-standard port, maybe a random one between 30000 and 65535
+* Set up a firewall that only allows your and your friends' IPs to connect
+* Host the proxy on a private network using tools like Tailscale

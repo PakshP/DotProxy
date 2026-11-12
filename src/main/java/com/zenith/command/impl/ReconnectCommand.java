@@ -20,8 +20,6 @@ public class ReconnectCommand extends Command {
             .category(CommandCategory.MANAGE)
             .description("""
             Disconnect and reconnects from the destination MC server.
-            
-            Can be used to perform a reconnect "queue skip" on 2b2t
             """)
             .build();
     }

@@ -24,7 +24,7 @@ public class FriendCommand extends Command {
             .category(CommandCategory.MANAGE)
             .description("""
             Manage the friend list.
-            Friends change behavior for various modules like VisualRange, KillAura, and AutoDisconnect
+            Friends change behavior for various modules like VisualRange and AutoDisconnect
             """)
             .usageLines(
                 "add/del <player>",

@@ -77,7 +77,6 @@ public class ChunkCache implements CachedData {
     protected BlockStatePredictionHandler blockStatePredictionHandler = new BlockStatePredictionHandler();
 
     // todo: also cache world border size changes
-    //  doesn't particularly matter on 2b2t tho
     protected WorldBorderData worldBorderData = WorldBorderData.DEFAULT;
     protected WorldTimeData worldTimeData;
     protected byte[] serverBrand = null;

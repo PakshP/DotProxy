@@ -21,8 +21,7 @@ public class TerminalCommand extends Command {
             .usageLines(
                 "autoCompletions on/off",
                 "logToDiscord on/off",
-                "logChatMessages on/off",
-                "logOnlyQueuePositionUpdates on/off"
+                "logChatMessages on/off"
             )
             .build();
     }
@@ -45,11 +44,6 @@ public class TerminalCommand extends Command {
                 CONFIG.client.extra.logChatMessages = getToggle(c, "toggle");
                 c.getSource().getEmbed()
                     .title("Log Chat Messages " + toggleStrCaps(CONFIG.client.extra.logChatMessages));
-            })))
-            .then(literal("logOnlyQueuePositionUpdates").then(argument("toggle", toggle()).executes(c -> {
-                CONFIG.client.extra.logOnlyQueuePositionUpdates = getToggle(c, "toggle");
-                c.getSource().getEmbed()
-                    .title("Log Only Queue Pos Updates " + toggleStrCaps(CONFIG.client.extra.logOnlyQueuePositionUpdates));
             })));
     }
 
@@ -60,7 +54,6 @@ public class TerminalCommand extends Command {
             .addField("AutoCompletions", toggleStr(CONFIG.interactiveTerminal.alwaysOnCompletions))
             .addField("Log To Discord", toggleStr(CONFIG.interactiveTerminal.logToDiscord))
             .addField("Log Chat Messages", toggleStr(CONFIG.client.extra.logChatMessages))
-            .addField("Log Only Queue Pos Updates", toggleStr(CONFIG.client.extra.logOnlyQueuePositionUpdates))
             .primaryColor();
     }
 }

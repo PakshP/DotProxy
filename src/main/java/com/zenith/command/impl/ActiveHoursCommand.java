@@ -34,10 +34,7 @@ public class ActiveHoursCommand extends Command {
             .description("""
             Set times for ZenithProxy to automatically connect at.
 
-            By default, 2b2t's queue wait ETA is used to determine when to log in.
-            The connect will occur when the current time plus the ETA is equal to a time set.
-
-            If Queue ETA calc is disabled, connects will occur exactly at the set times instead.
+            Connects will occur at the set times.
 
              Time zone Ids ("TZ Identifier" column): https://w.wiki/A2fd
              Time format: hh:mm, Examples: 1:42, 14:42, 14:01
@@ -48,7 +45,6 @@ public class ActiveHoursCommand extends Command {
                 "add/del <time>",
                 "status",
                 "whilePlayerConnected on/off",
-                "queueEtaCalc on/off",
                 "fullSessionUntilNextDisconnect on/off"
             )
             .build();
@@ -120,13 +116,6 @@ public class ActiveHoursCommand extends Command {
                         .title("Force Reconnect Set!");
                     return OK;
                 })))
-            .then(literal("queueEtaCalc")
-                .then(argument("toggle", toggle()).executes(c -> {
-                    CONFIG.client.extra.utility.actions.activeHours.queueEtaCalc = getToggle(c, "toggle");
-                    c.getSource().getEmbed()
-                        .title("Queue ETA Calc Set!");
-                    return OK;
-                })))
             .then(literal("fullSessionUntilNextDisconnect").then(argument("toggle", toggle()).executes(c -> {
                 CONFIG.client.extra.utility.actions.activeHours.fullSessionUntilNextDisconnect = getToggle(c, "toggle");
                 c.getSource().getEmbed()
@@ -164,7 +153,6 @@ public class ActiveHoursCommand extends Command {
                 ? "None set!"
                 : activeTimeListToString(CONFIG.client.extra.utility.actions.activeHours.activeTimes)))
             .addField("While Player Connected", toggleStr(CONFIG.client.extra.utility.actions.activeHours.forceReconnect))
-            .addField("Queue ETA Calc", toggleStr(CONFIG.client.extra.utility.actions.activeHours.queueEtaCalc))
             .addField("Full Session Until Next Disconnect", toggleStr(CONFIG.client.extra.utility.actions.activeHours.fullSessionUntilNextDisconnect))
             .primaryColor();
     }

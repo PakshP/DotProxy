@@ -6,7 +6,7 @@ import com.zenith.command.api.Command;
 import com.zenith.command.api.CommandCategory;
 import com.zenith.command.api.CommandContext;
 import com.zenith.command.api.CommandUsage;
-import com.zenith.feature.queue.mcping.MCPing;
+import com.zenith.feature.ping.MCPing;
 import com.zenith.network.server.ServerSession;
 
 import java.util.ArrayList;

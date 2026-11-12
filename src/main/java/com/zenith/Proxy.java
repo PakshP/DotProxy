@@ -8,18 +8,10 @@ import com.zenith.discord.Embed;
 import com.zenith.discord.NotificationEventListener;
 import com.zenith.event.client.*;
 import com.zenith.event.message.PrivateMessageSendEvent;
-import com.zenith.event.queue.QueueCompleteEvent;
-import com.zenith.event.queue.QueuePositionUpdateEvent;
-import com.zenith.event.queue.QueueSkipEvent;
-import com.zenith.event.queue.QueueStartEvent;
 import com.zenith.event.server.ServerIconBuildEvent;
 import com.zenith.event.system.ProxyLaunchedEvent;
 import com.zenith.feature.api.mcstatus.MCStatusApi;
-import com.zenith.feature.autoupdater.AutoUpdater;
-import com.zenith.feature.autoupdater.NoOpAutoUpdater;
-import com.zenith.feature.autoupdater.RestAutoUpdater;
 import com.zenith.feature.chatschema.ChatSchemaParser;
-import com.zenith.feature.queue.Queue;
 import com.zenith.feature.skin.SkinRetriever;
 import com.zenith.module.impl.AutoReconnect;
 import com.zenith.network.client.Authenticator;
@@ -29,7 +21,7 @@ import com.zenith.network.server.ProxyServerListener;
 import com.zenith.network.server.ServerSession;
 import com.zenith.plugin.bootstrap.BootstrapMessageConsumer;
 import com.zenith.terminal.logback.TerminalConsoleAppender;
-import com.zenith.util.ImageInfo;
+import com.zenith.util.TimeUtil;
 import com.zenith.util.Wait;
 import com.zenith.util.config.ConfigVerifier;
 import com.zenith.util.struct.FastArrayList;
@@ -38,7 +30,6 @@ import com.zenith.via.ZenithServerChannelInitializer;
 import dev.omega24.upnp4j.UPnP4J;
 import dev.omega24.upnp4j.util.Protocol;
 import lombok.Getter;
-import lombok.Setter;
 import lombok.SneakyThrows;
 import net.kyori.adventure.key.Key;
 import net.kyori.adventure.text.Component;
@@ -92,15 +83,9 @@ public class Proxy {
     protected byte[] serverIcon;
     protected final AtomicReference<ServerSession> currentPlayer = new AtomicReference<>();
     protected final FastArrayList<ServerSession> activeConnections = new FastArrayList<>(ServerSession.class);
-    private boolean inQueue = false;
-    private boolean didQueueSkip = false;
-    private int queuePosition = 0;
     @Nullable private Instant connectTime;
     private Instant disconnectTime = Instant.now();
-    private OptionalLong prevOnlineSeconds = OptionalLong.empty();
-    private Optional<Boolean> isPrio = Optional.empty();
     private final AtomicBoolean loggingIn = new AtomicBoolean(false);
-    @Setter @NonNull private AutoUpdater autoUpdater = NoOpAutoUpdater.INSTANCE;
     private LanBroadcaster lanBroadcaster;
     private TcpConnectionManager tcpManager;
     private FileLock fileLock;
@@ -128,12 +113,6 @@ public class Proxy {
             this,
             of(ClientDisconnectEvent.class, this::handleDisconnectEvent),
             of(ClientConnectEvent.class, this::handleConnectEvent),
-            of(QueueStartEvent.class, this::handleStartQueueEvent),
-            of(QueuePositionUpdateEvent.class, this::handleQueuePositionUpdateEvent),
-            of(QueueCompleteEvent.class, this::handleQueueCompleteEvent),
-            of(QueueSkipEvent.class, this::handleQueueSkipEvent),
-            of(ClientOnlineEvent.class, this::handlePlayerOnlineEvent),
-            of(PrioStatusEvent.class, this::handlePrioStatusEvent),
             of(PrivateMessageSendEvent.class, this::handlePrivateMessageSendEvent)
         );
     }
@@ -141,20 +120,8 @@ public class Proxy {
     public void start() {
         BootstrapMessageConsumer.drainLogs();
         DEFAULT_LOG.info("Starting ZenithProxy-{}", VERSION);
-        var exeReleaseVersion = getExecutableReleaseVersion();
-        if (exeReleaseVersion == null) {
+        if (getExecutableReleaseVersion() == null) {
             DEFAULT_LOG.warn("Detected unofficial ZenithProxy development build!");
-        } else if (!LAUNCH_CONFIG.version.split("\\+")[0].equals(exeReleaseVersion.split("\\+")[0])) {
-            DEFAULT_LOG.warn("launch_config.json version: {} and embedded ZenithProxy version: {} do not match!", LAUNCH_CONFIG.version, exeReleaseVersion);
-            var correctedVersion = "%s+%s.%s".formatted(
-                exeReleaseVersion.split("\\+")[0],
-                ImageInfo.inImageRuntimeCode() ? "linux" : "java",
-                exeReleaseVersion.split("\\+")[1]
-            );
-            LAUNCH_CONFIG.version = correctedVersion;
-            LAUNCH_CONFIG.local_version = correctedVersion;
-            saveLaunchConfig();
-            DEFAULT_LOG.warn("Updated version to match embedded ZenithProxy version: {}", exeReleaseVersion);
         }
         initEventHandlers();
         try {
@@ -171,20 +138,6 @@ public class Proxy {
             if (CONFIG.debug.lockFile) tryOpenLockFile();
             MODULE.init();
             this.tcpManager = new TcpConnectionManager();
-            if (CONFIG.database.enabled) {
-                try {
-                    EXECUTOR.submit(() -> {
-                        try {
-                            DATABASE.start();
-                            DATABASE_LOG.info("Started Databases");
-                        } catch (final Exception e) {
-                            DATABASE_LOG.error("Failed starting database", e);
-                        }
-                    }).get(10L, TimeUnit.SECONDS);
-                } catch (final Exception e) {
-                    DATABASE_LOG.error("Database start timeout", e);
-                }
-            }
             if (CONFIG.discord.enable) {
                 try {
                     DISCORD.start();
@@ -198,7 +151,6 @@ public class Proxy {
             NotificationEventListener.INSTANCE.subscribeEvents();
             ChatRelayEventListener.INSTANCE.subscribeEvents();
             if (CONFIG.plugins.enabled) PLUGIN_MANAGER.initialize();
-            Queue.start();
             saveConfigAsync();
             if (CONFIG.client.viaversion.enabled || CONFIG.server.viaversion.enabled) {
                 VIA_INITIALIZER.init();
@@ -217,37 +169,9 @@ public class Proxy {
                 connectAndCatchExceptions();
                 connected = true;
             }
-            if (!connected && CONFIG.autoUpdater.shouldReconnectAfterAutoUpdate) {
-                CONFIG.autoUpdater.shouldReconnectAfterAutoUpdate = false;
-                saveConfigAsync();
-                if (!CONFIG.client.extra.utility.actions.autoDisconnect.autoClientDisconnect && !isConnected()) {
-                    connectAndCatchExceptions();
-                    connected = true;
-                }
-            }
-            if (LAUNCH_CONFIG.auto_update && !inDevEnv()) {
-                autoUpdater = LAUNCH_CONFIG.release_channel.equals("git")
-                    ? NoOpAutoUpdater.INSTANCE
-                    : new RestAutoUpdater();
-                autoUpdater.start();
-                DEFAULT_LOG.info("Started AutoUpdater");
-            }
             DEFAULT_LOG.info("ZenithProxy started!");
-            if (LAUNCH_CONFIG.release_channel.endsWith(".pre")) {
-                DISCORD.sendEmbedMessage(
-                    Embed.builder()
-                        .title("ZenithProxy Prerelease")
-                        .description(
-                            """
-                            You are currently using a ZenithProxy prerelease
-
-                            Prereleases include experiments that may contain bugs and are not always updated with fixes
-
-                            Switch to a stable release with the `channel` command
-                            """));
-            }
             if (!connected) {
-                DEFAULT_LOG.info("Commands Help: https://wiki.2b2t.vc/Commands");
+                DEFAULT_LOG.info("Commands Help: use the `help` command");
                 DEFAULT_LOG.info("Proxy IP: {}", CONFIG.server.getProxyAddress());
                 DEFAULT_LOG.info("Use the `connect` command to log in!");
             }
@@ -412,7 +336,6 @@ public class Proxy {
                 stopServer();
                 if (nonNull(tcpManager)) tcpManager.close();
                 saveConfig();
-                if (CONFIG.database.enabled) DATABASE.stop();
                 DISCORD.stop(true);
             }).get(10L, TimeUnit.SECONDS);
         } catch (final Exception e) {
@@ -513,6 +436,11 @@ public class Proxy {
 
     public boolean isConnected() {
         return this.client != null && this.client.isConnected();
+    }
+
+    public boolean isOnline() {
+        var client = this.client;
+        return client != null && client.isConnected() && client.isOnline();
     }
 
     private void loadServerIcon() {
@@ -747,10 +675,6 @@ public class Proxy {
         else return null;
     }
 
-    public boolean isPrio() {
-        return this.isPrio.orElse(CONFIG.authentication.prio);
-    }
-
     public void kickNonWhitelistedPlayers() {
         var connections = Proxy.getInstance().getActiveConnections().getArray();
         for (int i = 0; i < connections.length; i++) {
@@ -762,25 +686,10 @@ public class Proxy {
         }
     }
 
-    public boolean isOnlineOn2b2tForAtLeastDuration(Duration duration) {
-        return isOn2b2t() && isOnlineForAtLeastDuration(duration);
-    }
-
-    public boolean isOnlineOn2b2tForAtLeastDurationWithQueueSkip(Duration duration) {
-        return isOn2b2t() && isOnlineForAtLeastDurationWithQueueSkip(duration);
-    }
-
     public boolean isOnlineForAtLeastDuration(Duration duration) {
         return isConnected()
-            && !isInQueue()
             && nonNull(getConnectTime())
             && getConnectTime().isBefore(Instant.now().minus(duration));
-    }
-
-    public boolean isOnlineForAtLeastDurationWithQueueSkip(Duration duration) {
-        return isConnected()
-            && !isInQueue()
-            && getOnlineTimeSecondsWithQueueSkip() >= duration.getSeconds();
     }
 
     void updateServerIcon(@NonNull GameProfile profile) {
@@ -797,10 +706,6 @@ public class Proxy {
         }
     }
 
-    public boolean isOn2b2t() {
-        return CONFIG.client.server.address.toLowerCase().endsWith("2b2t.org");
-    }
-
     public long getOnlineTimeSeconds() {
         var proxyConnectTime = this.connectTime;
         return proxyConnectTime != null
@@ -808,16 +713,8 @@ public class Proxy {
             : 0L;
     }
 
-    public long getOnlineTimeSecondsWithQueueSkip() {
-        long beforeQueueSkipOnlineTime = 0L;
-        if (!inQueue && didQueueSkip) {
-            beforeQueueSkipOnlineTime = prevOnlineSeconds.orElse(0L);
-        }
-        return getOnlineTimeSeconds() + beforeQueueSkipOnlineTime;
-    }
-
     public String getOnlineTimeString() {
-        return Queue.getEtaStringFromSeconds(getOnlineTimeSecondsWithQueueSkip());
+        return TimeUtil.formatDuration(getOnlineTimeSeconds());
     }
 
     public void disconnectAllServerSessions(Component reason) {
@@ -841,68 +738,13 @@ public class Proxy {
     public void handleDisconnectEvent(ClientDisconnectEvent event) {
         CACHE.reset(CacheResetType.FULL);
         this.disconnectTime = Instant.now();
-        this.prevOnlineSeconds = inQueue
-            ? OptionalLong.empty()
-            : OptionalLong.of(Duration.between(this.connectTime, this.disconnectTime).toSeconds());
-        this.inQueue = false;
-        this.didQueueSkip = false;
-        this.queuePosition = 0;
         TPS.reset();
     }
 
     public void handleConnectEvent(ClientConnectEvent event) {
         this.connectTime = Instant.now();
-        if (isOn2b2t()) EXECUTOR.execute(Queue::updateQueueStatusNow);
-        else {
-            if (!ChatSchemaParser.hasCustomSchema()) {
-                CLIENT_LOG.warn("No custom chat schema found for server: {}, setting one may be required for chats and whispers to parse correctly: `help chatSchema`", ChatSchemaParser.getServerAddress());
-            }
-        }
-    }
-
-    public void handleStartQueueEvent(QueueStartEvent event) {
-        this.inQueue = true;
-        this.queuePosition = 0;
-        if (event.wasOnline()) {
-            this.prevOnlineSeconds = OptionalLong.of(this.prevOnlineSeconds.orElse(0L) + Duration.between(this.connectTime, Instant.now()).toSeconds());
-            this.didQueueSkip = true;
-            this.connectTime = Instant.now();
-        }
-    }
-
-    public void handleQueuePositionUpdateEvent(QueuePositionUpdateEvent event) {
-        this.queuePosition = event.position();
-        // we don't receive position updates when queue skipping
-        this.prevOnlineSeconds = OptionalLong.empty();
-        this.didQueueSkip = false;
-    }
-
-    public void handleQueueCompleteEvent(QueueCompleteEvent event) {
-        this.inQueue = false;
-        this.connectTime = Instant.now();
-    }
-
-    public void handleQueueSkipEvent(QueueSkipEvent event) {
-        this.didQueueSkip = true;
-    }
-
-    public void handlePlayerOnlineEvent(ClientOnlineEvent event) {
-        if (this.isPrio.isEmpty())
-            // assume we are prio if we skipped queuing
-            EVENT_BUS.postAsync(new PrioStatusEvent(true));
-    }
-
-    public void handlePrioStatusEvent(PrioStatusEvent event) {
-        if (!isOn2b2t()) return;
-        if (event.prio() == CONFIG.authentication.prio) {
-            if (isPrio.isEmpty()) {
-                this.isPrio = Optional.of(event.prio());
-            }
-        } else {
-            EVENT_BUS.postAsync(new PrioStatusUpdateEvent(event.prio()));
-            this.isPrio = Optional.of(event.prio());
-            CONFIG.authentication.prio = event.prio();
-            saveConfigAsync();
+        if (!ChatSchemaParser.hasCustomSchema()) {
+            CLIENT_LOG.warn("No custom chat schema found for server: {}, setting one may be required for chats and whispers to parse correctly: `help chatSchema`", ChatSchemaParser.getServerAddress());
         }
     }
 

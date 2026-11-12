@@ -1,6 +1,6 @@
 package com.zenith.via;
 
-import com.zenith.feature.queue.mcping.MCPing;
+import com.zenith.feature.ping.MCPing;
 import lombok.experimental.UtilityClass;
 
 @UtilityClass

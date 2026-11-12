@@ -1,0 +1,230 @@
+{
+  "formatVersion": "1.1",
+  "component": {
+    "group": "com.github.rfresh2.fastutil",
+    "module": "io",
+    "version": "8.5.19",
+    "attributes": {
+      "org.gradle.status": "release"
+    }
+  },
+  "createdBy": {
+    "gradle": {
+      "version": "9.6.1"
+    }
+  },
+  "variants": [
+    {
+      "name": "apiElements",
+      "attributes": {
+        "org.gradle.category": "library",
+        "org.gradle.dependency.bundling": "external",
+        "org.gradle.jvm.version": 8,
+        "org.gradle.libraryelements": "jar",
+        "org.gradle.usage": "java-api"
+      },
+      "dependencies": [
+        {
+          "group": "com.github.rfresh2.fastutil",
+          "module": "core",
+          "version": {
+            "requires": "8.5.19"
+          }
+        },
+        {
+          "group": "com.github.rfresh2.fastutil.biglists",
+          "module": "boolean-big-lists",
+          "version": {
+            "requires": "8.5.19"
+          }
+        },
+        {
+          "group": "com.github.rfresh2.fastutil.biglists",
+          "module": "byte-big-lists",
+          "version": {
+            "requires": "8.5.19"
+          }
+        },
+        {
+          "group": "com.github.rfresh2.fastutil.biglists",
+          "module": "char-big-lists",
+          "version": {
+            "requires": "8.5.19"
+          }
+        },
+        {
+          "group": "com.github.rfresh2.fastutil.biglists",
+          "module": "double-big-lists",
+          "version": {
+            "requires": "8.5.19"
+          }
+        },
+        {
+          "group": "com.github.rfresh2.fastutil.biglists",
+          "module": "float-big-lists",
+          "version": {
+            "requires": "8.5.19"
+          }
+        },
+        {
+          "group": "com.github.rfresh2.fastutil.biglists",
+          "module": "int-big-lists",
+          "version": {
+            "requires": "8.5.19"
+          }
+        },
+        {
+          "group": "com.github.rfresh2.fastutil.biglists",
+          "module": "long-big-lists",
+          "version": {
+            "requires": "8.5.19"
+          }
+        },
+        {
+          "group": "com.github.rfresh2.fastutil.biglists",
+          "module": "short-big-lists",
+          "version": {
+            "requires": "8.5.19"
+          }
+        }
+      ],
+      "files": [
+        {
+          "name": "io-8.5.19.jar",
+          "url": "io-8.5.19.jar",
+          "size": 101920,
+          "sha512": "a448c44753d47114f3d12e2d747b006b407a3754cb87ddcad38281d03b5ef4eafe60de32030bf0a53edf174d644811db8cd436de9649b12750f92ea5f3199621",
+          "sha256": "208aa0570d478bb1a73584f1f515551efb1a350412417a63117e8a556f812a36",
+          "sha1": "1073daa68eadc72c1ea50c8b04cae9133a175a89",
+          "md5": "e93f94536d5e83348133299e1b4e6562"
+        }
+      ]
+    },
+    {
+      "name": "runtimeElements",
+      "attributes": {
+        "org.gradle.category": "library",
+        "org.gradle.dependency.bundling": "external",
+        "org.gradle.jvm.version": 8,
+        "org.gradle.libraryelements": "jar",
+        "org.gradle.usage": "java-runtime"
+      },
+      "dependencies": [
+        {
+          "group": "com.github.rfresh2.fastutil",
+          "module": "core",
+          "version": {
+            "requires": "8.5.19"
+          }
+        },
+        {
+          "group": "com.github.rfresh2.fastutil.biglists",
+          "module": "boolean-big-lists",
+          "version": {
+            "requires": "8.5.19"
+          }
+        },
+        {
+          "group": "com.github.rfresh2.fastutil.biglists",
+          "module": "byte-big-lists",
+          "version": {
+            "requires": "8.5.19"
+          }
+        },
+        {
+          "group": "com.github.rfresh2.fastutil.biglists",
+          "module": "char-big-lists",
+          "version": {
+            "requires": "8.5.19"
+          }
+        },
+        {
+          "group": "com.github.rfresh2.fastutil.biglists",
+          "module": "double-big-lists",
+          "version": {
+            "requires": "8.5.19"
+          }
+        },
+        {
+          "group": "com.github.rfresh2.fastutil.biglists",
+          "module": "float-big-lists",
+          "version": {
+            "requires": "8.5.19"
+          }
+        },
+        {
+          "group": "com.github.rfresh2.fastutil.biglists",
+          "module": "int-big-lists",
+          "version": {
+            "requires": "8.5.19"
+          }
+        },
+        {
+          "group": "com.github.rfresh2.fastutil.biglists",
+          "module": "long-big-lists",
+          "version": {
+            "requires": "8.5.19"
+          }
+        },
+        {
+          "group": "com.github.rfresh2.fastutil.biglists",
+          "module": "short-big-lists",
+          "version": {
+            "requires": "8.5.19"
+          }
+        }
+      ],
+      "files": [
+        {
+          "name": "io-8.5.19.jar",
+          "url": "io-8.5.19.jar",
+          "size": 101920,
+          "sha512": "a448c44753d47114f3d12e2d747b006b407a3754cb87ddcad38281d03b5ef4eafe60de32030bf0a53edf174d644811db8cd436de9649b12750f92ea5f3199621",
+          "sha256": "208aa0570d478bb1a73584f1f515551efb1a350412417a63117e8a556f812a36",
+          "sha1": "1073daa68eadc72c1ea50c8b04cae9133a175a89",
+          "md5": "e93f94536d5e83348133299e1b4e6562"
+        }
+      ]
+    },
+    {
+      "name": "javadocElements",
+      "attributes": {
+        "org.gradle.category": "documentation",
+        "org.gradle.dependency.bundling": "external",
+        "org.gradle.docstype": "javadoc",
+        "org.gradle.usage": "java-runtime"
+      },
+      "files": [
+        {
+          "name": "io-8.5.19-javadoc.jar",
+          "url": "io-8.5.19-javadoc.jar",
+          "size": 284119,
+          "sha512": "195397902e5ff21d66817a7c70602b7f2c78af90e644578d63b403f16f5ffd15e166bd8c87ec48ffb6c62cec3fcd4f79300ec5aa7ad03a945c80197ab39c5727",
+          "sha256": "9652ec8e275b674c2d108bd5e1b604b2d719755c517d2d97853b6b9d0b8aab71",
+          "sha1": "06380442320a1c2fe7ffd7acca541a58955f08d4",
+          "md5": "41745e8f069047a440143fda397fe1b7"
+        }
+      ]
+    },
+    {
+      "name": "sourcesElements",
+      "attributes": {
+        "org.gradle.category": "documentation",
+        "org.gradle.dependency.bundling": "external",
+        "org.gradle.docstype": "sources",
+        "org.gradle.usage": "java-runtime"
+      },
+      "files": [
+        {
+          "name": "io-8.5.19-sources.jar",
+          "url": "io-8.5.19-sources.jar",
+          "size": 78277,
+          "sha512": "0f31ea7acbe84f0a2fabad9cd5220ffce147093c905203e966843bcace8a45b7e3e46ffd97aa2ea9ddbc85db1607a7d5b009a2194cf90f001397b73a6a29acd2",
+          "sha256": "f7938af0c799163ef711f60c97c2c0b14a55ea8e7fdf70e44d794dd34014e996",
+          "sha1": "3161c0c22420b943959e6d2a6e799abdd172c388",
+          "md5": "ba5cd86aa0b0f9129bce5f393b2ec67b"
+        }
+      ]
+    }
+  ]
+}

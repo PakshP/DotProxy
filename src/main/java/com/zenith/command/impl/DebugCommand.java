@@ -166,11 +166,6 @@ public class DebugCommand extends Command {
                     .title("Inventory Request Server Sync On Action " + toggleStrCaps(CONFIG.debug.inventoryRequestServerSyncOnAction));
                 c.getSource().getData().put("noDefaultEmbed", true);
             })))
-            .then(literal("chainBreakSpeed2b2tFix").then(argument("toggle", toggle()).executes(c -> {
-                CONFIG.debug.chainBreakSpeed2b2tFix = getToggle(c, "toggle");
-                c.getSource().getEmbed()
-                    .title("Chain Break Speed 2b2t Fix " + toggleStrCaps(CONFIG.debug.chainBreakSpeed2b2tFix));
-            })))
             .then(literal("entityPushing").then(argument("toggle", toggle()).executes(c -> {
                 CONFIG.debug.entityPushing = getToggle(c, "toggle");
                 c.getSource().getEmbed()

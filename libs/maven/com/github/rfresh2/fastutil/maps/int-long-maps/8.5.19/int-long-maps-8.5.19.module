@@ -1,0 +1,146 @@
+{
+  "formatVersion": "1.1",
+  "component": {
+    "group": "com.github.rfresh2.fastutil.maps",
+    "module": "int-long-maps",
+    "version": "8.5.19",
+    "attributes": {
+      "org.gradle.status": "release"
+    }
+  },
+  "createdBy": {
+    "gradle": {
+      "version": "9.6.1"
+    }
+  },
+  "variants": [
+    {
+      "name": "apiElements",
+      "attributes": {
+        "org.gradle.category": "library",
+        "org.gradle.dependency.bundling": "external",
+        "org.gradle.jvm.version": 8,
+        "org.gradle.libraryelements": "jar",
+        "org.gradle.usage": "java-api"
+      },
+      "dependencies": [
+        {
+          "group": "com.github.rfresh2.fastutil.sets",
+          "module": "object-sets",
+          "version": {
+            "requires": "8.5.19"
+          }
+        },
+        {
+          "group": "com.github.rfresh2.fastutil.sets",
+          "module": "int-sets",
+          "version": {
+            "requires": "8.5.19"
+          }
+        },
+        {
+          "group": "com.github.rfresh2.fastutil.sets",
+          "module": "long-sets",
+          "version": {
+            "requires": "8.5.19"
+          }
+        }
+      ],
+      "files": [
+        {
+          "name": "int-long-maps-8.5.19.jar",
+          "url": "int-long-maps-8.5.19.jar",
+          "size": 212814,
+          "sha512": "304dd7939f3dcce695cfc49a9e4e5e870e542f082940be2adeb233a67b422b28366ae959e9db74096b6be8236b42ebd3e6874a2de9c74692f943b0edd4b4502d",
+          "sha256": "4a0e9f74f63494e6720273af49c8e6ada695551a870779592a77db7cc30fc956",
+          "sha1": "27e3b6bfcfc8e3f26a58dbc674194fe0644d8fb7",
+          "md5": "6a281ade21dbe0824ae693468e9b0b78"
+        }
+      ]
+    },
+    {
+      "name": "runtimeElements",
+      "attributes": {
+        "org.gradle.category": "library",
+        "org.gradle.dependency.bundling": "external",
+        "org.gradle.jvm.version": 8,
+        "org.gradle.libraryelements": "jar",
+        "org.gradle.usage": "java-runtime"
+      },
+      "dependencies": [
+        {
+          "group": "com.github.rfresh2.fastutil.sets",
+          "module": "object-sets",
+          "version": {
+            "requires": "8.5.19"
+          }
+        },
+        {
+          "group": "com.github.rfresh2.fastutil.sets",
+          "module": "int-sets",
+          "version": {
+            "requires": "8.5.19"
+          }
+        },
+        {
+          "group": "com.github.rfresh2.fastutil.sets",
+          "module": "long-sets",
+          "version": {
+            "requires": "8.5.19"
+          }
+        }
+      ],
+      "files": [
+        {
+          "name": "int-long-maps-8.5.19.jar",
+          "url": "int-long-maps-8.5.19.jar",
+          "size": 212814,
+          "sha512": "304dd7939f3dcce695cfc49a9e4e5e870e542f082940be2adeb233a67b422b28366ae959e9db74096b6be8236b42ebd3e6874a2de9c74692f943b0edd4b4502d",
+          "sha256": "4a0e9f74f63494e6720273af49c8e6ada695551a870779592a77db7cc30fc956",
+          "sha1": "27e3b6bfcfc8e3f26a58dbc674194fe0644d8fb7",
+          "md5": "6a281ade21dbe0824ae693468e9b0b78"
+        }
+      ]
+    },
+    {
+      "name": "javadocElements",
+      "attributes": {
+        "org.gradle.category": "documentation",
+        "org.gradle.dependency.bundling": "external",
+        "org.gradle.docstype": "javadoc",
+        "org.gradle.usage": "java-runtime"
+      },
+      "files": [
+        {
+          "name": "int-long-maps-8.5.19-javadoc.jar",
+          "url": "int-long-maps-8.5.19-javadoc.jar",
+          "size": 330031,
+          "sha512": "53d3f74a86efcc141f339f2c2cee6c0ddb30660da8dc56df02c3dd7093ec8e1230b746a1efdda88d6135725042585af2597741bc33c68b9546b993eced4cc28a",
+          "sha256": "155c909f4fb087a08264f291e8847457a25412465bf9562b4849900671adaa89",
+          "sha1": "12aacbd28528c7d53ab0d1b7f8ad6732d119d75c",
+          "md5": "f00902562a68b71051afd3cf4352eeae"
+        }
+      ]
+    },
+    {
+      "name": "sourcesElements",
+      "attributes": {
+        "org.gradle.category": "documentation",
+        "org.gradle.dependency.bundling": "external",
+        "org.gradle.docstype": "sources",
+        "org.gradle.usage": "java-runtime"
+      },
+      "files": [
+        {
+          "name": "int-long-maps-8.5.19-sources.jar",
+          "url": "int-long-maps-8.5.19-sources.jar",
+          "size": 82616,
+          "sha512": "f30dd8516347429e62b8a6263678c144e52eadad6bf970158e3917a38e7cbcda4d030c930d00d78efd07d7c610b1f0fa00592bc432fb5f9968b63295a02925fe",
+          "sha256": "a55300f8d83356c769942ea754f978010ca62e5ecc88ea00a8e5345c590705b2",
+          "sha1": "2dd64298c149046ca6cb9d847f81d9c573ae9929",
+          "md5": "f1d47612113bb552f4b1731cfe663ea1"
+        }
+      ]
+    }
+  ]
+}

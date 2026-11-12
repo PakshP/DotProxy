@@ -1,180 +1,202 @@
-## Setup and Download
+# Setup
 
-### System Requirements
+## System Requirements
 
-* Linux, Windows, or Mac computer.
-    * I recommend using a VPS (Virtual Private Server) from DigitalOcean (droplet)
-* Minimum System specs:
-    * `linux` release channel (Linux on x64 CPU):
-        * ~250MB RAM
-    * `java` release channel (Any OS and CPU):
-        * ~600MB RAM
+* A Linux, Windows, or macOS computer that stays on while you want the account online
+    * For 24/7 uptime, many people rent a small VPS. See [Hosting Providers](Hosting-Providers.md).
+* **Java 21 or newer**
+    * Check with `java -version`
+    * Builds are available from [Adoptium (Eclipse Temurin)](https://adoptium.net/) and others. On Linux you can also use your package manager or [SDKMAN!](https://sdkman.io/).
+* About 300MB of free RAM per instance
 
-???+ tip "Don't have enough RAM on your Linux VPS?"
+??? tip "Not enough RAM on your Linux VPS?"
 
-    Use your hard drive as (slow) RAM: [https://linuxize.com/post/create-a-linux-swap-file/](https://linuxize.com/post/create-a-linux-swap-file/)
+    You can use part of your disk as (slow) extra memory: [https://linuxize.com/post/create-a-linux-swap-file/](https://linuxize.com/post/create-a-linux-swap-file/)
 
-### Setup Guides
+## Download
 
-* [DigitalOcean VPS + $5 free credits + auto setup script](DigitalOcean-Setup-Guide.md)
-* [Windows](Windows-Python-Launcher-Guide.md)
+Download `DotProxy.jar` from the [releases page](https://github.com/PakshP/DotProxy/releases), or [build it from source](#building-from-source).
 
-### Downloads
+Make a new folder for DotProxy and put these files in it:
 
-* [Windows x64](https://github.com/rfresh2/ZenithProxy/releases/download/launcher-v3/ZenithProxy-launcher-windows-python-amd64.zip)
-* Linux: [x64](https://github.com/rfresh2/ZenithProxy/releases/download/launcher-v3/ZenithProxy-launcher-linux-amd64.zip) or [aarch64 (ARM)](https://github.com/rfresh2/ZenithProxy/releases/download/launcher-v3/ZenithProxy-launcher-linux-aarch64.zip)
-* Mac: [M-series CPU](https://github.com/rfresh2/ZenithProxy/releases/download/launcher-v3/ZenithProxy-launcher-macos-aarch64.zip) or [x64 (Intel)](https://github.com/rfresh2/ZenithProxy/releases/download/launcher-v3/ZenithProxy-launcher-macos-amd64.zip)
-* Alpine Linux (musl): [x64](https://github.com/rfresh2/ZenithProxy/releases/download/launcher-v3/ZenithProxy-launcher-alpine-amd64.zip) or [aarch64](https://github.com/rfresh2/ZenithProxy/releases/download/launcher-v3/ZenithProxy-launcher-alpine-aarch64.zip)
-* Other: [Python (Universal)](https://github.com/rfresh2/ZenithProxy/releases/download/launcher-v3/ZenithProxy-launcher-python.zip)
-    * Recommended with: [install uv](https://docs.astral.sh/uv/getting-started/installation/#installing-uv)
-
-Source: https://github.com/rfresh2/ZenithProxy/releases/tag/launcher-v3
-
-#### Instructions
-
-1. Download the above launcher release for your OS and CPU
-2. Unzip the file.
-3. Run the launcher in a terminal:
-    * Linux/Mac: `./launch`
-    * Python: `.\launch.bat` (Windows) or `./launch.sh` (Linux/Mac)
+* `DotProxy.jar`
+* A start script from the repository's [`scripts`](https://github.com/PakshP/DotProxy/tree/main/scripts) folder:
+    * `start.sh` for Linux/macOS
+    * `start.bat` for Windows
 
 ??? info "How do I download a file from a Linux terminal?"
 
     Use [wget](https://linuxize.com/post/wget-command-examples/#how-to-download-a-file-with-wget):
 
-    `wget https://github.com/rfresh2/ZenithProxy/releases/download/launcher-v3/ZenithProxy-launcher-linux-amd64.zip`
+    `wget <url>`
 
-??? tip "Recommended unzip tools"
+## Running DotProxy
 
-    * Windows: [7zip](https://www.7-zip.org/download.html)
-    * Linux: [unzip](https://linuxize.com/post/how-to-unzip-files-in-linux/)
-    * Mac: [The Unarchiver](https://theunarchiver.com/)
+Open a terminal in the DotProxy folder and run the start script:
 
-??? tip "Recommended Terminals"
+* Linux/macOS: `./start.sh` (run `chmod +x start.sh` first if needed)
+* Windows: `start.bat`, or double-click it
 
-    * Windows: [Windows Terminal](https://apps.microsoft.com/detail/9N8G5RFZ9XK3)
-    * Mac: [iterm2](https://iterm2.com/)
+The start script runs DotProxy in a loop, so DotProxy restarts automatically when it asks to be restarted (for example after a crash, or when you run a command that needs a restart). When DotProxy shuts down on purpose, for example with the [`shutdown`](Commands.md#shutdown) command, the script exits as well.
 
-### Usage
+You can also run DotProxy directly, but then it won't restart itself:
 
-The launcher will ask for required configuration on first launch
+```bash
+java -jar DotProxy.jar
+```
 
-Use the `connect` command to link an MC account and log in once launched
+??? tip "Custom Java path or JVM arguments"
 
-Command Prefixes:
+    Both start scripts read two environment variables:
 
-* Discord: `.` (e.g. `.help`)
-* In-game: `/` OR `!` -> (e.g. `/help`)
-* Terminal: N/A -> (e.g. `help`)
+    * `JAVA`: the path to the `java` executable to use (default: `java` from your `PATH`)
+    * `JVM_ARGS`: JVM arguments. Setting this replaces the defaults, which include a 300MB heap limit (`-Xmx300m`).
 
-???+ tip "How to Rerun Launcher Setup"
+??? tip "How to stop a running instance"
 
-    Run the launcher with the `--setup` flag. e.g. `./launch --setup`
+    Press `Ctrl + C` in the terminal, or run the `shutdown` command.
 
-???+ tip "How to exit a running instance"
+    If your terminal doesn't respond, close the window.
 
-    Press the keybind: `control + c`
+On first run, DotProxy creates `config.json` in the folder you run it from. All settings are saved there. You don't need to edit it by hand: every setting can be changed with commands.
 
-    Some terminals have alternate keybinds. If all else fails, just close the window
+## First-Time Configuration
+
+Type these commands into the DotProxy terminal.
+
+### 1. Set the server to connect to
+
+By default DotProxy connects to `localhost:25565`. Point it at your server:
+
+```
+server <address>
+server <address> <port>
+```
+
+Example: `server play.example.com`
+
+### 2. Whitelist yourself
+
+Only whitelisted players can join the proxy. Add your Minecraft username:
+
+```
+whitelist add <username>
+```
+
+Anyone you whitelist can take control of the account, so you can share it without sharing the password. To let someone **watch** without taking control, use the spectator whitelist instead:
+
+```
+spectator whitelist add <username>
+```
+
+### 3. Log in and connect
+
+```
+connect
+```
+
+The first time, DotProxy starts a Microsoft **device code** login. It prints a link and a code in the terminal (and in Discord, if you've set it up). Open the link in a browser, enter the code, and sign in to the Microsoft account that owns the Minecraft account.
+
+The login is cached, so you won't need to sign in again on later connects. To switch accounts, see the [FAQ](FAQ.md#switch-accounts).
+
+??? tip "Login problems"
+
+    * If the Microsoft site signs you in to the wrong account automatically, open the link in a private/incognito window.
+    * If login keeps failing, sign in with the official Minecraft launcher, join any server, then try again.
+    * See the [`auth`](Commands.md#auth) command for other login options.
+
+### 4. Join the proxy in-game
+
+Run `status` and look for **Proxy IP**. That's the address to use in Minecraft.
+
+In your Minecraft client, add a server with that address. If DotProxy runs on the same computer, use `localhost:25565`.
+
+When you join, you take control of the account. When you leave, DotProxy keeps the account online and AFKing.
+
+The proxy listens on port `25565` by default. To change it, or the address shown to players, use [`serverConnection`](Commands.md#serverconnection):
+
+```
+serverConnection port <port>
+serverConnection proxyIP <address>
+```
+
+If you can't connect, run `connectionTest` and see [the FAQ](FAQ.md#i-cant-connect-to-my-proxy).
+
+### 5. (Optional) Discord bot
+
+You can control DotProxy from Discord, relay chat, and get alerts. See the [Discord Bot Guide](Discord-Bot-Guide.md).
+
+### 6. (Optional) Modules
+
+Turn on the modules you need. For example:
+
+* [`autoReconnect`](Commands.md#autoreconnect): reconnect after disconnects
+* [`autoRespawn`](Commands.md#autorespawn): respawn after death
+* [`antiAFK`](Commands.md#antiafk): avoid AFK kicks
+* [`autoDisconnect`](Commands.md#autodisconnect): disconnect on low health or when players come near
+* [`activeHours`](Commands.md#activehours): connect at scheduled times
+* [`visualRange`](Commands.md#visualrange): alerts when players come into view
+
+Use `help <command>` to see each command's options.
+
+## Using Commands
+
+DotProxy commands work in three places:
+
+| Where    | Prefix               | Example |
+|----------|----------------------|---------|
+| Terminal | none                 | `help`  |
+| In-game  | `/` or `!`           | `/help` |
+| Discord  | `.`                  | `.help` |
 
 [Full Commands Documentation](Commands.md){ .md-button .md-button--primary }
-
 [Frequently Asked Questions](FAQ.md){ .md-button .md-button--primary }
 
-### Release Channels
+## Connecting to Other Minecraft Versions
 
-ZenithProxy releases for multiple MC versions and OS/hardware platforms, known as "release channels"
+DotProxy has ViaVersion built in. By default it can connect to (almost) any server version, and players can join with (almost) any client version.
 
-**Platforms**
+You can change this with the [`via`](Commands.md#via) command.
 
-* (Default) `java` - Works on all systems. Supports [Plugins](Plugins.md).
-* (Recommended) `linux` - Linux native x64 executable. ~50% reduced memory usage and instant startup
+## Running on Linux Servers
 
-**MC Versions**
+See the [Linux Guide](Linux-Guide.md).
 
-* (Default) `1.21.4` - Matches current 2b2t server version
-* Latest MC version is also usually supported. Other MC versions may exist but are deprecated.
-
-??? note "Connecting to or from other MC versions with ZenithProxy's built-in ViaVersion"
-
-    ZenithProxy's built-in ViaVersion is configured by default to work with any MC version.
-
-    It can be configured with the [`via`](Commands.md#via) command
-
-To select a specific release channel, use the [`channel`](Commands.md#channel) command
-
-Example: `channel set java 1.21.4`
-
-To see the current release channel, use the [`status`](Commands.md#status) command, the channel is at the top of the response.
-
-### Hosting Providers
-
-See [Hosting Providers](Hosting-Providers.md)
-
-### Running on Linux Servers
-
-See the [Linux Guide](Linux-Guide.md)
-
-I highly recommend using a terminal multiplexer - a program that manages terminal sessions.
-
-If you do not use one, **ZenithProxy will be killed after you exit your SSH session.**
+If you start DotProxy over SSH, use a terminal multiplexer. Otherwise **DotProxy stops when you close your SSH session.**
 
 * (Recommended) [tmux](https://tmuxcheatsheet.com/how-to-install-tmux/)
 * [screen](https://linuxize.com/post/how-to-use-linux-screen/)
-* [pm2](https://pm2.keymetrics.io/docs/usage/quick-start/)
 
-### Running Multiple Instances
+You can also run DotProxy as a systemd service, or with [Docker](Docker.md).
 
-Create a new folder for each instance with its own copy of the launcher files.
+## Running Multiple Instances
 
-??? info "Image"
+Make a separate folder for each instance, each with its own copy of `DotProxy.jar` and the start script.
 
-    ![](./_assets/img/multiple-instance/folder-structure.png)
+Each instance is run and configured on its own: separate terminal sessions, config files, proxy ports, Discord bots, and so on. Give each instance a different port with `serverConnection port <port>`.
 
-Instances must be independently run and configured. i.e. separate terminal sessions, discord bots, ports, config files, etc.
+## Using a Domain Name
 
-See the [Linux Guide](Linux-Guide.md) for help copying files, creating folders, etc.
+To let players connect with a domain name instead of an IP address, add these DNS records with your DNS provider:
 
-### 2b2t Limits
+* An `A` record (for example `proxy.example.com`) pointing to your server's public IP address.
+* Optional, only needed if you don't use the default port `25565`: an `SRV` record with:
+    * Service: `_minecraft`
+    * Protocol: `TCP`
+    * Name: the name players will type (for example `mc`, which becomes `mc.example.com`)
+    * Port: your DotProxy port
+    * Target: the `A` record above (for example `proxy.example.com`)
 
-2b2t limits accounts without priority queue based on:
+Then set the address shown to players: `serverConnection proxyIP <domain>`
 
-1. Accounts currently connected per IP address
-2. In-game session time, excluding time in queue.
+## Building from Source
 
-Current limits are documented in [a discord channel](https://discord.com/channels/1127460556710883391/1200685719073599488) in my [server](https://discord.gg/nJZrSaRKtb)
+```bash
+git clone https://github.com/PakshP/DotProxy.git
+cd DotProxy
+./gradlew build
+```
 
-### DNS Setup
+The jar is written to `build/libs/DotProxy.jar`. On Windows, use `gradlew.bat build`.
 
-To use a domain name you need the following DNS records:
-
-An `A` record to the public IP address of your server
-??? info "Image"
-
-    ![](./_assets/img/dns/dns-a.png)
-
-An `SRV` record for `_minecraft._tcp` with the port and the `A` record as its target.
-
-??? info "Image"
-
-    ![](./_assets/img/dns/dns-srv.png)
-
-### Launcher CLI Options
-
-* `--setup` - Run the interactive setup wizard
-* `--unattended` - For headless environments like Docker. Setup is configured by environment variables:
-    * `ZENITH_DISCORD_TOKEN` - required
-    * `ZENITH_DISCORD_CHANNEL_ID` - required
-    * `ZENITH_DISCORD_ROLE_ID` - required
-    * `ZENITH_DISCORD_CHAT_RELAY_CHANNEL` - optional
-    * `ZENITH_DISCORD_DISABLED` - optional, if set "true" the above discord env variables do not need to be set
-    * `ZENITH_MC_VERSION` - optional - default:"1.21.4"
-    * `ZENITH_PLATFORM` - optional - default:"linux", or "java"
-    * `ZENITH_PORT` - optional - default:"25565"
-    * `ZENITH_IP` - optional - default:"localhost", informational "Proxy IP" shown in Zenith's notifications for users
-* `--env-config` - Set `config.json` values from environment variables on launch.
-    * format: `ZENITH_CONFIG_<config_path>=<value>`
-        * `config_path` is case-sensitive with key/value traversal separated by `_`
-    * examples:
-        * `ZENITH_CONFIG_server_bind_port="25565"`
-        * `ZENITH_CONFIG_server_proxyIP="localhost"`
+To run a development instance in `./run`, use `./gradlew run`.

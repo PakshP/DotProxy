@@ -7,21 +7,17 @@ import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.zenith.cache.DataCache;
 import com.zenith.command.CommandManager;
-import com.zenith.database.DatabaseManager;
 import com.zenith.discord.DiscordBot;
 import com.zenith.feature.gui.InGameGuiManager;
 import com.zenith.feature.inventory.InventoryManager;
-import com.zenith.feature.pathfinder.Baritone;
 import com.zenith.feature.player.Bot;
 import com.zenith.feature.player.InputManager;
-import com.zenith.feature.tasks.*;
 import com.zenith.feature.tps.ClientTPSCalculator;
 import com.zenith.feature.tps.TPSCalculator;
 import com.zenith.feature.whitelist.PlayerListsManager;
 import com.zenith.mc.block.BlockDataManager;
 import com.zenith.mc.entity.EntityDataManager;
 import com.zenith.mc.language.TranslationRegistryInitializer;
-import com.zenith.mc.map.MapBlockColorManager;
 import com.zenith.module.ModuleManager;
 import com.zenith.network.server.handler.player.InGameCommandManager;
 import com.zenith.plugin.DefaultGsonConfigSerializer;
@@ -32,7 +28,6 @@ import com.zenith.util.KotlinUtil;
 import com.zenith.util.Wait;
 import com.zenith.util.ZenithScheduledExecutor;
 import com.zenith.util.config.Config;
-import com.zenith.util.config.LaunchConfig;
 import com.zenith.via.ZenithViaInitializer;
 import lombok.Locked;
 import net.kyori.adventure.text.logger.slf4j.ComponentLogger;
@@ -47,9 +42,6 @@ public class Globals {
     public static final Gson GSON = new GsonBuilder()
         .disableHtmlEscaping()
         .setPrettyPrinting()
-        .registerTypeHierarchyAdapter(Action.class, new ActionTypeAdapter())
-        .registerTypeHierarchyAdapter(Condition.class, new ConditionTypeAdapter())
-        .registerTypeHierarchyAdapter(Continuation.class, new ContinuationTypeAdapter())
         .create();
     public static final ObjectMapper OBJECT_MAPPER = new ObjectMapper();
     public static final ComponentLogger DEFAULT_LOG = ComponentLogger.logger("Proxy");
@@ -60,14 +52,10 @@ public class Globals {
     public static final ComponentLogger MODULE_LOG = ComponentLogger.logger("Module");
     public static final ComponentLogger SERVER_LOG = ComponentLogger.logger("Server");
     public static final ComponentLogger DISCORD_LOG = ComponentLogger.logger("Discord");
-    public static final ComponentLogger DATABASE_LOG = ComponentLogger.logger("Database");
     public static final ComponentLogger TERMINAL_LOG = ComponentLogger.logger("Terminal");
     public static final ComponentLogger PLUGIN_LOG = ComponentLogger.logger("Plugin");
-    public static final ComponentLogger PATH_LOG = ComponentLogger.logger("Pathfinder");
     public static final File CONFIG_FILE = new File(System.getProperty("zenith.config.file", "config.json"));
-    public static final File LAUNCH_CONFIG_FILE = new File(System.getProperty("zenith.launch.config.file", "launch_config.json"));
     public static final Config CONFIG;
-    public static final LaunchConfig LAUNCH_CONFIG;
     public static final DataCache CACHE;
     public static final DiscordBot DISCORD;
     public static final SimpleEventBus EVENT_BUS;
@@ -75,8 +63,6 @@ public class Globals {
     public static final PlayerListsManager PLAYER_LISTS;
     public static final BlockDataManager BLOCK_DATA;
     public static final EntityDataManager ENTITY_DATA;
-    public static final MapBlockColorManager MAP_BLOCK_COLOR;
-    public static final DatabaseManager DATABASE;
     public static final TPSCalculator TPS;
     public static final ClientTPSCalculator CLIENT_TPS;
     public static final ModuleManager MODULE;
@@ -85,20 +71,16 @@ public class Globals {
     public static final InGameCommandManager IN_GAME_COMMAND;
     public static final CommandManager COMMAND;
     public static final Bot BOT;
-    public static final Baritone BARITONE;
     public static final InventoryManager INVENTORY;
     public static final ZenithViaInitializer VIA_INITIALIZER;
     public static final PluginManager PLUGIN_MANAGER;
     public static final InGameGuiManager GUI;
     public static final String MC_VERSION;
     public static final String VERSION;
+    public static final String SOURCE_URL = "https://github.com/PakshP/DotProxy";
 
     public static boolean inDevEnv() {
         return System.getenv("ZENITH_DEV") != null;
-    }
-
-    public static boolean inZenithLauncher() {
-        return System.getenv("ZENITH_LAUNCHER") != null;
     }
 
     public static String getVersion() {
@@ -112,7 +94,7 @@ public class Globals {
             }
             return releaseVersion;
         }
-        return LAUNCH_CONFIG.version;
+        return "0.0.0-dev";
     }
 
     public static @Nullable String getExecutableCommit() {
@@ -141,11 +123,6 @@ public class Globals {
     @Locked
     public static Config loadConfig() {
         return loadConfig(CONFIG_FILE, Config.class, DefaultGsonConfigSerializer.INSTANCE);
-    }
-
-    @Locked
-    public static LaunchConfig loadLaunchConfig() {
-        return loadConfig(LAUNCH_CONFIG_FILE, LaunchConfig.class, DefaultGsonConfigSerializer.INSTANCE);
     }
 
     @Locked
@@ -184,10 +161,6 @@ public class Globals {
     public static void saveConfig() {
         saveConfig(CONFIG_FILE, CONFIG, DefaultGsonConfigSerializer.INSTANCE);
         PLUGIN_MANAGER.saveConfigs(Globals::saveConfig);
-    }
-    @Locked
-    public static void saveLaunchConfig() {
-        saveConfig(LAUNCH_CONFIG_FILE, LAUNCH_CONFIG, DefaultGsonConfigSerializer.INSTANCE);
     }
 
     @Locked
@@ -232,8 +205,6 @@ public class Globals {
             PLAYER_LISTS = new PlayerListsManager();
             BLOCK_DATA = new BlockDataManager();
             ENTITY_DATA = new EntityDataManager();
-            MAP_BLOCK_COLOR = new MapBlockColorManager();
-            DATABASE = new DatabaseManager();
             MODULE = new ModuleManager();
             INPUTS = new InputManager();
             TERMINAL = new TerminalManager();
@@ -243,14 +214,12 @@ public class Globals {
             VIA_INITIALIZER = new ZenithViaInitializer();
             TranslationRegistryInitializer.registerAllTranslations();
             CONFIG = loadConfig();
-            LAUNCH_CONFIG = loadLaunchConfig();
             VERSION = getVersion();
             PLUGIN_MANAGER = new PluginManager();
             PLAYER_LISTS.init(); // must be init after config
             TPS = new TPSCalculator(CONFIG.client.extra.tpsBufferSize);
             CLIENT_TPS = new ClientTPSCalculator(CONFIG.client.extra.tpsBufferSize * 20);
             BOT = new Bot();
-            BARITONE = new Baritone();
             GUI = new InGameGuiManager();
         } catch (final Throwable e) {
             System.err.println("Unable to initialize!");

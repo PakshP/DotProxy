@@ -149,7 +149,7 @@ public class SLoginFinishedOutgoingHandler implements PacketHandler<ClientboundL
                         var client = Proxy.getInstance().getClient();
                         return client != null
                             && CACHE.getProfileCache().getProfile() != null
-                            && (client.isOnline() || client.isInQueue());
+                            && client.isOnline();
                     }, 15)) {
                         SERVER_LOG.info("Timed out waiting for the proxy to login");
                         session.disconnect("Timed out waiting for the proxy to login");
@@ -165,7 +165,7 @@ public class SLoginFinishedOutgoingHandler implements PacketHandler<ClientboundL
         var client = Proxy.getInstance().getClient();
         if (client == null
             || CACHE.getProfileCache().getProfile() == null
-            || !(client.isOnline() || client.isInQueue())) {
+            || !client.isOnline()) {
             SERVER_LOG.info("Disconnecting: {} [{}] ({}) : Not connected to server!", clientGameProfile.getName(), clientGameProfile.getId(), session.getMCVersion());
             session.disconnect("Not connected to server!");
             return;

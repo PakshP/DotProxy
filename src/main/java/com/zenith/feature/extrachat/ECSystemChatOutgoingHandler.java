@@ -1,22 +1,14 @@
 package com.zenith.feature.extrachat;
 
-import com.zenith.Proxy;
 import com.zenith.feature.chatschema.ChatSchemaParser;
-import com.zenith.feature.deathmessages.DeathMessageParseResult;
-import com.zenith.feature.deathmessages.DeathMessagesParser;
 import com.zenith.module.impl.ExtraChat;
 import com.zenith.network.codec.PacketHandler;
 import com.zenith.network.server.ServerSession;
 import com.zenith.util.ComponentSerializer;
 import net.kyori.adventure.text.Component;
-import net.kyori.adventure.text.format.NamedTextColor;
 import org.geysermc.mcprotocollib.protocol.packet.ingame.clientbound.ClientboundSystemChatPacket;
 
-import java.util.Objects;
-import java.util.Optional;
-
 import static com.zenith.Globals.*;
-import static java.util.Objects.nonNull;
 
 public class ECSystemChatOutgoingHandler implements PacketHandler<ClientboundSystemChatPacket, ServerSession> {
 
@@ -26,10 +18,6 @@ public class ECSystemChatOutgoingHandler implements PacketHandler<ClientboundSys
         try {
             final Component component = packet.getContent();
             final String message = ComponentSerializer.serializePlain(component);
-
-            if (CONFIG.client.extra.chat.hideDeathMessages && Proxy.getInstance().isOn2b2t() && isDeathMessage(component, message)) {
-                return null;
-            }
 
             var chatParseResult = ChatSchemaParser.parse(message);
             if (chatParseResult != null) {
@@ -67,17 +55,5 @@ public class ECSystemChatOutgoingHandler implements PacketHandler<ClientboundSys
                              e);
         }
         return packet;
-    }
-
-    private boolean isDeathMessage(final Component component, final String messageRaw) {
-        return parseDeathMessage2b2t(component, messageRaw).isPresent();
-    }
-
-    private Optional<DeathMessageParseResult> parseDeathMessage2b2t(final Component component, final String messageString) {
-        if (component.children().stream().anyMatch(child -> nonNull(child.color())
-            && Objects.equals(child.color(), NamedTextColor.DARK_AQUA))) { // death message color on 2b
-            return DeathMessagesParser.INSTANCE.parse(component, messageString);
-        }
-        return Optional.empty();
     }
 }

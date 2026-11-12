@@ -38,7 +38,7 @@ public class AutoDisconnectCommand extends Command {
             Settings non-exclusive to modes:
               * WhilePlayerConnected: If AutoDisconnect should disconnect while a player is controlling the proxy account
               * AutoClientDisconnect: Disconnects when the controlling player disconnects
-              * CancelAutoReconnect: Cancels AutoReconnect when AutoDisconnect is triggered. If the proxy account has prio this is ignored and AutoReconnect is always cancelled
+              * CancelAutoReconnect: Cancels AutoReconnect when AutoDisconnect is triggered
             """)
             .usageLines(
                 "on/off",

@@ -1,75 +1,85 @@
 # Discord Bot Guide
 
-## Create Bot
+The Discord bot is optional. It lets you:
 
-Create a discord bot here: https://discord.com/developers/applications
+* Run DotProxy commands from a Discord channel (prefix `.`, for example `.status`)
+* Get notifications and alerts, such as disconnects or players entering visual range
+* Relay chat between the Minecraft server and a Discord channel, in both directions
 
-Click the `New Application` button, give it any name, and select `Create`
+## Create the Bot
 
-![](./_assets/img/discord-setup/create-application.png)
+1. Go to the [Discord Developer Portal](https://discord.com/developers/applications).
+2. Click **New Application**, give it any name (for example `My DotProxy`), accept the terms, and click **Create**.
 
-## Bot Token
+## Get the Bot Token
 
-On the left sidebar, select `Bot`, then click `Reset Token`
+1. In the left sidebar, open the **Bot** page.
+2. Click **Reset Token** and confirm.
+3. The token appears with a **Copy** button. Copy it and keep it somewhere safe. Discord only shows it once.
 
-![](./_assets/img/discord-setup/reset-token.png)
+!!! warning
 
-After confirmations, the token and a `Copy` button should appear
+    Anyone with your bot token can control your bot. Never share it.
 
 ## Bot Settings
 
-In the `Installation` tab settings:
+On the **Installation** page:
 
-* set `Install Link` to None
-* `Guild Install` should be checked
-* `User Install` doesn't matter.
+* Set **Install Link** to **None**
+* Make sure **Guild Install** is checked
+* **User Install** doesn't matter
 
-![](./_assets/img/discord-setup/DiscordSetup1.png)
+On the **Bot** page:
 
-In the `Bot` tab:
+* Turn **off** **Public Bot**, so only you can add the bot to servers
+* Turn **on** **Message Content Intent**, under "Privileged Gateway Intents"
 
-* Enable `Message Content Intent`
-* Disable `Public Bot`
+## Invite the Bot to Your Server
 
-![](./_assets/img/discord-setup/DiscordSetup2.png)
-
-## Invite Bot To Server
-
-In the `OAuth2` tab, generate an invite link with these permissions:
-
-![](./_assets/img/discord-setup/DiscordSetup3.png)
-
-Open the invite link in a web browser and select the server to invite the bot to
+1. Open the **OAuth2** page and scroll to the **OAuth2 URL Generator**.
+2. Under **Scopes**, check `bot`.
+3. Under **Bot Permissions**, check `Send Messages`.
+    * Optional: if you want the bot to manage its own nickname, also check `Change Nickname`.
+4. Set **Integration Type** to **Guild Install**.
+5. Copy the **Generated URL** at the bottom, open it in a browser, and pick the server to add the bot to.
 
 ## Discord Server Setup
 
-In the discord server settings:
+Open your Discord server's menu (click the server name) and go to **Server Settings**.
 
-![](./_assets/img/discord-setup/DiscordSetup5.png)
+1. Under **Roles**, click **Create Role** and make a role for the people allowed to manage DotProxy (for example `DotProxy Manager`).
+2. Give that role to yourself and anyone else who should manage the bot.
+3. Create a text channel for managing the bot (for example `#dotproxy`). Click the **+** next to a category in the channel list.
+4. (Optional) Create a second text channel for the chat relay (live in-game chat).
 
-1: Create a role for users to manage the bot:
+## Configure DotProxy
 
-![](./_assets/img/discord-setup/DiscordSetup4.png)
-
-2: Assign the role to yourself and any other users who should be able to manage the bot.
-
-3: Create a channel to manage the bot in:
-
-![](./_assets/img/discord-setup/DiscordSetup6.png)
-
-4: (Optional) Create another channel for ZenithProxy's chat relay (live chat)
-
-## Configure ZenithProxy
-
-At first launch, the launcher will ask you to configure the token/role/channel ID's
-
-If you didn't do this or misconfigured it, you can use the [discord](Commands.md#discord_1) and [chatRelay](Commands.md#chatrelay) commands after
-
-To get the role and channel ID's, you must enable `Developer Mode` in your discord user settings:
+To copy role and channel IDs, first turn on **Developer Mode** in your Discord user settings, under **App Settings > Advanced**:
 
 ![](./_assets/img/discord-setup/DiscordSetup8.png)
 
+Then right-click a role or channel and choose **Copy Role ID** / **Copy Channel ID**.
 
-Right-click on the roles/channels you created and click `Copy ID`
+Enter the values in the DotProxy terminal using the [`discord`](Commands.md#discord_1) command:
 
-![](./_assets/img/discord-setup/DiscordSetup9.png)
+```
+discord token <bot token>
+discord channel <management channel ID>
+discord role <manager role ID>
+discord on
+```
+
+The bot (re)starts automatically after these changes. Check that it's working by typing `.status` in the management channel.
+
+### Chat Relay (optional)
+
+```
+discord relayChannel <chat relay channel ID>
+chatRelay on
+```
+
+Messages typed in the relay channel are sent as chat in-game, and replies to relayed messages are sent as whispers. See [`chatRelay`](Commands.md#chatrelay) for more options, such as mentions and ignore filters.
+
+### Notifications
+
+Use [`discordNotifications`](Commands.md#discordnotifications) to choose which events ping your role.

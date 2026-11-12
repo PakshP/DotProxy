@@ -2,7 +2,6 @@ package com.zenith.module.impl;
 
 import com.github.rfresh2.EventConsumer;
 import com.zenith.Proxy;
-import com.zenith.event.queue.QueuePositionUpdateEvent;
 import com.zenith.event.server.ServerPlayerConnectedEvent;
 import com.zenith.event.server.ServerPlayerDisconnectedEvent;
 import com.zenith.feature.extrachat.*;
@@ -17,16 +16,12 @@ import net.kyori.adventure.text.format.NamedTextColor;
 import org.geysermc.mcprotocollib.protocol.data.ProtocolState;
 import org.geysermc.mcprotocollib.protocol.packet.ingame.clientbound.ClientboundPlayerChatPacket;
 import org.geysermc.mcprotocollib.protocol.packet.ingame.clientbound.ClientboundSystemChatPacket;
-import org.geysermc.mcprotocollib.protocol.packet.ingame.clientbound.title.ClientboundSetActionBarTextPacket;
-import org.geysermc.mcprotocollib.protocol.packet.ingame.serverbound.ServerboundChatCommandPacket;
-import org.geysermc.mcprotocollib.protocol.packet.ingame.serverbound.ServerboundChatCommandSignedPacket;
 import org.geysermc.mcprotocollib.protocol.packet.ingame.serverbound.ServerboundChatPacket;
 
 import java.util.List;
 import java.util.regex.Pattern;
 
 import static com.github.rfresh2.EventConsumer.of;
-import static com.zenith.Globals.CHAT_LOG;
 import static com.zenith.Globals.CONFIG;
 import static com.zenith.util.ComponentSerializer.minimessage;
 import static java.util.Objects.nonNull;
@@ -42,8 +37,7 @@ public class ExtraChat extends Module {
     public List<EventConsumer<?>> registerEvents() {
         return List.of(
             of(ServerPlayerConnectedEvent.class, this::handleServerPlayerConnected),
-            of(ServerPlayerDisconnectedEvent.class, this::handleServerPlayerDisconnected),
-            of(QueuePositionUpdateEvent.class, this::handleQueuePositionUpdate)
+            of(ServerPlayerDisconnectedEvent.class, this::handleServerPlayerDisconnected)
         );
     }
 
@@ -55,9 +49,6 @@ public class ExtraChat extends Module {
             .state(ProtocolState.GAME, PacketHandlerStateCodec.serverBuilder()
                 .outbound(ClientboundSystemChatPacket.class, new ECSystemChatOutgoingHandler())
                 .outbound(ClientboundPlayerChatPacket.class, new ECPlayerChatOutgoingHandler())
-                .outbound(ClientboundSetActionBarTextPacket.class, new ECSetActionBarTextHandler())
-                .inbound(ServerboundChatCommandPacket.class, new ECChatCommandIncomingHandler())
-                .inbound(ServerboundChatCommandSignedPacket.class, new ECSignedChatCommandIncomingHandler())
                 .build())
             .build();
     }
@@ -86,11 +77,6 @@ public class ExtraChat extends Module {
         var serverConnection = Proxy.getInstance().getCurrentPlayer().get();
         if (nonNull(serverConnection) && serverConnection.isLoggedIn())
             serverConnection.sendAsyncMessage(minimessage("<aqua>" + event.playerEntry().getName() + "<yellow> connected"));
-    }
-
-    private void handleQueuePositionUpdate(QueuePositionUpdateEvent event) {
-        if (!CONFIG.client.extra.logChatMessages || !CONFIG.client.extra.logOnlyQueuePositionUpdates) return;
-        CHAT_LOG.info(Component.text("Position in queue: " + event.position()).color(NamedTextColor.GOLD));
     }
 
     private static final Pattern urlPattern = Pattern.compile("(?i)(?<link>[a-z0-9:/]+(www\\.)?[-a-z0-9@:%._+~#=]+\\.[a-z0-9()]{1,6}\\b([-a-z0-9()@:%_+.~#?&/=]*))");

@@ -11,27 +11,27 @@
 # The site_name is shown in the page header and the browser window title
 #
 # Read more: https://zensical.org/docs/setup/basics/#site_name
-site_name = "ZenithProxy"
+site_name = "DotProxy"
 
 # The site_description is included in the HTML head and should contain a
 # meaningful description of the site content for use by search engines.
 #
 # Read more: https://zensical.org/docs/setup/basics/#site_description
-site_description = "ZenithProxy Documentation Wiki - 2b2t Minecraft Proxy / Bot"
+site_description = "DotProxy Documentation Wiki - Lightweight Minecraft AFK Proxy"
 
 # The site_author attribute. This is used in the HTML head element.
 #
 # Read more: https://zensical.org/docs/setup/basics/#site_author
-site_author = "rfresh2"
+site_author = "PakshP"
 
 # The site_url is the canonical URL for your site. When building online
 # documentation you should set this.
 # Read more: https://zensical.org/docs/setup/basics/#site_url
-site_url = "https://wiki.2b2t.vc/"
+#site_url = ""
 
 docs_dir = "wiki"
-repo_url = "https://github.com/rfresh2/ZenithProxy"
-edit_uri = "edit/1.21.4/docs/wiki"
+repo_url = "https://github.com/PakshP/DotProxy"
+edit_uri = "edit/main/docs/wiki"
 
 # The copyright notice appears in the page footer and can contain an HTML
 # fragment.
@@ -52,8 +52,6 @@ edit_uri = "edit/1.21.4/docs/wiki"
      { "Home" = "index.md" },
      { "Getting Started" = [
          { "Setup" = "Setup.md" },
-         { "DigitalOcean Setup Guide" = "DigitalOcean-Setup-Guide.md" },
-         { "Windows Launcher Guide" = "Windows-Python-Launcher-Guide.md" },
          { "Hosting Providers" = "Hosting-Providers.md" },
          { "Discord Bot Guide" = "Discord-Bot-Guide.md" },
          { "Linux Guide" = "Linux-Guide.md" },

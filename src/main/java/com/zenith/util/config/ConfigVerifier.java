@@ -17,9 +17,6 @@ public final class ConfigVerifier {
         if (containsNullFields(CONFIG, "com.zenith")) {
             return failDueToNullsIn("config");
         }
-        if (containsNullFields(LAUNCH_CONFIG, "com.zenith")) {
-            return failDueToNullsIn("launch_config");
-        }
         return new ConfigVerificationResult(true, "");
     }
 

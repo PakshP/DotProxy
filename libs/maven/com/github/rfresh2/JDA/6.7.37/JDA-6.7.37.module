@@ -1,0 +1,244 @@
+{
+  "formatVersion": "1.1",
+  "component": {
+    "group": "com.github.rfresh2",
+    "module": "JDA",
+    "version": "6.7.37",
+    "attributes": {
+      "org.gradle.status": "release"
+    }
+  },
+  "createdBy": {
+    "gradle": {
+      "version": "9.7.1"
+    }
+  },
+  "variants": [
+    {
+      "name": "apiElements",
+      "attributes": {
+        "org.gradle.category": "library",
+        "org.gradle.dependency.bundling": "external",
+        "org.gradle.jvm.version": 21,
+        "org.gradle.libraryelements": "jar",
+        "org.gradle.usage": "java-api"
+      },
+      "dependencies": [
+        {
+          "group": "org.slf4j",
+          "module": "slf4j-api",
+          "version": {
+            "requires": "2.0.19"
+          }
+        },
+        {
+          "group": "com.neovisionaries",
+          "module": "nv-websocket-client",
+          "version": {
+            "requires": "2.14"
+          }
+        },
+        {
+          "group": "com.squareup.okhttp3",
+          "module": "okhttp-jvm",
+          "version": {
+            "requires": "5.5.0"
+          }
+        },
+        {
+          "group": "club.minnced",
+          "module": "opus-java",
+          "version": {
+            "requires": "1.1.1"
+          }
+        },
+        {
+          "group": "org.apache.commons",
+          "module": "commons-collections4",
+          "version": {
+            "requires": "4.6.0"
+          }
+        }
+      ],
+      "files": [
+        {
+          "name": "JDA-6.7.37.jar",
+          "url": "JDA-6.7.37.jar",
+          "size": 3225015,
+          "sha512": "a81dc830c792624a77fcf4523904ac521efb3650cafc9f9d709fa712aa0d09c382fe96f2b21529b7a381e8f8c3352491b1019a38182fcb02adabeda9f5abb265",
+          "sha256": "91c5bee53852bc020452f6eaaf93007fcc9dd884bea749eaa4656b35b72c383e",
+          "sha1": "b1329eff737f24d8f84d468e14fae84d85478b64",
+          "md5": "27b8f0480220b817ef9a2460576527cc"
+        }
+      ]
+    },
+    {
+      "name": "runtimeElements",
+      "attributes": {
+        "org.gradle.category": "library",
+        "org.gradle.dependency.bundling": "external",
+        "org.gradle.jvm.version": 21,
+        "org.gradle.libraryelements": "jar",
+        "org.gradle.usage": "java-runtime"
+      },
+      "dependencies": [
+        {
+          "group": "tools.jackson",
+          "module": "jackson-bom",
+          "version": {
+            "requires": "3.2.2"
+          },
+          "attributes": {
+            "org.gradle.category": "platform"
+          }
+        },
+        {
+          "group": "tools.jackson.core",
+          "module": "jackson-databind"
+        },
+        {
+          "group": "com.github.rfresh2.fastutil",
+          "module": "fastutil-bom",
+          "version": {
+            "requires": "8.5.19"
+          },
+          "attributes": {
+            "org.gradle.category": "platform"
+          }
+        },
+        {
+          "group": "com.github.rfresh2.fastutil.maps",
+          "module": "int-long-maps"
+        },
+        {
+          "group": "com.github.rfresh2.fastutil.maps",
+          "module": "int-object-maps"
+        },
+        {
+          "group": "com.github.rfresh2.fastutil.sets",
+          "module": "int-sets"
+        },
+        {
+          "group": "com.github.rfresh2.fastutil.maps",
+          "module": "long-int-maps"
+        },
+        {
+          "group": "com.github.rfresh2.fastutil.maps",
+          "module": "long-long-maps"
+        },
+        {
+          "group": "com.github.rfresh2.fastutil.maps",
+          "module": "long-object-maps"
+        },
+        {
+          "group": "com.github.rfresh2.fastutil.sets",
+          "module": "long-sets"
+        },
+        {
+          "group": "com.github.rfresh2.fastutil.maps",
+          "module": "object-int-maps"
+        },
+        {
+          "group": "com.google.crypto.tink",
+          "module": "tink",
+          "version": {
+            "requires": "1.18.0"
+          }
+        },
+        {
+          "group": "com.github.rfresh2",
+          "module": "SimpleEventBus",
+          "version": {
+            "requires": "1.6"
+          }
+        },
+        {
+          "group": "org.slf4j",
+          "module": "slf4j-api",
+          "version": {
+            "requires": "2.0.19"
+          }
+        },
+        {
+          "group": "com.neovisionaries",
+          "module": "nv-websocket-client",
+          "version": {
+            "requires": "2.14"
+          }
+        },
+        {
+          "group": "com.squareup.okhttp3",
+          "module": "okhttp-jvm",
+          "version": {
+            "requires": "5.5.0"
+          }
+        },
+        {
+          "group": "club.minnced",
+          "module": "opus-java",
+          "version": {
+            "requires": "1.1.1"
+          }
+        },
+        {
+          "group": "org.apache.commons",
+          "module": "commons-collections4",
+          "version": {
+            "requires": "4.6.0"
+          }
+        }
+      ],
+      "files": [
+        {
+          "name": "JDA-6.7.37.jar",
+          "url": "JDA-6.7.37.jar",
+          "size": 3225015,
+          "sha512": "a81dc830c792624a77fcf4523904ac521efb3650cafc9f9d709fa712aa0d09c382fe96f2b21529b7a381e8f8c3352491b1019a38182fcb02adabeda9f5abb265",
+          "sha256": "91c5bee53852bc020452f6eaaf93007fcc9dd884bea749eaa4656b35b72c383e",
+          "sha1": "b1329eff737f24d8f84d468e14fae84d85478b64",
+          "md5": "27b8f0480220b817ef9a2460576527cc"
+        }
+      ]
+    },
+    {
+      "name": "javadocElements",
+      "attributes": {
+        "org.gradle.category": "documentation",
+        "org.gradle.dependency.bundling": "external",
+        "org.gradle.docstype": "javadoc",
+        "org.gradle.usage": "java-runtime"
+      },
+      "files": [
+        {
+          "name": "JDA-6.7.37-javadoc.jar",
+          "url": "JDA-6.7.37-javadoc.jar",
+          "size": 9170720,
+          "sha512": "4d1e76bfc388777b32540261ec6ff9528d05f92d132b54d398017ff744d4f2b42367884f0ef7dd2fe438568fe43c9776895a1f304a6745407dc50fc6384c5fcf",
+          "sha256": "21221367964cba6d87e0702aa1cd8c4467f55a3f5ea72fb80b1ea3d0d4794184",
+          "sha1": "87c6041af0d48f9a92faf22bc5a428c18d78fcc5",
+          "md5": "c314d875b3a1b8baadaf93975c6a09d5"
+        }
+      ]
+    },
+    {
+      "name": "sourcesElements",
+      "attributes": {
+        "org.gradle.category": "documentation",
+        "org.gradle.dependency.bundling": "external",
+        "org.gradle.docstype": "sources",
+        "org.gradle.usage": "java-runtime"
+      },
+      "files": [
+        {
+          "name": "JDA-6.7.37-sources.jar",
+          "url": "JDA-6.7.37-sources.jar",
+          "size": 2592297,
+          "sha512": "c056c3929257e819ba91bafc9cbbc371454e4cde43486533dfd6dffbf3001bccc49dbd7caa96482f1a23d30b51144fd1443bb17c85ea8536081c8d14006b0ca0",
+          "sha256": "5c25f29512c28310ca963bd946e244b893bb3895c51369cd37933d97bd43db11",
+          "sha1": "2a322e06ecfc952d7e4c43d2d6f46edb47f62d5d",
+          "md5": "34406a212feb7bca23976627c97a520c"
+        }
+      ]
+    }
+  ]
+}

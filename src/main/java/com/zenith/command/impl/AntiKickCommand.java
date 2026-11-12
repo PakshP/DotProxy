@@ -24,7 +24,7 @@ public class AntiKickCommand extends Command {
             .description("""
             AntiKick kicks players controlling the proxy client if they are inactive for a set amount of time.
             
-            Inactivity is defined as not moving, fishing, or swinging - which are what prevents 2b2t from kicking players.
+            Inactivity is defined as not moving or swinging.
             """)
             .usageLines(
                 "on/off",

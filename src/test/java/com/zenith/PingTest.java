@@ -17,10 +17,4 @@ public class PingTest {
         // testing ping srv dns resolver
         assertEquals(757, ProtocolVersionDetector.getProtocolVersion("9b9t.com", 25565));
     }
-
-//    @Test
-    public void twob2tPing() {
-        // testing ping srv dns resolver
-        assertEquals(765, ProtocolVersionDetector.getProtocolVersion("2b2t.org", 25565));
-    }
 }

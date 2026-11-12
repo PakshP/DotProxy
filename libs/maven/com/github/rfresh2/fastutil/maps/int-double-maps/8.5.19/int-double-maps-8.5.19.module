@@ -1,0 +1,146 @@
+{
+  "formatVersion": "1.1",
+  "component": {
+    "group": "com.github.rfresh2.fastutil.maps",
+    "module": "int-double-maps",
+    "version": "8.5.19",
+    "attributes": {
+      "org.gradle.status": "release"
+    }
+  },
+  "createdBy": {
+    "gradle": {
+      "version": "9.6.1"
+    }
+  },
+  "variants": [
+    {
+      "name": "apiElements",
+      "attributes": {
+        "org.gradle.category": "library",
+        "org.gradle.dependency.bundling": "external",
+        "org.gradle.jvm.version": 8,
+        "org.gradle.libraryelements": "jar",
+        "org.gradle.usage": "java-api"
+      },
+      "dependencies": [
+        {
+          "group": "com.github.rfresh2.fastutil.sets",
+          "module": "object-sets",
+          "version": {
+            "requires": "8.5.19"
+          }
+        },
+        {
+          "group": "com.github.rfresh2.fastutil.sets",
+          "module": "int-sets",
+          "version": {
+            "requires": "8.5.19"
+          }
+        },
+        {
+          "group": "com.github.rfresh2.fastutil.sets",
+          "module": "double-sets",
+          "version": {
+            "requires": "8.5.19"
+          }
+        }
+      ],
+      "files": [
+        {
+          "name": "int-double-maps-8.5.19.jar",
+          "url": "int-double-maps-8.5.19.jar",
+          "size": 214581,
+          "sha512": "3f9b1b6a4910c9395eac007e871400732a7c6b6cf42c5894312970e7a7a8aeec22f2ce1143d254f2f71e11373f7589d474651a5054bae67e14c14d121b9dfb1b",
+          "sha256": "65d55c2664ca54ed508390f6b3fc12ebf7f88ed469f8a06c78f7f5fbe9d879df",
+          "sha1": "ee319f6ab7bb090f627d5bdb3e520daed105b7c0",
+          "md5": "68e7a7c59c656937e5351769c7e1697d"
+        }
+      ]
+    },
+    {
+      "name": "runtimeElements",
+      "attributes": {
+        "org.gradle.category": "library",
+        "org.gradle.dependency.bundling": "external",
+        "org.gradle.jvm.version": 8,
+        "org.gradle.libraryelements": "jar",
+        "org.gradle.usage": "java-runtime"
+      },
+      "dependencies": [
+        {
+          "group": "com.github.rfresh2.fastutil.sets",
+          "module": "object-sets",
+          "version": {
+            "requires": "8.5.19"
+          }
+        },
+        {
+          "group": "com.github.rfresh2.fastutil.sets",
+          "module": "int-sets",
+          "version": {
+            "requires": "8.5.19"
+          }
+        },
+        {
+          "group": "com.github.rfresh2.fastutil.sets",
+          "module": "double-sets",
+          "version": {
+            "requires": "8.5.19"
+          }
+        }
+      ],
+      "files": [
+        {
+          "name": "int-double-maps-8.5.19.jar",
+          "url": "int-double-maps-8.5.19.jar",
+          "size": 214581,
+          "sha512": "3f9b1b6a4910c9395eac007e871400732a7c6b6cf42c5894312970e7a7a8aeec22f2ce1143d254f2f71e11373f7589d474651a5054bae67e14c14d121b9dfb1b",
+          "sha256": "65d55c2664ca54ed508390f6b3fc12ebf7f88ed469f8a06c78f7f5fbe9d879df",
+          "sha1": "ee319f6ab7bb090f627d5bdb3e520daed105b7c0",
+          "md5": "68e7a7c59c656937e5351769c7e1697d"
+        }
+      ]
+    },
+    {
+      "name": "javadocElements",
+      "attributes": {
+        "org.gradle.category": "documentation",
+        "org.gradle.dependency.bundling": "external",
+        "org.gradle.docstype": "javadoc",
+        "org.gradle.usage": "java-runtime"
+      },
+      "files": [
+        {
+          "name": "int-double-maps-8.5.19-javadoc.jar",
+          "url": "int-double-maps-8.5.19-javadoc.jar",
+          "size": 330653,
+          "sha512": "60dd5f60941c3c7df64cbead0c3fbbfda6adf70f3b57df4b8d10b95765f7c23e8a50d1db6d7e59632c161abd516b25d8b1b030fed51a2ba68c5321d9b0ccd708",
+          "sha256": "b1e215ca04acff2d5c737099a3d62e1ae8a96567067120900edb91ed64896af8",
+          "sha1": "f17379160b0e1af268e1b0836f5f081e057a302c",
+          "md5": "20986db176b8b14b86b38138a9b51c08"
+        }
+      ]
+    },
+    {
+      "name": "sourcesElements",
+      "attributes": {
+        "org.gradle.category": "documentation",
+        "org.gradle.dependency.bundling": "external",
+        "org.gradle.docstype": "sources",
+        "org.gradle.usage": "java-runtime"
+      },
+      "files": [
+        {
+          "name": "int-double-maps-8.5.19-sources.jar",
+          "url": "int-double-maps-8.5.19-sources.jar",
+          "size": 83127,
+          "sha512": "75f0c267be6434e3d8225a4227a523f0897575ca52b55cfd5d60462a6ff8d73e9ae57c3c8cb24c1e71f39f08836eacf593761e0ecabf800c122fa57fbc464108",
+          "sha256": "5838355701f7d3c090b2598554deabff9226df587aa46e54380319a75b4e3286",
+          "sha1": "483a1d62dd1c4b51854411f526a2c82316fb252d",
+          "md5": "7999e39698fde266bbaec81c32fcde66"
+        }
+      ]
+    }
+  ]
+}

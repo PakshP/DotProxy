@@ -4,7 +4,6 @@ import com.zenith.util.struct.Maps;
 import it.unimi.dsi.fastutil.ints.Int2ObjectMap;
 import it.unimi.dsi.fastutil.ints.Int2ObjectOpenHashMap;
 import it.unimi.dsi.fastutil.ints.IntArrayList;
-import it.unimi.dsi.fastutil.ints.IntOpenHashSet;
 import lombok.SneakyThrows;
 import org.jspecify.annotations.Nullable;
 import tools.jackson.databind.JsonNode;
@@ -28,7 +27,6 @@ public class BlockDataManager {
     private static final Int2ObjectOpenHashMap<List<CollisionBox>> blockStateIdToCollisionBoxes = new Int2ObjectOpenHashMap<>(blockStateIdCount, Maps.FAST_LOAD_FACTOR);
     private static final Int2ObjectOpenHashMap<List<CollisionBox>> blockStateIdToInteractionBoxes = new Int2ObjectOpenHashMap<>(blockStateIdCount, Maps.FAST_LOAD_FACTOR);
     private static final Int2ObjectOpenHashMap<FluidState> blockStateIdToFluidState = new Int2ObjectOpenHashMap<>(10000, Maps.FAST_LOAD_FACTOR);
-    private static final IntOpenHashSet pathfindableStateIds = new IntOpenHashSet();
     static {
         init();
     }
@@ -53,10 +51,6 @@ public class BlockDataManager {
             boolean falling = fluidStateNode.get("falling").asBoolean();
             blockStateIdToFluidState.put(stateId, new FluidState(water, source, amount, falling));
         }
-        var pathfindableArray = (ArrayNode) OBJECT_MAPPER.readTree(BlockDataManager.class.getResourceAsStream("/mcdata/pathfindable.smile"));
-        pathfindableArray.elements().forEach((stateId) -> {
-            pathfindableStateIds.add(stateId.asInt());
-        });
     }
 
     @SneakyThrows
@@ -160,10 +154,6 @@ public class BlockDataManager {
     @Nullable
     public FluidState getFluidState(int blockStateId) {
         return blockStateIdToFluidState.get(blockStateId);
-    }
-
-    public boolean isPathfindable(int blockStateId) {
-        return pathfindableStateIds.contains(blockStateId);
     }
 
     /**

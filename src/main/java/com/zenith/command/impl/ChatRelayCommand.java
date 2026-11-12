@@ -44,12 +44,10 @@ public class ChatRelayCommand extends Command {
                 "connectionMessages on/off",
                 "whispers on/off",
                 "publicChat on/off",
-                "deathMessages on/off",
                 "serverMessages on/off",
                 "whisperMentions on/off",
                 "nameMentions on/off",
                 "mentionsWhileConnected on/off",
-                "ignoreQueue on/off",
                 "sendMessages on/off",
                 "ignoreRegex add <regex>",
                 "ignoreRegex del <index>",
@@ -126,12 +124,6 @@ public class ChatRelayCommand extends Command {
                     c.getSource().getEmbed()
                         .title("Public Chat " + toggleStrCaps(CONFIG.discord.chatRelay.publicChats));
                 })))
-            .then(literal("deathMessages")
-                .then(argument("toggle", toggle()).executes(c -> {
-                    CONFIG.discord.chatRelay.deathMessages = getToggle(c, "toggle");
-                    c.getSource().getEmbed()
-                        .title("Death Messages " + toggleStrCaps(CONFIG.discord.chatRelay.deathMessages));
-                })))
             .then(literal("serverMessages")
                 .then(argument("toggle", toggle()).executes(c -> {
                     CONFIG.discord.chatRelay.serverMessages = getToggle(c, "toggle");
@@ -155,12 +147,6 @@ public class ChatRelayCommand extends Command {
                     CONFIG.discord.chatRelay.mentionWhileConnected = getToggle(c, "toggle");
                     c.getSource().getEmbed()
                         .title("Mentions While Connected " + toggleStrCaps(CONFIG.discord.chatRelay.mentionWhileConnected));
-                })))
-            .then(literal("ignoreQueue")
-                .then(argument("toggle", toggle()).executes(c -> {
-                    CONFIG.discord.chatRelay.ignoreQueue = getToggle(c, "toggle");
-                    c.getSource().getEmbed()
-                        .title("Ignore Queue " + toggleStrCaps(CONFIG.discord.chatRelay.ignoreQueue));
                 })))
             .then(literal("sendMessages")
                 .then(argument("toggle", toggle()).executes(c -> {
@@ -232,12 +218,10 @@ public class ChatRelayCommand extends Command {
                 .addField("Connection Messages", toggleStr(CONFIG.discord.chatRelay.connectionMessages))
                 .addField("Public Chats", toggleStr(CONFIG.discord.chatRelay.publicChats))
                 .addField("Whispers", toggleStr(CONFIG.discord.chatRelay.whispers))
-                .addField("Death Messages", toggleStr(CONFIG.discord.chatRelay.deathMessages))
                 .addField("Server Messages", toggleStr(CONFIG.discord.chatRelay.serverMessages))
                 .addField("Whisper Mentions", toggleStr(CONFIG.discord.chatRelay.mentionRoleOnWhisper))
                 .addField("Name Mentions", toggleStr(CONFIG.discord.chatRelay.mentionRoleOnNameMention))
                 .addField("Mentions While Connected", toggleStr(CONFIG.discord.chatRelay.mentionWhileConnected))
-                .addField("Ignore Queue", toggleStr(CONFIG.discord.chatRelay.ignoreQueue))
                 .addField("Send Messages", toggleStr(CONFIG.discord.chatRelay.sendMessages));
         }
         c.getEmbed()

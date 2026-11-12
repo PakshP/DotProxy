@@ -6,7 +6,7 @@ import com.zenith.command.api.CommandCategory;
 import com.zenith.command.api.CommandContext;
 import com.zenith.command.api.CommandUsage;
 
-import static com.zenith.Globals.LAUNCH_CONFIG;
+import static com.zenith.Globals.SOURCE_URL;
 
 public class LicenseCommand extends Command {
     @Override
@@ -41,9 +41,9 @@ public class LicenseCommand extends Command {
     }
 
     /**
-     * If you distribute modified versions of ZenithProxy that do not properly configure the launch_config.json, replace this with a link to your repository.
+     * If you distribute modified versions, replace Globals.SOURCE_URL with a link to your repository.
      */
     private String sourceUrl() {
-        return "https://github.com/" + LAUNCH_CONFIG.repo_owner + "/" + LAUNCH_CONFIG.repo_name;
+        return SOURCE_URL;
     }
 }

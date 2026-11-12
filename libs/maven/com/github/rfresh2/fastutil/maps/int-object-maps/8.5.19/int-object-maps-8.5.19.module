@@ -1,0 +1,132 @@
+{
+  "formatVersion": "1.1",
+  "component": {
+    "group": "com.github.rfresh2.fastutil.maps",
+    "module": "int-object-maps",
+    "version": "8.5.19",
+    "attributes": {
+      "org.gradle.status": "release"
+    }
+  },
+  "createdBy": {
+    "gradle": {
+      "version": "9.6.1"
+    }
+  },
+  "variants": [
+    {
+      "name": "apiElements",
+      "attributes": {
+        "org.gradle.category": "library",
+        "org.gradle.dependency.bundling": "external",
+        "org.gradle.jvm.version": 8,
+        "org.gradle.libraryelements": "jar",
+        "org.gradle.usage": "java-api"
+      },
+      "dependencies": [
+        {
+          "group": "com.github.rfresh2.fastutil.sets",
+          "module": "object-sets",
+          "version": {
+            "requires": "8.5.19"
+          }
+        },
+        {
+          "group": "com.github.rfresh2.fastutil.sets",
+          "module": "int-sets",
+          "version": {
+            "requires": "8.5.19"
+          }
+        }
+      ],
+      "files": [
+        {
+          "name": "int-object-maps-8.5.19.jar",
+          "url": "int-object-maps-8.5.19.jar",
+          "size": 221930,
+          "sha512": "9aa120f270fd0aac92e01eb962bc18e2cf97f9745ad992510f566cf50a9b2a634bb9f1873774cca8835069cfa4207834b1025f96e4740f85299ba8b814d69f83",
+          "sha256": "260bf3b88a256d3dd69164d7a0bf57a6f90ec57a7e544e92b96f9f9942dbe664",
+          "sha1": "6d218cca2b9030c806cc32f653fb4e5911f8b751",
+          "md5": "756d193292990a00df0a9590ef0304ee"
+        }
+      ]
+    },
+    {
+      "name": "runtimeElements",
+      "attributes": {
+        "org.gradle.category": "library",
+        "org.gradle.dependency.bundling": "external",
+        "org.gradle.jvm.version": 8,
+        "org.gradle.libraryelements": "jar",
+        "org.gradle.usage": "java-runtime"
+      },
+      "dependencies": [
+        {
+          "group": "com.github.rfresh2.fastutil.sets",
+          "module": "object-sets",
+          "version": {
+            "requires": "8.5.19"
+          }
+        },
+        {
+          "group": "com.github.rfresh2.fastutil.sets",
+          "module": "int-sets",
+          "version": {
+            "requires": "8.5.19"
+          }
+        }
+      ],
+      "files": [
+        {
+          "name": "int-object-maps-8.5.19.jar",
+          "url": "int-object-maps-8.5.19.jar",
+          "size": 221930,
+          "sha512": "9aa120f270fd0aac92e01eb962bc18e2cf97f9745ad992510f566cf50a9b2a634bb9f1873774cca8835069cfa4207834b1025f96e4740f85299ba8b814d69f83",
+          "sha256": "260bf3b88a256d3dd69164d7a0bf57a6f90ec57a7e544e92b96f9f9942dbe664",
+          "sha1": "6d218cca2b9030c806cc32f653fb4e5911f8b751",
+          "md5": "756d193292990a00df0a9590ef0304ee"
+        }
+      ]
+    },
+    {
+      "name": "javadocElements",
+      "attributes": {
+        "org.gradle.category": "documentation",
+        "org.gradle.dependency.bundling": "external",
+        "org.gradle.docstype": "javadoc",
+        "org.gradle.usage": "java-runtime"
+      },
+      "files": [
+        {
+          "name": "int-object-maps-8.5.19-javadoc.jar",
+          "url": "int-object-maps-8.5.19-javadoc.jar",
+          "size": 328914,
+          "sha512": "3ed69585eb1ffc0cb741a5782d76890829d66ceb72a022dd4932f44ffc2d15a54e6b4b61b6a0408244b12cf3fd98bd1a35e4126eea54c1f83f1a41a4551c81f8",
+          "sha256": "4345b066675fafd3ed13dbf83a85c599275bf1de0bf305bdfa8a0dff49f3f384",
+          "sha1": "5d3ec70245d0a348196dd64919e9c14e19f303b7",
+          "md5": "e518618645f617c76bd497648a0bb1d8"
+        }
+      ]
+    },
+    {
+      "name": "sourcesElements",
+      "attributes": {
+        "org.gradle.category": "documentation",
+        "org.gradle.dependency.bundling": "external",
+        "org.gradle.docstype": "sources",
+        "org.gradle.usage": "java-runtime"
+      },
+      "files": [
+        {
+          "name": "int-object-maps-8.5.19-sources.jar",
+          "url": "int-object-maps-8.5.19-sources.jar",
+          "size": 80689,
+          "sha512": "85c653c332154b725a63b2b980e78f8a42b168eee20a10a874fe2ef18456b24e57f0f48c650368e99cc9b77bd53483a2f596f9bb2c4fc696c02126baaa23e86e",
+          "sha256": "d6b359f8676ab174d11420ff3e82ba04f345b107b79dadaa617188a4ad8bda05",
+          "sha1": "9a69a2f64d89b8086e082dabb1277ee45d763cf5",
+          "md5": "c1b70f6f9e4e9c2d91792af6bdb5d41a"
+        }
+      ]
+    }
+  ]
+}

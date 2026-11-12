@@ -2,7 +2,6 @@ package com.zenith;
 
 import com.zenith.util.Wait;
 import com.zenith.util.config.Config;
-import com.zenith.util.config.LaunchConfig;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.condition.DisabledInNativeImage;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -43,11 +42,6 @@ public class ConnectIntegTest {
             config.authentication.accountType = Config.Authentication.AccountType.OFFLINE;
             config.authentication.username = "ZenithTest";
             TestUtils.setConfigFile(config);
-
-            var launchConfig = new LaunchConfig();
-            launchConfig.auto_update = false;
-            launchConfig.auto_update_launcher = false;
-            TestUtils.setLaunchConfigFile(launchConfig);
 
             launchThread.set(Thread.ofPlatform().daemon().start(Proxy::main));
 

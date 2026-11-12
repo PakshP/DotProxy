@@ -12,10 +12,9 @@ public class ZenithProxyReflectionFeature extends AbstractGraalVMReflectionFeatu
             "com.viaversion.viarewind.protocol",
             "com.viaversion.viaversion.api",
             "com.viaversion.viaversion.protocols",
-            "com.zenith.database.dto",
             "com.zenith.event",
             "com.zenith.feature.api",
-            "com.zenith.feature.queue.mcping",
+            "com.zenith.feature.ping",
             "com.zenith.terminal",
             "com.zenith.util.config",
             "com.zenith.via"

@@ -301,7 +301,7 @@ public class DiscordManageCommand extends Command {
             String errorMsg = e.getMessage();
             var reason = e.getShutdownReason();
             if (reason == ShutdownReason.DISALLOWED_INTENTS) {
-                errorMsg = "You must enable MESSAGE CONTENT INTENT on the Discord developer website: https://wiki.2b2t.vc/_assets/img/discord-setup/DiscordSetup2.png";
+                errorMsg = "You must enable MESSAGE CONTENT INTENT (Bot -> Privileged Gateway Intents) on the Discord developer website: https://discord.com/developers/applications";
             }
             return new LoginResult(false, errorMsg);
         } catch (final Throwable e) {

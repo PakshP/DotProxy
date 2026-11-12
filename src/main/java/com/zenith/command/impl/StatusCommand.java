@@ -7,15 +7,13 @@ import com.zenith.command.api.Command;
 import com.zenith.command.api.CommandCategory;
 import com.zenith.command.api.CommandContext;
 import com.zenith.command.api.CommandUsage;
-import com.zenith.feature.queue.Queue;
 import com.zenith.module.impl.*;
 import com.zenith.network.server.ServerSession;
 import com.zenith.util.ImageInfo;
 import com.zenith.util.math.MathHelper;
-import net.dv8tion.jda.api.utils.TimeFormat;
+import org.jspecify.annotations.Nullable;
 
 import java.time.Duration;
-import java.time.Instant;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -75,39 +73,10 @@ public class StatusCommand extends Command {
 
     private String getStatus() {
         if (Proxy.getInstance().isConnected()) {
-            if (Proxy.getInstance().isInQueue()) {
-                if (Proxy.getInstance().isPrio()) {
-                    return "In Prio Queue [%d / %d]\nETA: %s\n(%s)".formatted(
-                        Proxy.getInstance().getQueuePosition(),
-                        Queue.getQueueStatus().prio(),
-                        Queue.getQueueEta(Proxy.getInstance().getQueuePosition()),
-                        TimeFormat.DATE_TIME_SHORT.format(Instant.now()
-                            .plus(Duration.ofSeconds(Queue.getQueueWait(Proxy.getInstance().getQueuePosition()))))
-                    );
-                } else {
-                    return "In Queue [%d / %d]\nETA: %s\n(%s)".formatted(
-                        Proxy.getInstance().getQueuePosition(),
-                        Queue.getQueueStatus().regular(),
-                        Queue.getQueueEta(Proxy.getInstance().getQueuePosition()),
-                        TimeFormat.DATE_TIME_SHORT.format(Instant.now()
-                            .plus(Duration.ofSeconds(Queue.getQueueWait(Proxy.getInstance().getQueuePosition()))))
-                    );
-                }
-            } else {
-                return "Online";
-            }
+            return "Online";
         } else {
             return "Disconnected";
         }
-    }
-
-    private String getQueueStatus() {
-        return "Priority: %d [%s]\nRegular: %d [%s]".formatted(
-            Queue.getQueueStatus().prio(),
-            Queue.getQueueEta(Queue.getQueueStatus().prio()),
-            Queue.getQueueStatus().regular(),
-            Queue.getQueueEta(Queue.getQueueStatus().regular())
-        );
     }
 
     public String getOnlineTime() {
@@ -123,32 +92,20 @@ public class StatusCommand extends Command {
                 c.getSource().getEmbed()
                     .title("ZenithProxy " + VERSION + " - " + CONFIG.authentication.username)
                     .color(Proxy.getInstance().isConnected()
-                               ? (Proxy.getInstance().isInQueue()
-                                    ? CONFIG.theme.inQueue.discord()
-                                    : CONFIG.theme.success.discord())
+                               ? CONFIG.theme.success.discord()
                                : CONFIG.theme.error.discord())
                     .thumbnail(getThumbnailImage())
                     .addField("Plugins", ImageInfo.inImageCode() ? "N/A (`java` required)" : toggleStr(CONFIG.plugins.enabled), true)
                     .addField("AutoDisconnect", toggleStr(MODULE.get(AutoDisconnect.class).isEnabled()), true)
                     .addField("AutoReconnect", toggleStr(MODULE.get(AutoReconnect.class).isEnabled()), true)
-                    .addField("KillAura", toggleStr(MODULE.get(KillAura.class).isEnabled()), true)
-                    .addField("AutoTotem", toggleStr(MODULE.get(AutoTotem.class).isEnabled()), true)
-                    .addField("AutoEat", toggleStr(MODULE.get(AutoEat.class).isEnabled()), true)
                     .addField("AntiAFK", toggleStr(MODULE.get(AntiAFK.class).isEnabled()), true)
                     .addField("AutoRespawn", toggleStr(MODULE.get(AutoRespawn.class).isEnabled()), true)
                     .addField("ViaVersion", "Z->S: " + toggleStr(CONFIG.client.viaversion.enabled)
                         + "\nP->Z: " + toggleStr(CONFIG.server.viaversion.enabled), true)
                     .addField("VisualRange", toggleStr(MODULE.get(VisualRange.class).isEnabled()), true)
-                    .addField("AntiLeak", toggleStr(MODULE.get(AntiLeak.class).isEnabled()), true)
                     .addField("AntiKick", toggleStr(MODULE.get(AntiKick.class).isEnabled()), true)
-                    .addField("AutoFish", toggleStr(MODULE.get(AutoFish.class).isEnabled()), true)
-                    .addField("Spook", toggleStr(MODULE.get(Spook.class).isEnabled()), true)
                     .addField("Active Hours", toggleStr(MODULE.get(ActiveHours.class).isEnabled()), true)
-                    .addField("AutoReply", toggleStr(MODULE.get(AutoReply.class).isEnabled()), true)
                     .addField("ActionLimiter", toggleStr(MODULE.get(ActionLimiter.class).isEnabled()), true)
-                    .addField("Spammer", toggleStr(MODULE.get(Spammer.class).isEnabled()), true)
-                    .addField("Replay Recording", toggleStr(MODULE.get(ReplayMod.class).isEnabled()), true)
-                    .addField("AutoArmor", toggleStr(MODULE.get(AutoArmor.class).isEnabled()), true)
                     .addField("ChatHistory", toggleStr(MODULE.get(ChatHistory.class).isEnabled()), true);
             }))
             .executes(c -> {
@@ -156,9 +113,7 @@ public class StatusCommand extends Command {
                 embed
                     .title("ZenithProxy " + VERSION + " - " + CONFIG.authentication.username)
                     .color(Proxy.getInstance().isConnected()
-                               ? (Proxy.getInstance().isInQueue()
-                        ? CONFIG.theme.inQueue.discord()
-                        : CONFIG.theme.success.discord())
+                               ? CONFIG.theme.success.discord()
                                : CONFIG.theme.error.discord())
                     .thumbnail(getThumbnailImage())
                     .addField("Status", getStatus())
@@ -177,26 +132,17 @@ public class StatusCommand extends Command {
                     .addField("Server", escape(CONFIG.client.server.address + ':' + CONFIG.client.server.port), true)
                     .addField("Connected Player", getCurrentClientUserName(), true);
                     // end row 4
-                if (Proxy.getInstance().isOn2b2t()) {
-                    embed.addField("Priority Queue", (CONFIG.authentication.prio ? "yes" : "no"), true);
-                }
                 if (!getSpectatorUserNames().isEmpty())
                     embed.addField("Spectators", String.join(", ", getSpectatorUserNames()), true);
-                if (CONFIG.server.queueStatusRefreshWhileNotOn2b2t || Proxy.getInstance().isOn2b2t()) {
-                    embed
-                        .addField("2b2t Queue", getQueueStatus(), true);
-                }
                 if (CONFIG.discord.reportCoords)
                     embed.addField("Coordinates", getCoordinates(CACHE.getPlayerCache().getThePlayer()), true);
-                embed
-                    .addField("AutoUpdate", toggleStr(LAUNCH_CONFIG.auto_update), true);
                  return OK;
             });
     }
 
-    private static String getThumbnailImage() {
+    private static @Nullable String getThumbnailImage() {
         return "Unknown".equals(CONFIG.authentication.username)
-            ? "https://cdn.2b2t.vc/default-zenith-server-icon.png"
+            ? null
             : Proxy.getInstance().getPlayerHeadURL(CONFIG.authentication.username).toString();
     }
 }

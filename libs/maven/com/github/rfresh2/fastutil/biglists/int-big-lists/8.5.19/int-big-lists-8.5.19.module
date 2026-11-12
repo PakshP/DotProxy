@@ -1,0 +1,132 @@
+{
+  "formatVersion": "1.1",
+  "component": {
+    "group": "com.github.rfresh2.fastutil.biglists",
+    "module": "int-big-lists",
+    "version": "8.5.19",
+    "attributes": {
+      "org.gradle.status": "release"
+    }
+  },
+  "createdBy": {
+    "gradle": {
+      "version": "9.6.1"
+    }
+  },
+  "variants": [
+    {
+      "name": "apiElements",
+      "attributes": {
+        "org.gradle.category": "library",
+        "org.gradle.dependency.bundling": "external",
+        "org.gradle.jvm.version": 8,
+        "org.gradle.libraryelements": "jar",
+        "org.gradle.usage": "java-api"
+      },
+      "dependencies": [
+        {
+          "group": "com.github.rfresh2.fastutil.commons",
+          "module": "int-common",
+          "version": {
+            "requires": "8.5.19"
+          }
+        },
+        {
+          "group": "com.github.rfresh2.fastutil.biglists",
+          "module": "object-big-lists",
+          "version": {
+            "requires": "8.5.19"
+          }
+        }
+      ],
+      "files": [
+        {
+          "name": "int-big-lists-8.5.19.jar",
+          "url": "int-big-lists-8.5.19.jar",
+          "size": 68896,
+          "sha512": "fa18847569c615ab91cf21f5027a20ff5b52ddef5bcd769f408a70791ea1346c1af96e068e050922b5a765e120871c467c442f5d9c3d96a0de4bc4f509f030ba",
+          "sha256": "569e2c21a26b9c75f517afe96f2164cd6d8c4d6abe598583da640e1dea825f5e",
+          "sha1": "879d666d06f466e9873ac9d3ab1ef335e89b37b6",
+          "md5": "8cd332ba6006a01ef8d3efff2c921f7d"
+        }
+      ]
+    },
+    {
+      "name": "runtimeElements",
+      "attributes": {
+        "org.gradle.category": "library",
+        "org.gradle.dependency.bundling": "external",
+        "org.gradle.jvm.version": 8,
+        "org.gradle.libraryelements": "jar",
+        "org.gradle.usage": "java-runtime"
+      },
+      "dependencies": [
+        {
+          "group": "com.github.rfresh2.fastutil.commons",
+          "module": "int-common",
+          "version": {
+            "requires": "8.5.19"
+          }
+        },
+        {
+          "group": "com.github.rfresh2.fastutil.biglists",
+          "module": "object-big-lists",
+          "version": {
+            "requires": "8.5.19"
+          }
+        }
+      ],
+      "files": [
+        {
+          "name": "int-big-lists-8.5.19.jar",
+          "url": "int-big-lists-8.5.19.jar",
+          "size": 68896,
+          "sha512": "fa18847569c615ab91cf21f5027a20ff5b52ddef5bcd769f408a70791ea1346c1af96e068e050922b5a765e120871c467c442f5d9c3d96a0de4bc4f509f030ba",
+          "sha256": "569e2c21a26b9c75f517afe96f2164cd6d8c4d6abe598583da640e1dea825f5e",
+          "sha1": "879d666d06f466e9873ac9d3ab1ef335e89b37b6",
+          "md5": "8cd332ba6006a01ef8d3efff2c921f7d"
+        }
+      ]
+    },
+    {
+      "name": "javadocElements",
+      "attributes": {
+        "org.gradle.category": "documentation",
+        "org.gradle.dependency.bundling": "external",
+        "org.gradle.docstype": "javadoc",
+        "org.gradle.usage": "java-runtime"
+      },
+      "files": [
+        {
+          "name": "int-big-lists-8.5.19-javadoc.jar",
+          "url": "int-big-lists-8.5.19-javadoc.jar",
+          "size": 243429,
+          "sha512": "35ceaf9782ac54660ab27dcc86067077124db93329aa766f7dc727a9298d77924d4996c4764027f6e4ef0491f8474d7fbf1a977ca31f44a112b58a488c396ed8",
+          "sha256": "92c2b23962187992cc6b4bef951955ccba25ade71be63b0486ce73a0c265208f",
+          "sha1": "20b7b99530d6a662a8f07ae411c7dcc424380473",
+          "md5": "2c0c43237021989e9e5a48ec4a7c4b57"
+        }
+      ]
+    },
+    {
+      "name": "sourcesElements",
+      "attributes": {
+        "org.gradle.category": "documentation",
+        "org.gradle.dependency.bundling": "external",
+        "org.gradle.docstype": "sources",
+        "org.gradle.usage": "java-runtime"
+      },
+      "files": [
+        {
+          "name": "int-big-lists-8.5.19-sources.jar",
+          "url": "int-big-lists-8.5.19-sources.jar",
+          "size": 36895,
+          "sha512": "7954b32a7fdade24b82c7d193fff4670d40a372280d280713b7b5e9789babcd95069de425c5ab51e781b4f733fdbe9adc81b937b62c577974b06d14c5658f279",
+          "sha256": "a920f9dc0c943ca0896cf0b842974ca79e39866fa56014fd4a667458ee40b80f",
+          "sha1": "ec0b6096d18daeb34f0e7b03dd8c32c8095340ea",
+          "md5": "c803bc34742e7a4352aaf1f0db99b58a"
+        }
+      ]
+    }
+  ]
+}

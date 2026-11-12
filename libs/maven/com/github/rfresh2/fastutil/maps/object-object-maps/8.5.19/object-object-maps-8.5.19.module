@@ -1,0 +1,118 @@
+{
+  "formatVersion": "1.1",
+  "component": {
+    "group": "com.github.rfresh2.fastutil.maps",
+    "module": "object-object-maps",
+    "version": "8.5.19",
+    "attributes": {
+      "org.gradle.status": "release"
+    }
+  },
+  "createdBy": {
+    "gradle": {
+      "version": "9.6.1"
+    }
+  },
+  "variants": [
+    {
+      "name": "apiElements",
+      "attributes": {
+        "org.gradle.category": "library",
+        "org.gradle.dependency.bundling": "external",
+        "org.gradle.jvm.version": 8,
+        "org.gradle.libraryelements": "jar",
+        "org.gradle.usage": "java-api"
+      },
+      "dependencies": [
+        {
+          "group": "com.github.rfresh2.fastutil.sets",
+          "module": "object-sets",
+          "version": {
+            "requires": "8.5.19"
+          }
+        }
+      ],
+      "files": [
+        {
+          "name": "object-object-maps-8.5.19.jar",
+          "url": "object-object-maps-8.5.19.jar",
+          "size": 244800,
+          "sha512": "1130812267ddcf77daff4fe1c740a93182bd728fe26c23de85f802562f36937caf45adebf9bcdf97e6894d4ac2424d0f6b91d9f834286e3987bfa45c443d77d0",
+          "sha256": "91be7f6fe64335da519110689542f7a7f9da34b3fc16ca5f3eac1a98908cb89d",
+          "sha1": "1048742186cb25c1bc5c7fbaf4d5034b83ac2014",
+          "md5": "1f82f69b675b265ccd64d5c4f2e2b0d0"
+        }
+      ]
+    },
+    {
+      "name": "runtimeElements",
+      "attributes": {
+        "org.gradle.category": "library",
+        "org.gradle.dependency.bundling": "external",
+        "org.gradle.jvm.version": 8,
+        "org.gradle.libraryelements": "jar",
+        "org.gradle.usage": "java-runtime"
+      },
+      "dependencies": [
+        {
+          "group": "com.github.rfresh2.fastutil.sets",
+          "module": "object-sets",
+          "version": {
+            "requires": "8.5.19"
+          }
+        }
+      ],
+      "files": [
+        {
+          "name": "object-object-maps-8.5.19.jar",
+          "url": "object-object-maps-8.5.19.jar",
+          "size": 244800,
+          "sha512": "1130812267ddcf77daff4fe1c740a93182bd728fe26c23de85f802562f36937caf45adebf9bcdf97e6894d4ac2424d0f6b91d9f834286e3987bfa45c443d77d0",
+          "sha256": "91be7f6fe64335da519110689542f7a7f9da34b3fc16ca5f3eac1a98908cb89d",
+          "sha1": "1048742186cb25c1bc5c7fbaf4d5034b83ac2014",
+          "md5": "1f82f69b675b265ccd64d5c4f2e2b0d0"
+        }
+      ]
+    },
+    {
+      "name": "javadocElements",
+      "attributes": {
+        "org.gradle.category": "documentation",
+        "org.gradle.dependency.bundling": "external",
+        "org.gradle.docstype": "javadoc",
+        "org.gradle.usage": "java-runtime"
+      },
+      "files": [
+        {
+          "name": "object-object-maps-8.5.19-javadoc.jar",
+          "url": "object-object-maps-8.5.19-javadoc.jar",
+          "size": 329410,
+          "sha512": "7102b0d57253eb06881fb76475a1fc930cb29c1ab720b322ad14560213e2d211298338164a28a4b54541c156bc60595013bf8f776a556bd06a5aa126436ec783",
+          "sha256": "48ed644c6fcddcec37d606dee2157f75e63a4ef4abf6726e4d5addd688bcb964",
+          "sha1": "e66c8ccf60bc977b77befa899ce72ee63a92d777",
+          "md5": "9dbc9ef707e21c82bc1d5d1ce3dd2295"
+        }
+      ]
+    },
+    {
+      "name": "sourcesElements",
+      "attributes": {
+        "org.gradle.category": "documentation",
+        "org.gradle.dependency.bundling": "external",
+        "org.gradle.docstype": "sources",
+        "org.gradle.usage": "java-runtime"
+      },
+      "files": [
+        {
+          "name": "object-object-maps-8.5.19-sources.jar",
+          "url": "object-object-maps-8.5.19-sources.jar",
+          "size": 89595,
+          "sha512": "6677247acd6c3eb4f209703557644c8220b768308f0a4159bdfb6320538ab6857aa6cce12134fb96b1aeaa180d844df14af4ebf7d70b4b7ef6cf800f23652d19",
+          "sha256": "622df9b32ebedac7c8b993479b9dea3783c3a269b50f869525d510c976dcfdb6",
+          "sha1": "1e4a93b3012b4d7400e08f70cffa322ddc2e7ba9",
+          "md5": "cd82c5076b4f1b6123c00e3e469cf5d3"
+        }
+      ]
+    }
+  ]
+}

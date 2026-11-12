@@ -45,7 +45,7 @@ public class ProxyServerLoginHandler {
             return;
         }
         if (!Wait.waitUntil(() -> Proxy.getInstance().isConnected()
-                                && (Proxy.getInstance().getOnlineTimeSeconds() > 1 || Proxy.getInstance().isInQueue())
+                                && Proxy.getInstance().getOnlineTimeSeconds() > 1
                                 && CACHE.getPlayerCache().getEntityId() != -1
                                 && nonNull(CACHE.getProfileCache().getProfile())
                                 && nonNull(CACHE.getPlayerCache().getGameMode())
@@ -115,18 +115,18 @@ public class ProxyServerLoginHandler {
                 ),
                 false
             ));
-            if (CONFIG.debug.inventorySyncOnLogin && !Proxy.getInstance().isInQueue()) { PlayerCache.inventorySync(); }
+            if (CONFIG.debug.inventorySyncOnLogin) { PlayerCache.inventorySync(); }
         }
         connection.send(new ClientboundServerDataPacket(
             ZenithServerInfoBuilder.INSTANCE.getMotd(),
             Proxy.getInstance().getServerIcon()
         ));
         connection.send(new ClientboundServerLinksPacket(asList(
-            new ServerLink(ServerLinkType.WEBSITE, null, "https://github.com/rfresh2/ZenithProxy"),
-            new ServerLink(ServerLinkType.SUPPORT, null, "https://discord.gg/nJZrSaRKtb")
+            new ServerLink(ServerLinkType.WEBSITE, null, SOURCE_URL),
+            new ServerLink(ServerLinkType.BUG_REPORT, null, SOURCE_URL + "/issues")
         )));
         connection.send(new ClientboundCustomReportDetailsPacket(Maps.of(
-            "ZenithProxy Support", "https://discord.gg/nJZrSaRKtb"
+            "ZenithProxy Source", SOURCE_URL
         )));
         connection.setConfigured(true);
     }

@@ -47,8 +47,6 @@ public class ClientSession extends TcpClientSession {
     protected long lastPingId = 0L;
     protected long lastPingSentTime = 0L;
 
-    private boolean inQueue = false;
-    private int lastQueuePosition = Integer.MAX_VALUE;
     // in game
     private boolean online = false;
     private boolean wasOnline = false;
@@ -237,7 +235,6 @@ public class ClientSession extends TcpClientSession {
         }
         CLIENT_LOG.info("Disconnected: {}", reason != null ? reason : reasonStr);
         var onlineDuration = Duration.ofSeconds(Proxy.getInstance().getOnlineTimeSeconds());
-        var onlineDurationWithQueueSkip = Duration.ofSeconds(Proxy.getInstance().getOnlineTimeSecondsWithQueueSkip());
         try {
             CLIENT_LOG.trace("Shutting down client event loop...");
             // stop processing packets before we reset the client cache to avoid race conditions
@@ -245,7 +242,7 @@ public class ClientSession extends TcpClientSession {
         } catch (Exception e) {
             CLIENT_LOG.error("Error awaiting client event loop shutdown", e);
         }
-        EVENT_BUS.post(new ClientDisconnectEvent(reasonStr, onlineDuration, onlineDurationWithQueueSkip, Proxy.getInstance().isInQueue(), Proxy.getInstance().getQueuePosition()));
+        EVENT_BUS.post(new ClientDisconnectEvent(reasonStr, onlineDuration));
     }
 
     public ProtocolVersion getProtocolVersion() {

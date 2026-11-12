@@ -12,7 +12,6 @@ import com.zenith.plugin.bootstrap.PluginBootstrap;
 import com.zenith.util.ImageInfo;
 import com.zenith.util.config.ConfigVerifier;
 import lombok.SneakyThrows;
-import org.geysermc.mcprotocollib.protocol.codec.MinecraftCodec;
 import org.jspecify.annotations.NullMarked;
 import org.jspecify.annotations.Nullable;
 
@@ -119,14 +118,12 @@ public class PluginManager {
             DISCORD.sendEmbedMessage(Embed.builder()
                 .title("Potential Plugins Found")
                 .description("""
-                External plugin JARs are not supported on the `linux` release channel.
+                External plugin JARs are not supported in native image builds.
 
-                To use plugins, switch to the `java` release channel:
-
-                `channel set java %s`
+                To use plugins, run the Java (JAR) build instead.
 
                 Detected %d potential plugin jars in the plugins directory.
-                """.formatted(Objects.requireNonNullElse(LAUNCH_CONFIG.getMcVersion(), MinecraftCodec.CODEC.getMinecraftVersion()), potentialPluginCount))
+                """.formatted(potentialPluginCount))
                 .errorColor()
             );
         }

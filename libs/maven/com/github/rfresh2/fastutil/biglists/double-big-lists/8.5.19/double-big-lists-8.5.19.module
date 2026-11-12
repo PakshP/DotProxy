@@ -1,0 +1,118 @@
+{
+  "formatVersion": "1.1",
+  "component": {
+    "group": "com.github.rfresh2.fastutil.biglists",
+    "module": "double-big-lists",
+    "version": "8.5.19",
+    "attributes": {
+      "org.gradle.status": "release"
+    }
+  },
+  "createdBy": {
+    "gradle": {
+      "version": "9.6.1"
+    }
+  },
+  "variants": [
+    {
+      "name": "apiElements",
+      "attributes": {
+        "org.gradle.category": "library",
+        "org.gradle.dependency.bundling": "external",
+        "org.gradle.jvm.version": 8,
+        "org.gradle.libraryelements": "jar",
+        "org.gradle.usage": "java-api"
+      },
+      "dependencies": [
+        {
+          "group": "com.github.rfresh2.fastutil.commons",
+          "module": "double-common",
+          "version": {
+            "requires": "8.5.19"
+          }
+        }
+      ],
+      "files": [
+        {
+          "name": "double-big-lists-8.5.19.jar",
+          "url": "double-big-lists-8.5.19.jar",
+          "size": 63814,
+          "sha512": "4729637593b1685742f4dcdd991a15d321b03ef37530f37f6c35134f8c0420fcad6e14e30a73cec9b6414f067f1177be9e8de4b91b773925095bd83e96eceb90",
+          "sha256": "a5237eae65ca60256730596b71e18745b0df69ff4b8ab453fdc13ab514794b73",
+          "sha1": "821a837b0104b76648af6076eb68df6bf7490407",
+          "md5": "d08d6a1a5ac5f8452734467c6ed516c4"
+        }
+      ]
+    },
+    {
+      "name": "runtimeElements",
+      "attributes": {
+        "org.gradle.category": "library",
+        "org.gradle.dependency.bundling": "external",
+        "org.gradle.jvm.version": 8,
+        "org.gradle.libraryelements": "jar",
+        "org.gradle.usage": "java-runtime"
+      },
+      "dependencies": [
+        {
+          "group": "com.github.rfresh2.fastutil.commons",
+          "module": "double-common",
+          "version": {
+            "requires": "8.5.19"
+          }
+        }
+      ],
+      "files": [
+        {
+          "name": "double-big-lists-8.5.19.jar",
+          "url": "double-big-lists-8.5.19.jar",
+          "size": 63814,
+          "sha512": "4729637593b1685742f4dcdd991a15d321b03ef37530f37f6c35134f8c0420fcad6e14e30a73cec9b6414f067f1177be9e8de4b91b773925095bd83e96eceb90",
+          "sha256": "a5237eae65ca60256730596b71e18745b0df69ff4b8ab453fdc13ab514794b73",
+          "sha1": "821a837b0104b76648af6076eb68df6bf7490407",
+          "md5": "d08d6a1a5ac5f8452734467c6ed516c4"
+        }
+      ]
+    },
+    {
+      "name": "javadocElements",
+      "attributes": {
+        "org.gradle.category": "documentation",
+        "org.gradle.dependency.bundling": "external",
+        "org.gradle.docstype": "javadoc",
+        "org.gradle.usage": "java-runtime"
+      },
+      "files": [
+        {
+          "name": "double-big-lists-8.5.19-javadoc.jar",
+          "url": "double-big-lists-8.5.19-javadoc.jar",
+          "size": 236714,
+          "sha512": "58f9b41ff21ecaee7fa986dcd6dfa0430108b386d45daec7df71f1e157cd49e74fceea0a84b011c31a898f4c00705d647bdd3d3e2cb31d5505bb001cf78e9cfe",
+          "sha256": "965559a1710fad584b854ebd7867dbbb70a56da40f4cf2a36b6204cab74b1f35",
+          "sha1": "f396b8c06b74a01d66345b6e798f2d5df5c8a896",
+          "md5": "09d8428286f8ac14bc0a38214c6c79e3"
+        }
+      ]
+    },
+    {
+      "name": "sourcesElements",
+      "attributes": {
+        "org.gradle.category": "documentation",
+        "org.gradle.dependency.bundling": "external",
+        "org.gradle.docstype": "sources",
+        "org.gradle.usage": "java-runtime"
+      },
+      "files": [
+        {
+          "name": "double-big-lists-8.5.19-sources.jar",
+          "url": "double-big-lists-8.5.19-sources.jar",
+          "size": 32524,
+          "sha512": "c44c9584724803844a0d3bdcb306efeedf574c490638882318b2d59ddbd56974f26d3ee27f337b6a36814407acaf974e43dd0047341e75a05c70f761eca0aec8",
+          "sha256": "87549e6b94f9ba0607d7a3e01e7fee1b2bb812acef0920112576ebf2d2845094",
+          "sha1": "1504c581de8c71ad652e27d0dd517a58df241d2f",
+          "md5": "67915acde555b113e920b8f3cd9376e7"
+        }
+      ]
+    }
+  ]
+}

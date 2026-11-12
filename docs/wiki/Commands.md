@@ -119,17 +119,6 @@ Prints the current status of ZenithProxy, the in-game player, and modules.
   ```status modules```
 
 
-### update
-
-Restarts and updates ZenithProxy if `autoUpdate` is enabled
-
-**Aliases:** `restart` / `reboot`
-
-**Usage**
-
-  ```update```
-
-
 ### whitelist
 
 Manages the list of players allowed to login.
@@ -225,23 +214,6 @@ If this still fails, try one of the alternate auth types.
   ```auth chatSigning commands on/off```
 
 
-### autoUpdate
-
-Configures the AutoUpdater.
-
-
-
-Updates are not immediately applied while the client is connected.
-
-When an update is found, it will be applied 30 seconds after the next disconnect, or immediately if already disconnected.
-
-**Usage**
-
-  ```autoUpdate on/off```
-
-  ```autoUpdate launcher on/off```
-
-
 ### chatRelay
 
 Configures the Discord ChatRelay feature.
@@ -276,8 +248,6 @@ Ignore regex will filter out messages, see here for help writing regex: https://
 
   ```chatRelay publicChat on/off```
 
-  ```chatRelay deathMessages on/off```
-
   ```chatRelay serverMessages on/off```
 
   ```chatRelay whisperMentions on/off```
@@ -285,8 +255,6 @@ Ignore regex will filter out messages, see here for help writing regex: https://
   ```chatRelay nameMentions on/off```
 
   ```chatRelay mentionsWhileConnected on/off```
-
-  ```chatRelay ignoreQueue on/off```
 
   ```chatRelay sendMessages on/off```
 
@@ -321,7 +289,7 @@ Schemas have the following special tokens:
 
 
 
-Example 2b2t chat schema:
+Example chat schema (the default):
 
 * public chat: `<$s> $m`
 
@@ -335,13 +303,13 @@ You can configure different schemas for different servers based on the server ad
 
 
 
-Server address is without port, e.g. `2b2t.org` or `192.168.0.5`
+Server address is without port, e.g. `mc.example.com` or `192.168.0.5`
 
 **Usage**
 
   ```chatSchema set <publicChat/whisperInbound/whisperOutbound> <serverAddress> <schema>```
 
-  ```chatSchema preset <serverAddress> <2b2t/essentials>```
+  ```chatSchema preset <serverAddress> <essentials>```
 
   ```chatSchema del <serverAddress>```
 
@@ -404,55 +372,6 @@ Configures ZenithProxy command prefixes and settings.
   ```commandConfig ingame prefix <string>```
 
   ```commandConfig ingame allowWhitelistedToUseAccountOwnerCommands on/off```
-
-
-### database
-
-Configures the database module used by https://api.2b2t.vc
-
-
-
-This is disabled by default - no ZenithProxy users contribute or collect data
-
-**Aliases:** `db`
-
-**Usage**
-
-  ```database on/off```
-
-  ```database host <host>```
-
-  ```database port <port>```
-
-  ```database username <username>```
-
-  ```database password <password>```
-
-  ```database redis address <address>```
-
-  ```database redis username <username>```
-
-  ```database redis password <password>```
-
-  ```database queueWait on/off```
-
-  ```database queueLength on/off```
-
-  ```database publicChat on/off```
-
-  ```database joinLeave on/off```
-
-  ```database deathMessages on/off```
-
-  ```database restarts on/off```
-
-  ```database playerCount on/off```
-
-  ```database tablist on/off```
-
-  ```database playtime on/off```
-
-  ```database time on/off```
 
 
 ### debug
@@ -538,7 +457,7 @@ Configures whether the discord bot's messages should display coordinates. Only u
 
 Manage the friend list.
 
-Friends change behavior for various modules like VisualRange, KillAura, and AutoDisconnect
+Friends change behavior for various modules like VisualRange and AutoDisconnect
 
 **Aliases:** `f`
 
@@ -551,47 +470,6 @@ Friends change behavior for various modules like VisualRange, KillAura, and Auto
   ```friend list```
 
   ```friend clear```
-
-
-### jvmArgs
-
-Configures ZenithProxy's JVM arguments used by the launcher.
-
-
-
-By default, this is empty and a set of default JVM arguments are used.
-
-
-
-The primary arg to configure is `-Xmx` which sets the maximum memory heap size.
-
-
-
-The default `-Xmx` used by the launcher depends on the `java` or `linux` release channel:
-
-* `java`: 300M
-
-* `linux`: 225M
-
-
-
-You should only need to increase this if the server view distance is > 15.
-
-
-
-Be warned, changing this setting can cause ZenithProxy to be unable to restart. You will need to manually
-
-edit the `launch_config.json` to fix this if that happens.
-
-**Usage**
-
-  ```jvmArgs reset```
-
-  ```jvmArgs get```
-
-  ```jvmArgs setXmx <megabytes>```
-
-  ```jvmArgs set <args>```
 
 
 ### kick
@@ -638,32 +516,9 @@ Plugins are only supported on the `java` release channel.
 
 Disconnect and reconnects from the destination MC server.
 
-
-
-Can be used to perform a reconnect "queue skip" on 2b2t
-
 **Usage**
 
   ```reconnect```
-
-
-### channel
-
-Configures the current AutoUpdater release channel.
-
-
-
-The release channel is a combination of a platform (java or linux) and a Minecraft protocol version.
-
-**Aliases:** `release` / `releaseChannel`
-
-**Usage**
-
-  ```channel list```
-
-  ```channel set <platform> <minecraft version>```
-
-  ```channel set <platform> <minecraft version> pre```
 
 
 ### server
@@ -806,8 +661,6 @@ All subcommands only usable from the terminal.
 
   ```terminal logChatMessages on/off```
 
-  ```terminal logOnlyQueuePositionUpdates on/off```
-
 
 ### theme
 
@@ -827,8 +680,6 @@ Where Colors Are Used:
 
   * Error: Error responses, server leave, and enemies
 
-  * In Queue: The proxy is in queue, reconnecting, or is in a transitional state
-
 **Aliases:** `color`
 
 **Usage**
@@ -840,8 +691,6 @@ Where Colors Are Used:
   ```theme success <color>```
 
   ```theme error <color>```
-
-  ```theme inQueue <color>```
 
 
 ### transfer
@@ -954,11 +803,7 @@ Configures various discord notifications regarding player and proxy connections,
 
   ```discordNotifications disconnect mention on/off```
 
-  ```discordNotifications startQueue mention on/off```
-
   ```discordNotifications death mention on/off```
-
-  ```discordNotifications serverRestart mention on/off```
 
   ```discordNotifications loginFailed mention on/off```
 
@@ -973,8 +818,6 @@ Configures various discord notifications regarding player and proxy connections,
   ```discordNotifications nonWhitelistedConnect mention on/off```
 
   ```discordNotifications mcVersionMismatchWarning on/off```
-
-  ```discordNotifications prio mention on/off```
 
 
 ### inventory
@@ -1025,29 +868,6 @@ Displays the software license and information about your legal rights
   ```license```
 
 
-### map
-
-Generate and render map images.
-
-Map ID's to render must be cached during the current session
-
-Generated maps can optionally be aligned to the vanilla map grid, or generated with a custom view distance.
-
-Generated maps cannot be larger than what chunks are currently cached in the proxy
-
-**Usage**
-
-  ```map render <mapId>```
-
-  ```map render all```
-
-  ```map generate```
-
-  ```map generate align```
-
-  ```map generate <viewDistance>```
-
-
 ### packetLog
 
 Logs packets that are sent/received. Requires account owner permissions.
@@ -1091,88 +911,6 @@ And to enable debug log in the terminal: `debug terminalDebugLogs on`
   ```packetLog logLevelDebug on/off```
 
 
-### playtime
-
-Gets the playtime of a player on 2b2t using https://api.2b2t.vc/
-
-**Aliases:** `pt`
-
-**Usage**
-
-  ```playtime <playerName>```
-
-
-### queueStatus
-
-Gets the current 2b2t queue length and wait ETA
-
-**Aliases:** `queue` / `q`
-
-**Usage**
-
-  ```queueStatus```
-
-  ```queueStatus refresh```
-
-  ```queueStatus refresh interval <minutes>```
-
-  ```queueStatus refresh eta on/off```
-
-  ```queueStatus refresh whileNotOn2b2t on/off```
-
-
-### queueWarning
-
-Configure warnings sent when 2b2t queue positions are reached.
-
-
-
-The list of queue positions to send the warnings can be configured, each with an optional mention.
-
-**Usage**
-
-  ```queueWarning on/off```
-
-  ```queueWarning list```
-
-  ```queueWarning clear```
-
-  ```queueWarning add <position>```
-
-  ```queueWarning add <position> mention```
-
-  ```queueWarning del <position>```
-
-
-### raycast
-
-Debug testing command. Gets the block or entity the player is currently looking at.
-
-**Usage**
-
-  ```raycast```
-
-
-### seen
-
-Gets the first and last times a player was seen on 2b2t using https://api.2b2t.vc
-
-**Aliases:** `firstseen` / `lastseen`
-
-**Usage**
-
-  ```seen <playerName>```
-
-
-### stats
-
-Gets the 2b2t stats of a player using https://api.2b2t.vc
-
-**Usage**
-
-  ```stats <playerName>```
-
-
 ### tablist
 
 Prints the current MC server's player list
@@ -1184,31 +922,6 @@ Prints the current MC server's player list
   ```tablist```
 
   ```tablist header```
-
-
-### waypoints
-
-Save and manage waypoints.
-
-
-
-Waypoints can be used as pathfinder goals:
-
-`b goto <waypointId>`
-
-`b click <left/right> <waypointId>`
-
-**Usage**
-
-  ```waypoints add <id> <x> <y> <z>```
-
-  ```waypoints add <id> <dimension> <x> <y> <z>```
-
-  ```waypoints del <id>```
-
-  ```waypoints clear```
-
-  ```waypoints list```
 
 
 
@@ -1279,13 +992,7 @@ Set times for ZenithProxy to automatically connect at.
 
 
 
-By default, 2b2t's queue wait ETA is used to determine when to log in.
-
-The connect will occur when the current time plus the ETA is equal to a time set.
-
-
-
-If Queue ETA calc is disabled, connects will occur exactly at the set times instead.
+Connects will occur at the set times.
 
 
 
@@ -1305,8 +1012,6 @@ If Queue ETA calc is disabled, connects will occur exactly at the set times inst
 
   ```activeHours whilePlayerConnected on/off```
 
-  ```activeHours queueEtaCalc on/off```
-
   ```activeHours fullSessionUntilNextDisconnect on/off```
 
 
@@ -1316,7 +1021,7 @@ Configures the AntiAFK module.
 
 
 
-To avoid being kicked on 2b2t the only required action is swing OR walk.
+On most servers, swinging OR walking is enough to avoid being kicked for inactivity.
 
 
 
@@ -1365,7 +1070,7 @@ AntiKick kicks players controlling the proxy client if they are inactive for a s
 
 
 
-Inactivity is defined as not moving, fishing, or swinging - which are what prevents 2b2t from kicking players.
+Inactivity is defined as not moving or swinging.
 
 **Usage**
 
@@ -1374,42 +1079,6 @@ Inactivity is defined as not moving, fishing, or swinging - which are what preve
   ```antiKick playerInactivityKickMins <minutes>```
 
   ```antiKick minWalkDistance <blocks>```
-
-
-### antiLeak
-
-Configures the AntiLeak module. Cancels chat packets that could leak your coordinates.
-
-i.e. due to inputting incorrect baritone commands, sharing waypoints, etc.
-
-
-
-rangeCheck -> only cancels if the numbers in the chat message are within a range of your current coordinates.
-
-rangeFactor -> How near the coordinates in your chat have to be to actual coords to be cancelled.
-
-
-
-Equation: `actualCoord / rangeFactor < chatCoord < actualCoord * rangeFactor`
-
-Example: If your coordinates are [500, 800], rangeFactor=10 will cancel if the chat contains a number between 50-5000 or 80-8000.
-
-**Usage**
-
-  ```antiLeak on/off```
-
-  ```antiLeak rangeCheck on/off```
-
-  ```antiLeak rangeFactor <number>```
-
-
-### autoArmor
-
-Automatically equips the best armor in your inventory
-
-**Usage**
-
-  ```autoArmor on/off```
 
 
 ### autoDisconnect
@@ -1444,7 +1113,7 @@ Settings non-exclusive to modes:
 
   * AutoClientDisconnect: Disconnects when the controlling player disconnects
 
-  * CancelAutoReconnect: Cancels AutoReconnect when AutoDisconnect is triggered. If the proxy account has prio this is ignored and AutoReconnect is always cancelled
+  * CancelAutoReconnect: Cancels AutoReconnect when AutoDisconnect is triggered
 
 **Aliases:** `autoLog`
 
@@ -1471,149 +1140,6 @@ Settings non-exclusive to modes:
   ```autoDisconnect cancelAutoReconnect on/off```
 
 
-### autoDrop
-
-Automatically drop items in player inventory.
-
-
-
-Dropping can be configured based on modes:
-
-
-
-* `all`: any item
-
-* `whitelist`: only added items
-
-* `blacklist`: any item not added
-
-**Usage**
-
-  ```autoDrop on/off```
-
-  ```autoDrop mode <all/whitelist/blacklist>```
-
-  ```autoDrop add/del <item>```
-
-  ```autoDrop addAll <item1>,<item2>,...```
-
-  ```autoDrop list```
-
-  ```autoDrop clear```
-
-  ```autoDrop delay <ticks>```
-
-  ```autoDrop dropStack on/off```
-
-  ```autoDrop rotation on/off```
-
-  ```autoDrop rotation sync```
-
-  ```autoDrop rotation <yaw> <pitch>```
-
-
-### autoEat
-
-Automatically eats food when health or hunger is below a set threshold.
-
-
-
-Which foods to eat can be configured based on modes:
-
-
-
-   * `all`: any food
-
-   * `whitelist`: only added foods
-
-   * `blacklist`: any food not added
-
-**Usage**
-
-  ```autoEat on/off```
-
-  ```autoEat health <int>```
-
-  ```autoEat hunger <int>```
-
-  ```autoEat warning on/off```
-
-  ```autoEat allowUnsafeFood on/off```
-
-  ```autoEat mode <all/whitelist/blacklist>```
-
-  ```autoEat add/del <food>```
-
-  ```autoEat addAll <food1>,<food2>,...```
-
-  ```autoEat list```
-
-  ```autoEat clear```
-
-
-### autoFish
-
-Automatically fishes, both casting and reeling.
-
-
-
-AutoFishing will prevent you from being AFK kicked. It's recommended to disable AntiAFK.
-
-**Usage**
-
-  ```autoFish on/off```
-
-  ```autoFish rotation <yaw> <pitch>```
-
-  ```autoFish rotation sync```
-
-
-### autoMend
-
-Equips items that are both damaged and have the mending enchantment to the offhand.
-
-
-
-Can be enabled while at an XP farm to repair items in your inventory.
-
-**Usage**
-
-  ```autoMend on/off```
-
-
-### autoOmen
-
-Automatically drinks Bad Omen potions in the inventory.
-
-
-
-Useful for raid farms on MC 1.21+ servers.
-
-
-
-Modes:
-
-* `effectAndRaid`: drink potion when no omen effect or raid is active
-
-* `effect`: drink potion when no omen effect is active
-
-* `constant`: drink potion at a constant interval. By default the delay matches the omen effect length: 100 seconds (2000 ticks)
-
-
-
-if `consumeFullOmenStack` is disabled, a single omen potion will be left per stack. Stacks are not combined.
-
-**Usage**
-
-  ```autoOmen on/off```
-
-  ```autoOmen mode <effectAndRaid/effect/constant>```
-
-  ```autoOmen consumeFullOmenStack on/off```
-
-  ```autoOmen constantMode delay <ticks>```
-
-
 ### autoReconnect
 
 Automatically reconnects the bot when it is disconnected.
@@ -1627,19 +1153,6 @@ Automatically reconnects the bot when it is disconnected.
   ```autoReconnect maxAttempts <number>```
 
 
-### autoReply
-
-Automatically replies to whispers with a custom message.
-
-**Usage**
-
-  ```autoReply on/off```
-
-  ```autoReply cooldown <seconds>```
-
-  ```autoReply message <message>```
-
-
 ### autoRespawn
 
 Automatically respawns the player after dying.
@@ -1649,27 +1162,6 @@ Automatically respawns the player after dying.
   ```autoRespawn on/off```
 
   ```autoRespawn delay <milliseconds>```
-
-
-### autoTotem
-
-Automatically equips a totem from the inventory to the offhand when the bot's health is below a set threshold.
-
-**Usage**
-
-  ```autoTotem on/off```
-
-  ```autoTotem inGame on/off```
-
-  ```autoTotem health <int>```
-
-  ```autoTotem popAlert on/off```
-
-  ```autoTotem popAlert mention on/off```
-
-  ```autoTotem noTotemsAlert on/off```
-
-  ```autoTotem noTotemsAlert mention on/off```
 
 
 ### chatHistory
@@ -1689,128 +1181,6 @@ Includes whispers, chat, and system messages.
   ```chatHistory spectators on/off```
 
 
-### click
-
-Simulates a click to the block or entity in front of you
-
-**Usage**
-
-  ```click left```
-
-  ```click left target <any/none/entity/block>```
-
-  ```click left hold```
-
-  ```click left hold interval <ticks>```
-
-  ```click right```
-
-  ```click right target <any/none/entity/block>```
-
-  ```click right useItem```
-
-  ```click right useItem <mainHand/offHand>```
-
-  ```click right hold```
-
-  ```click right hold <mainHand/offHand/alternate>```
-
-  ```click right hold interval <ticks>```
-
-  ```click addedBlockReach <float>```
-
-  ```click addedEntityReach <float>```
-
-  ```click hold forceRotation on/off```
-
-  ```click hold forceRotation <yaw> <pitch>```
-
-  ```click hold forceRotation sync```
-
-  ```click hold sneak on/off```
-
-  ```click hold target <any/none/entity/block>```
-
-  ```click stop```
-
-
-### coordObf
-
-[BETA]
-
-
-
-Obfuscates actual coordinates to players and spectators.
-
-
-
-Designed specifically for 2b2t, to let players you don't trust to visit your base/stash
-
-
-
-How it works:
-
-* For each player, a chunk coordinate offset is generated
-
-* Packets that contain coordinates are modified with that offset
-
-* Respawns/server switches will regenerate the offset or disconnect the player
-
-* Various exploits like bedrock patterns, eye of ender triangulation, and beehive data are blocked
-
-
-
-It is highly recommended to use this in conjunction with the `actionLimiter` module
-
-
-
-You should avoid allowing players to travel or respawn to 0,0, visit the worldborder, or any other known landmarks
-
-to avoid leaking the offset.
-
-
-
-There are multiple modes for how the offset is generated. Random is recommended as it reduces the likelihood
-
-and impact of the offset being discovered.
-
-**Usage**
-
-  ```coordObf on/off```
-
-  ```coordObf mode <random/constant/atLocation>```
-
-  ```coordObf regenOnTpMinDistance <blocks>```
-
-  ```coordObf randomMinDistanceFromSelf <blocks>```
-
-  ```coordObf randomMinDistanceFromSpawn <blocks>```
-
-  ```coordObf randomMaxDistanceFromSpawn <blocks>```
-
-  ```coordObf constantOffset <x> <z>```
-
-  ```coordObf constantOffsetNetherTranslate on/off```
-
-  ```coordObf constantOffsetMinSpawnDistance <blocks>```
-
-  ```coordObf atLocation <x> <z>```
-
-  ```coordObf obfuscateBedrock on/off```
-
-  ```coordObf obfuscateBiomes on/off```
-
-  ```coordObf obfuscateBiomesKey <biomeId>```
-
-  ```coordObf obfuscateLighting on/off```
-
-  ```coordObf eyeOfEnderDisconnect on/off```
-
-  ```coordObf blockOffsetsDisconnect on/off```
-
-  ```coordObf validateSetup on/off```
-
-
 ### extraChat
 
 Extra chat features and modifications.
@@ -1823,17 +1193,11 @@ Extra chat features and modifications.
 
   ```extraChat hideWhispers on/off```
 
-  ```extraChat hideDeathMessages on/off```
-
   ```extraChat showConnectionMessages on/off```
 
   ```extraChat insertClickableLinks on/off```
 
-  ```extraChat hide2b2tActionBarText on/off```
-
   ```extraChat whisperCommand <command>```
-
-  ```extraChat replace2b2tChatCommands on/off```
 
   ```extraChat prefix on/off```
 
@@ -1861,100 +1225,6 @@ Hides chat and death messages and notifications from a configured list of player
   ```ignore clear```
 
 
-### killAura
-
-Attacks entities near the player.
-
-
-
-Custom targets list: https://link.2b2t.vc/1
-
-
-
-Aggressive mobs are mobs that are actively targeting and attacking the player.
-
-**Aliases:** `ka`
-
-**Usage**
-
-  ```killAura on/off```
-
-  ```killAura attackDelay <ticks>```
-
-  ```killAura tpsSync on/off```
-
-  ```killAura targetPlayers on/off```
-
-  ```killAura targetHostileMobs on/off```
-
-  ```killAura targetNeutralMobs on/off```
-
-  ```killAura targetNeutralMobs onlyAggressive on/off```
-
-  ```killAura targetCustom on/off```
-
-  ```killAura targetCustom add/del <entityType>```
-
-  ```killAura ignoreNamedMobs on/off```
-
-  ```killAura weaponSwitch on/off```
-
-  ```killAura weaponType <any/sword/axe>```
-
-  ```killAura weaponMaterial <any/diamond/netherite>```
-
-  ```killAura raycast on/off```
-
-  ```killAura priority <none/nearest>```
-
-
-### modulePriority
-
-Configures the priority of ZenithProxy modules.
-
-
-
-A higher priority means the module's actions (like rotations, clicks, etc.) will take precedence over modules with lower priorities.
-
-
-
-Should not be edited normally, only for advanced use cases.
-
-
-
-Default module priorities may be changed between versions.
-
-**Usage**
-
-  ```modulePriority autoTotem <default/int>```
-
-  ```modulePriority autoArmor <default/int>```
-
-  ```modulePriority autoEat <default/int>```
-
-  ```modulePriority autoOmen <default/int>```
-
-  ```modulePriority click <default/int>```
-
-  ```modulePriority killAura <default/int>```
-
-  ```modulePriority pathfinder <default/int>```
-
-  ```modulePriority spawnPatrol <default/int>```
-
-  ```modulePriority antiAfk <default/int>```
-
-  ```modulePriority autoMend <default/int>```
-
-  ```modulePriority autoDrop <default/int>```
-
-  ```modulePriority autoFish <default/int>```
-
-  ```modulePriority spook <default/int>```
-
-  ```modulePriority list```
-
-
 ### multi
 
 Execute multiple commands one after another
@@ -1976,90 +1246,6 @@ Example: `multi friend add rfresh2,,say hello,,pearlLoader load rfresh2`
 **Usage**
 
   ```multi <command1>,,<command2>...```
-
-
-### pathfinder
-
-Baritone pathfinder
-
-**Aliases:** `path` / `b`
-
-**Usage**
-
-  ```pathfinder goto <x> <z>```
-
-  ```pathfinder goto <x> <y> <z>```
-
-  ```pathfinder goto <waypointId>```
-
-  ```pathfinder elytra <x> <z>```
-
-  ```pathfinder elytra <x> <y> <z>```
-
-  ```pathfinder stop```
-
-  ```pathfinder follow```
-
-  ```pathfinder follow <playerName>```
-
-  ```pathfinder thisway <blocks>```
-
-  ```pathfinder getTo <block>```
-
-  ```pathfinder mine <block>```
-
-  ```pathfinder click <left/right> <x> <y> <z>```
-
-  ```pathfinder click <left/right> <waypointId>```
-
-  ```pathfinder click <left/right> entity <type/id>```
-
-  ```pathfinder break <x> <y> <z>```
-
-  ```pathfinder place <x> <y> <z> <item>```
-
-  ```pathfinder near <x> <y> <z> <rangeSq>```
-
-  ```pathfinder pickup```
-
-  ```pathfinder pickup <item>```
-
-  ```pathfinder clearArea <pos1> <pos2>```
-
-  ```pathfinder status```
-
-  ```pathfinder settings```
-
-
-### pearlLoader
-
-Loads player's pearls.
-
-
-
-Positions must be of interactable blocks like levers, buttons, trapdoors, etc.
-
-
-
-They should be unobstructed and reachable.
-
-**Aliases:** `pl`
-
-**Usage**
-
-  ```pearlLoader add <id> <x> <y> <z>```
-
-  ```pearlLoader del <id>```
-
-  ```pearlLoader clear```
-
-  ```pearlLoader load <id>```
-
-  ```pearlLoader list```
-
-  ```pearlLoader returnToStartPos on/off```
-
-  ```pearlLoader doubleClick on/off```
 
 
 ### rateLimiter
@@ -2091,66 +1277,6 @@ If more packets than the rateLimit are received in that interval, the player is 
   ```rateLimiter packet interval <seconds>```
 
   ```rateLimiter packet rateLimit <int>```
-
-
-### replay
-
-Captures a ReplayMod recording.
-
-
-
-Replays can optionally be uploaded to discord if they are under the discord message size limit.
-
-
-
-If a replay is too large for discord, it can be uploaded to https://file.io instead if `fileIoUpload` is enabled.
-
-
-
-A `maxRecordingTime` of 0 means there is no limit, however, recording are always stopped on disconnects.
-
-
-
-`autoRecord mode <mode` can automatically record while certain conditions are met.
-
-
-
-Additional recording modes can be configured in the `visualRange` command.
-
-**Usage**
-
-  ```replay start```
-
-  ```replay stop```
-
-  ```replay discordUpload on/off```
-
-  ```replay fileIoUpload on/off```
-
-  ```replay maxRecordingTime <minutes>```
-
-  ```replay autoRecord mode <off/online/proxyConnected/playerConnected/health>```
-
-  ```replay autoRecord health <integer>```
-
-  ```replay featureFlags on/off```
-
-
-### requeue
-
-Cancels KeepAlive packets until the client is kicked to 2b2t's queue.
-
-
-
-This should kick you to the start of the queue, similar to a reconnect queue skip.
-
-
-
-Can be useful for resetting player state without having to do a full reconnect
-
-**Usage**
-
-  ```requeue```
 
 
 ### respawn
@@ -2219,35 +1345,6 @@ Servers being switched to must have transfers enabled and be on an MC version >=
   ```switch <name>```
 
 
-### sessionTimeLimit
-
-Sends an in-game warning before you are kicked for reaching the 2b2t session time limit.
-
-**Usage**
-
-  ```sessionTimeLimit on/off```
-
-  ```sessionTimeLimit refresh```
-
-  ```sessionTimeLimit ingame list```
-
-  ```sessionTimeLimit ingame add <minutes>```
-
-  ```sessionTimeLimit ingame del <minutes>```
-
-  ```sessionTimeLimit ingame clear```
-
-  ```sessionTimeLimit discord list```
-
-  ```sessionTimeLimit discord add <minutes>```
-
-  ```sessionTimeLimit discord add <minutes> mention```
-
-  ```sessionTimeLimit discord del <minutes>```
-
-  ```sessionTimeLimit discord clear```
-
-
 ### skin
 
 Temporarily change your skin to another player's skin.
@@ -2261,82 +1358,6 @@ This is only client-side and only affects how you see yourself.
   ```skin <playerName>```
 
 
-### spammer
-
-Spams messages or whispers in-game. Use with caution, this can and will get you muted.
-
-
-
-To add messages in bulk, use the `addAll` subcommand. Each message is delimited by the `,,` characters.
-
-**Aliases:** `spam`
-
-**Usage**
-
-  ```spammer on/off```
-
-  ```spammer whisper on/off```
-
-  ```spammer whilePlayerConnected on/off```
-
-  ```spammer delayTicks <int>```
-
-  ```spammer randomOrder on/off```
-
-  ```spammer appendRandom on/off```
-
-  ```spammer list```
-
-  ```spammer clear```
-
-  ```spammer add <message>```
-
-  ```spammer addAt <index> <message>```
-
-  ```spammer addAll <message 1>,,<message 2>...```
-
-  ```spammer del <index>```
-
-
-### spawnPatrol
-
-Patrols spawn and paths to any player it finds, killing them if you have kill aura enabled.
-
-**Usage**
-
-  ```spawnPatrol on/off```
-
-  ```spawnPatrol goal <x> <y> <z>```
-
-  ```spawnPatrol maxPatrolRange <blocks>```
-
-  ```spawnPatrol targetOnlyNakeds on/off```
-
-  ```spawnPatrol targetOnlyBedrock on/off```
-
-  ```spawnPatrol stickyTargeting on/off```
-
-  ```spawnPatrol targetAttackers on/off```
-
-  ```spawnPatrol nether on/off```
-
-  ```spawnPatrol stuckKill on/off```
-
-  ```spawnPatrol stuckKill seconds <seconds>```
-
-  ```spawnPatrol stuckKill minDist <blocks>```
-
-  ```spawnPatrol stuckKill antiStuck on/off```
-
-  ```spawnPatrol ignore add/del <player>```
-
-  ```spawnPatrol ignore addAll <player1,player2,...>```
-
-  ```spawnPatrol ignore clear```
-
-  ```spawnPatrol ignore list```
-
-
 ### swap
 
 Swaps the current controlling player to spectator mode.
@@ -2346,73 +1367,6 @@ Swaps the current controlling player to spectator mode.
   ```swap```
 
   ```swap force```
-
-
-### spook
-
-Rotates and stares at players in visual range.
-
-
-
-Can often confuse other players in-game into thinking you are a real player.
-
-**Usage**
-
-  ```spook on/off```
-
-  ```spook mode <visualRange/nearest>```
-
-
-### stalk
-
-Sends alerts when players join or leave
-
-**Usage**
-
-  ```stalk on/off```
-
-  ```stalk list```
-
-  ```stalk add/del <player>```
-
-
-### tasks
-
-[BETA]
-
-
-
-Schedules commands to be executed after a delay or after specified events.
-
-
-
-Examples:
-
-`tasks add timed loadMyPearl 15m pearlLoader load rfresh`
-
-`tasks add interval mapgen 30s 1h map generate`
-
-`tasks add event continueTraveling online once b goto 0 1500`
-
-**Aliases:** `task`
-
-**Usage**
-
-  ```tasks add timed <id> <delay> <command>```
-
-  ```tasks add interval <id> <startDelay> <repeatDelay> <command>```
-
-  ```tasks add event <id> <connect/death/disconnect/online/playerConnect/playerDisconnect> <repeat/once> <command>```
-
-  ```tasks del <id>```
-
-  ```tasks list```
-
-  ```tasks clear```
-
-  ```tasks logCommandActionOutput on/off```
-
-  ```tasks taskCommandExecutedNotification on/off```
 
 
 ### tickRate
@@ -2450,8 +1404,6 @@ Configure the integrated ViaVersion module.
 
   ```via zenithToServer on/off```
 
-  ```via zenithToServer disableOn2b2t on/off```
-
   ```via zenithToServer version auto```
 
   ```via zenithToServer version <MC version>```
@@ -2466,18 +1418,6 @@ Configure the VisualRange notification feature.
 
 
 Alerts are sent both in the terminal and in discord, with optional discord mentions.
-
-
-
-`replayRecording` settings will start recording when players enter your visual range and stop
-
-when players leave, after the set cooldown.
-
-
-
-`enemy` mode will only record players who are not on your friends list.
-
-`all` mode will record all players, regardless of being on the friends list.
 
 
 
@@ -2510,12 +1450,6 @@ To add players to the friends list see the `friends` command.
   ```visualRange logout on/off```
 
   ```visualRange ignoreFriends on/off```
-
-  ```visualRange replayRecording on/off```
-
-  ```visualRange replayRecording mode <enemy/all>```
-
-  ```visualRange replayRecording cooldown <minutes>```
 
 
 

@@ -49,10 +49,6 @@ public record BlockState(Block block, int id, int x, int y, int z) {
         return BLOCK_DATA.localizeCollisionBoxes(collisionBoxes, block, x, y, z);
     }
 
-    public boolean isPathfindable() {
-        return BLOCK_DATA.isPathfindable(id);
-    }
-
     /** Available properties: {@link BlockStateProperties} **/
     public @Nullable <T extends Comparable<T>> T getProperty(Property<T> property) {
         return World.getBlockStateProperty(block, id, property);

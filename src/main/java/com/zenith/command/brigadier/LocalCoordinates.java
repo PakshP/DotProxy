@@ -3,11 +3,11 @@ package com.zenith.command.brigadier;
 import com.mojang.brigadier.StringReader;
 import com.mojang.brigadier.exceptions.CommandSyntaxException;
 import com.zenith.command.api.CommandContext;
-import com.zenith.feature.pathfinder.PlayerContext;
 import lombok.Data;
 import org.cloudburstmc.math.vector.Vector2d;
 import org.cloudburstmc.math.vector.Vector3d;
 
+import static com.zenith.Globals.BOT;
 import static com.zenith.Globals.CACHE;
 
 @Data
@@ -20,7 +20,7 @@ public class LocalCoordinates implements Coordinates {
     @Override
     public Vector3d getPosition(CommandContext source) {
         var srcRot = Vector2d.from(CACHE.getPlayerCache().getYaw(), CACHE.getPlayerCache().getPitch());
-        Vector3d srcPos = PlayerContext.INSTANCE.playerHead();
+        Vector3d srcPos = Vector3d.from(BOT.getX(), BOT.getEyeY(), BOT.getZ());
         float f = (float) Math.cos((srcRot.getY() + 90.0) * (Math.PI / 180.0));
         float g = (float) Math.sin((srcRot.getY() + 90.0) * (Math.PI / 180.0));
         float h = (float) Math.cos(-srcRot.getX() * (Math.PI / 180.0));

@@ -34,17 +34,14 @@ public class DiscordNotificationsCommand extends Command {
                 "connect mention on/off",
                 "online mention on/off",
                 "disconnect mention on/off",
-                "startQueue mention on/off",
                 "death mention on/off",
-                "serverRestart mention on/off",
                 "loginFailed mention on/off",
                 "clientConnect mention on/off",
                 "clientDisconnect mention on/off",
                 "spectatorConnect mention on/off",
                 "spectatorDisconnect mention on/off",
                 "nonWhitelistedConnect mention on/off",
-                "mcVersionMismatchWarning on/off",
-                "prio mention on/off"
+                "mcVersionMismatchWarning on/off"
             )
             .aliases(
                 "alerts",
@@ -99,22 +96,10 @@ public class DiscordNotificationsCommand extends Command {
                     .title("Disconnect Mention " + toggleStrCaps(CONFIG.discord.mentionRoleOnDisconnect));
                 return OK;
             }))))
-            .then(literal("startQueue").then(literal("mention").then(argument("toggle", toggle()).executes(c -> {
-                CONFIG.discord.mentionRoleOnStartQueue = getToggle(c, "toggle");
-                c.getSource().getEmbed()
-                    .title("Start Queue Mention " + toggleStrCaps(CONFIG.discord.mentionRoleOnStartQueue));
-                return OK;
-            }))))
             .then(literal("death").then(literal("mention").then(argument("toggle", toggle()).executes(c -> {
                 CONFIG.discord.mentionRoleOnDeath = getToggle(c, "toggle");
                 c.getSource().getEmbed()
                     .title("Death Mention " + toggleStrCaps(CONFIG.discord.mentionRoleOnDeath));
-                return OK;
-            }))))
-            .then(literal("serverRestart").then(literal("mention").then(argument("toggle", toggle()).executes(c -> {
-                CONFIG.discord.mentionRoleOnServerRestart = getToggle(c, "toggle");
-                c.getSource().getEmbed()
-                    .title("Server Restart Mention " + toggleStrCaps(CONFIG.discord.mentionRoleOnServerRestart));
                 return OK;
             }))))
             .then(literal("loginFailed").then(literal("mention").then(argument("toggle", toggle()).executes(c -> {
@@ -153,11 +138,6 @@ public class DiscordNotificationsCommand extends Command {
                     .title("Non Whitelisted Connect Mention " + toggleStrCaps(CONFIG.discord.mentionOnNonWhitelistedClientConnected));
                 return OK;
             }))))
-            .then(literal("prio").then(literal("mention").then(argument("toggle", toggle()).executes(c -> {
-                CONFIG.discord.mentionRoleOnPrioUpdate = getToggle(c, "toggle");
-                c.getSource().getEmbed()
-                    .title("Prio Mention " + toggleStrCaps(CONFIG.discord.mentionRoleOnPrioUpdate));
-            }))))
             .then(literal("mcVersionMismatchWarning").then(argument("toggle", toggle()).executes(c -> {
                 CONFIG.discord.mcVersionMismatchWarning = getToggle(c, "toggle");
                 c.getSource().getEmbed()
@@ -176,16 +156,13 @@ public class DiscordNotificationsCommand extends Command {
             .addField("Connect Mention", toggleStr(CONFIG.discord.mentionRoleOnConnect))
             .addField("Online Mention", toggleStr(CONFIG.discord.mentionRoleOnPlayerOnline))
             .addField("Disconnect Mention", toggleStr(CONFIG.discord.mentionRoleOnDisconnect))
-            .addField("Start Queue Mention", toggleStr(CONFIG.discord.mentionRoleOnStartQueue))
             .addField("Death Mention", toggleStr(CONFIG.discord.mentionRoleOnDeath))
-            .addField("Server Restart Mention", toggleStr(CONFIG.discord.mentionRoleOnServerRestart))
             .addField("Login Failed Mention", toggleStr(CONFIG.discord.mentionRoleOnLoginFailed))
             .addField("Client Connect Mention", toggleStr(CONFIG.discord.mentionOnClientConnected))
             .addField("Client Disconnect Mention", toggleStr(CONFIG.discord.mentionOnClientDisconnected))
             .addField("Spectator Connect Mention", toggleStr(CONFIG.discord.mentionOnSpectatorConnected))
             .addField("Spectator Disconnect Mention", toggleStr(CONFIG.discord.mentionOnSpectatorDisconnected))
             .addField("Non Whitelisted Connect Mention", toggleStr(CONFIG.discord.mentionOnNonWhitelistedClientConnected))
-            .addField("Prio Mention", toggleStr(CONFIG.discord.mentionRoleOnPrioUpdate))
             .addField("MC Version Mismatch Warning", toggleStr(CONFIG.discord.mcVersionMismatchWarning));
     }
 

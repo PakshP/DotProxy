@@ -40,7 +40,6 @@ public class PlayerPositionHandler implements ClientEventLoopPacketHandler<Clien
         } else {
             CLIENT_LOG.debug("Passing teleport {} through to current player", packet.getId());
         }
-        BARITONE.onPlayerPosRotate();
         SpectatorSync.syncPlayerPositionWithSpectators();
         MODULE.get(AntiAFK.class).handlePlayerPosRotate();
         return true;

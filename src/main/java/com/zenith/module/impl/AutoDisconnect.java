@@ -110,7 +110,7 @@ public class AutoDisconnect extends Module {
 
     private void handleAutoReconnectDecisionEvent(AutoReconnectDecisionEvent event) {
         if (isAutoDisconnectReason(event.getDisconnectEvent().reason())
-            && (CONFIG.client.extra.utility.actions.autoDisconnect.cancelAutoReconnect || Proxy.getInstance().isPrio())
+            && CONFIG.client.extra.utility.actions.autoDisconnect.cancelAutoReconnect
         ) {
             event.setCancelled(true);
         }

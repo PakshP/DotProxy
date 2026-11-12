@@ -28,10 +28,8 @@ public class LogSourceFilter extends Filter<ILoggingEvent> {
         SOURCE_MAP.put("Module", Level.TRACE);
         SOURCE_MAP.put("Server", Level.TRACE);
         SOURCE_MAP.put("Discord", Level.TRACE);
-        SOURCE_MAP.put("Database", Level.TRACE);
         SOURCE_MAP.put("Terminal", Level.TRACE);
         SOURCE_MAP.put("Plugin", Level.TRACE);
-        SOURCE_MAP.put("Pathfinder", Level.TRACE);
     }
     private static final AtomicBoolean INIT = new AtomicBoolean(false);
 
