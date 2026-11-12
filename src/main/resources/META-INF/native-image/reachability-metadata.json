@@ -1528,7 +1528,7 @@
       "type": "com.zaxxer.hikari.util.ConcurrentBag$IConcurrentBagEntry[]"
     },
     {
-      "type": "com.zenith.Proxy",
+      "type": "com.dotproxy.Proxy",
       "jniAccessible": true,
       "methods": [
         {
@@ -1540,11 +1540,11 @@
       ]
     },
     {
-      "type": "com.zenith.database.dto.enums.Connectiontype",
+      "type": "com.dotproxy.database.dto.enums.Connectiontype",
       "allDeclaredFields": true
     },
     {
-      "type": "com.zenith.database.dto.records.ChatsRecord",
+      "type": "com.dotproxy.database.dto.records.ChatsRecord",
       "allDeclaredFields": true,
       "methods": [
         {
@@ -1566,7 +1566,7 @@
       ]
     },
     {
-      "type": "com.zenith.database.dto.records.ConnectionsRecord",
+      "type": "com.dotproxy.database.dto.records.ConnectionsRecord",
       "allDeclaredFields": true,
       "methods": [
         {
@@ -1588,7 +1588,7 @@
       ]
     },
     {
-      "type": "com.zenith.database.dto.records.DeathsRecord",
+      "type": "com.dotproxy.database.dto.records.DeathsRecord",
       "allDeclaredFields": true,
       "methods": [
         {
@@ -1626,28 +1626,28 @@
       ]
     },
     {
-      "type": "com.zenith.event.client.ClientConnectEvent"
+      "type": "com.dotproxy.event.client.ClientConnectEvent"
     },
     {
-      "type": "com.zenith.event.client.ClientDeathEvent"
+      "type": "com.dotproxy.event.client.ClientDeathEvent"
     },
     {
-      "type": "com.zenith.event.client.ClientDisconnectEvent"
+      "type": "com.dotproxy.event.client.ClientDisconnectEvent"
     },
     {
-      "type": "com.zenith.event.client.ClientOnlineEvent"
+      "type": "com.dotproxy.event.client.ClientOnlineEvent"
     },
     {
-      "type": "com.zenith.event.player.PlayerConnectedEvent"
+      "type": "com.dotproxy.event.player.PlayerConnectedEvent"
     },
     {
-      "type": "com.zenith.event.player.PlayerDisconnectedEvent"
+      "type": "com.dotproxy.event.player.PlayerDisconnectedEvent"
     },
     {
-      "type": "com.zenith.feature.api.ProfileData"
+      "type": "com.dotproxy.feature.api.ProfileData"
     },
     {
-      "type": "com.zenith.feature.api.crafthead.model.CraftheadProfileProperties",
+      "type": "com.dotproxy.feature.api.crafthead.model.CraftheadProfileProperties",
       "allDeclaredFields": true,
       "methods": [
         {
@@ -1660,7 +1660,7 @@
       ]
     },
     {
-      "type": "com.zenith.feature.api.crafthead.model.CraftheadProfileResponse",
+      "type": "com.dotproxy.feature.api.crafthead.model.CraftheadProfileResponse",
       "allDeclaredFields": true,
       "methods": [
         {
@@ -1674,7 +1674,7 @@
       ]
     },
     {
-      "type": "com.zenith.feature.api.fileio.model.FileIOResponse",
+      "type": "com.dotproxy.feature.api.fileio.model.FileIOResponse",
       "allDeclaredFields": true,
       "methods": [
         {
@@ -1687,7 +1687,7 @@
       ]
     },
     {
-      "type": "com.zenith.feature.api.mccompanion.model.MCCompanionBedrockResponse",
+      "type": "com.dotproxy.feature.api.mccompanion.model.MCCompanionBedrockResponse",
       "methods": [
         {
           "name": "<init>",
@@ -1701,7 +1701,7 @@
       ]
     },
     {
-      "type": "com.zenith.feature.api.mccompanion.model.MCCompanionJavaResponse",
+      "type": "com.dotproxy.feature.api.mccompanion.model.MCCompanionJavaResponse",
       "methods": [
         {
           "name": "<init>",
@@ -1714,7 +1714,7 @@
       ]
     },
     {
-      "type": "com.zenith.feature.api.mclogs.model.MclogsResponse",
+      "type": "com.dotproxy.feature.api.mclogs.model.MclogsResponse",
       "methods": [
         {
           "name": "<init>",
@@ -1728,7 +1728,7 @@
       ]
     },
     {
-      "type": "com.zenith.feature.api.mcprofile.model.MCProfileBedrockResponse",
+      "type": "com.dotproxy.feature.api.mcprofile.model.MCProfileBedrockResponse",
       "methods": [
         {
           "name": "<init>",
@@ -1746,7 +1746,7 @@
       ]
     },
     {
-      "type": "com.zenith.feature.api.mcprofile.model.MCProfileJavaResponse",
+      "type": "com.dotproxy.feature.api.mcprofile.model.MCProfileJavaResponse",
       "methods": [
         {
           "name": "<init>",
@@ -1761,7 +1761,7 @@
       ]
     },
     {
-      "type": "com.zenith.feature.api.mcsrvstatus.model.MCSrvStatusResponse",
+      "type": "com.dotproxy.feature.api.mcsrvstatus.model.MCSrvStatusResponse",
       "allDeclaredFields": true,
       "methods": [
         {
@@ -1775,7 +1775,7 @@
       ]
     },
     {
-      "type": "com.zenith.feature.api.mcstatus.model.MCStatusMotdData",
+      "type": "com.dotproxy.feature.api.mcstatus.model.MCStatusMotdData",
       "methods": [
         {
           "name": "<init>",
@@ -1788,7 +1788,7 @@
       ]
     },
     {
-      "type": "com.zenith.feature.api.mcstatus.model.MCStatusResponse",
+      "type": "com.dotproxy.feature.api.mcstatus.model.MCStatusResponse",
       "allDeclaredFields": true,
       "methods": [
         {
@@ -1797,7 +1797,7 @@
             "boolean",
             "java.lang.String",
             "int",
-            "com.zenith.feature.api.mcstatus.model.MCStatusMotdData",
+            "com.dotproxy.feature.api.mcstatus.model.MCStatusMotdData",
             "java.lang.String"
           ]
         },
@@ -1813,46 +1813,19 @@
       ]
     },
     {
-      "type": "com.zenith.feature.api.minetools.model.MinetoolsProfileResponse",
+      "type": "com.dotproxy.feature.api.minetools.model.MinetoolsProfileResponse",
       "allDeclaredFields": true,
       "methods": [
         {
           "name": "<init>",
           "parameterTypes": [
-            "com.zenith.feature.api.minetools.model.MinetoolsProfileResponseDecoded"
+            "com.dotproxy.feature.api.minetools.model.MinetoolsProfileResponseDecoded"
           ]
         }
       ]
     },
     {
-      "type": "com.zenith.feature.api.minetools.model.MinetoolsProfileResponseDecoded",
-      "allDeclaredFields": true,
-      "methods": [
-        {
-          "name": "<init>",
-          "parameterTypes": [
-            "java.lang.String",
-            "java.lang.String"
-          ]
-        }
-      ]
-    },
-    {
-      "type": "com.zenith.feature.api.minetools.model.MinetoolsUuidResponse",
-      "allDeclaredFields": true,
-      "methods": [
-        {
-          "name": "<init>",
-          "parameterTypes": [
-            "java.lang.String",
-            "java.lang.String",
-            "java.lang.String"
-          ]
-        }
-      ]
-    },
-    {
-      "type": "com.zenith.feature.api.mojang.model.MojangProfileResponse",
+      "type": "com.dotproxy.feature.api.minetools.model.MinetoolsProfileResponseDecoded",
       "allDeclaredFields": true,
       "methods": [
         {
@@ -1865,7 +1838,34 @@
       ]
     },
     {
-      "type": "com.zenith.feature.api.sessionserver.model.HasJoinedResponse",
+      "type": "com.dotproxy.feature.api.minetools.model.MinetoolsUuidResponse",
+      "allDeclaredFields": true,
+      "methods": [
+        {
+          "name": "<init>",
+          "parameterTypes": [
+            "java.lang.String",
+            "java.lang.String",
+            "java.lang.String"
+          ]
+        }
+      ]
+    },
+    {
+      "type": "com.dotproxy.feature.api.mojang.model.MojangProfileResponse",
+      "allDeclaredFields": true,
+      "methods": [
+        {
+          "name": "<init>",
+          "parameterTypes": [
+            "java.lang.String",
+            "java.lang.String"
+          ]
+        }
+      ]
+    },
+    {
+      "type": "com.dotproxy.feature.api.sessionserver.model.HasJoinedResponse",
       "allDeclaredFields": true,
       "methods": [
         {
@@ -1891,7 +1891,7 @@
       ]
     },
     {
-      "type": "com.zenith.feature.api.sessionserver.model.JoinServerRequest",
+      "type": "com.dotproxy.feature.api.sessionserver.model.JoinServerRequest",
       "allDeclaredFields": true,
       "methods": [
         {
@@ -1917,7 +1917,7 @@
       ]
     },
     {
-      "type": "com.zenith.feature.api.sessionserver.model.MojangProfileAndSkin",
+      "type": "com.dotproxy.feature.api.sessionserver.model.MojangProfileAndSkin",
       "allDeclaredFields": true,
       "methods": [
         {
@@ -1943,7 +1943,7 @@
       ]
     },
     {
-      "type": "com.zenith.feature.api.sessionserver.model.MojangProfileProperties",
+      "type": "com.dotproxy.feature.api.sessionserver.model.MojangProfileProperties",
       "allDeclaredFields": true,
       "methods": [
         {
@@ -1969,7 +1969,7 @@
       ]
     },
     {
-      "type": "com.zenith.feature.api.sessionserver.model.SessionProfileResponse",
+      "type": "com.dotproxy.feature.api.sessionserver.model.SessionProfileResponse",
       "allDeclaredFields": true,
       "methods": [
         {
@@ -1982,7 +1982,7 @@
       ]
     },
     {
-      "type": "com.zenith.feature.api.vcapi.model.PlaytimeResponse",
+      "type": "com.dotproxy.feature.api.vcapi.model.PlaytimeResponse",
       "allDeclaredFields": true,
       "methods": [
         {
@@ -1995,7 +1995,7 @@
       ]
     },
     {
-      "type": "com.zenith.feature.api.vcapi.model.QueueEtaEquationResponse",
+      "type": "com.dotproxy.feature.api.vcapi.model.QueueEtaEquationResponse",
       "allDeclaredFields": true,
       "methods": [
         {
@@ -2008,7 +2008,7 @@
       ]
     },
     {
-      "type": "com.zenith.feature.api.vcapi.model.QueueResponse",
+      "type": "com.dotproxy.feature.api.vcapi.model.QueueResponse",
       "allDeclaredFields": true,
       "methods": [
         {
@@ -2022,7 +2022,7 @@
       ]
     },
     {
-      "type": "com.zenith.feature.api.vcapi.model.SeenResponse",
+      "type": "com.dotproxy.feature.api.vcapi.model.SeenResponse",
       "allDeclaredFields": true,
       "methods": [
         {
@@ -2035,7 +2035,7 @@
       ]
     },
     {
-      "type": "com.zenith.feature.api.vcapi.model.SessionTimeLimitResponse",
+      "type": "com.dotproxy.feature.api.vcapi.model.SessionTimeLimitResponse",
       "allDeclaredFields": true,
       "methods": [
         {
@@ -2047,7 +2047,7 @@
       ]
     },
     {
-      "type": "com.zenith.feature.api.vcapi.model.StatsResponse",
+      "type": "com.dotproxy.feature.api.vcapi.model.StatsResponse",
       "allDeclaredFields": true,
       "methods": [
         {
@@ -2068,7 +2068,7 @@
       ]
     },
     {
-      "type": "com.zenith.feature.chatschema.ChatSchema",
+      "type": "com.dotproxy.feature.chatschema.ChatSchema",
       "allDeclaredFields": true,
       "methods": [
         {
@@ -2094,7 +2094,7 @@
       ]
     },
     {
-      "type": "com.zenith.feature.queue.QueueStatus",
+      "type": "com.dotproxy.feature.queue.QueueStatus",
       "allDeclaredFields": true,
       "methods": [
         {
@@ -2104,7 +2104,7 @@
       ]
     },
     {
-      "type": "com.zenith.feature.ping.data.ExtraResponse",
+      "type": "com.dotproxy.feature.ping.data.ExtraResponse",
       "allDeclaredFields": true,
       "methods": [
         {
@@ -2114,11 +2114,11 @@
       ]
     },
     {
-      "type": "com.zenith.feature.ping.data.MCResponse",
+      "type": "com.dotproxy.feature.ping.data.MCResponse",
       "allDeclaredFields": true
     },
     {
-      "type": "com.zenith.feature.ping.data.NewResponse",
+      "type": "com.dotproxy.feature.ping.data.NewResponse",
       "allDeclaredFields": true,
       "methods": [
         {
@@ -2128,7 +2128,7 @@
       ]
     },
     {
-      "type": "com.zenith.feature.ping.data.OldResponse",
+      "type": "com.dotproxy.feature.ping.data.OldResponse",
       "allDeclaredFields": true,
       "methods": [
         {
@@ -2138,7 +2138,7 @@
       ]
     },
     {
-      "type": "com.zenith.feature.ping.rawData.Description",
+      "type": "com.dotproxy.feature.ping.rawData.Description",
       "allDeclaredFields": true,
       "methods": [
         {
@@ -2148,7 +2148,7 @@
       ]
     },
     {
-      "type": "com.zenith.feature.ping.rawData.Extra",
+      "type": "com.dotproxy.feature.ping.rawData.Extra",
       "allDeclaredFields": true,
       "methods": [
         {
@@ -2158,7 +2158,7 @@
       ]
     },
     {
-      "type": "com.zenith.feature.ping.rawData.ExtraDescription",
+      "type": "com.dotproxy.feature.ping.rawData.ExtraDescription",
       "allDeclaredFields": true,
       "methods": [
         {
@@ -2168,10 +2168,10 @@
       ]
     },
     {
-      "type": "com.zenith.feature.ping.rawData.Extra[]"
+      "type": "com.dotproxy.feature.ping.rawData.Extra[]"
     },
     {
-      "type": "com.zenith.feature.ping.rawData.ForgeData",
+      "type": "com.dotproxy.feature.ping.rawData.ForgeData",
       "allDeclaredFields": true,
       "methods": [
         {
@@ -2181,7 +2181,7 @@
       ]
     },
     {
-      "type": "com.zenith.feature.ping.rawData.ForgeDataListItem",
+      "type": "com.dotproxy.feature.ping.rawData.ForgeDataListItem",
       "allDeclaredFields": true,
       "methods": [
         {
@@ -2191,10 +2191,10 @@
       ]
     },
     {
-      "type": "com.zenith.feature.ping.rawData.ForgeDataListItem[]"
+      "type": "com.dotproxy.feature.ping.rawData.ForgeDataListItem[]"
     },
     {
-      "type": "com.zenith.feature.ping.rawData.ModpackData",
+      "type": "com.dotproxy.feature.ping.rawData.ModpackData",
       "allDeclaredFields": true,
       "methods": [
         {
@@ -2204,7 +2204,7 @@
       ]
     },
     {
-      "type": "com.zenith.feature.ping.rawData.Player",
+      "type": "com.dotproxy.feature.ping.rawData.Player",
       "allDeclaredFields": true,
       "methods": [
         {
@@ -2214,7 +2214,7 @@
       ]
     },
     {
-      "type": "com.zenith.feature.ping.rawData.Players",
+      "type": "com.dotproxy.feature.ping.rawData.Players",
       "allDeclaredFields": true,
       "methods": [
         {
@@ -2224,7 +2224,7 @@
       ]
     },
     {
-      "type": "com.zenith.feature.ping.rawData.Version",
+      "type": "com.dotproxy.feature.ping.rawData.Version",
       "allDeclaredFields": true,
       "methods": [
         {
@@ -2234,7 +2234,7 @@
       ]
     },
     {
-      "type": "com.zenith.feature.replay.ReplayMetadata",
+      "type": "com.dotproxy.feature.replay.ReplayMetadata",
       "allDeclaredFields": true,
       "methods": [
         {
@@ -2244,7 +2244,7 @@
       ]
     },
     {
-      "type": "com.zenith.feature.tasks.Task",
+      "type": "com.dotproxy.feature.tasks.Task",
       "fields": [
         {
           "name": "action"
@@ -2261,7 +2261,7 @@
       ]
     },
     {
-      "type": "com.zenith.feature.waypoints.Waypoint",
+      "type": "com.dotproxy.feature.waypoints.Waypoint",
       "allDeclaredFields": true,
       "methods": [
         {
@@ -2297,7 +2297,7 @@
       ]
     },
     {
-      "type": "com.zenith.feature.whitelist.PlayerEntry",
+      "type": "com.dotproxy.feature.whitelist.PlayerEntry",
       "allDeclaredFields": true,
       "methods": [
         {
@@ -2307,10 +2307,10 @@
       ]
     },
     {
-      "type": "com.zenith.mc.RegistryData"
+      "type": "com.dotproxy.mc.RegistryData"
     },
     {
-      "type": "com.zenith.mc.block.Block",
+      "type": "com.dotproxy.mc.block.Block",
       "methods": [
         {
           "name": "<init>",
@@ -2320,7 +2320,7 @@
             "int",
             "int",
             "int",
-            "com.zenith.mc.block.BlockOffsetType",
+            "com.dotproxy.mc.block.BlockOffsetType",
             "float",
             "float",
             "boolean",
@@ -2337,10 +2337,10 @@
       ]
     },
     {
-      "type": "com.zenith.mc.block.BlockOffsetType"
+      "type": "com.dotproxy.mc.block.BlockOffsetType"
     },
     {
-      "type": "com.zenith.mc.block.BlockPos",
+      "type": "com.dotproxy.mc.block.BlockPos",
       "methods": [
         {
           "name": "<init>",
@@ -2365,10 +2365,10 @@
       ]
     },
     {
-      "type": "com.zenith.mc.block.BlockTags"
+      "type": "com.dotproxy.mc.block.BlockTags"
     },
     {
-      "type": "com.zenith.mc.entity.EntityAttachment",
+      "type": "com.dotproxy.mc.entity.EntityAttachment",
       "methods": [
         {
           "name": "<init>",
@@ -2380,7 +2380,7 @@
       ]
     },
     {
-      "type": "com.zenith.mc.entity.EntityData",
+      "type": "com.dotproxy.mc.entity.EntityData",
       "methods": [
         {
           "name": "<init>",
@@ -2396,7 +2396,7 @@
             "boolean",
             "boolean",
             "org.geysermc.mcprotocollib.protocol.data.game.entity.type.EntityType",
-            "com.zenith.mc.entity.EntityAttachment"
+            "com.dotproxy.mc.entity.EntityAttachment"
           ]
         },
         {
@@ -2412,13 +2412,13 @@
             "boolean",
             "boolean",
             "org.geysermc.mcprotocollib.protocol.data.game.entity.type.EntityType",
-            "com.zenith.mc.entity.EntityAttachment"
+            "com.dotproxy.mc.entity.EntityAttachment"
           ]
         }
       ]
     },
     {
-      "type": "com.zenith.mc.item.ItemData",
+      "type": "com.dotproxy.mc.item.ItemData",
       "methods": [
         {
           "name": "<init>",
@@ -2427,13 +2427,13 @@
             "java.lang.String",
             "org.geysermc.mcprotocollib.protocol.data.game.item.component.DataComponents",
             "java.util.EnumSet",
-            "com.zenith.mc.item.ToolTag"
+            "com.dotproxy.mc.item.ToolTag"
           ]
         }
       ]
     },
     {
-      "type": "com.zenith.mc.item.ItemDataComponentsDeserializer",
+      "type": "com.dotproxy.mc.item.ItemDataComponentsDeserializer",
       "methods": [
         {
           "name": "<init>",
@@ -2442,28 +2442,28 @@
       ]
     },
     {
-      "type": "com.zenith.mc.item.ItemTags"
+      "type": "com.dotproxy.mc.item.ItemTags"
     },
     {
-      "type": "com.zenith.mc.item.ToolTag",
+      "type": "com.dotproxy.mc.item.ToolTag",
       "methods": [
         {
           "name": "<init>",
           "parameterTypes": [
-            "com.zenith.mc.item.ToolTier",
-            "com.zenith.mc.item.ToolType"
+            "com.dotproxy.mc.item.ToolTier",
+            "com.dotproxy.mc.item.ToolType"
           ]
         }
       ]
     },
     {
-      "type": "com.zenith.mc.item.ToolTier"
+      "type": "com.dotproxy.mc.item.ToolTier"
     },
     {
-      "type": "com.zenith.mc.item.ToolType"
+      "type": "com.dotproxy.mc.item.ToolType"
     },
     {
-      "type": "com.zenith.module.impl.ActiveHours$ActiveTime",
+      "type": "com.dotproxy.module.impl.ActiveHours$ActiveTime",
       "allDeclaredFields": true,
       "methods": [
         {
@@ -2488,26 +2488,26 @@
       ]
     },
     {
-      "type": "com.zenith.network.client.ClientSession"
+      "type": "com.dotproxy.network.client.ClientSession"
     },
     {
-      "type": "com.zenith.network.codec.PacketHandlerCodec[]"
+      "type": "com.dotproxy.network.codec.PacketHandlerCodec[]"
     },
     {
-      "type": "com.zenith.network.server.ServerSession"
+      "type": "com.dotproxy.network.server.ServerSession"
     },
     {
-      "type": "com.zenith.network.server.ServerSession[]"
+      "type": "com.dotproxy.network.server.ServerSession[]"
     },
     {
-      "type": "com.zenith.plugin.api.PluginInfo",
+      "type": "com.dotproxy.plugin.api.PluginInfo",
       "methods": [
         {
           "name": "<init>",
           "parameterTypes": [
             "java.lang.String",
             "java.lang.String",
-            "com.zenith.plugin.api.Version",
+            "com.dotproxy.plugin.api.Version",
             "java.lang.String",
             "java.lang.String",
             "java.util.List",
@@ -2550,7 +2550,7 @@
       ]
     },
     {
-      "type": "com.zenith.plugin.api.Version",
+      "type": "com.dotproxy.plugin.api.Version",
       "methods": [
         {
           "name": "<init>",
@@ -2565,7 +2565,7 @@
       ]
     },
     {
-      "type": "com.zenith.plugin.bootstrap.PluginBootstrap",
+      "type": "com.dotproxy.plugin.bootstrap.PluginBootstrap",
       "methods": [
         {
           "name": "install",
@@ -2578,10 +2578,10 @@
       ]
     },
     {
-      "type": "com.zenith.terminal.ZenithComponentLoggerProvider"
+      "type": "com.dotproxy.terminal.DotProxyComponentLoggerProvider"
     },
     {
-      "type": "com.zenith.terminal.logback.AnsiStripConverter",
+      "type": "com.dotproxy.terminal.logback.AnsiStripConverter",
       "methods": [
         {
           "name": "<init>",
@@ -2590,7 +2590,7 @@
       ]
     },
     {
-      "type": "com.zenith.terminal.logback.AnsiStripEncoder",
+      "type": "com.dotproxy.terminal.logback.AnsiStripEncoder",
       "methods": [
         {
           "name": "<init>",
@@ -2599,7 +2599,7 @@
       ]
     },
     {
-      "type": "com.zenith.terminal.logback.DebugLogConfigurationFilter",
+      "type": "com.dotproxy.terminal.logback.DebugLogConfigurationFilter",
       "methods": [
         {
           "name": "<init>",
@@ -2608,7 +2608,7 @@
       ]
     },
     {
-      "type": "com.zenith.terminal.logback.LazyInitRollingFileAppender",
+      "type": "com.dotproxy.terminal.logback.LazyInitRollingFileAppender",
       "methods": [
         {
           "name": "<init>",
@@ -2617,7 +2617,7 @@
       ]
     },
     {
-      "type": "com.zenith.terminal.logback.LogSourceFilter",
+      "type": "com.dotproxy.terminal.logback.LogSourceFilter",
       "methods": [
         {
           "name": "<init>",
@@ -2626,7 +2626,7 @@
       ]
     },
     {
-      "type": "com.zenith.terminal.logback.PrintOnlyErrorLogbackStatusListener",
+      "type": "com.dotproxy.terminal.logback.PrintOnlyErrorLogbackStatusListener",
       "methods": [
         {
           "name": "<init>",
@@ -2635,7 +2635,7 @@
       ]
     },
     {
-      "type": "com.zenith.terminal.logback.StartupSizeAndTimeBasedTriggeringPolicy",
+      "type": "com.dotproxy.terminal.logback.StartupSizeAndTimeBasedTriggeringPolicy",
       "methods": [
         {
           "name": "<init>",
@@ -2644,7 +2644,7 @@
       ]
     },
     {
-      "type": "com.zenith.terminal.logback.TerminalConsoleAppender",
+      "type": "com.dotproxy.terminal.logback.TerminalConsoleAppender",
       "methods": [
         {
           "name": "<init>",
@@ -2653,7 +2653,7 @@
       ]
     },
     {
-      "type": "com.zenith.terminal.logback.TerminalDebugLogFilter",
+      "type": "com.dotproxy.terminal.logback.TerminalDebugLogFilter",
       "methods": [
         {
           "name": "<init>",
@@ -2662,7 +2662,7 @@
       ]
     },
     {
-      "type": "com.zenith.util.config.Config",
+      "type": "com.dotproxy.util.config.Config",
       "allDeclaredFields": true,
       "methods": [
         {
@@ -2672,7 +2672,7 @@
       ]
     },
     {
-      "type": "com.zenith.util.config.Config$Authentication",
+      "type": "com.dotproxy.util.config.Config$Authentication",
       "allDeclaredFields": true,
       "methods": [
         {
@@ -2682,11 +2682,11 @@
       ]
     },
     {
-      "type": "com.zenith.util.config.Config$Authentication$AccountType",
+      "type": "com.dotproxy.util.config.Config$Authentication$AccountType",
       "allDeclaredFields": true
     },
     {
-      "type": "com.zenith.util.config.Config$AutoUpdater",
+      "type": "com.dotproxy.util.config.Config$AutoUpdater",
       "allDeclaredFields": true,
       "methods": [
         {
@@ -2696,7 +2696,7 @@
       ]
     },
     {
-      "type": "com.zenith.util.config.Config$Client",
+      "type": "com.dotproxy.util.config.Config$Client",
       "allDeclaredFields": true,
       "methods": [
         {
@@ -2706,7 +2706,7 @@
       ]
     },
     {
-      "type": "com.zenith.util.config.Config$Client$AutoDrop",
+      "type": "com.dotproxy.util.config.Config$Client$AutoDrop",
       "allDeclaredFields": true,
       "methods": [
         {
@@ -2716,11 +2716,11 @@
       ]
     },
     {
-      "type": "com.zenith.util.config.Config$Client$AutoDrop$Mode",
+      "type": "com.dotproxy.util.config.Config$Client$AutoDrop$Mode",
       "allDeclaredFields": true
     },
     {
-      "type": "com.zenith.util.config.Config$Client$ChatSchemas",
+      "type": "com.dotproxy.util.config.Config$Client$ChatSchemas",
       "allDeclaredFields": true,
       "methods": [
         {
@@ -2730,7 +2730,7 @@
       ]
     },
     {
-      "type": "com.zenith.util.config.Config$Client$ChatSigning",
+      "type": "com.dotproxy.util.config.Config$Client$ChatSigning",
       "allDeclaredFields": true,
       "methods": [
         {
@@ -2740,7 +2740,7 @@
       ]
     },
     {
-      "type": "com.zenith.util.config.Config$Client$ClientTimeout",
+      "type": "com.dotproxy.util.config.Config$Client$ClientTimeout",
       "allDeclaredFields": true,
       "methods": [
         {
@@ -2750,7 +2750,7 @@
       ]
     },
     {
-      "type": "com.zenith.util.config.Config$Client$ClientViaVersion",
+      "type": "com.dotproxy.util.config.Config$Client$ClientViaVersion",
       "allDeclaredFields": true,
       "methods": [
         {
@@ -2760,7 +2760,7 @@
       ]
     },
     {
-      "type": "com.zenith.util.config.Config$Client$ConnectionProxy",
+      "type": "com.dotproxy.util.config.Config$Client$ConnectionProxy",
       "allDeclaredFields": true,
       "methods": [
         {
@@ -2770,7 +2770,7 @@
       ]
     },
     {
-      "type": "com.zenith.util.config.Config$Client$Extra",
+      "type": "com.dotproxy.util.config.Config$Client$Extra",
       "allDeclaredFields": true,
       "methods": [
         {
@@ -2780,7 +2780,7 @@
       ]
     },
     {
-      "type": "com.zenith.util.config.Config$Client$Extra$ActionLimiter",
+      "type": "com.dotproxy.util.config.Config$Client$Extra$ActionLimiter",
       "allDeclaredFields": true,
       "methods": [
         {
@@ -2790,7 +2790,7 @@
       ]
     },
     {
-      "type": "com.zenith.util.config.Config$Client$Extra$AntiAFK",
+      "type": "com.dotproxy.util.config.Config$Client$Extra$AntiAFK",
       "allDeclaredFields": true,
       "methods": [
         {
@@ -2800,7 +2800,7 @@
       ]
     },
     {
-      "type": "com.zenith.util.config.Config$Client$Extra$AntiAFK$Actions",
+      "type": "com.dotproxy.util.config.Config$Client$Extra$AntiAFK$Actions",
       "allDeclaredFields": true,
       "methods": [
         {
@@ -2810,7 +2810,7 @@
       ]
     },
     {
-      "type": "com.zenith.util.config.Config$Client$Extra$AntiKick",
+      "type": "com.dotproxy.util.config.Config$Client$Extra$AntiKick",
       "allDeclaredFields": true,
       "methods": [
         {
@@ -2820,7 +2820,7 @@
       ]
     },
     {
-      "type": "com.zenith.util.config.Config$Client$Extra$AntiLeak",
+      "type": "com.dotproxy.util.config.Config$Client$Extra$AntiLeak",
       "allDeclaredFields": true,
       "methods": [
         {
@@ -2830,7 +2830,7 @@
       ]
     },
     {
-      "type": "com.zenith.util.config.Config$Client$Extra$AutoArmor",
+      "type": "com.dotproxy.util.config.Config$Client$Extra$AutoArmor",
       "allDeclaredFields": true,
       "methods": [
         {
@@ -2840,7 +2840,7 @@
       ]
     },
     {
-      "type": "com.zenith.util.config.Config$Client$Extra$AutoDig",
+      "type": "com.dotproxy.util.config.Config$Client$Extra$AutoDig",
       "allDeclaredFields": true,
       "methods": [
         {
@@ -2850,7 +2850,7 @@
       ]
     },
     {
-      "type": "com.zenith.util.config.Config$Client$Extra$AutoEat",
+      "type": "com.dotproxy.util.config.Config$Client$Extra$AutoEat",
       "allDeclaredFields": true,
       "methods": [
         {
@@ -2860,7 +2860,7 @@
       ]
     },
     {
-      "type": "com.zenith.util.config.Config$Client$Extra$AutoEat$Mode",
+      "type": "com.dotproxy.util.config.Config$Client$Extra$AutoEat$Mode",
       "fields": [
         {
           "name": "ALL"
@@ -2874,7 +2874,7 @@
       ]
     },
     {
-      "type": "com.zenith.util.config.Config$Client$Extra$AutoFish",
+      "type": "com.dotproxy.util.config.Config$Client$Extra$AutoFish",
       "allDeclaredFields": true,
       "methods": [
         {
@@ -2884,7 +2884,7 @@
       ]
     },
     {
-      "type": "com.zenith.util.config.Config$Client$Extra$AutoMend",
+      "type": "com.dotproxy.util.config.Config$Client$Extra$AutoMend",
       "allDeclaredFields": true,
       "methods": [
         {
@@ -2894,7 +2894,7 @@
       ]
     },
     {
-      "type": "com.zenith.util.config.Config$Client$Extra$AutoOmen",
+      "type": "com.dotproxy.util.config.Config$Client$Extra$AutoOmen",
       "allDeclaredFields": true,
       "methods": [
         {
@@ -2904,7 +2904,7 @@
       ]
     },
     {
-      "type": "com.zenith.util.config.Config$Client$Extra$AutoOmen$Mode",
+      "type": "com.dotproxy.util.config.Config$Client$Extra$AutoOmen$Mode",
       "fields": [
         {
           "name": "CONSTANT"
@@ -2918,7 +2918,7 @@
       ]
     },
     {
-      "type": "com.zenith.util.config.Config$Client$Extra$AutoReconnect",
+      "type": "com.dotproxy.util.config.Config$Client$Extra$AutoReconnect",
       "allDeclaredFields": true,
       "methods": [
         {
@@ -2928,7 +2928,7 @@
       ]
     },
     {
-      "type": "com.zenith.util.config.Config$Client$Extra$AutoReply",
+      "type": "com.dotproxy.util.config.Config$Client$Extra$AutoReply",
       "allDeclaredFields": true,
       "methods": [
         {
@@ -2938,7 +2938,7 @@
       ]
     },
     {
-      "type": "com.zenith.util.config.Config$Client$Extra$AutoRespawn",
+      "type": "com.dotproxy.util.config.Config$Client$Extra$AutoRespawn",
       "allDeclaredFields": true,
       "methods": [
         {
@@ -2948,7 +2948,7 @@
       ]
     },
     {
-      "type": "com.zenith.util.config.Config$Client$Extra$AutoTotem",
+      "type": "com.dotproxy.util.config.Config$Client$Extra$AutoTotem",
       "allDeclaredFields": true,
       "methods": [
         {
@@ -2958,7 +2958,7 @@
       ]
     },
     {
-      "type": "com.zenith.util.config.Config$Client$Extra$Chat",
+      "type": "com.dotproxy.util.config.Config$Client$Extra$Chat",
       "allDeclaredFields": true,
       "methods": [
         {
@@ -2968,7 +2968,7 @@
       ]
     },
     {
-      "type": "com.zenith.util.config.Config$Client$Extra$ChatControl",
+      "type": "com.dotproxy.util.config.Config$Client$Extra$ChatControl",
       "allDeclaredFields": true,
       "methods": [
         {
@@ -2978,7 +2978,7 @@
       ]
     },
     {
-      "type": "com.zenith.util.config.Config$Client$Extra$Click",
+      "type": "com.dotproxy.util.config.Config$Client$Extra$Click",
       "allDeclaredFields": true,
       "methods": [
         {
@@ -2988,19 +2988,19 @@
       ]
     },
     {
-      "type": "com.zenith.util.config.Config$Client$Extra$Click$HoldClickTarget",
+      "type": "com.dotproxy.util.config.Config$Client$Extra$Click$HoldClickTarget",
       "allDeclaredFields": true
     },
     {
-      "type": "com.zenith.util.config.Config$Client$Extra$Click$HoldRightClickMode",
+      "type": "com.dotproxy.util.config.Config$Client$Extra$Click$HoldRightClickMode",
       "allDeclaredFields": true
     },
     {
-      "type": "com.zenith.util.config.Config$Client$Extra$Click$HoldRightClickTarget",
+      "type": "com.dotproxy.util.config.Config$Client$Extra$Click$HoldRightClickTarget",
       "allDeclaredFields": true
     },
     {
-      "type": "com.zenith.util.config.Config$Client$Extra$CoordObfuscation",
+      "type": "com.dotproxy.util.config.Config$Client$Extra$CoordObfuscation",
       "allDeclaredFields": true,
       "methods": [
         {
@@ -3010,11 +3010,11 @@
       ]
     },
     {
-      "type": "com.zenith.util.config.Config$Client$Extra$CoordObfuscation$ObfuscationMode",
+      "type": "com.dotproxy.util.config.Config$Client$Extra$CoordObfuscation$ObfuscationMode",
       "allDeclaredFields": true
     },
     {
-      "type": "com.zenith.util.config.Config$Client$Extra$KillAura",
+      "type": "com.dotproxy.util.config.Config$Client$Extra$KillAura",
       "allDeclaredFields": true,
       "methods": [
         {
@@ -3024,11 +3024,11 @@
       ]
     },
     {
-      "type": "com.zenith.util.config.Config$Client$Extra$KillAura$Priority",
+      "type": "com.dotproxy.util.config.Config$Client$Extra$KillAura$Priority",
       "allDeclaredFields": true
     },
     {
-      "type": "com.zenith.util.config.Config$Client$Extra$KillAura$WeaponMaterial",
+      "type": "com.dotproxy.util.config.Config$Client$Extra$KillAura$WeaponMaterial",
       "fields": [
         {
           "name": "ANY"
@@ -3042,7 +3042,7 @@
       ]
     },
     {
-      "type": "com.zenith.util.config.Config$Client$Extra$KillAura$WeaponType",
+      "type": "com.dotproxy.util.config.Config$Client$Extra$KillAura$WeaponType",
       "fields": [
         {
           "name": "ANY"
@@ -3056,7 +3056,7 @@
       ]
     },
     {
-      "type": "com.zenith.util.config.Config$Client$Extra$Pathfinder",
+      "type": "com.dotproxy.util.config.Config$Client$Extra$Pathfinder",
       "allDeclaredFields": true,
       "methods": [
         {
@@ -3066,7 +3066,7 @@
       ]
     },
     {
-      "type": "com.zenith.util.config.Config$Client$Extra$PearlLoader",
+      "type": "com.dotproxy.util.config.Config$Client$Extra$PearlLoader",
       "allDeclaredFields": true,
       "methods": [
         {
@@ -3076,7 +3076,7 @@
       ]
     },
     {
-      "type": "com.zenith.util.config.Config$Client$Extra$PearlLoader$Pearl",
+      "type": "com.dotproxy.util.config.Config$Client$Extra$PearlLoader$Pearl",
       "allDeclaredFields": true,
       "methods": [
         {
@@ -3107,7 +3107,7 @@
       ]
     },
     {
-      "type": "com.zenith.util.config.Config$Client$Extra$QueueWarning",
+      "type": "com.dotproxy.util.config.Config$Client$Extra$QueueWarning",
       "allDeclaredFields": true,
       "methods": [
         {
@@ -3117,7 +3117,7 @@
       ]
     },
     {
-      "type": "com.zenith.util.config.Config$Client$Extra$ReplayMod",
+      "type": "com.dotproxy.util.config.Config$Client$Extra$ReplayMod",
       "allDeclaredFields": true,
       "methods": [
         {
@@ -3127,11 +3127,11 @@
       ]
     },
     {
-      "type": "com.zenith.util.config.Config$Client$Extra$ReplayMod$AutoRecordMode",
+      "type": "com.dotproxy.util.config.Config$Client$Extra$ReplayMod$AutoRecordMode",
       "allDeclaredFields": true
     },
     {
-      "type": "com.zenith.util.config.Config$Client$Extra$SessionTimeLimit",
+      "type": "com.dotproxy.util.config.Config$Client$Extra$SessionTimeLimit",
       "allDeclaredFields": true,
       "methods": [
         {
@@ -3141,7 +3141,7 @@
       ]
     },
     {
-      "type": "com.zenith.util.config.Config$Client$Extra$Spammer",
+      "type": "com.dotproxy.util.config.Config$Client$Extra$Spammer",
       "allDeclaredFields": true,
       "methods": [
         {
@@ -3151,7 +3151,7 @@
       ]
     },
     {
-      "type": "com.zenith.util.config.Config$Client$Extra$SpawnPatrol",
+      "type": "com.dotproxy.util.config.Config$Client$Extra$SpawnPatrol",
       "allDeclaredFields": true,
       "methods": [
         {
@@ -3161,7 +3161,7 @@
       ]
     },
     {
-      "type": "com.zenith.util.config.Config$Client$Extra$Spook",
+      "type": "com.dotproxy.util.config.Config$Client$Extra$Spook",
       "allDeclaredFields": true,
       "methods": [
         {
@@ -3171,11 +3171,11 @@
       ]
     },
     {
-      "type": "com.zenith.util.config.Config$Client$Extra$Spook$TargetingMode",
+      "type": "com.dotproxy.util.config.Config$Client$Extra$Spook$TargetingMode",
       "allDeclaredFields": true
     },
     {
-      "type": "com.zenith.util.config.Config$Client$Extra$Stalk",
+      "type": "com.dotproxy.util.config.Config$Client$Extra$Stalk",
       "allDeclaredFields": true,
       "methods": [
         {
@@ -3185,7 +3185,7 @@
       ]
     },
     {
-      "type": "com.zenith.util.config.Config$Client$Extra$Tasks",
+      "type": "com.dotproxy.util.config.Config$Client$Extra$Tasks",
       "fields": [
         {
           "name": "enabled"
@@ -3208,7 +3208,7 @@
       ]
     },
     {
-      "type": "com.zenith.util.config.Config$Client$Extra$Utility",
+      "type": "com.dotproxy.util.config.Config$Client$Extra$Utility",
       "allDeclaredFields": true,
       "methods": [
         {
@@ -3218,7 +3218,7 @@
       ]
     },
     {
-      "type": "com.zenith.util.config.Config$Client$Extra$Utility$Actions",
+      "type": "com.dotproxy.util.config.Config$Client$Extra$Utility$Actions",
       "allDeclaredFields": true,
       "methods": [
         {
@@ -3228,7 +3228,7 @@
       ]
     },
     {
-      "type": "com.zenith.util.config.Config$Client$Extra$Utility$ActiveHours",
+      "type": "com.dotproxy.util.config.Config$Client$Extra$Utility$ActiveHours",
       "allDeclaredFields": true,
       "methods": [
         {
@@ -3238,7 +3238,7 @@
       ]
     },
     {
-      "type": "com.zenith.util.config.Config$Client$Extra$Utility$ActiveHours$ActiveTime",
+      "type": "com.dotproxy.util.config.Config$Client$Extra$Utility$ActiveHours$ActiveTime",
       "allDeclaredFields": true,
       "methods": [
         {
@@ -3248,7 +3248,7 @@
       ]
     },
     {
-      "type": "com.zenith.util.config.Config$Client$Extra$Utility$AutoDisconnect",
+      "type": "com.dotproxy.util.config.Config$Client$Extra$Utility$AutoDisconnect",
       "allDeclaredFields": true,
       "methods": [
         {
@@ -3258,7 +3258,7 @@
       ]
     },
     {
-      "type": "com.zenith.util.config.Config$Client$Extra$VisualRange",
+      "type": "com.dotproxy.util.config.Config$Client$Extra$VisualRange",
       "allDeclaredFields": true,
       "methods": [
         {
@@ -3268,11 +3268,11 @@
       ]
     },
     {
-      "type": "com.zenith.util.config.Config$Client$Extra$VisualRange$ReplayRecordingMode",
+      "type": "com.dotproxy.util.config.Config$Client$Extra$VisualRange$ReplayRecordingMode",
       "allDeclaredFields": true
     },
     {
-      "type": "com.zenith.util.config.Config$Client$Extra$Wander",
+      "type": "com.dotproxy.util.config.Config$Client$Extra$Wander",
       "allDeclaredFields": true,
       "methods": [
         {
@@ -3282,7 +3282,7 @@
       ]
     },
     {
-      "type": "com.zenith.util.config.Config$Client$Extra$Waypoints",
+      "type": "com.dotproxy.util.config.Config$Client$Extra$Waypoints",
       "allDeclaredFields": true,
       "methods": [
         {
@@ -3292,7 +3292,7 @@
       ]
     },
     {
-      "type": "com.zenith.util.config.Config$Client$Inventory",
+      "type": "com.dotproxy.util.config.Config$Client$Inventory",
       "allDeclaredFields": true,
       "methods": [
         {
@@ -3302,7 +3302,7 @@
       ]
     },
     {
-      "type": "com.zenith.util.config.Config$Client$KeepAliveHandling",
+      "type": "com.dotproxy.util.config.Config$Client$KeepAliveHandling",
       "fields": [
         {
           "name": "keepAliveMode"
@@ -3319,7 +3319,7 @@
       ]
     },
     {
-      "type": "com.zenith.util.config.Config$Client$KeepAliveHandling$KeepAliveMode",
+      "type": "com.dotproxy.util.config.Config$Client$KeepAliveHandling$KeepAliveMode",
       "fields": [
         {
           "name": "INDEPENDENT"
@@ -3330,7 +3330,7 @@
       ]
     },
     {
-      "type": "com.zenith.util.config.Config$Client$Ping",
+      "type": "com.dotproxy.util.config.Config$Client$Ping",
       "allDeclaredFields": true,
       "methods": [
         {
@@ -3340,11 +3340,11 @@
       ]
     },
     {
-      "type": "com.zenith.util.config.Config$Client$Ping$Mode",
+      "type": "com.dotproxy.util.config.Config$Client$Ping$Mode",
       "allDeclaredFields": true
     },
     {
-      "type": "com.zenith.util.config.Config$Client$Server",
+      "type": "com.dotproxy.util.config.Config$Client$Server",
       "allDeclaredFields": true,
       "methods": [
         {
@@ -3354,7 +3354,7 @@
       ]
     },
     {
-      "type": "com.zenith.util.config.Config$Client$ViaVersion",
+      "type": "com.dotproxy.util.config.Config$Client$ViaVersion",
       "allDeclaredFields": true,
       "methods": [
         {
@@ -3364,7 +3364,7 @@
       ]
     },
     {
-      "type": "com.zenith.util.config.Config$Colors",
+      "type": "com.dotproxy.util.config.Config$Colors",
       "allDeclaredFields": true,
       "methods": [
         {
@@ -3374,7 +3374,7 @@
       ]
     },
     {
-      "type": "com.zenith.util.config.Config$Database",
+      "type": "com.dotproxy.util.config.Config$Database",
       "allDeclaredFields": true,
       "methods": [
         {
@@ -3384,7 +3384,7 @@
       ]
     },
     {
-      "type": "com.zenith.util.config.Config$Database$Lock",
+      "type": "com.dotproxy.util.config.Config$Database$Lock",
       "allDeclaredFields": true,
       "methods": [
         {
@@ -3394,7 +3394,7 @@
       ]
     },
     {
-      "type": "com.zenith.util.config.Config$Debug",
+      "type": "com.dotproxy.util.config.Config$Debug",
       "allDeclaredFields": true,
       "methods": [
         {
@@ -3404,7 +3404,7 @@
       ]
     },
     {
-      "type": "com.zenith.util.config.Config$Debug$Packet",
+      "type": "com.dotproxy.util.config.Config$Debug$Packet",
       "allDeclaredFields": true,
       "methods": [
         {
@@ -3414,7 +3414,7 @@
       ]
     },
     {
-      "type": "com.zenith.util.config.Config$Debug$PacketLog",
+      "type": "com.dotproxy.util.config.Config$Debug$PacketLog",
       "allDeclaredFields": true,
       "methods": [
         {
@@ -3424,7 +3424,7 @@
       ]
     },
     {
-      "type": "com.zenith.util.config.Config$Debug$PacketLog$PacketLogConfig",
+      "type": "com.dotproxy.util.config.Config$Debug$PacketLog$PacketLogConfig",
       "allDeclaredFields": true,
       "methods": [
         {
@@ -3434,7 +3434,7 @@
       ]
     },
     {
-      "type": "com.zenith.util.config.Config$Debug$Server",
+      "type": "com.dotproxy.util.config.Config$Debug$Server",
       "allDeclaredFields": true,
       "methods": [
         {
@@ -3444,7 +3444,7 @@
       ]
     },
     {
-      "type": "com.zenith.util.config.Config$Debug$Server$Cache",
+      "type": "com.dotproxy.util.config.Config$Debug$Server$Cache",
       "allDeclaredFields": true,
       "methods": [
         {
@@ -3454,7 +3454,7 @@
       ]
     },
     {
-      "type": "com.zenith.util.config.Config$Discord",
+      "type": "com.dotproxy.util.config.Config$Discord",
       "allDeclaredFields": true,
       "methods": [
         {
@@ -3464,7 +3464,7 @@
       ]
     },
     {
-      "type": "com.zenith.util.config.Config$Discord$ChatRelay",
+      "type": "com.dotproxy.util.config.Config$Discord$ChatRelay",
       "allDeclaredFields": true,
       "methods": [
         {
@@ -3474,7 +3474,7 @@
       ]
     },
     {
-      "type": "com.zenith.util.config.Config$Discord$ConnectionProxy",
+      "type": "com.dotproxy.util.config.Config$Discord$ConnectionProxy",
       "allDeclaredFields": true,
       "methods": [
         {
@@ -3484,11 +3484,11 @@
       ]
     },
     {
-      "type": "com.zenith.util.config.Config$Discord$ConnectionProxy$ConnectionProxyType",
+      "type": "com.dotproxy.util.config.Config$Discord$ConnectionProxy$ConnectionProxyType",
       "allDeclaredFields": true
     },
     {
-      "type": "com.zenith.util.config.Config$InGameCommands",
+      "type": "com.dotproxy.util.config.Config$InGameCommands",
       "allDeclaredFields": true,
       "methods": [
         {
@@ -3498,7 +3498,7 @@
       ]
     },
     {
-      "type": "com.zenith.util.config.Config$InteractiveTerminal",
+      "type": "com.dotproxy.util.config.Config$InteractiveTerminal",
       "allDeclaredFields": true,
       "methods": [
         {
@@ -3508,7 +3508,7 @@
       ]
     },
     {
-      "type": "com.zenith.util.config.Config$Plugins",
+      "type": "com.dotproxy.util.config.Config$Plugins",
       "allDeclaredFields": true,
       "methods": [
         {
@@ -3518,7 +3518,7 @@
       ]
     },
     {
-      "type": "com.zenith.util.config.Config$Server",
+      "type": "com.dotproxy.util.config.Config$Server",
       "allDeclaredFields": true,
       "methods": [
         {
@@ -3528,7 +3528,7 @@
       ]
     },
     {
-      "type": "com.zenith.util.config.Config$Server$Bind",
+      "type": "com.dotproxy.util.config.Config$Server$Bind",
       "allDeclaredFields": true,
       "methods": [
         {
@@ -3538,7 +3538,7 @@
       ]
     },
     {
-      "type": "com.zenith.util.config.Config$Server$ChatSigning",
+      "type": "com.dotproxy.util.config.Config$Server$ChatSigning",
       "fields": [
         {
           "name": "mode"
@@ -3552,7 +3552,7 @@
       ]
     },
     {
-      "type": "com.zenith.util.config.Config$Server$ChatSigning$ChatSigningMode",
+      "type": "com.dotproxy.util.config.Config$Server$ChatSigning$ChatSigningMode",
       "fields": [
         {
           "name": "DISGUISED"
@@ -3566,7 +3566,7 @@
       ]
     },
     {
-      "type": "com.zenith.util.config.Config$Server$Extra",
+      "type": "com.dotproxy.util.config.Config$Server$Extra",
       "allDeclaredFields": true,
       "methods": [
         {
@@ -3576,7 +3576,7 @@
       ]
     },
     {
-      "type": "com.zenith.util.config.Config$Server$Extra$ChatHistory",
+      "type": "com.dotproxy.util.config.Config$Server$Extra$ChatHistory",
       "allDeclaredFields": true,
       "methods": [
         {
@@ -3586,7 +3586,7 @@
       ]
     },
     {
-      "type": "com.zenith.util.config.Config$Server$Extra$ESP",
+      "type": "com.dotproxy.util.config.Config$Server$Extra$ESP",
       "allDeclaredFields": true,
       "methods": [
         {
@@ -3596,7 +3596,7 @@
       ]
     },
     {
-      "type": "com.zenith.util.config.Config$Server$Extra$ServerSwitcher",
+      "type": "com.dotproxy.util.config.Config$Server$Extra$ServerSwitcher",
       "allDeclaredFields": true,
       "methods": [
         {
@@ -3606,7 +3606,7 @@
       ]
     },
     {
-      "type": "com.zenith.util.config.Config$Server$Extra$ServerSwitcher$ServerSwitcherServer",
+      "type": "com.dotproxy.util.config.Config$Server$Extra$ServerSwitcher$ServerSwitcherServer",
       "allDeclaredFields": true,
       "methods": [
         {
@@ -3632,7 +3632,7 @@
       ]
     },
     {
-      "type": "com.zenith.util.config.Config$Server$Extra$ServerTimeout",
+      "type": "com.dotproxy.util.config.Config$Server$Extra$ServerTimeout",
       "allDeclaredFields": true,
       "methods": [
         {
@@ -3642,7 +3642,7 @@
       ]
     },
     {
-      "type": "com.zenith.util.config.Config$Server$Extra$Timeout",
+      "type": "com.dotproxy.util.config.Config$Server$Extra$Timeout",
       "allDeclaredFields": true,
       "methods": [
         {
@@ -3652,7 +3652,7 @@
       ]
     },
     {
-      "type": "com.zenith.util.config.Config$Server$Extra$Whitelist",
+      "type": "com.dotproxy.util.config.Config$Server$Extra$Whitelist",
       "allDeclaredFields": true,
       "methods": [
         {
@@ -3662,7 +3662,7 @@
       ]
     },
     {
-      "type": "com.zenith.util.config.Config$Server$LoginRateLimiter",
+      "type": "com.dotproxy.util.config.Config$Server$LoginRateLimiter",
       "allDeclaredFields": true,
       "methods": [
         {
@@ -3672,7 +3672,7 @@
       ]
     },
     {
-      "type": "com.zenith.util.config.Config$Server$LoginTimeout",
+      "type": "com.dotproxy.util.config.Config$Server$LoginTimeout",
       "fields": [
         {
           "name": "enabled"
@@ -3695,7 +3695,7 @@
       ]
     },
     {
-      "type": "com.zenith.util.config.Config$Server$PacketRateLimiter",
+      "type": "com.dotproxy.util.config.Config$Server$PacketRateLimiter",
       "allDeclaredFields": true,
       "methods": [
         {
@@ -3705,7 +3705,7 @@
       ]
     },
     {
-      "type": "com.zenith.util.config.Config$Server$Ping",
+      "type": "com.dotproxy.util.config.Config$Server$Ping",
       "allDeclaredFields": true,
       "methods": [
         {
@@ -3715,7 +3715,7 @@
       ]
     },
     {
-      "type": "com.zenith.util.config.Config$Server$PlaytimeLimiter",
+      "type": "com.dotproxy.util.config.Config$Server$PlaytimeLimiter",
       "allDeclaredFields": true,
       "methods": [
         {
@@ -3725,7 +3725,7 @@
       ]
     },
     {
-      "type": "com.zenith.util.config.Config$Server$RateLimiter",
+      "type": "com.dotproxy.util.config.Config$Server$RateLimiter",
       "allDeclaredFields": true,
       "methods": [
         {
@@ -3735,7 +3735,7 @@
       ]
     },
     {
-      "type": "com.zenith.util.config.Config$Server$ServerViaVersion",
+      "type": "com.dotproxy.util.config.Config$Server$ServerViaVersion",
       "allDeclaredFields": true,
       "methods": [
         {
@@ -3745,7 +3745,7 @@
       ]
     },
     {
-      "type": "com.zenith.util.config.Config$Server$Spectator",
+      "type": "com.dotproxy.util.config.Config$Server$Spectator",
       "allDeclaredFields": true,
       "methods": [
         {
@@ -3755,7 +3755,7 @@
       ]
     },
     {
-      "type": "com.zenith.util.config.Config$Theme",
+      "type": "com.dotproxy.util.config.Config$Theme",
       "allDeclaredFields": true,
       "methods": [
         {
@@ -3765,11 +3765,11 @@
       ]
     },
     {
-      "type": "com.zenith.util.config.ConfigColor",
+      "type": "com.dotproxy.util.config.ConfigColor",
       "allDeclaredFields": true
     },
     {
-      "type": "com.zenith.util.config.LaunchConfig",
+      "type": "com.dotproxy.util.config.LaunchConfig",
       "allDeclaredFields": true,
       "methods": [
         {
@@ -3779,19 +3779,19 @@
       ]
     },
     {
-      "type": "com.zenith.via.ZenithClientChannelInitializer"
+      "type": "com.dotproxy.via.DotProxyClientChannelInitializer"
     },
     {
-      "type": "com.zenith.via.ZenithServerChannelInitializer"
+      "type": "com.dotproxy.via.DotProxyServerChannelInitializer"
     },
     {
-      "type": "com.zenith.via.handler.ZViaClientCodecHandler"
+      "type": "com.dotproxy.via.handler.ZViaClientCodecHandler"
     },
     {
-      "type": "com.zenith.via.handler.ZViaProtocolStateHandler"
+      "type": "com.dotproxy.via.handler.ZViaProtocolStateHandler"
     },
     {
-      "type": "com.zenith.via.handler.ZenithViaChannelInitializer"
+      "type": "com.dotproxy.via.handler.DotProxyViaChannelInitializer"
     },
     {
       "type": "double[]"

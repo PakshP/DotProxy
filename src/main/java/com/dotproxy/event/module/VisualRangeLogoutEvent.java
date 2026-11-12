@@ -1,0 +1,6 @@
+package com.dotproxy.event.module;
+
+import com.dotproxy.cache.data.entity.EntityPlayer;
+import org.geysermc.mcprotocollib.protocol.data.game.PlayerListEntry;
+
+public record VisualRangeLogoutEvent(PlayerListEntry playerEntry, EntityPlayer playerEntity, boolean isFriend) { }

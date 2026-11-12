@@ -1,0 +1,76 @@
+package com.dotproxy.module.impl;
+
+import com.github.rfresh2.EventConsumer;
+import com.dotproxy.Proxy;
+import com.dotproxy.event.module.*;
+import com.dotproxy.module.api.Module;
+import com.dotproxy.util.ChatUtil;
+
+import java.time.Instant;
+import java.util.List;
+
+import static com.github.rfresh2.EventConsumer.of;
+import static com.dotproxy.Globals.*;
+
+public class VisualRange extends Module {
+
+    private Instant lastWhisper = Instant.EPOCH;
+
+    @Override
+    public List<EventConsumer<?>> registerEvents() {
+        return List.of(
+            of(ServerPlayerInVisualRangeEvent.class, this::handleNewPlayerInVisualRangeEvent),
+            of(ServerPlayerLeftVisualRangeEvent.class, this::handlePlayerLeftVisualRangeEvent),
+            of(ServerPlayerLogoutInVisualRangeEvent.class, this::handlePlayerLogoutInVisualRangeEvent),
+            of(VisualRangeEnterEvent.class, this::enterWhisperHandler)
+        );
+    }
+
+    @Override
+    public boolean enabledSetting() {
+        return CONFIG.client.extra.visualRange.enabled;
+    }
+
+    public void handleNewPlayerInVisualRangeEvent(ServerPlayerInVisualRangeEvent event) {
+        var isFriend = PLAYER_LISTS.getFriendsList().contains(event.playerEntity().getUuid());
+        if (isFriend && CONFIG.client.extra.visualRange.ignoreFriends) {
+            debug("Ignoring enter alert for friend: {}", event.playerEntry().getName());
+            return;
+        }
+        if (CONFIG.client.extra.visualRange.enterAlert) {
+            warn("{} entered visual range [{}, {}, {}]", event.playerEntry().getName(), event.playerEntity().getX(), event.playerEntity().getY(), event.playerEntity().getZ());
+            EVENT_BUS.post(new VisualRangeEnterEvent(event.playerEntry(), event.playerEntity(), isFriend));
+        }
+    }
+
+    public void enterWhisperHandler(VisualRangeEnterEvent event) {
+        if (!CONFIG.client.extra.visualRange.enterWhisper) return;
+        if (!CONFIG.client.extra.visualRange.enterWhisperWhilePlayerConnected && Proxy.getInstance().hasActivePlayer()) return;
+        if (Instant.now().minusSeconds(CONFIG.client.extra.visualRange.enterWhisperCooldownSeconds).isBefore(lastWhisper)) return;
+        lastWhisper = Instant.now();
+        sendClientPacketAsync(ChatUtil.getWhisperChatPacket(event.playerEntry().getName(), CONFIG.client.extra.visualRange.enterWhisperMessage));
+    }
+
+    public void handlePlayerLeftVisualRangeEvent(final ServerPlayerLeftVisualRangeEvent event) {
+        var isFriend = PLAYER_LISTS.getFriendsList().contains(event.playerEntity().getUuid());
+        if (isFriend && CONFIG.client.extra.visualRange.ignoreFriends) {
+            debug("Ignoring leave alert for friend: {}", event.playerEntry().getName());
+            return;
+        }
+        if (CONFIG.client.extra.visualRange.leaveAlert) {
+            warn("{} left visual range [{}, {}, {}]", event.playerEntry().getName(), event.playerEntity().getX(), event.playerEntity().getY(), event.playerEntity().getZ());
+            EVENT_BUS.post(new VisualRangeLeaveEvent(event.playerEntry(), event.playerEntity(), isFriend));
+        }
+    }
+
+    public void handlePlayerLogoutInVisualRangeEvent(final ServerPlayerLogoutInVisualRangeEvent event) {
+        if (!CONFIG.client.extra.visualRange.logoutAlert) return;
+        var isFriend = PLAYER_LISTS.getFriendsList().contains(event.playerEntity().getUuid());
+        if (isFriend && CONFIG.client.extra.visualRange.ignoreFriends) {
+            debug("Ignoring logout alert for friend: {}", event.playerEntry().getName());
+            return;
+        }
+        warn("{} logged out in visual range [{}, {}, {}]", event.playerEntry().getName(), event.playerEntity().getX(), event.playerEntity().getY(), event.playerEntity().getZ());
+        EVENT_BUS.post(new VisualRangeLogoutEvent(event.playerEntry(), event.playerEntity(), isFriend));
+    }
+}

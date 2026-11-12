@@ -5,7 +5,7 @@ plugins {
     id("io.freefair.lombok") version "9.8.3"
 }
 
-group = "com.zenith"
+group = "com.dotproxy"
 version = "1.21.4"
 
 val javaReleaseVersion = 21
@@ -130,20 +130,20 @@ tasks {
     test {
         useJUnitPlatform()
         workingDir = layout.projectDirectory.dir("run").asFile
-        forkEvery = 1 // needed bc zenith uses global static state
+        forkEvery = 1 // needed bc DotProxy uses global static state
         maxParallelForks = Runtime.getRuntime().availableProcessors()
         jvmArgs = listOf("--enable-native-access=ALL-UNNAMED", "--sun-misc-unsafe-memory-access=allow")
     }
     val commitHashTask = register<CommitHashTask>("writeCommitHash") {
-        outputFile = project.layout.buildDirectory.file("resources/main/zenith_commit.txt")
+        outputFile = project.layout.buildDirectory.file("resources/main/dotproxy_commit.txt")
     }
     val releaseTagTask = register<WriteMetadataTxtTask>("releaseTag") {
         metadataValue = providers.environmentVariable("RELEASE_TAG").orElse("")
-        outputFile = project.layout.buildDirectory.file("resources/main/zenith_release.txt")
+        outputFile = project.layout.buildDirectory.file("resources/main/dotproxy_release.txt")
     }
     val mcVersionTask = register<WriteMetadataTxtTask>("mcVersion") {
         metadataValue = version.toString()
-        outputFile = project.layout.buildDirectory.file("resources/main/zenith_mc_version.txt")
+        outputFile = project.layout.buildDirectory.file("resources/main/dotproxy_mc_version.txt")
     }
     val runGroup = "run"
     register("run", JavaExec::class.java) {
@@ -152,14 +152,14 @@ tasks {
         javaLauncher = javaLauncherProvider
         workingDir = layout.projectDirectory.dir("run").asFile
         classpath = sourceSets.main.get().runtimeClasspath
-        mainClass.set("com.zenith.ProxyLaunchWrapper")
+        mainClass.set("com.dotproxy.ProxyLaunchWrapper")
         jvmArgs = listOf(
             "-Xmx300m", "-XX:+UseG1GC", "-Xms32m", "-XX:MinHeapFreeRatio=10", "-XX:MaxHeapFreeRatio=20",
             "-XX:G1PeriodicGCInterval=30000", "-XX:TrimNativeHeapInterval=30000", "-XX:+UseCompactObjectHeaders",
             "--enable-native-access=ALL-UNNAMED", "--sun-misc-unsafe-memory-access=allow"
         )
         standardInput = System.`in`
-        environment("ZENITH_DEV", "true")
+        environment("DOTPROXY_DEV", "true")
         outputs.upToDateWhen { false }
     }
     val javaPathTask = register<JavaPathTask>("javaPath") {
@@ -171,10 +171,10 @@ tasks {
         javaLauncher = javaLauncherProvider
         workingDir = layout.projectDirectory.dir("run").asFile
         classpath = sourceSets.main.get().runtimeClasspath
-        mainClass.set("com.zenith.util.CommandDocsGenerator")
+        mainClass.set("com.dotproxy.util.CommandDocsGenerator")
         val outputFile = project.layout.buildDirectory.file("Commands.md")
         args = listOf(outputFile.get().asFile.absolutePath)
-        environment("ZENITH_DEV", "true")
+        environment("DOTPROXY_DEV", "true")
         jvmArgs = listOf("-Xmx300m", "--enable-native-access=ALL-UNNAMED", "--sun-misc-unsafe-memory-access=allow")
         outputs.file(outputFile)
     }
@@ -184,7 +184,7 @@ tasks {
         javaLauncher = javaLauncherProvider
         workingDir = layout.projectDirectory.dir("run").asFile
         classpath = sourceSets.main.get().runtimeClasspath
-        mainClass.set("com.zenith.ProxyLaunchWrapper")
+        mainClass.set("com.dotproxy.ProxyLaunchWrapper")
         jvmArgs = listOf("--enable-native-access=ALL-UNNAMED", "--sun-misc-unsafe-memory-access=allow")
     }
     val updateWikiTask = register<UpdateWikiTask>("updateWiki") {
@@ -232,9 +232,9 @@ tasks {
 
         manifest {
             attributes(mapOf(
-                "Implementation-Title" to "ZenithProxy",
+                "Implementation-Title" to "DotProxy",
                 "Implementation-Version" to project.version,
-                "Main-Class" to "com.zenith.ProxyLaunchWrapper",
+                "Main-Class" to "com.dotproxy.ProxyLaunchWrapper",
                 "Multi-Release" to "true",
                 "Enable-Native-Access" to "ALL-UNNAMED"
             ))
@@ -262,7 +262,7 @@ tasks {
 
 graalvmNative {
     binaries {
-        // additional config in: `src/main/resources/META-INF/native-image/com.zenith/zenithproxy/native-image.properties
+        // additional config in: `src/main/resources/META-INF/native-image/com.dotproxy/dotproxy/native-image.properties
         val graalvmBuildArgs = listOf(
             "-H:DeadlockWatchdogInterval=30",
             "-H:+CompactingOldGen",
@@ -280,8 +280,8 @@ graalvmNative {
         )
         named("main") {
             javaLauncher = graalVMJavaLauncher
-            imageName = "ZenithProxy"
-            mainClass = "com.zenith.Proxy"
+            imageName = "DotProxy"
+            mainClass = "com.dotproxy.Proxy"
             quickBuild = false
             verbose = true
             sharedLibrary = false

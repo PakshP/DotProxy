@@ -1,0 +1,154 @@
+package com.dotproxy.network.server;
+
+import com.google.common.cache.Cache;
+import com.google.common.cache.CacheBuilder;
+import com.dotproxy.Proxy;
+import com.dotproxy.event.client.ClientConnectEvent;
+import com.dotproxy.event.client.ClientDisconnectEvent;
+import com.dotproxy.event.client.ClientOnlineEvent;
+import com.dotproxy.event.server.MotdBuildEvent;
+import com.dotproxy.event.server.ServerIconBuildEvent;
+import com.dotproxy.util.ComponentSerializer;
+import net.kyori.adventure.text.Component;
+import net.kyori.adventure.text.minimessage.tag.resolver.Placeholder;
+import org.geysermc.mcprotocollib.auth.GameProfile;
+import org.geysermc.mcprotocollib.network.Session;
+import org.geysermc.mcprotocollib.protocol.codec.MinecraftCodec;
+import org.geysermc.mcprotocollib.protocol.data.status.PlayerInfo;
+import org.geysermc.mcprotocollib.protocol.data.status.ServerStatusInfo;
+import org.geysermc.mcprotocollib.protocol.data.status.VersionInfo;
+import org.jspecify.annotations.Nullable;
+
+import java.time.Duration;
+import java.util.Collections;
+import java.util.List;
+import java.util.concurrent.ExecutionException;
+
+import static com.github.rfresh2.EventConsumer.of;
+import static com.dotproxy.Globals.*;
+
+public class DotProxyServerInfoBuilder {
+    public static final DotProxyServerInfoBuilder INSTANCE = new DotProxyServerInfoBuilder();
+
+    private final Cache<String, ServerStatusInfo> infoCache = CacheBuilder.newBuilder()
+        .expireAfterWrite(Duration.ofSeconds(CONFIG.server.ping.responseCacheSeconds))
+        .maximumSize(10)
+        .build();
+
+    private DotProxyServerInfoBuilder() {
+        EVENT_BUS.subscribe(
+            this,
+            of(ClientConnectEvent.class, e -> infoCache.invalidateAll()),
+            of(ClientOnlineEvent.class, e -> infoCache.invalidateAll()),
+            of(ClientDisconnectEvent.class, e -> infoCache.invalidateAll())
+        );
+    }
+
+    public @Nullable ServerStatusInfo buildInfo(@Nullable Session session) {
+        if (!CONFIG.server.ping.enabled) return null;
+        if (CONFIG.server.ping.responseCaching) {
+            var cacheKey = getSessionCacheKey(session);
+            try {
+                // building the server status here can be expensive
+                // due to accessing player caches, active connections, etc
+                // its possible someone could DoS a server pretty easily
+                return infoCache.get(cacheKey, () -> createServerStatusInfo(session));
+            } catch (ExecutionException e) {
+                SERVER_LOG.debug("Failed to build server info for {}", cacheKey, e);
+                return null;
+            }
+        } else return createServerStatusInfo(session);
+    }
+
+    private String getSessionCacheKey(@Nullable Session session) {
+        if (session != null && CONFIG.server.viaversion.enabled) { // our response has a different protocol version for each connection (mirroring them)
+            String ip = session.getRemoteAddress().toString();
+            if (ip.contains("/")) ip = ip.substring(ip.indexOf("/") + 1);
+            if (ip.contains(":")) ip = ip.substring(0, ip.indexOf(":"));
+            return ip;
+        }
+        return "";
+    }
+
+    private ServerStatusInfo createServerStatusInfo(@Nullable Session session) {
+        return new ServerStatusInfo(
+            getMotd(),
+            getPlayerInfo(),
+            getVersionInfo(session),
+            getServerIcon(),
+            false
+        );
+    }
+
+    private byte[] getServerIcon() {
+        var event = new ServerIconBuildEvent(Proxy.getInstance().getServerIcon());
+        EVENT_BUS.post(event);
+        return event.getIcon();
+    }
+
+    private VersionInfo getVersionInfo(@Nullable Session session) {
+        int protocolId = CONFIG.server.viaversion.enabled && session instanceof ServerSession
+            ? ((ServerSession) session).getProtocolVersionId()
+            : MinecraftCodec.CODEC.getProtocolVersion();
+        return new VersionInfo("DotProxy", protocolId);
+    }
+
+    private PlayerInfo getPlayerInfo() {
+        var onlinePlayerCount = CONFIG.server.ping.onlinePlayerCount
+            ? Proxy.getInstance().getActiveConnections().size()
+            : 0;
+        if (CONFIG.server.ping.onlinePlayers) {
+            return new PlayerInfo(
+                CONFIG.server.ping.maxPlayers,
+                onlinePlayerCount,
+                List.of(getOnlinePlayerProfiles())
+            );
+        } else {
+            return new PlayerInfo(
+                CONFIG.server.ping.maxPlayers,
+                onlinePlayerCount,
+                Collections.emptyList()
+            );
+        }
+    }
+
+    public GameProfile[] getOnlinePlayerProfiles() {
+        try {
+            var connections = Proxy.getInstance().getActiveConnections().getArray();
+            var result = new GameProfile[connections.length];
+            for (int i = 0; i < connections.length; i++) {
+                var connection = connections[i];
+                result[i] = connection.getProfileCache().getProfile();
+            }
+            return result;
+        } catch (final Throwable e) {
+            return new GameProfile[0];
+        }
+    }
+
+    private static final String motdMM = """
+        <white>[<aqua><username><white>] <reset>- <motd_body>
+        """;
+    private static final String motdDisconnectedBody = "<red>Disconnected";
+    private static final String motdConnectedBody = """
+        <motd_status><reset>
+        <aqua>Online for: <white>[<reset><online_time><white>]
+        """;
+    private static final String motdStatusInGame = "<green>In Game";
+
+    public Component getMotd() {
+        var event = new MotdBuildEvent(buildDefaultMotd());
+        EVENT_BUS.post(event);
+        return event.getMotd();
+    }
+
+    public Component buildDefaultMotd() {
+        return ComponentSerializer.minimessage(
+            motdMM,
+            Placeholder.unparsed("username", CONFIG.authentication.username),
+            Placeholder.parsed("motd_body", Proxy.getInstance().isConnected() ? motdConnectedBody : motdDisconnectedBody),
+            Placeholder.parsed("motd_status", motdStatusInGame),
+            Placeholder.unparsed("online_time", Proxy.getInstance().getOnlineTimeString())
+        );
+    }
+}

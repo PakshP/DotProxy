@@ -1,6 +1,6 @@
 <component name="ProjectRunConfigurationManager">
   <configuration default="false" name="Debug Listener" type="Remote">
-    <module name="ZenithProxy" />
+    <module name="DotProxy" />
     <option name="USE_SOCKET_TRANSPORT" value="true" />
     <option name="SERVER_MODE" value="true" />
     <option name="SHMEM_ADDRESS" />

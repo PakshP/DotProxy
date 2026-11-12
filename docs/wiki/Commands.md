@@ -1,4 +1,4 @@
-# ZenithProxy Commands Documentation
+# DotProxy Commands Documentation
 
 ## Command Prefixes
 
@@ -18,7 +18,7 @@ N/A (e.g. `help`)
 
 ### connect
 
-Connects ZenithProxy to the destination MC server
+Connects DotProxy to the destination MC server
 
 **Aliases:** `c`
 
@@ -29,7 +29,7 @@ Connects ZenithProxy to the destination MC server
 
 ### disconnect
 
-Disconnects ZenithProxy from the destination MC server
+Disconnects DotProxy from the destination MC server
 
 **Aliases:** `dc`
 
@@ -40,7 +40,7 @@ Disconnects ZenithProxy from the destination MC server
 
 ### help
 
-ZenithProxy command list
+DotProxy command list
 
 **Aliases:** `h`
 
@@ -69,7 +69,7 @@ Spectator entities control what entity is used to represent spectators in-game.
 
 
 
-Full commands allow spectators access to all standard ZenithProxy commands like `connect`, `disconnect`, etc.
+Full commands allow spectators access to all standard DotProxy commands like `connect`, `disconnect`, etc.
 
 If this is disabled, spectators only have access to a limited set of core commands.
 
@@ -108,7 +108,7 @@ If this is disabled, spectators only have access to a limited set of core comman
 
 ### status
 
-Prints the current status of ZenithProxy, the in-game player, and modules.
+Prints the current status of DotProxy, the in-game player, and modules.
 
 **Aliases:** `s`
 
@@ -129,7 +129,7 @@ Whitelisted players are allowed to both control the account in-game and spectate
 
 
 
-`autoAddZenithAccount` will add the MC account you have logged in Zenith with to the whitelist.
+`autoAddDotProxyAccount` will add the MC account you have logged in DotProxy with to the whitelist.
 
 
 
@@ -147,7 +147,7 @@ Blacklist is only used and shown if the whitelist or spectator whitelist is disa
 
   ```whitelist clear```
 
-  ```whitelist autoAddZenithAccount on/off```
+  ```whitelist autoAddDotProxyAccount on/off```
 
   ```whitelist blacklist add/del <player>```
 
@@ -179,7 +179,7 @@ Microsoft to rate limit your account. Auth tokens will always refresh in the bac
 
 `deviceCode` is the default and recommended authentication type.
 
-If authentication fails, try logging into the account on the vanilla MC launcher and joining a server. Then try again in Zenith.
+If authentication fails, try logging into the account on the vanilla MC launcher and joining a server. Then try again in DotProxy.
 
 If this still fails, try one of the alternate auth types.
 
@@ -269,7 +269,7 @@ Ignore regex will filter out messages, see here for help writing regex: https://
 
 ### chatSchema
 
-Configure how ZenithProxy parses public chats and whispers.
+Configure how DotProxy parses public chats and whispers.
 
 
 
@@ -318,7 +318,7 @@ Server address is without port, e.g. `mc.example.com` or `192.168.0.5`
 
 ### clientConnection
 
-Manages the connection configuration from ZenithProxy to the destination MC server.
+Manages the connection configuration from DotProxy to the destination MC server.
 
 **Usage**
 
@@ -353,7 +353,7 @@ Manages the connection configuration from ZenithProxy to the destination MC serv
 
 ### commandConfig
 
-Configures ZenithProxy command prefixes and settings.
+Configures DotProxy command prefixes and settings.
 
 **Usage**
 
@@ -489,7 +489,7 @@ Kicks all players or a specific player. Only usable by account owners.
 
 
 
-Configures the ZenithProxy plugin manager.
+Configures the DotProxy plugin manager.
 
 
 
@@ -523,7 +523,7 @@ Disconnect and reconnects from the destination MC server.
 
 ### server
 
-Change the MC server ZenithProxy connects to.
+Change the MC server DotProxy connects to.
 
 **Usage**
 
@@ -534,7 +534,7 @@ Change the MC server ZenithProxy connects to.
 
 ### serverConnection
 
-Configures the MC server hosted by Zenith and players' connections to it
+Configures the MC server hosted by DotProxy and players' connections to it
 
 
 
@@ -542,7 +542,7 @@ The `proxyIP` is the IP players should connect to. This is purely informational.
 
 
 
-The `port` argument changes the port the ZenithProxy MC server listens on
+The `port` argument changes the port the DotProxy MC server listens on
 
 
 
@@ -550,7 +550,7 @@ The `port` argument changes the port the ZenithProxy MC server listens on
 
 
 
-The `ping` arguments configure the server list ping response ZenithProxy sends to players.
+The `ping` arguments configure the server list ping response DotProxy sends to players.
 
 `onlinePlayers` = MC profiles of players
 
@@ -603,7 +603,7 @@ The `timeout` arguments configures how long until players are kicked due no pack
 
 ### shutdown
 
-Shuts down ZenithProxy, without letting the launcher restart it.
+Shuts down DotProxy, without letting the launcher restart it.
 
 **Aliases:** `exit`
 
@@ -647,7 +647,7 @@ Toggles spectators between player and entity cameras. Only usable by spectators
 
 ### terminal
 
-Configures the ZenithProxy interactive terminal.
+Configures the DotProxy interactive terminal.
 
 
 
@@ -874,9 +874,9 @@ Logs packets that are sent/received. Requires account owner permissions.
 
 
 
-`client` -> packets between Zenith and destination MC server
+`client` -> packets between DotProxy and destination MC server
 
-`server` -> packets between players and Zenith
+`server` -> packets between players and DotProxy
 
 
 
@@ -933,7 +933,7 @@ Limits player actions and movements.
 
 
 
-Players who login with the same account as the one used by ZenithProxy will be immune to these restrictions.
+Players who login with the same account as the one used by DotProxy will be immune to these restrictions.
 
 
 
@@ -988,7 +988,7 @@ Other limits do not disconnect players and instead cancel the actions.
 
 ### activeHours
 
-Set times for ZenithProxy to automatically connect at.
+Set times for DotProxy to automatically connect at.
 
 
 
@@ -1324,7 +1324,7 @@ Switch the connected player to an alternate MC server.
 
 
 
-Can be used to switch between multiple ZenithProxy instances quickly.
+Can be used to switch between multiple DotProxy instances quickly.
 
 
 
@@ -1396,19 +1396,19 @@ Configure the integrated ViaVersion module.
 
 
 
-`zenithToServer` -> ZenithProxy connecting to the MC server
+`proxyToServer` -> DotProxy connecting to the MC server
 
-`playerToZenith` -> players connecting to ZenithProxy
+`playerToProxy` -> players connecting to DotProxy
 
 **Usage**
 
-  ```via zenithToServer on/off```
+  ```via proxyToServer on/off```
 
-  ```via zenithToServer version auto```
+  ```via proxyToServer version auto```
 
-  ```via zenithToServer version <MC version>```
+  ```via proxyToServer version <MC version>```
 
-  ```via playerToZenith on/off```
+  ```via playerToProxy on/off```
 
 
 ### visualRange

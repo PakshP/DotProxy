@@ -1,0 +1,122 @@
+package com.dotproxy.network.server.handler.player;
+
+import com.dotproxy.command.api.CommandContext;
+import com.dotproxy.command.api.CommandOutputHelper;
+import com.dotproxy.command.api.CommandSources;
+import com.dotproxy.network.server.ServerSession;
+import org.jspecify.annotations.NonNull;
+
+import static com.dotproxy.Globals.*;
+
+public class InGameCommandManager {
+
+    // this is specific to CONTROLLING account commands - not spectator player commands!
+    // true = command was handled
+    // false = command was not handled
+    public boolean handleInGameCommand(final String message, final @NonNull ServerSession session, final boolean prioritizeServerCommand) {
+        var ctx = CommandContext.createInGamePlayerContext(message, session);
+        var isServerCmd = matchesServerCommand(message, ctx);
+        var isDotProxyCmd = matchesDotProxyCommand(ctx);
+        if (!isDotProxyCmd) {
+            return false;
+        }
+        if (isServerCmd && prioritizeServerCommand) {
+            return false;
+        }
+        return executeInGameCommand(message, session);
+    }
+
+    public boolean matchesServerCommand(final String message, CommandContext context) {
+        var dispatcher = CACHE.getChatCache().getCommandDispatcher();
+        var parse = dispatcher.parse(message, context);
+        if (!parse.getExceptions().isEmpty()) {
+            return false;
+        }
+        if (parse.getContext().getLastChild().getCommand() == null) {
+            return false;
+        }
+        return !parse.getReader().canRead();
+    }
+
+    public boolean matchesDotProxyCommand(CommandContext context) {
+        var parse = COMMAND.parse(context);
+        if (parse.getContext().getSource().getEmbed().isTitlePresent()) {
+            // matched but we lack perms
+            return true;
+        }
+        return COMMAND.hasCommandNode(parse);
+    }
+
+    public boolean isCommandPrefixed(final String message) {
+        return message.startsWith(CONFIG.inGameCommands.prefix);
+    }
+
+    public boolean isDoubleCommandPrefixed(final String message) {
+        var prefix = CONFIG.inGameCommands.prefix;
+        return message.startsWith(prefix + prefix);
+    }
+
+    private boolean executeInGameCommand(final String command, final ServerSession session) {
+        var ctx = CommandContext.createInGamePlayerContext(command, session);
+        var parse = COMMAND.parse(ctx);
+        EXECUTOR.execute(() -> {
+            TERMINAL_LOG.info("{} executed in-game command: {}", session.getName(), command);
+            COMMAND.execute(ctx, parse);
+            var embed = ctx.getEmbed();
+            CommandOutputHelper.logEmbedOutputToInGame(embed, session);
+            CommandOutputHelper.logMultiLineOutputToInGame(ctx.getMultiLineOutput(), session);
+            if (!ctx.isNoOutput() && !embed.isTitlePresent() && ctx.getMultiLineOutput().isEmpty()) {
+                session.sendAsyncAlert("<red>Unknown command!");
+                return;
+            }
+            if (CONFIG.inGameCommands.logToDiscord && DISCORD.isRunning() && !ctx.isSensitiveInput()) {
+                // will also log to terminal
+                CommandOutputHelper.logInputToDiscord(command, CommandSources.PLAYER, ctx);
+                CommandOutputHelper.logEmbedOutputToDiscord(embed);
+                CommandOutputHelper.logMultiLineOutputToDiscord(ctx.getMultiLineOutput());
+            } else {
+                CommandOutputHelper.logEmbedOutputToTerminal(embed);
+                CommandOutputHelper.logMultiLineOutputToTerminal(ctx.getMultiLineOutput());
+            }
+        });
+        return true;
+    }
+
+    public boolean handleInGameCommandSpectator(final String message, final @NonNull ServerSession session, final boolean prioritizeServerCommand) {
+        var ctx = CommandContext.createSpectatorContext(message, session);
+        var isServerCmd = matchesServerCommand(message, ctx);
+        var isDotProxyCmd = matchesDotProxyCommand(ctx);
+        if (!isDotProxyCmd) {
+            return false;
+        }
+        if (isServerCmd && prioritizeServerCommand) {
+            return false;
+        }
+        return handleInGameCommandSpectator0(message, session);
+    }
+
+    public boolean handleInGameCommandSpectator0(final String message, final @NonNull ServerSession session) {
+        final CommandContext commandContext = CommandContext.createSpectatorContext(message, session);
+        var parse = COMMAND.parse(commandContext);
+        EXECUTOR.execute(() -> {
+            TERMINAL_LOG.info("{} executed in-game spectator command: {}", session.getName(), message);
+            COMMAND.execute(commandContext, parse);
+            var embed = commandContext.getEmbed();
+            CommandOutputHelper.logEmbedOutputToInGame(embed, session);
+            CommandOutputHelper.logMultiLineOutputToInGame(commandContext.getMultiLineOutput(), session);
+            if (!commandContext.isNoOutput() && !embed.isTitlePresent() && commandContext.getMultiLineOutput().isEmpty()) {
+                return;
+            }
+            if (CONFIG.inGameCommands.logToDiscord && DISCORD.isRunning() && !commandContext.isSensitiveInput()) {
+                // will also log to terminal
+                CommandOutputHelper.logInputToDiscord(message, CommandSources.SPECTATOR, commandContext);
+                CommandOutputHelper.logEmbedOutputToDiscord(embed);
+                CommandOutputHelper.logMultiLineOutputToDiscord(commandContext.getMultiLineOutput());
+            } else {
+                CommandOutputHelper.logEmbedOutputToTerminal(embed);
+                CommandOutputHelper.logMultiLineOutputToTerminal(commandContext.getMultiLineOutput());
+            }
+        });
+        return true;
+    }
+}
